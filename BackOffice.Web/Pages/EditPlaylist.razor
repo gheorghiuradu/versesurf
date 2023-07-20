@@ -1,0 +1,526 @@
+﻿@page "/playlists/edit"
+@page "/playlists/edit/{PlaylistId}"
+
+@using MusicDbApi.Models;
+@using MusicDbApi;
+@using Web.Data;
+@using MusicStorageClient;
+@using LicensingService;
+@using ArtManager;
+@using AudioProcessing;
+
+@implements IAsyncDisposable
+
+@inject IJSRuntime js;
+@inject MusicDbClient musicDbClient;
+@inject NavigationManager navigationManager;
+@inject SpotifyApiService.SpotifyService spotify;
+@inject GoogleStorage googleStorage;
+@inject LicenseService licenseService;
+@inject MusicBrainzApiClient musicBrainzApiClient;
+@inject AudioProcessingService audioProcessingService;
+<style>
+    label {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        font-size: large;
+    }
+
+    input[type=text], input:not([type]) {
+        flex: 1;
+        background-color: #222831;
+        border: 0;
+        color: white;
+    }
+
+    input[type=number] {
+        background-color: #222831;
+        color: white;
+    }
+</style>
+<h3>Edit Playlist @this.playlist?.Name</h3>
+
+<EditForm Model="playlist" OnSubmit="@OnFormSubitAsync">
+    <p>
+        Added at: @playlist.AddedAt
+        <br />
+        Updated at: @playlist.UpdatedAt
+    </p>
+    <p>
+        <label>
+            Name:
+            <InputText @bind-Value="this.playlist.Name" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Enabled:
+            <InputCheckbox @bind-Value="this.playlist.Enabled" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Featured:
+            <InputCheckbox @bind-Value="this.playlist.Featured" />
+        </label>
+    </p>
+    <p>
+        <label>
+            PictureUrl:
+            <InputText @bind-Value="this.playlist.PictureUrl" />
+        </label>
+        <br />
+        @this.playlistPictureStatus
+        <br />
+        <input type="button" class="btn btn-secondary" @onclick="TryImportCoverArtAsync" value="Import cover from songs" />
+        <b>OR</b>
+        <InputFile OnChange="UploadPlaylistPictureAsync" />
+        <br />
+        <img src="@this.playlist.PictureUrl" />
+    </p>
+    <p>
+        <label>
+            Language:
+            <InputText @bind-Value="this.playlist.Language" />
+        </label>
+    </p>
+    <p>
+        <label>
+            SpotifyId:
+            <InputText @bind-Value="this.playlist.SpotifyId" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Votes:
+            <InputNumber @bind-Value="this.playlist.Votes" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Plays:
+            <InputNumber @bind-Value="this.playlist.Plays" />
+        </label>
+    </p>
+
+    <h4>Songs (@this.playlist.Songs?.Count)</h4>
+    @if (!(this.playlist.Songs is null))
+    {
+        foreach (var song in this.playlist.Songs)
+        {
+            <div style="border: 2px solid black;">
+                <IconButton OnClick="e => {
+                                         this.songIndexToRemove = this.playlist.Songs.IndexOf(song);
+                                         this.isDeleteSongAlertOpen = true;
+                                     }" Context="SKClusive" Style="float:right;">
+                    <DeleteIcon />
+                </IconButton>
+                <p>
+                    <label>
+                        SpotifyId:
+                        <InputText @bind-Value="song.SpotifyId" />
+                    </label>
+                    <input type="button" class="btn btn-secondary" @onclick="e =>MapFromSpotifyAsync(song)" value="Import metadata from spotify" />
+                </p>
+                <p>
+                    <label>
+                        Artist:
+                        <InputText @bind-Value="song.Artist" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Title:
+                        <InputText @bind-Value="song.Title" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        ISRC:
+                        <InputText @bind-Value="song.ISRC" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        IsExplicit:
+                        <InputCheckbox @bind-Value="song.IsExplicit" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Plays:
+                        <InputNumber @bind-Value="song.Plays" />
+                    </label>
+                </p>
+
+                <p>
+                    <label>
+                        Enabled:
+                        <InputCheckbox @bind-Value="song.Enabled" />
+                    </label>
+                </p>
+                <h4>Audio</h4>
+                <p>
+                    <label>
+                        FullSongUrl:
+                        <InputText @bind-Value="song.FullAudioUrl" />
+                    </label>
+                    <label>
+                        Upload Full Song:
+                        <InputFile OnChange="e => UploadFullAudioAsync(e, song)" />@this.uploadFullAudioStatus
+                    </label>
+                    <input type="button" class="btn btn-secondary" @onclick="e => LoadAudioPreview(song.FullAudioUrl)" value="Load Audio (Full song)" />
+                    <br />
+                    @if (!string.IsNullOrWhiteSpace(song.FullAudioUrl) && this.songSignedUrls.ContainsKey(song.FullAudioUrl))
+                    {
+                        <audio src="@songSignedUrls[song.FullAudioUrl]#t=@this.FormatTime(song.StartSecond),@this.FormatTime(song.EndSecond)" controls type="audio/mpeg" style="width:100%;" />
+                    }
+                    <br />
+                </p>
+                <p>
+                    <label>
+                        Snippet:
+                        <InputText @bind-Value="song.Snippet" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        StartSecond:
+                        <InputNumber @bind-Value="song.StartSecond" />
+                    </label>
+                    <label>
+                        EndSecond:
+                        <InputNumber @bind-Value="song.EndSecond" />
+                    </label>
+                    <input type="button" class="btn btn-secondary" @onclick="e => TrimFullAudioCreatePreview(song)" value="Trim full audio to create preview" />
+                    <br />
+                    @this.trimSongStatus
+                </p>
+                <p>
+                    <label>
+                        PreviewUrl:
+                        <InputText @bind-Value="song.PreviewUrl" />
+                    </label>
+                    <input type="button" class="btn btn-secondary" @onclick="e => LoadAudioPreview(song.PreviewUrl)" value="Load Audio (Song Preview)" />
+                    <br />
+                    @if (!string.IsNullOrWhiteSpace(song.PreviewUrl) && this.songSignedUrls.ContainsKey(song.PreviewUrl))
+                    {
+                        <audio src="@songSignedUrls[song.PreviewUrl]#t=@this.FormatTime(0),@this.FormatTime(song.EndSecond-song.StartSecond)" controls type="audio/mpeg" style="width:100%;" />
+                    }
+                    <br />
+                    <label>
+                        Upload Song Preview (Already trimmed)
+                        <InputFile OnChange="e => UploadSongPreviewAsync(e, song)" />@this.uploadPreviewStatus
+                    </label>
+                </p>
+
+                <h4>Licensing</h4><input type="button" class="btn btn-secondary" value="Try Get Licenses" @onclick="e => TryImportLicenses(song)" />
+                <p>@licenseClientStatus</p>
+                <p>
+                    <label>
+                        BmiLicenseId:
+                        <InputText @bind-Value="song.BmiLicenseId" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        ASCAPLicenseId:
+                        <InputText @bind-Value="song.ASCAPLicenseId" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        SesacLicenseId:
+                        <InputText @bind-Value="song.SesacLicenseId" />
+                    </label>
+                </p>
+            </div>
+            <br />
+
+        }
+    }
+
+    <br />
+    <input type="button" class="btn btn-secondary" @onclick="AddSong" value="Add song" />
+    <br />
+    <button type="submit" class="btn btn-primary" title="CTRL+S">Save</button>
+</EditForm>
+
+<Dialog Open="isDeleteSongAlertOpen">
+    <DialogContent>
+        <DialogContentText>
+            Are you sure you want to delete this song?
+        </DialogContentText>
+    </DialogContent>
+    <DialogActions>
+        <Button OnClick="e => { this.playlist.Songs.RemoveAt(songIndexToRemove); this.isDeleteSongAlertOpen = false; } ">
+            Delete
+        </Button>
+        <Button OnClick="e => this.isDeleteSongAlertOpen = false">
+            Cancel
+        </Button>
+    </DialogActions>
+</Dialog>
+
+<div class="toast align-items-center text-white bg-primary border-0 position-fixed p-1" style="bottom:0; right:1%; z-index:5" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+    <div class="d-flex">
+        <div class="toast-body">
+            @this.result
+        </div>
+        <button type="button" class="btn btn-close text-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close">🗙</button>
+    </div>
+</div>
+<p>@result</p>
+
+@code{
+    [Parameter]
+    public string PlaylistId { get; set; }
+    private Playlist playlist = new Playlist { Songs = new List<Song>() };
+    private string result = string.Empty;
+    private Dictionary<string, string> songSignedUrls = new Dictionary<string, string>();
+    private string licenseClientStatus = string.Empty;
+    private string uploadFullAudioStatus = string.Empty;
+    private string uploadPreviewStatus = string.Empty;
+    private string playlistPictureStatus = string.Empty;
+    private bool isDeleteSongAlertOpen = false;
+    private int songIndexToRemove;
+    private string trimSongStatus = string.Empty;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await this.js.InvokeVoidAsync("enableCtrlSave", new object[] { DotNetObjectReference.Create(this), nameof(this.OnFormSubitAsync) });
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrWhiteSpace(this.playlist.Id) && !string.IsNullOrWhiteSpace(this.PlaylistId))
+        {
+            this.playlist = await this.musicDbClient.GetPlaylistByIdAsync(this.PlaylistId);
+
+        }
+        await base.OnInitializedAsync();
+    }
+
+    [JSInvokable]
+    public async void OnFormSubitAsync()
+    {
+        this.result = "Saving...";
+        this.StateHasChanged();
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(this.PlaylistId))
+            {
+                await this.musicDbClient.UpdatePlaylistAsync(this.playlist);
+                this.result = "Playlist updated succesfully!";
+
+            }
+            else
+            {
+                var playlistId = await this.musicDbClient.AddPlaylistAsync(playlist);
+                this.navigationManager.NavigateTo($"/playlists/edit/{playlistId}");
+                this.result = "Playlist added succesfully!";
+            }
+            this.StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            this.result = ex.Message;
+            this.StateHasChanged();
+        }
+        finally
+        {
+            await this.js.InvokeVoidAsync("showDefaultToast");
+        }
+
+    }
+
+    private void AddSong()
+    {
+        if (!(this.playlist is null))
+        {
+            if (this.playlist.Songs is null)
+            {
+                this.playlist.Songs = new List<Song>();
+            }
+            this.playlist.Songs.Add(new Song());
+        }
+    }
+
+    private async void MapFromSpotifyAsync(Song song)
+    {
+        if (string.IsNullOrWhiteSpace(song.SpotifyId))
+        {
+            return;
+        }
+
+        if (!this.spotify.IsInitialized())
+        {
+            await this.spotify.InitializeAsync();
+        }
+
+        var track = this.spotify.GetTrack(song.SpotifyId);
+        song.MapFromSpotify(track);
+        this.StateHasChanged();
+    }
+
+    private async void LoadAudioPreview(string audioUrl)
+    {
+        if (string.IsNullOrWhiteSpace(audioUrl))
+        {
+            return;
+        }
+        var signedUrl = await this.googleStorage.GetSignedUrlAsync(audioUrl);
+        if (this.songSignedUrls.ContainsKey(audioUrl))
+        {
+            this.songSignedUrls[audioUrl] = signedUrl;
+        }
+        else
+        {
+            this.songSignedUrls.Add(audioUrl, signedUrl);
+        }
+        this.StateHasChanged();
+    }
+
+    private async void TryImportLicenses(Song song)
+    {
+        if (string.IsNullOrWhiteSpace(song.BmiLicenseId) && string.IsNullOrWhiteSpace(song.ASCAPLicenseId)
+            && string.IsNullOrWhiteSpace(song.SesacLicenseId))
+        {
+            var command = new TryGetLicenseIdCommand
+            {
+                Artists = song.Artist.Split('&'),
+                Title = song.Title
+            };
+            this.licenseClientStatus = "Loading BMI license...";
+            song.BmiLicenseId = await this.licenseService.TryGetBmiLicenseAsync(command);
+            this.licenseClientStatus = string.Empty;
+            this.StateHasChanged();
+            if (string.IsNullOrWhiteSpace(song.BmiLicenseId))
+            {
+                this.licenseClientStatus = "Loading ASCAP license...";
+                song.ASCAPLicenseId = await this.licenseService.TryGetAscapLicenseAsync(command);
+                this.licenseClientStatus = string.Empty;
+                this.StateHasChanged();
+                if (string.IsNullOrWhiteSpace(song.ASCAPLicenseId))
+                {
+                    this.licenseClientStatus = "Loading SESAC license...";
+                    song.SesacLicenseId = await this.licenseService.TryGetSesacLicenseAsync(command);
+                    this.licenseClientStatus = string.Empty;
+                    this.StateHasChanged();
+                }
+            }
+        }
+    }
+
+    private async void TryImportCoverArtAsync()
+    {
+        if (this.playlist.Songs?.Count > 0)
+        {
+            this.playlistPictureStatus = "Working...";
+            this.playlist.PictureUrl = await this.musicBrainzApiClient.GetImageForPlaylistAsync(this.playlist);
+            this.playlistPictureStatus = "Finished successfully.";
+            this.StateHasChanged();
+        }
+        else
+        {
+            this.playlistPictureStatus = "Cannot import from songs because there are 0 songs in this playlist.";
+            this.StateHasChanged();
+        }
+    }
+
+    private async void UploadFullAudioAsync(InputFileChangeEventArgs e, Song song)
+    {
+        this.uploadFullAudioStatus = "Working....";
+        var fileStream = e.File.OpenReadStream(100000000);
+        this.uploadFullAudioStatus = "Started upload to cloud storage.";
+        var link = await this.googleStorage.UploadSongAudioAsync(fileStream, $"{song.SpotifyId}_full.mp3");
+        song.FullAudioUrl = link;
+        this.uploadFullAudioStatus = "Upload finished succesfully";
+        this.StateHasChanged();
+    }
+
+    private async void UploadSongPreviewAsync(InputFileChangeEventArgs e, Song song)
+    {
+        this.uploadPreviewStatus = "Working....";
+        var fileStream = e.File.OpenReadStream(100000000);
+        this.uploadPreviewStatus = "Started upload to cloud storage.";
+        var link = await this.googleStorage.GetOrUploadSongPreviewAsync(fileStream, this.GetTrimmedFileName(song));
+        song.PreviewUrl = link;
+        this.uploadPreviewStatus = "Upload finished succesfully";
+        this.StateHasChanged();
+    }
+
+    private async void UploadPlaylistPictureAsync(InputFileChangeEventArgs e)
+    {
+        this.playlistPictureStatus = "Working....";
+        var originalStream = e.File.OpenReadStream(100000000);
+        var fileName = string.IsNullOrWhiteSpace(playlist.SpotifyId) ? $"{playlist.Id}.jpg" : $"{playlist.SpotifyId}.jpg";
+
+        this.playlistPictureStatus = "Resizing image...";
+        var resized = await ImageProcessingService.ResizeImageAsync(originalStream);
+
+        this.playlistPictureStatus = "Starting upload...";
+        var pictureUrl = await this.googleStorage.UploadPlaylistImageAsync(resized, fileName);
+        this.playlist.PictureUrl = pictureUrl;
+        resized.Dispose();
+        this.playlistPictureStatus = "Finished successfully.";
+        this.StateHasChanged();
+    }
+
+    private async void TrimFullAudioCreatePreview(Song song)
+    {
+        if (string.IsNullOrWhiteSpace(song.FullAudioUrl) || song.EndSecond is null)
+        {
+            this.trimSongStatus = "Cannot trim song without a full audio clip url or wihtout and end second.";
+            return;
+        }
+
+        this.trimSongStatus = "Starting work.";
+        var fullSongStream = await this.googleStorage.DownloadFileByUrlAsync(song.FullAudioUrl);
+
+        this.trimSongStatus = "Trimming mp3 clip...";
+        var trimmedSongStream =
+            this.audioProcessingService.TrimClip(fullSongStream, song.StartSecond.GetValueOrDefault(), song.EndSecond.Value + 10);
+
+        this.trimSongStatus = "Uploading trimmed mp3 clip...";
+
+        song.PreviewUrl = await this.googleStorage.GetOrUploadSongPreviewAsync(trimmedSongStream, this.GetTrimmedFileName(song));
+        this.trimSongStatus = "Finished successfully.";
+        this.StateHasChanged();
+
+        fullSongStream.Dispose();
+        trimmedSongStream.Dispose();
+    }
+
+    private string FormatTime(double? value)
+    {
+        return value.ToString().Replace(",", ".");
+    }
+
+    private string GetTrimmedFileName(Song song)
+    {
+        var trimmedFileName = $"{song.SpotifyId}_t_s{song.StartSecond}e{song.EndSecond}d{DateTime.Now.ToString()}"
+            .Replace(':', '_').Replace('.', '-').Replace('/', '-').Replace('\\', '-').Replace(" ", "_");
+        trimmedFileName += ".mp3";
+
+        return trimmedFileName;
+    }
+
+    private void HandleFormKeyDown(KeyboardEventArgs e)
+    {
+        if (e.CtrlKey && string.Equals("s", e.Key, StringComparison.OrdinalIgnoreCase))
+        {
+            this.OnFormSubitAsync();
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await this.js.InvokeVoidAsync("restoreDocumentKeys");
+    }
+}

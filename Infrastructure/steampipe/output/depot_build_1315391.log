@@ -1,0 +1,222 @@
+[2020-06-05 12:00:53]: Starting build for depot 1315391, content path is "C:\Users\r.gheorghiu\Downloads\verse.surf-StandaloneWindows64", build flags 0x0
+[2020-06-05 12:00:53]: Building file listing for depot 1315391 ...
+[2020-06-05 12:00:53]: Found 211 files for mapping: C:\Users\r.gheorghiu\Downloads\verse.surf-StandaloneWindows64 * -> .
+[2020-06-05 12:00:53]: Found 211 files (106 MB) for depot 1315391
+[2020-06-05 12:00:53]: Building depot 1315391, no baseline manifest
+[2020-06-05 12:00:54]: Found 270 chunks ( 0 used previously ) for depot 1315391, took 0 minutes, 0 seconds
+
+[2020-06-05 12:00:54]: Changes to baseline manifest 0 :
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\EmbedRuntime" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll" 4840 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\EmbedRuntime\MonoPosixHelper.dll" 762 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\2.0" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\2.0\Browsers" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\2.0\Browsers\Compat.browser" 2 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx" 60 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\2.0\machine.config" 29 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\2.0\settings.map" 3 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\2.0\web.config" 12 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.0" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.0\Browsers" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.0\Browsers\Compat.browser" 2 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx" 60 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.0\machine.config" 33 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.0\settings.map" 3 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.0\web.config" 19 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.5" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.5\Browsers" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.5\Browsers\Compat.browser" 2 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx" 60 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.5\machine.config" 34 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.5\settings.map" 3 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\4.5\web.config" 19 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\browscap.ini" 305 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\config" 4 kB 
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\mconfig" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "MonoBleedingEdge\etc\mono\mconfig\config.xml" 26 kB 
+[2020-06-05 12:00:54]: Added  : "UnityCrashHandler64.exe" 1069 kB 
+[2020-06-05 12:00:54]: Added  : "UnityPlayer.dll" 25163 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf.exe" 636 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\app.info" 1 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\boot.config" 1 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\globalgamemanagers" 250 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\globalgamemanagers.assets" 84 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\level0" 17 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\level1" 20 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\level2" 14 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Accessibility.dll" 12 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Assembly-CSharp-firstpass.dll" 328 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Assembly-CSharp.dll" 91 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\AwaitExtensions.dll" 12 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.AspNetCore.Connections.Abstractions.dll" 36 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.AspNetCore.Http.Connections.Client.dll" 94 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.AspNetCore.Http.Connections.Common.dll" 27 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.AspNetCore.Http.Features.dll" 31 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.AspNetCore.SignalR.Client.Core.dll" 142 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.AspNetCore.SignalR.Client.dll" 18 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.AspNetCore.SignalR.Common.dll" 37 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.AspNetCore.SignalR.Protocols.Json.dll" 34 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Bcl.AsyncInterfaces.dll" 21 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.Configuration.Abstractions.dll" 22 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.Configuration.Binder.dll" 25 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.Configuration.dll" 27 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.DependencyInjection.Abstractions.dll" 38 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.DependencyInjection.dll" 72 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.Logging.Abstractions.dll" 48 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.Logging.dll" 34 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.Options.dll" 50 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Microsoft.Extensions.Primitives.dll" 38 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Mono.Data.Sqlite.dll" 163 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Mono.Posix.dll" 208 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Mono.Security.dll" 302 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Mono.WebBrowser.dll" 163 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\mscorlib.dll" 3977 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\NAudio.dll" 468 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\netstandard.dll" 83 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Newtonsoft.Json.dll" 684 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Novell.Directory.Ldap.dll" 242 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\PlayFab.dll" 713 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\QRCoder.dll" 117 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\QRCoder.Unity.dll" 6 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\SharedDomain.dll" 28 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\SignalrCoreWrapper.dll" 8 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Buffers.dll" 21 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.ComponentModel.Annotations.dll" 43 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.ComponentModel.Composition.dll" 251 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.ComponentModel.DataAnnotations.dll" 83 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Configuration.dll" 122 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Core.dll" 1022 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Data.Common.dll" 144 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Data.dll" 2033 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Design.dll" 276 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Diagnostics.StackTrace.dll" 23 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Diagnostics.Tracing.dll" 31 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.DirectoryServices.dll" 91 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.dll" 2652 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Drawing.Common.dll" 141 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Drawing.Design.dll" 29 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Drawing.dll" 470 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.EnterpriseServices.dll" 44 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Globalization.Extensions.dll" 24 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.IO.Compression.dll" 109 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.IO.Compression.FileSystem.dll" 23 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.IO.Pipelines.dll" 67 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Memory.dll" 138 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Net.Http.dll" 112 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Numerics.dll" 112 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Numerics.Vectors.dll" 114 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Runtime.CompilerServices.Unsafe.dll" 17 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Runtime.dll" 13 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Runtime.Serialization.dll" 907 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Runtime.Serialization.Formatters.Soap.dll" 38 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Runtime.Serialization.Primitives.dll" 27 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Runtime.Serialization.Xml.dll" 7 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Security.Cryptography.Algorithms.dll" 44 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Security.dll" 180 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Security.SecureString.dll" 22 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.ServiceModel.Internals.dll" 210 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Text.Encodings.Web.dll" 56 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Text.Json.dll" 287 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Threading.Channels.dll" 45 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Threading.Overlapped.dll" 26 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Threading.Tasks.Extensions.dll" 26 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Transactions.dll" 34 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.ValueTuple.dll" 25 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Web.ApplicationServices.dll" 33 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Web.dll" 3081 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Web.Services.dll" 710 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Windows.Forms.dll" 2812 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Xml.dll" 3065 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Xml.Linq.dll" 117 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\System.Xml.XPath.XDocument.dll" 23 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Unity.Analytics.DataPrivacy.dll" 8 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Unity.InternalAPIEngineBridge.003.dll" 11 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Unity.TextMeshPro.dll" 324 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Unity.Timeline.dll" 106 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\Unity.VectorGraphics.dll" 206 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.AccessibilityModule.dll" 12 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.AIModule.dll" 43 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.AndroidJNIModule.dll" 56 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.AnimationModule.dll" 142 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.ARModule.dll" 13 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.AssetBundleModule.dll" 21 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.AudioModule.dll" 56 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.ClothModule.dll" 15 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.ClusterInputModule.dll" 10 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.ClusterRendererModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.CoreModule.dll" 968 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.CrashReportingModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.DirectorModule.dll" 13 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.dll" 82 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.DSPGraphModule.dll" 18 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.GameCenterModule.dll" 26 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.GridModule.dll" 13 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.HotReloadModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.ImageConversionModule.dll" 11 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.IMGUIModule.dll" 152 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.InputLegacyModule.dll" 25 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.InputModule.dll" 12 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.JSONSerializeModule.dll" 11 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.LocalizationModule.dll" 10 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.ParticleSystemModule.dll" 131 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.PerformanceReportingModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.Physics2DModule.dll" 104 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.PhysicsModule.dll" 85 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.ProfilerModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.Purchasing.dll" 27 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.ScreenCaptureModule.dll" 10 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.SharedInternalsModule.dll" 19 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.SpriteMaskModule.dll" 10 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.SpriteShapeModule.dll" 14 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.StreamingModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.SubstanceModule.dll" 13 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.SubsystemsModule.dll" 17 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.TerrainModule.dll" 79 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.TerrainPhysicsModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.TextCoreModule.dll" 177 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.TextRenderingModule.dll" 27 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.TilemapModule.dll" 24 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.TLSModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UI.dll" 220 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UIElementsModule.dll" 706 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UIModule.dll" 22 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UmbraModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UNETModule.dll" 76 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UnityAnalyticsModule.dll" 32 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UnityConnectModule.dll" 10 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UnityTestProtocolModule.dll" 9 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll" 11 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll" 11 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UnityWebRequestModule.dll" 42 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll" 10 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll" 20 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.VehiclesModule.dll" 12 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.VFXModule.dll" 38 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.VideoModule.dll" 28 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.VRModule.dll" 33 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.WindModule.dll" 10 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Managed\UnityEngine.XRModule.dll" 52 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Plugins" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Plugins\Steamworks.NET.txt" 1 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Plugins\steam_api64.dll" 283 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Resources" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\resources.assets" 21351 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\resources.assets.resS" 15275 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\resources.resource" 605 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Resources\unity default resources" 3741 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\Resources\unity_builtin_extra" 334 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\sharedassets0.assets" 1108 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\sharedassets0.assets.resS" 11 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\sharedassets0.resource" 142 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\sharedassets1.assets" 5 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\sharedassets2.assets" 5 kB 
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\StreamingAssets" 0 kB ,Flags: 64
+[2020-06-05 12:00:54]: Added  : "verse.surf_Data\StreamingAssets\appsettings.json" 1 kB 
+[2020-06-05 12:00:54]: Summary: 211 files added, 0 files changed, 0 files removed
+[2020-06-05 12:00:55]: Uploading new manifest to 208.64.201.182:80 (handle 4235695849295060147, 35095 bytes).
+[2020-06-05 12:00:57]: Success! New manifestID 5483015409816080299 created and 0 new chunks uploaded.

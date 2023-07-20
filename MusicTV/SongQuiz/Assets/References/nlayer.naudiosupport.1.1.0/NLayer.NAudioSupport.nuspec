@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>NLayer.NAudioSupport</id>
+    <version>1.1.0</version>
+    <authors>Mark Heath</authors>
+    <owners>Mark Heath</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/naudio/NLayer/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/naudio/NLayer</projectUrl>
+    <description>NAudio support for NLayer</description>
+    <tags>NAudio NLayer MP3 audio</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="NAudio" version="1.9.0" exclude="Build,Analyzers" />
+        <dependency id="NLayer" version="1.12.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

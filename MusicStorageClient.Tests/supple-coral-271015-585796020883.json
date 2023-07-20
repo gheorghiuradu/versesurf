@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "supple-coral-271015",
+  "private_key_id": "585796020883dc87c4e88b84a4cf40c587345934",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCZEO4VkHtpcjIt\nXWYrG7kEHwMWv+khIAW6SqIW7pcQNQVj2hckbfmwhB0ktMWckc76NxMGyEXp5QyS\nkMZYrOi4B/XA7A5jS/r2oiF2Hu0l6wdaiF5A9iiUK/BTx5lNf7qCBx16/Hg8kL6/\ncGS0CJ2NRy17wo85iuOfn6Bwj0m+Y2ClCixIEENAjerTTxCPUggdR/47AxQU0020\nVPi0LBzQo8/C4IRQtDOQz0658ZpJ2EAtq9tQbDrP2YTaON2J0BzD2JUcXYyKxRJ5\nQX/H61zPQXvOEFqvLhgA59K3lCE1lISYaAB9PbfaxRjzd87O/1+sK5YLTNaD5hyo\n5g1Hp0kjAgMBAAECggEABj7MmBCnGGxSY8t1ybh92g8x3xHBf1qBIVK+PlVJ0J15\nNNPHMfNSxsL9NWwyy+qfGVJ58kLlp19zHd/OV/vmGuwoONDo3WBSQxHmb51fa7al\nPCpoPhpNGY6ZZbG1LZZSk8+aglQey8nUHpeFZFsdopAO6QfNNDnYg8DNmQofpibz\nsdCpBqNjfRDkid4ouyJgZA70OcLyCGgEYskqqyzHtMiwZ8tGM2IvSbrkzuM/sV4U\nUwpzRcQVXFCSACiu3vWwtGt86MSxKlazOj6mlD9zE5hcrB4FmFDi8+nTEGSifjqa\nLO5nRpC1lKdTDSLk7jMc6UdDPPLPhdGz8HJBQcl80QKBgQDSItVopkbAkVS8voOv\ncjZizLlL8tjPo2OEEuNbCISxZ+3q8/MI8ZpW5M5Y9X7aW0xpwP7S7Cu5hZVfrY5t\nhWXOqYgrh8qQPjzuvqnkuImXhacygMK7jH9oDOR8YNDI3Z/Fa32vVFtx5czVEEcJ\nXCVnqY+pC4m45/Mb3kt4B9vsTQKBgQC6eV1Gqr8opf8Ciz/t6hHtE1k/hVMSJczE\nk1FPIjqUCwrLS8yMiodSDaNHKh19DHAae1hfG77FCJjwEQc0Hsjs0uBF8RgQ4SDJ\nEkx4IDqVUbLE8qt4nfH26cpgRlM/j5HoYwv/Hcek/R3Sfbb83wef5RsDw6KFItIX\nwQL25YoDLwKBgQDFyqHjYfdg1KrVCeI7px6H+rlDQq9PKjTGoVy9WBRGRFQOfla5\niWhD+BQ+ab1gXOVc+Zsh/8jcVF+Ycm2IqzJ7xtl0V9mT0fFaq76Qmh5wsA4DnG0v\nSXy2/MOoSxzapLj5g0cHXDjCyZH2zt5+ceyHWXPuovycPj93cNLKhWM9VQKBgQCu\nRT4nDOwZ0QjCF+FnN5oJNkvyUWeRTkJQdF1I13RnZupvlCdWMSDGTniJyZJFi5o5\nJY0xVXy0J5TGxyM0UpD0wx9WPjt/iuZZBADzQyt84R1xcllOIE5Bs7yuvQqQHF0A\nEZDkm7A5QVTdox+gs88sX7Efk3YPdrth98ANffe9gQKBgQDL7Zc1wuYwn+sCVLYs\neKswWvapd7xetpl7+VgOflW8WJwL39bDnPl40VXQy9urrYjJn3iw0HyT8/AX0FfI\n1sejzPK9C8VI5jhZSnK72p1/teNX6k0MDkOxudoBVodeNC2AulnpWlzgYqnydeMv\nZwSgwy8nfCFCrzqaq1AdQFgesw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "music-test-storage-1-sa@supple-coral-271015.iam.gserviceaccount.com",
+  "client_id": "109297584463549086079",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/music-test-storage-1-sa%40supple-coral-271015.iam.gserviceaccount.com"
+}

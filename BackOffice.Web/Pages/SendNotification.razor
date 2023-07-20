@@ -1,0 +1,81 @@
+﻿@page "/musicserver/SendNotification";
+
+@using BackOffice.Web.Data;
+
+@inject BackOffice.Web.Services.MusicServerApiClient apiClient;
+
+<h3>Send Notifications To All Active Organizers</h3>
+<form @onsubmit="OnFormSubmit">
+    <FormControl>
+        <TextField Value="@request.BoKey"
+                   PlaceHolder="BO Key"
+                   Required="true"
+                   Label="BO Key"
+                   OnChange="OnBoKeyChanged" />
+    </FormControl>
+    <br />
+    <FormControl>
+        <TextField Value="@request.Title"
+                   PlaceHolder="Title"
+                   Label="Title"
+                   OnChange="OnTitleChanged" />
+    </FormControl>
+    <br />
+    <FormControl>
+        <TextField Value="@request.Message"
+                   PlaceHolder="Message"
+                   Required="true"
+                   Label="Message"
+                   OnChange="OnMessageChanged" />
+    </FormControl>
+    <br />
+    <FormControl>
+        <Button Variant="ButtonVariant.Contained" Type="ButtonType.Submit" Color="Color.Primary">Start</Button>
+    </FormControl>
+    <List>
+        @foreach (var error in this.errors)
+        {
+            <ListItem>
+                <ListItemText Primary="@error" />
+            </ListItem>
+        }
+    </List>
+</form>
+
+@code {
+    private NotificationRequest request = new NotificationRequest();
+    private List<string> errors = new List<string>();
+    private bool result;
+
+    private void OnBoKeyChanged(ChangeEventArgs e)
+    {
+        this.request.BoKey = e.Value?.ToString();
+    }
+    private void OnTitleChanged(ChangeEventArgs e)
+    {
+        this.request.Title = e.Value?.ToString();
+    }
+    private void OnMessageChanged(ChangeEventArgs e)
+    {
+        this.request.Message = e.Value?.ToString();
+    }
+    private async void OnFormSubmit(EventArgs e)
+    {
+        this.errors.Clear();
+        if (string.IsNullOrWhiteSpace(this.request.BoKey))
+        {
+            this.errors.Add("BoKey is required.");
+        }
+        if (string.IsNullOrWhiteSpace(this.request.Message))
+        {
+            this.errors.Add("Message is required");
+        }
+        if (this.errors.Count > 0)
+        {
+            this.StateHasChanged();
+            return;
+        }
+        this.result = await this.apiClient.SendNotificationAsync(request);
+        this.StateHasChanged();
+    }
+}

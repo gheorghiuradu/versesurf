@@ -1,0 +1,42 @@
+worker_processes auto;
+
+events {
+    worker_connections 20480;
+}
+
+http{
+    map $http_upgrade $connection_upgrade {
+            default upgrade;
+            '' close;
+        }
+
+    server {
+        listen 80;
+        listen 443 ssl http2;    
+        server_name ${SERVER_NAME};
+
+        ssl_certificate /etc/nginx/ssl/cert.pem;
+        ssl_certificate_key /etc/nginx/ssl/cert.key;
+        ssl_dhparam /etc/nginx/ssl/dhparam.pem;
+
+        location /api{
+            proxy_pass ${MUSICSERVER_URL}/api;
+            proxy_redirect off;
+            proxy_set_header Host $host;
+        }
+
+        location /ws{
+            proxy_pass ${MUSICSERVER_URL}/ws;
+            proxy_redirect off;
+            proxy_set_header Host $host;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+        }
+
+        location / {
+            proxy_pass ${MUSICWEBCLIENT_URL}/;
+            proxy_redirect off;
+            proxy_set_header Host $host; 
+        }
+    }
+}

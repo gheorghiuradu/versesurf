@@ -1,0 +1,30 @@
+﻿@page "/jobs/StartGeneratePlayedSongsReportJob";
+
+@using TaskService;
+@using TaskService.Commands;
+
+@inject JobService jobService;
+@inject NavigationManager navigationManager;
+
+<h3>Start Generate Played Songs Report Job</h3>
+
+<EditForm Model="@command" OnValidSubmit="@OnFormSubmit">
+    <InputDate @bind-Value=this.command.StartDate />
+    <InputDate @bind-Value=this.command.EndDate />
+    <br />
+    <button type="submit">Start</button>
+    <br />
+</EditForm>
+
+@code {
+    private string error = string.Empty;
+    private GeneratePlayedSongsReportCommand command = new GeneratePlayedSongsReportCommand();
+
+    private async void OnFormSubmit()
+    {
+        command.StartDate = new DateTime(command.StartDate.Ticks, DateTimeKind.Utc);
+        command.EndDate = new DateTime(command.EndDate.Ticks, DateTimeKind.Utc);
+        var startResult = await this.jobService.StartNewAsync(command);
+        this.navigationManager.NavigateTo($"/jobs/{startResult.JobId}");
+    }
+}

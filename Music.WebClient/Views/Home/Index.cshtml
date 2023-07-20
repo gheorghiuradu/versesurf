@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<img class="img-logo" src="/icons/logo.png" alt="Verse Surf">
+<div id="content">
+    <section id="loading" class="d-none">
+        <img src="~/loading-waves.gif" />
+    </section>
+    <form id="room-code" autocomplete="off">
+        <input id="code" class="form-control" type="text" placeholder="ROOM CODE" required maxlength="5" />
+        <input id="nick" class="form-control" type="text" placeholder="NICKNAME" required maxlength="13" />
+        <input class="btn-submit" type="submit" value="Join" />
+        <br />
+        <span class="alert-danger d-none" id="join-error">
+        </span>
+        <span class="bottom-links">
+            <a target="_blank" href="https://store.steampowered.com/app/1315390/Verse_Surf">
+                <img alt="Verse Surf on Steam" src="~/steam-button.png" />
+            </a>
+            <a target="_blank" href="https://discord.gg/7TH2nnH5ke">
+                <img alt="Join our discord" src="~/discord-button.png" />
+            </a>
+        </span>
+    </form>
+
+    <section id="relax" class="text-center d-none">
+        <div id="player-profile">
+            <span id="player-name"></span>
+
+            <div id="character-container">
+                <img id="character" />
+            </div>
+        </div>
+        <div class="message">Sit back and relax</div>
+        <img class="img-illustration" src="/icons/illustration.png" />
+    </section>
+
+    <section id="playlists-container" class="text-center d-none">
+        <div class="vote">Vote a playlist</div>
+        <input id="search-playlist" class="form-control" type="text" placeholder="search playlists or songs" autocomplete="off" onkeyup="SearchPlaylist()" />
+        <ul id="playlists" class="list-group"></ul>
+    </section>
+
+    <form id="ask" class="d-none" autocomplete="off">
+        <input id="answer" class="form-control" type="text" placeholder="Make something up!" required maxlength="50" />
+        <input class="btn-submit" type="submit" value="Submit" />
+        <span class="alert-danger d-none" id="answer-error">
+            You must enter a fake lyric, to fool the other players.
+        </span>
+    </form>
+
+    <form id="ask-speed" class="d-none" autocomplete="off">
+        <input id="answer-speed" class="form-control" type="text" placeholder="What's the correct lyric?" required maxlength="50" />
+        <input class="btn-submit" type="submit" value="Submit" />
+        <span class="alert-danger d-none" id="answer-speed-error">
+        </span>
+    </form>
+
+    <section id="answers-container" class="d-none">
+        <div class="vote">Vote the lyric</div>
+        <ul id="answers" class="list-group"></ul>
+    </section>
+</div>
+
+@section Scripts{
+    <script>
+        const hubUrl = "@ViewData["HubUrl"]";
+        const apiUrl = "@ViewData["ApiUrl"]";
+        const genericAlbumUrl = "@ViewData["GenericAlbumUrl"]";
+        const characterPath = "@ViewData["CharacterPath"]";
+        const urlParams = new URLSearchParams(window.location.search);
+        let connection = BuildConnection(hubUrl);;
+        let reconnectingModalVisible = false;
+
+        var codeForm = document.querySelector("#room-code");
+        codeForm.onsubmit = (e) => {
+            e.preventDefault();
+
+            var code = document.querySelector("#code").value;
+            var nick = document.querySelector("#nick").value;
+
+            JoinRoom(code, nick).then(response => {
+                if (response.isSuccess) {
+                    $("#code").val("");
+                    $(codeForm).addClass("d-none");
+                    $("#join-error").add("d-none");
+                    LoadPlayerProfile();
+                } else {
+                    $("#join-error").removeClass("d-none").text(response.errorMessage);
+                }
+            });
+        };
+
+        document.querySelector("#ask").onsubmit = SendAnswer;
+        document.querySelector("#ask-speed").onsubmit = SendSpeedAnswer;
+        window.addEventListener('offline', () => connection.reconnect());
+        $("#reconnecting-modal").on("shown.bs.modal", () => reconnectingModalVisible = true);
+        $("#reconnecting-modal").on("hidden.bs.modal", () => reconnectingModalVisible = false);
+
+        BindToConnection();
+        CheckIfLeftGame();
+
+        $("#code").val(urlParams.get("code"));
+    </script>
+}

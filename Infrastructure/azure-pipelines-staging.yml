@@ -1,0 +1,59 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger:
+  batch: true
+  branches:
+    include:
+    - staging
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: DockerCompose@0
+  displayName: "Build images"
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'GoogleContainerRegistry_DEV'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Build services'
+    arguments: 'musicserver musicwebclient'
+
+- task: Docker@2
+  displayName: "Tag musicserver - stg registry"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_STG'
+    command: 'tag'
+    arguments: 'us.gcr.io/music-staging-281310/musicserver:$(ENVIRONMENT_NAME) us.gcr.io/music-staging-281310/musicserver:$(Build.BuildNumber)'
+
+- task: Docker@2
+  displayName: "Tag musicwebclient - stg registry"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_STG'
+    command: 'tag'
+    arguments: 'us.gcr.io/music-staging-281310/musicwebclient:$(ENVIRONMENT_NAME) us.gcr.io/music-staging-281310/musicwebclient:$(Build.BuildNumber)'
+
+- task: Docker@2
+  displayName: "Push musicserver - stg registry"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_STG'
+    repository: 'music-staging-281310/musicserver'
+    command: 'push'
+    tags: |
+      $(Build.BuildNumber)
+      $(ENVIRONMENT_NAME)
+
+- task: Docker@2
+  displayName: "Push musicwebclient - stg registry"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_STG'
+    repository: 'music-staging-281310/musicwebclient'
+    command: 'push'
+    tags: |
+      $(Build.BuildNumber)
+      $(ENVIRONMENT_NAME)
+
+- task: PostBuildCleanup@3

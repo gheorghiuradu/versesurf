@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MetaBrainz.MusicBrainz" Version="3.0.2" />
+    <PackageReference Include="PexelsNet" Version="3.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.2" />
+    <PackageReference Include="SpotifyAPI.Web" Version="5.1.1" />
+    <PackageReference Include="SpotifyAPI.Web.Auth" Version="5.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MusicDbApi\MusicDbApi.csproj" />
+    <ProjectReference Include="..\MusicStorageClient\MusicStorageClient.csproj" />
+    <ProjectReference Include="..\SharedDomain\SharedDomain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,101 @@
+﻿@page "/jobs/StartGSPathChangeJob";
+
+@using TaskService;
+@using TaskService.Commands;
+
+@inject JobService jobService;
+@inject NavigationManager navigationManager;
+
+<h3>Start GSPathChange Job</h3>
+<form @onsubmit="OnFormSubmit">
+    <FormControl>
+        <TextField Value="@command.PlaylistImageSource"
+                   PlaceHolder="Playlist Image Source"
+                   Required="true"
+                   Label="Playlist Image Source"
+                   OnChange="OnPlaylistImageSourceChange" />
+    </FormControl>
+    <FormControl>
+        <TextField Value="@command.PlaylistImageDestination"
+                   PlaceHolder="Playlist Image Destination"
+                   Required="true"
+                   Label="Playlist Image Destination"
+                   OnChange="OnPlaylistImageDestinationChange" />
+    </FormControl>
+    <FormControl>
+        <FormControlLabel Label="Remove query parameters">
+            <Checkbox Value="command.RemoveQueryParametersPlaylistImage" OnChange="OnPlaylistImgCheckboxChange" Checked="@command.RemoveQueryParametersPlaylistImage" />
+        </FormControlLabel>
+    </FormControl>
+    <br />
+    <FormControl>
+        <TextField Value="@command.SongPreviewSource"
+                   PlaceHolder="Song Preview Source"
+                   Required="true"
+                   Label="Song Preview Source"
+                   OnChange="OnSongPreviewSourceChange" />
+    </FormControl>
+    <FormControl>
+        <TextField Value="@command.SongPreviewDestination"
+                   PlaceHolder="Song Preview Destination"
+                   Required="true"
+                   Label="Song Preview Destination"
+                   OnChange="OnSongPreviewDestinationChange" />
+    </FormControl>
+    <FormControl>
+        <FormControlLabel Label="Remove query parameters">
+            <Checkbox Value="command.RemoveQueryParametersSongPreview" OnChange="OnSongPreviewCheckboxChange" Checked="@command.RemoveQueryParametersSongPreview" />
+        </FormControlLabel>
+    </FormControl>
+    <br />
+    <FormControl>
+        <Button Variant="ButtonVariant.Contained" Type="ButtonType.Submit" Color="Color.Primary">Start</Button>
+    </FormControl>
+    <span class="alert-danger">@this.error</span>
+</form>
+@code {
+    private ReplaceGSPathCommand command = new ReplaceGSPathCommand();
+    private string error = string.Empty;
+
+    private void OnPlaylistImageSourceChange(ChangeEventArgs e)
+    {
+        this.command.PlaylistImageSource = e.Value?.ToString();
+    }
+    private void OnPlaylistImageDestinationChange(ChangeEventArgs e)
+    {
+        this.command.PlaylistImageDestination = e.Value?.ToString();
+    }
+    private void OnSongPreviewSourceChange(ChangeEventArgs e)
+    {
+        this.command.SongPreviewSource = e.Value?.ToString();
+    }
+    private void OnSongPreviewDestinationChange(ChangeEventArgs e)
+    {
+        this.command.SongPreviewDestination = e.Value?.ToString();
+    }
+    private void OnPlaylistImgCheckboxChange(ChangeEventArgs e)
+    {
+        this.command.RemoveQueryParametersPlaylistImage = !this.command.RemoveQueryParametersPlaylistImage;
+        this.StateHasChanged();
+    }
+    private void OnSongPreviewCheckboxChange(ChangeEventArgs e)
+    {
+        this.command.RemoveQueryParametersSongPreview = !this.command.RemoveQueryParametersSongPreview;
+        this.StateHasChanged();
+    }
+
+    private async void OnFormSubmit(EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(this.command.PlaylistImageDestination)
+            || string.IsNullOrWhiteSpace(this.command.PlaylistImageSource)
+            || string.IsNullOrWhiteSpace(this.command.SongPreviewDestination)
+            || string.IsNullOrWhiteSpace(this.command.SongPreviewSource))
+        {
+            this.error = "Please fill out all fields.";
+            this.StateHasChanged();
+            return;
+        }
+        var startResult = await this.jobService.StartNewAsync(this.command);
+        this.navigationManager.NavigateTo($"/jobs/{startResult.JobId}");
+    }
+}

@@ -1,0 +1,108 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger:
+  batch: true
+  branches:
+    include:
+    - develop
+
+pool:
+  name: 'Google Cloud'
+  demands: 
+    - Environment -equals development
+
+steps:
+
+- task: DockerCompose@0
+  displayName: "Build images"
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'GoogleContainerRegistry_DEV'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Build services'
+    arguments: 'musicserver musicwebclient'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+       buildnr=$( echo $(Build.BuildNumber) | tr "." _)
+       echo $buildnr
+       echo "##vso[task.setvariable variable=buildnr]$buildnr"
+
+- task: Docker@2
+  displayName: "Tag musicserver"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_DEV'
+    command: 'tag'
+    arguments: 'eu.gcr.io/supple-coral-271015/musicserver:$(ENVIRONMENT_NAME) eu.gcr.io/supple-coral-271015/musicserver:$(buildnr)'
+
+- task: Docker@2
+  displayName: "Tag musicwebclient"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_DEV'
+    command: 'tag'
+    arguments: 'eu.gcr.io/supple-coral-271015/musicwebclient:$(ENVIRONMENT_NAME) eu.gcr.io/supple-coral-271015/musicwebclient:$(buildnr)'
+
+- task: Docker@2
+  displayName: "Push musicserver"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_DEV'
+    repository: 'supple-coral-271015/musicserver'
+    command: 'push'
+    tags: |
+      $(buildnr)
+      $(ENVIRONMENT_NAME)
+
+- task: Docker@2
+  displayName: "Push musicwebclient"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_DEV'
+    repository: 'supple-coral-271015/musicwebclient'
+    command: 'push'
+    tags: |
+      $(buildnr)
+      $(ENVIRONMENT_NAME)
+
+- task: Bash@3
+  displayName: "Prepare environment - 1"
+  inputs:
+    targetType: 'inline'
+    script: 'docker stop musicserver musicwebclient nginx | true'
+
+- task: Bash@3
+  displayName: "Prepare environment - 2"
+  inputs:
+    targetType: 'inline'
+    script: 'docker rm musicserver musicwebclient nginx | true'
+
+- task: DockerCompose@0
+  displayName: "Run services"
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'GoogleContainerRegistry_DEV'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run services'
+    buildImages: false
+    arguments: 'musicserver musicwebclient nginx'
+    
+- task: DownloadSecureFile@1
+  displayName: Download SA key
+  name: sa_key
+  inputs:
+    secureFile: 'gc_tf.json'
+
+- task: GcloudRunner@0
+  displayName: Gcloud Authenticate
+  inputs:
+    command: 'auth activate-service-account'
+    arguments: '--key-file $(sa_key.secureFilePath)'
+
+- task: GcloudRunner@0
+  displayName: Adding labels with image ids
+  inputs:
+    command: 'compute instances add-labels'
+    arguments: 'dev-euw-versesurf-001 --zone europe-west3-c --labels=ms_image_id=$(buildnr),mwc_image_id=$(buildnr)'
+
+- task: PostBuildCleanup@3

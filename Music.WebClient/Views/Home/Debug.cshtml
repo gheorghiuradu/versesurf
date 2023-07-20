@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Debug";
+}
+
+<h1>Debug</h1>
+<p>
+    Environment Name: @ViewData["EnvironmentName"]
+    <br />
+    Environment IsProduction(): @ViewData["IsProduction"]
+    <br />
+    Environment IsDevelopment(): @ViewData["IsDevelopment"]
+</p>
+<form>
+    <input type="text" id="method" placeholder="Method" class="form-control" />
+    <textarea id="json" placeholder="JSON" class="form-control"></textarea>
+    <input type="submit" class="btn btn-primary" />
+</form>
+<hr />
+<textarea id="result" readonly class="form-control">
+</textarea>
+@section Scripts{
+    <script>
+        var hubUrl = "@ViewData["HubUrl"]";
+        const connection = BuildConnection(hubUrl);
+        Init();
+
+        var form = document.querySelector("form");
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            var method = document.querySelector("#method").value;
+            var json = document.querySelector("#json").value;
+
+            var result = await connection.invoke(method, JSON.parse(json));
+            document.querySelector("#result").value = result;
+        }
+    </script>
+}

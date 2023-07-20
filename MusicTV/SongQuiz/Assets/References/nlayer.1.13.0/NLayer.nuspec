@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>NLayer</id>
+    <version>1.13.0</version>
+    <authors>Mark Heath, Andrew Ward</authors>
+    <owners>Mark Heath, Andrew Ward</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/naudio/NLayer/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/naudio/NLayer</projectUrl>
+    <description>Fully Managed MPEG 1 &amp; 2 Decoder for Layers 1, 2, &amp; 3</description>
+    <tags>audio csharp mp3</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
