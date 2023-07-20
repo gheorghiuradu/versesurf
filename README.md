@@ -15,8 +15,32 @@ Step 3. T-t-t-tie breaker! Last round is a Speed Round. Answer correctly and you
 ## How to build
 The game is built using Unity, .NET Core, SignalR and Blazor. **It was using Steam, Playfab (Azure Game Services) and Google Cloud Platform, so they need to be removed before running locally.**
 **If you manage to do so, please create a pull request here.**
-
+The main projects are:
+- Unity project under MusicTV/Songquiz
+- MusicServer, MusicWebClient, MusicApiServerless, BackOffice -> Open MusicServer/MusicServer.csproj
+  
 ## How to configure
 Please use the included backoffice to upload songs and create playlists. There are also tools for music licensing included, if you require them.
 The playlists were previously stored in Firezone and Google Cloud Storage, but they need to be refactored to use local storage. **Please create a PR with this change if you do this.**
 
+## MIT License
+
+Copyright (c) 2023 SHOPSOFT SRL
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
