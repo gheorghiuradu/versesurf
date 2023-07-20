@@ -1,0 +1,120 @@
+﻿@page "/jobs";
+@using TaskService;
+@using System.Threading;
+@using TaskService.Jobs;
+@implements IDisposable;
+@inject JobService jobService;
+
+<h3>Jobs</h3>
+
+<section>
+    @foreach (var jobReportGroup in this.progressReports.GroupBy(r => r.JobId))
+    {
+        var lastReport = jobReportGroup.OrderByDescending(r => r.TimeStamp).FirstOrDefault();
+        <Card>
+            <CardContent>
+                <a href="/jobs/@lastReport.JobId">
+                    <Typography Variant="TypographyVariant.H5" Component="h5">
+                        @lastReport.DisplayName
+                    </Typography>
+                </a>
+                <div class="progress" style="height:20px">
+                    <div class="progress-bar @this.GetColorByStatus(lastReport.Status)"
+                         role="progressbar"
+                         style="width: @lastReport.Value.ToString()%;"
+                         aria-valuenow="@lastReport.Value.ToString()"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                        @lastReport.Value.ToString()%
+                    </div>
+                </div>
+                <Typography Component="span"
+                            Variant="@TypographyVariant.Subtitle1"
+                            Color="@Color.TextPrimary">
+                    @lastReport.Status.ToString()
+                    <br />
+                    @lastReport.Message
+                    <br />
+                    @lastReport.TimeStamp.ToString()
+                    <br />
+                    @if (lastReport.Status == JobStatus.Completed)
+                    {
+                        var result = this.jobService.TryGetResult<Uri>(lastReport.JobId);
+                        if (!(result is null))
+                        {
+                            <a href="@result" download>Result</a>
+                        }
+                    }
+                    <br />
+                </Typography>
+                <Button Variant="@ButtonVariant.Contained"
+                        Color="Color.Secondary"
+                        OnClick="@(e => this.CancelJob(lastReport.JobId))"
+                        Context="CancelButtonContext">
+                    <StartIcon>
+                        <RemoveIcon />
+                    </StartIcon>
+                    <ChildContent>
+                        Cancel
+                    </ChildContent>
+                </Button>
+            </CardContent>
+        </Card>
+    }
+</section>
+
+@code {
+    private readonly List<ProgressReport> progressReports = new List<ProgressReport>();
+    private readonly SemaphoreSlim signal = new SemaphoreSlim(1);
+    private IDisposable subscription;
+
+    protected override void OnInitialized()
+    {
+        this.progressReports.AddRange(this.jobService.GetLatestReports());
+        this.subscription = this.jobService.ProgressUpdates.Subscribe(this.ProcessReport);
+        base.OnInitialized();
+    }
+
+    public void Dispose()
+    {
+        this.subscription.Dispose();
+        this.signal.Dispose();
+    }
+
+    private void CancelJob(string id)
+    {
+        this.jobService.CancelJob(id);
+    }
+
+    private string GetColorByStatus(JobStatus jobStatus)
+    {
+        var color = jobStatus switch
+        {
+            JobStatus.NotStarted => string.Empty,
+            JobStatus.Running => "bg-info",
+            JobStatus.Canceled => "bg-warning",
+            JobStatus.Failed => "bg-danger",
+            JobStatus.Completed => "bg-success",
+            _ => string.Empty
+        };
+
+        return color;
+    }
+
+    private async void ProcessReport(ProgressReport report)
+    {
+        await this.signal.WaitAsync().ConfigureAwait(false);
+        try
+        {
+            await this.InvokeAsync(() =>
+            {
+                this.progressReports.Add(report);
+                this.StateHasChanged();
+            });
+        }
+        finally
+        {
+            this.signal.Release();
+        }
+    }
+}

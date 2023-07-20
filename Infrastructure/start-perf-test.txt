@@ -1,0 +1,9 @@
+gcloud compute instances create-with-container crankier1 \
+--container-image eu.gcr.io/supple-coral-271015/crankier \
+--container-arg=local \
+--container-arg=--target-url \
+--container-arg=https://verse.surf/ws/performance \
+--container-arg=--connections \
+--container-arg=7550 \
+--container-arg=--workers \
+--container-arg=10

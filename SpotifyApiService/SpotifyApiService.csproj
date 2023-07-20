@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.14" />
+    <PackageReference Include="SpotifyAPI.Web" Version="5.1.1" />
+    <PackageReference Include="SpotifyAPI.Web.Auth" Version="5.1.1" />
+  </ItemGroup>
+
+</Project>

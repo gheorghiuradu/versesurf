@@ -1,0 +1,42 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger:
+  batch: true
+  branches:
+    include:
+    - develop
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: DockerCompose@0
+  displayName: "Build images"
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'GoogleContainerRegistry_STG'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Build services'
+    arguments: 'musicapiserverless'
+
+- task: Docker@2
+  displayName: "Tag musicapiserverless"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_DEV'
+    command: 'tag'
+    arguments: 'us.gcr.io/music-staging-281310/musicapiserverless:$(ENVIRONMENT_NAME) us.gcr.io/music-staging-281310/musicapiserverless:$(Build.BuildNumber)'
+
+- task: Docker@2
+  displayName: "Push musicapiserverless"
+  inputs:
+    containerRegistry: 'GoogleContainerRegistry_STG'
+    repository: 'music-staging-281310/musicapiserverless'
+    command: 'push'
+    tags: |
+      $(Build.BuildNumber)
+      $(ENVIRONMENT_NAME)
+
+- task: PostBuildCleanup@3

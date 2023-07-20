@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VERSE SURF</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div id="main-space">
+                <div class="main-container">
+                    <div class="menu">
+                        <nav class="navbar">
+                            <div class="ml-auto">
+                                <button class="navbar-toggler btn-menu" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                        aria-expanded="false" aria-label="Toggle navigation">
+                                    <img class="img-menu" src="/icons/menu.png" />
+                                </button>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav justify-content-end">
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" target="_blank" href="https://www.shopsoft.org/verse-surf-press-kit">Press Kit</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    @RenderBody()
+                </div>
+            </div>
+        </main>
+        @*<partial name="_CookieConsentPartial" />*@
+    </div>
+
+    <div id="modals">
+        <div id="reconnecting-modal" tabindex="-1" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="vertical-line"></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="CancelReconnect();">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="spinner-grow">
+                        </div>
+                        <p class="text-reconnect">Reconnecting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="should-reconnect-modal" tabindex="-1" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="vertical-line"></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>It seems that you left a game that is still running.</p>
+                        <p>Do you want to <span class="text-bold">rejoin?</span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn-confirm btn-yes"
+                                onclick="$('#should-reconnect-modal').modal('hide');
+                                        $('#reconnecting-modal').modal({
+                                            backdrop: 'static',
+                                            keyboard: false
+                                        });
+                                        TryRejoinAsync();">
+                            Yes
+                        </button>
+                        <button type="button"
+                                class="btn-confirm btn-no"
+                                onclick="$('#should-reconnect-modal').modal('hide');">
+                            No
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="autofill-answer-notification" tabindex="-1" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="vertical-line"></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>You did not answer in time, so a random answer was generated for you.</p>
+                        <p class="text-lighter-color">(You will get half the points if you get votes.)</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn-confirm btn-yes"
+                                onclick="$('#autofill-answer-notification').modal('hide');">
+                            Ok
+                        </button>
+                        <button type="button"
+                                class="btn-confirm btn-no"
+                                onclick="$('#autofill-answer-notification').modal('hide');
+                                localStorage.setItem('hide-autofill-answer-notification', true);">
+                            Don't show again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="error-modal" tabindex="-1" class="modal fade" role="alertdialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="vertical-line"></div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p id="error-modal-text">Sorry</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/lib/signalr/dist/browser/signalr.min.js" asp-append-version="true"></script>
+    <script src="~/js/classes.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

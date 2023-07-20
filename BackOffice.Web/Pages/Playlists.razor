@@ -1,0 +1,193 @@
+﻿@page "/playlists"
+@using MusicDbApi.Models;
+@using MusicDbApi;
+@using TaskService;
+@using TaskService.Commands;
+@using System.IO;
+
+@inject MusicDbClient musicDbClient;
+@inject JobService jobService;
+@inject IJSRuntime js;
+@inject NavigationManager navigationManager;
+
+<h3>Playlists</h3>
+<select @onchange="FilterPlaylists">
+    @foreach (var language in this.languages)
+    {
+        <option value="@this.languages.IndexOf(language)">@language</option>
+    }
+</select>
+<IconButton alt="Import playlists" OnClick="e => this.TriggerImport()">
+    <CloudUploadIcon />
+</IconButton>
+<label class="d-none">
+    <InputFile id="import-button" OnChange="this.ScheduleImportAsync" accept=".zip" />
+</label>
+<IconButton OnClick='e =>this.navigationManager.NavigateTo("/playlists/edit")'>
+    <AddIcon />
+</IconButton>
+
+<div class="row">
+    @foreach (var playlist in this.playlists)
+    {
+
+        <Card Style="width:25%; margin-bottom:60px; margin-right: 60px;">
+            @{
+                var playlistName = playlist.Name;
+                if (playlist.Enabled)
+                    playlistName += " ✔";
+                if (playlist.Featured)
+                    playlistName += " 🌟";
+            }
+            <CardHeader Title='@playlistName' SubHeader="@playlist.UpdatedAt.ToString()">
+            </CardHeader>
+            <CardActions>
+                <a href="/playlists/edit/@playlist.Id">
+                    <IconButton>
+                        <EditIcon />
+                    </IconButton>
+                </a>
+                <IconButton OnClick="e => { playlistIdToDelete = playlist.Id; this.isDeleteDialogOpen = true; }">
+                    <DeleteIcon />
+                </IconButton>
+                <IconButton OnClick="e => this.ScheduleExportAsync(playlist.Id)">
+                    <FileDownloadIcon />
+                </IconButton>
+            </CardActions>
+            <CardMedia Style="padding-top: 100%;" Image="@playlist.PictureUrl" />
+            <CardContent>
+                @if (!string.IsNullOrEmpty(playlist.Language) || playlist.Songs?.Any(s => s.IsExplicit) == true)
+                {
+                    <Typography Variant="TypographyVariant.Subtitle2">
+                        @if (playlist.Songs?.Any(s => s.IsExplicit) == true)
+                        {
+                            <span>🤬 </span>
+                        }
+                        @playlist.Language
+                    </Typography>
+                    <Divider Class="bg-white" />
+                }
+                @foreach (var song in playlist.Songs)
+                {
+                    <Typography Variant="TypographyVariant.Body2" Color="Color.Secondary">@song.Artist - @song.Title</Typography>
+                    <Divider />
+                }
+            </CardContent>
+        </Card>
+
+    }
+</div>
+
+<Dialog Open="this.isDeleteDialogOpen">
+    <DialogContent>
+        <DialogContentText>
+            Are you sure you want to delete this playlist?
+        </DialogContentText>
+    </DialogContent>
+    <DialogActions>
+        <Button OnClick="e => { this.DeletePlaylistAsync(playlistIdToDelete); this.isDeleteDialogOpen = false; }">
+            Delete
+        </Button>
+        <Button OnClick="e => this.isDeleteDialogOpen = false">
+            Cancel
+        </Button>
+    </DialogActions>
+</Dialog>
+<Dialog Open="this.loading" DisableBackdropClick="true" DisableEscapeKeyDown="true">
+    <DialogTitle>
+        Working
+    </DialogTitle>
+    <DialogContent Class="text-center">
+        <CircularProgress Size="30" Variant="CircularProgressVariant.Indeterminate" />
+    </DialogContent>
+</Dialog>
+
+@code {
+    private readonly List<string> languages = new();
+
+    private List<Playlist> playlists = new();
+    private bool isDeleteDialogOpen;
+    private string playlistIdToDelete;
+    private bool loading;
+    private int selectedLanguage;
+    private List<Playlist> allPlaylists = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.loading = true;
+        if (this.playlists.Count == 0)
+        {
+            await this.LoadPlaylistsAsync();
+            this.playlists.AddRange(this.allPlaylists);
+        }
+        await base.OnInitializedAsync();
+        this.loading = false;
+    }
+
+    private async void DeletePlaylistAsync(string playlistId)
+    {
+        this.loading = true;
+        try
+        {
+            await this.musicDbClient.DeletePlaylistAsync(playlistId);
+            await this.LoadPlaylistsAsync();
+            var toRemove = this.playlists.Find(p => p.Id.Equals(playlistId));
+            this.playlists.Remove(toRemove);
+        }
+        finally
+        {
+
+            this.loading = false;
+            this.StateHasChanged();
+        }
+    }
+
+    private async void ScheduleExportAsync(string playlistId)
+    {
+        var command = new ExportPlaylistsCommand { PlaylistIds = new[] { playlistId } };
+        var startResult = await this.jobService.StartNewAsync(command);
+        js.InvokeAsync<object>("open", $"/jobs/{startResult.JobId}", "_blank").ConfigureAwait(false);
+    }
+
+    private async void ScheduleImportAsync(InputFileChangeEventArgs e)
+    {
+        this.loading = true;
+        var fileStream = e.File.OpenReadStream(100000000);
+        var memStream = new MemoryStream();
+        await fileStream.CopyToAsync(memStream);
+        var command = new ImportPlaylistsCommand { ImportStream = memStream };
+        var startResult = await this.jobService.StartNewAsync(command);
+        this.loading = false;
+        this.StateHasChanged();
+        this.navigationManager.NavigateTo($"/jobs/{startResult.JobId}");
+    }
+
+    private void TriggerImport()
+    {
+        js.InvokeAsync<object>("elementClick", "import-button").ConfigureAwait(false);
+    }
+
+    private async Task LoadPlaylistsAsync()
+    {
+        this.allPlaylists = await this.musicDbClient.GetAllPlaylistsAsync(includeExplicit: true);
+        this.languages.Clear();
+        this.languages.Add("Any");
+        this.languages.AddRange(this.allPlaylists.Where(p => !string.IsNullOrEmpty(p.Language)).Select(p => p.Language).Distinct());
+    }
+
+    private void FilterPlaylists(ChangeEventArgs e)
+    {
+        if (!int.TryParse(e.Value.ToString(), out var selectedLanguage)) return;
+
+        var language = this.languages[selectedLanguage];
+        this.playlists.Clear();
+        if (language == "Any")
+        {
+            this.playlists.AddRange(this.allPlaylists);
+        }
+        else
+        {
+            this.playlists.AddRange(this.allPlaylists.Where(p => p.Language == language));
+        }
+    }
+}

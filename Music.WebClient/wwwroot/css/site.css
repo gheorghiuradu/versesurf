@@ -1,0 +1,511 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@font-face {
+    font-family: "Montserrat Alternates";
+    src: url(/fonts/MontserratAlternates-Italic.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: "Montserrat Alternates Medium";
+    src: url(/fonts/MontserratAlternates-Medium.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: "Montserrat Alternates SemiBold";
+    src: url(/fonts/MontserratAlternates-SemiBold.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: "Montserrat Alternates ExtraBold";
+    src: url(/fonts/MontserratAlternates-ExtraBold.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: "Righteous";
+    src: url(/fonts/Righteous-Regular.ttf) format('opentype');
+}
+
+html {
+    font-size: 24px;
+    font-family: Montserrat Alternates;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 29.26px;
+}
+
+section {
+    height: 100%;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(220, 9, 9, 0.05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #D9957C;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #8E4942;
+}
+
+a {
+    color: #8E4942;
+    font-family: 'Montserrat Alternates SemiBold';
+    font-style: normal;
+    font-size: 16px;
+}
+
+.navbar {
+    padding: 0;
+    display: inline;
+}
+
+.navbar-toggler {
+    padding: 0;
+    border-radius: 0;
+}
+
+.privacy-text {
+    color: #8E4942;
+}
+
+#main-space {
+    width: 91%;
+    max-width: 343px;
+    height: 95%;
+    max-height: 635px;
+    background: #D9957C;
+    text-align: -webkit-center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main-container {
+    border: 2px solid #8E4942;
+    height: 100%;
+    text-align: center;
+    background-color: #DEAF9F;
+}
+
+.menu {
+    height: 48px;
+    border-bottom: 2px solid #8E4942;
+}
+
+.btn-menu {
+    background-color: transparent;
+    border: none;
+    border-left: 2px solid #8E4942;
+    height: 46px;
+    float: right;
+}
+
+    .btn-menu:focus {
+        outline: none;
+    }
+
+.img-menu {
+    float: right;
+    margin: 12px;
+}
+
+.img-logo {
+    margin-top: 12px;
+    margin-bottom: 10%;
+}
+
+.img-illustration {
+    width: 105%;
+    margin-top: 6%;
+}
+
+#nick {
+    margin-top: 12px;
+}
+
+.form-control {
+    height: 60px;
+    width: 93%;
+    max-width: 319px;
+    border-radius: 0px;
+    font-family: Montserrat Alternates;
+    background: #C77F6A;
+    border: 2px solid #8E4942;
+    box-sizing: border-box;
+    color: white;
+}
+
+    .form-control::-webkit-input-placeholder {
+        color: white;
+    }
+
+    .form-control:focus {
+        background-color: #C77F6A !important;
+        outline: 0 !important;
+        color: white;
+        border: 2px solid #8E4942;
+        box-shadow: none;
+    }
+
+.btn-submit {
+    height: 62px;
+    width: 93%;
+    max-width: 319px;
+    background: #C77F6A;
+    font-family: Righteous;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: white;
+    border: none;
+    margin-top: 20%;
+}
+
+input[id='code'] {
+    background-image: url(../icons/lock.png);
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
+}
+
+input[id='nick'] {
+    background-image: url(../icons/glasses.png);
+    background-position: 7px 20px;
+    background-repeat: no-repeat;
+}
+
+input[id='search-playlist'] {
+    background-image: url(../icons/search.png);
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+}
+
+input[id='answer'] {
+    background-image: url(../icons/question-mark.png);
+    background-position: 15px 15px;
+    background-repeat: no-repeat;
+}
+
+input[type=submit]:focus {
+    outline: 0;
+}
+
+#content input {
+    display: inline-block;
+}
+
+#code, #nick, #answer {
+    text-indent: 35px;
+}
+
+.vote {
+    font-family: Righteous;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #8E4942;
+}
+
+#search-playlist {
+    font-family: Montserrat Alternates;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #E5D5D3;
+    text-indent: 35px;
+    margin: auto;
+}
+
+#playlists {
+    max-height: 47%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    bottom: 1%;
+}
+
+.btn-confirm {
+    height: 62px;
+    background-color: #AB5E50;
+    border-radius: 0;
+    width: 93%;
+    color: white;
+    border: none;
+    font-family: Righteous;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 10px
+}
+
+.btn-yes {
+    background-color: #AB5E50;
+}
+
+.btn-no {
+    background-color: black;
+}
+
+.text-muted {
+    color: #c7d0d8 !important;
+}
+
+#code {
+    text-transform: uppercase;
+}
+
+#character-container {
+    margin: auto;
+    overflow: hidden;
+}
+
+#character {
+    /*z-index: -1;*/
+    position: relative;
+}
+
+#player-name {
+    font-family: Montserrat Alternates;
+    font-weight: 600;
+    font-size: 24px;
+    color: #7A3634;
+}
+
+.message {
+    font-family: Righteous;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: normal;
+    color: #8E4942;
+}
+
+.cardd {
+    background-color: transparent;
+    border: 2px solid #8E4942;
+    height: 210px;
+}
+
+.card-header {
+    display: flex;
+    padding: 0;
+    font-family: Montserrat Alternates;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    color: #8E4942;
+    background-color: transparent;
+    border-bottom: 0;
+}
+
+    .card-header:first-child {
+        border-radius: 0;
+    }
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+img.album-art {
+    width: 156px;
+    border-top: 2px solid #8E4942;
+}
+
+.lyric {
+    background-color: #C77F6A;
+    border: 2px solid #8E4942;
+    display: block;
+    padding: 10px;
+}
+
+.list-group {
+    display: inline;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    left: 0;
+    margin-top: 32px;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: 0;
+    width: 50%;
+    float: left;
+    padding: 0;
+}
+
+.alert-danger {
+    font-family: Montserrat Alternates Medium;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+    background-color: transparent;
+}
+
+.alert-info {
+    /*z-index: 1;*/
+    color: black;
+    background-color: #8e4942;
+}
+
+    .alert-info a {
+        color: #381f1c
+    }
+
+#cookieConsent {
+    position: absolute;
+    bottom: 0;
+}
+
+.modal-content {
+    background-color: #E5D5D3;
+    border-radius: 0;
+    border: 2px solid #8E4942;
+    box-shadow: 8px 8px #C77F6A;
+}
+
+.modal-body {
+    font-family: Montserrat Alternates SemiBold;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #8E4942;
+}
+
+.modal-header {
+    border-bottom: 2px solid #8E4942;
+}
+
+.modal-footer {
+    display: block;
+    border: none;
+    padding: 12px;
+}
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+    .modal-footer > :not(:last-child) {
+        margin-right: 0;
+    }
+
+    .modal-footer > :not(:first-child) {
+        margin-left: 0;
+    }
+
+.text-bold {
+    font-family: 'Montserrat Alternates ExtraBold'
+}
+
+.modal-header .close {
+    padding: 0;
+    color: #8E4942;
+    font-weight: 100;
+    font-size: 80px;
+    opacity: 1 !important;
+    margin: -2rem -1rem -1rem auto;
+    height: 0px;
+}
+
+.text-reconnect {
+    font-family: 'Montserrat Alternates Medium';
+    font-weight: 600;
+}
+
+.text-lighter-color {
+    color: #DEAF9F;
+}
+
+.vertical-line {
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    right: 8%;
+    background: #8E4942;
+    transform: rotate(-90deg);
+}
+
+.bottom-links {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+}
+
+@media only screen and (max-width: 320px) {
+    .bottom-links img[alt="Verse Surf on Steam"] {
+        max-width: 47%;
+    }
+
+    .bottom-links img[alt="Join our discord"] {
+        max-width: 41%;
+    }
+}
+
+#loading {
+    z-index: 1;
+    position: absolute;
+    top: 40%;
+    border: 2px solid #8E4942;
+    background-color: #DEAF9F;
+    height: max-content;
+}
+
+    #loading > img {
+        width: 50%;
+    }
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: large;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    font-size: large;
+}

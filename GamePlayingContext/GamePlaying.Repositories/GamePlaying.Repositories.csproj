@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>GamePlaying.Repositories</AssemblyName>
+    <RootNamespace>GamePlaying.Repositories</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MusicApi.Serverless.Client\MusicApi.Serverless.Client.csproj" />
+    <ProjectReference Include="..\GamePlaying\GamePlaying.csproj" />
+  </ItemGroup>
+
+</Project>

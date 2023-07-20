@@ -1,0 +1,34 @@
+trigger: none
+
+parameters:
+  - name: UNITYCI_VERSION
+    type: string
+    default: "0.7"
+
+variables:
+  - name: IMAGE_VERSION
+    value: ${{ parameters.UNITYCI_VERSION }}
+
+pool: 
+  vmImage: ubuntu-latest
+
+steps:
+  - task: Bash@3
+    displayName: Get Unity Activation File
+    inputs:
+      targetType: 'inline'
+      script: |
+        chmod -R +x .
+        export PROJECT_VERSION=$(cat ProjectSettings/ProjectVersion.txt | grep m_EditorVersion: | sed "s/m_EditorVersion: //g")      
+        docker run -e UNITY_USERNAME -e UNITY_PASSWORD -w /project/ -v $(Build.SourcesDirectory)/MusicTV/SongQuiz/:/project/ unityci/editor:$PROJECT_VERSION-base-$IMAGE_VERSION /bin/bash -c "/project/unity-build/get_activation_file.sh"
+      workingDirectory: '$(Build.SourcesDirectory)/MusicTV/SongQuiz'
+      failOnStderr: false
+    env:
+      UNITY_USERNAME: $(U_USERNAME)
+      UNITY_PASSWORD: $(U_PASSWORD)
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/unity3d.alf'
+      artifact: 'unity3d.alf'
+      publishLocation: 'pipeline'

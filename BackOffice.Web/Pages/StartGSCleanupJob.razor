@@ -1,0 +1,23 @@
+﻿@page "/jobs/StartGSCleanupJob";
+
+@using TaskService;
+@using TaskService.Commands;
+
+@inject JobService jobService;
+@inject NavigationManager navigationManager;
+
+<h3>GSCleanupJob</h3>
+<form @onsubmit="OnFormSubmit">
+    <FormControl>
+        <Button Variant="ButtonVariant.Contained" Type="ButtonType.Submit" Color="Color.Primary">Start</Button>
+    </FormControl>
+</form>
+
+@code {
+    private CleanupUnusedStorageCommand command = new CleanupUnusedStorageCommand();
+    private async void OnFormSubmit(EventArgs e)
+    {
+        var startResult = await this.jobService.StartNewAsync(this.command);
+        this.navigationManager.NavigateTo($"/jobs/{startResult.JobId}");
+    }
+}

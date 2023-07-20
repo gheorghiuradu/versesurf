@@ -1,0 +1,169 @@
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+parameters:
+  - name: STEAM_BUILD_SCRIPT
+    type: string
+    default: app_build_1315390_prod.vdf
+  - name: UNITYCI_VERSION
+    type: string
+    default: "0.13"
+
+variables:
+  - group: STEAM
+  - name: GLOBAL_S_USERNAME
+    value: $[variables.S_USERNAME]
+  - name: GLOBAL_S_PASSWORD
+    value: $[variables.S_PASSWORD]
+  - name: IMAGE_VERSION
+    value: ${{ parameters.UNITYCI_VERSION }}
+
+stages:
+  - stage: WindowsBuild
+    dependsOn: []
+    jobs:
+      - job: WindowsBuildDocker
+        steps:
+          - task: Bash@3
+            displayName: "Get unity version"
+            inputs:
+              targetType: inline
+              script: |
+                export PROJECT_VERSION=$(cat ProjectVersion.txt | grep m_EditorVersion: | sed "s/m_EditorVersion: //g")
+                export IMAGE_NAME=unityci/editor:$PROJECT_VERSION-windows-mono-$IMAGE_VERSION
+                echo $IMAGE_NAME
+                echo "##vso[task.setvariable variable=IMAGE_NAME;]$IMAGE_NAME"
+              workingDirectory: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/ProjectSettings'
+
+          - task: Bash@3
+            displayName: "Build unity project using docker - windows"
+            inputs:
+              targetType: 'inline'
+              script: |      
+                chmod -R +x .
+                export UNITY_LICENSE_CONTENT=$(cat Unity_v2019.x.ulf)
+                docker run -e BUILD_NAME -e UNITY_LICENSE_CONTENT -e BUILD_TARGET -e UNITY_USERNAME -e UNITY_PASSWORD -w /project/ -v $(Build.SourcesDirectory)/MusicTV/SongQuiz/:/project/ $IMAGE_NAME /bin/bash -c "/project/unity-build/before_script.sh && /project/unity-build/build.sh"
+              workingDirectory: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/unity-build'
+              failOnStderr: false
+            env:
+              UNITY_USERNAME: $(U_USERNAME)
+              UNITY_PASSWORD: $(U_PASSWORD)
+              BUILD_TARGET: StandaloneWindows64
+              BUILD_NAME: verse.surf
+
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/Builds/StandaloneWindows64'
+              artifact: 'verse.surf-windows'
+              publishLocation: 'pipeline'
+
+  - stage: OSXBuild
+    dependsOn: []
+    jobs:
+      - job: OSXBuildDocker
+        steps:
+          - task: Bash@3
+            displayName: "Get unity version"
+            inputs:
+              targetType: inline
+              script: |
+                export PROJECT_VERSION=$(cat ProjectVersion.txt | grep m_EditorVersion: | sed "s/m_EditorVersion: //g")
+                export IMAGE_NAME=unityci/editor:$PROJECT_VERSION-mac-mono-$IMAGE_VERSION
+                echo $IMAGE_NAME
+                echo "##vso[task.setvariable variable=IMAGE_NAME;]$IMAGE_NAME"
+              workingDirectory: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/ProjectSettings'
+
+          - task: Bash@3
+            displayName: "Build unity project using docker - osx"
+            inputs:
+              targetType: 'inline'
+              script: |      
+                chmod -R +x .
+                export UNITY_LICENSE_CONTENT=$(cat Unity_v2019.x.ulf)
+                docker run -e BUILD_NAME -e UNITY_LICENSE_CONTENT -e BUILD_TARGET -e UNITY_USERNAME -e UNITY_PASSWORD -w /project/ -v $(Build.SourcesDirectory)/MusicTV/SongQuiz/:/project/ $IMAGE_NAME /bin/bash -c "/project/unity-build/before_script.sh && /project/unity-build/build.sh"
+              workingDirectory: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/unity-build'
+              failOnStderr: false
+            env:
+              UNITY_USERNAME: $(U_USERNAME)
+              UNITY_PASSWORD: $(U_PASSWORD)
+              BUILD_TARGET: StandaloneOSX
+              BUILD_NAME: verse.surf.app
+
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/Builds/StandaloneOSX'
+              artifact: 'verse.surf-osx'
+              publishLocation: 'pipeline'
+
+  - stage: LinuxBuild
+    dependsOn: []
+    jobs:
+      - job: LinuxBuildDocker
+        steps:
+          - task: Bash@3
+            displayName: "Get unity version"
+            inputs:
+              targetType: inline
+              script: |
+                export PROJECT_VERSION=$(cat ProjectVersion.txt | grep m_EditorVersion: | sed "s/m_EditorVersion: //g")
+                export IMAGE_NAME=unityci/editor:$PROJECT_VERSION-linux-il2cpp-$IMAGE_VERSION
+                echo $IMAGE_NAME
+                echo "##vso[task.setvariable variable=IMAGE_NAME;]$IMAGE_NAME"
+              workingDirectory: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/ProjectSettings'
+
+          - task: Bash@3
+            displayName: "Build unity project using docker - linux"
+            inputs:
+              targetType: 'inline'
+              script: |
+                chmod -R +x .
+                export UNITY_LICENSE_CONTENT=$(cat Unity_v2019.x.ulf)
+                docker run -e BUILD_NAME -e UNITY_LICENSE_CONTENT -e BUILD_TARGET -e UNITY_USERNAME -e UNITY_PASSWORD -w /project/ -v $(Build.SourcesDirectory)/MusicTV/SongQuiz/:/project/ $IMAGE_NAME /bin/bash -c "/project/unity-build/before_script.sh && /project/unity-build/build.sh"
+              workingDirectory: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/unity-build'
+              failOnStderr: false
+            env:
+              UNITY_USERNAME: $(U_USERNAME)
+              UNITY_PASSWORD: $(U_PASSWORD)
+              BUILD_TARGET: StandaloneLinux64
+              BUILD_NAME: verse.surf.x64
+
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/Builds/StandaloneLinux64'
+              artifact: 'verse.surf-linux'
+              publishLocation: 'pipeline'
+      
+  - stage: UploadToSteam
+    dependsOn: 
+    - WindowsBuild
+    - OSXBuild
+    - LinuxBuild
+    pool: 
+      name: 'Google Cloud'
+      demands: 
+        - Environment -equals development
+    jobs:
+      - job: UploadGameToSteam
+        steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              targetPath: '$(Build.SourcesDirectory)/MusicTV/SongQuiz/Builds'   
+
+          - task: Bash@3
+            displayName: "Push build to Steam"
+            inputs:
+              targetType: inline
+              script: |
+                steamcmd +login '$(GLOBAL_S_USERNAME)' '$(GLOBAL_S_PASSWORD)' +run_app_build_http '$(Build.SourcesDirectory)/Infrastructure/steampipe/scripts/${{ parameters.STEAM_BUILD_SCRIPT }}' +quit
+              workingDirectory: 
+
+          - task: Bash@3
+            displayName: Cleanup
+            inputs:
+              targetType: inline
+              script: |
+                sudo git clean -ffdx
+              workingDirectory: '$(Build.SourcesDirectory)'
+
+          - task: PostBuildCleanup@3

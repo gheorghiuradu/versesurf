@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>89668912-5957-4e6f-be29-4c5654090fc9</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+    <Version>2.2.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Playlists\**" />
+    <Content Remove="Playlists\**" />
+    <EmbeddedResource Remove="Playlists\**" />
+    <None Remove="Playlists\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="client.pfx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="client.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Reactive" Version="4.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GamePlayingContext\GamePlaying.Repositories\GamePlaying.Repositories.csproj" />
+    <ProjectReference Include="..\GamePlayingContext\GamePlaying\GamePlaying.csproj" />
+    <ProjectReference Include="..\GcloudWebApiExtensions\GcloudWebApiExtensions.csproj" />
+    <ProjectReference Include="..\MusicApi.Serverless.Client\MusicApi.Serverless.Client.csproj" />
+    <ProjectReference Include="..\MusicStorageClient\MusicStorageClient.csproj" />
+    <ProjectReference Include="..\SharedDomain\SharedDomain.csproj" />
+    <ProjectReference Include="..\SteamWebApi.Client\SteamWebApi.Client.csproj" />
+  </ItemGroup>
+</Project>

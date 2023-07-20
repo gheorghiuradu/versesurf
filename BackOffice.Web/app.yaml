@@ -1,0 +1,12 @@
+runtime: aspnetcore
+env: flex
+
+manual_scaling:
+    instances: 1
+
+network:
+    session_affinity: true
+
+env_variables:
+    ASPNETCORE_ENVIRONMENT: Development
+    ASPNETCORE_URLS: http://+:8080

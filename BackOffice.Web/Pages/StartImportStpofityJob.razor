@@ -1,0 +1,111 @@
+﻿@page "/jobs/StartImportSpotifyJob";
+
+@using TaskService;
+
+@inject JobService jobService;
+@inject NavigationManager navigationManager;
+
+<h3>Import Spotify Playlist Job</h3>
+<form @onsubmit="OnFormSubmit">
+    <FormControl>
+        <TextField Value="@command.SpotifyId"
+                   PlaceHolder="Spotify Id of Playlist"
+                   Required="true"
+                   Label="Spotify Id of Playlist"
+                   OnChange="ChangeSpotifyId" />
+    </FormControl>
+    <br />
+    <FormControl>
+        <TextField Name="NumberOfSongs"
+                   Type="number"
+                   Label="Minimum number of songs"
+                   PlaceHolder="Minimum number of songs"
+                   Value="@command.MinimumNumberOfSongs.ToString()"
+                   OnChange="@OnMinimumNumberOfSongsChange"
+                   Required="true" />
+    </FormControl>
+    <br />
+    <FormControl>
+        <FormControlLabel Label="Enable BMI">
+            <Checkbox Value="command.EnableBmi" OnChange="@OnBmiCheckboxChange" Checked="@command.EnableBmi" />
+        </FormControlLabel>
+    </FormControl>
+    <FormControl>
+        <FormControlLabel Label="Enable ASCAP">
+            <Checkbox Value="command.EnableAscap" OnChange="@OnAscapCheckboxChange" Checked="@command.EnableAscap" />
+        </FormControlLabel>
+    </FormControl>
+    <FormControl>
+        <FormControlLabel Label="Enable SESAC">
+            <Checkbox Value="command.EnableSesac" OnChange="@OnSesacCheckboxChange" Checked="@command.EnableSesac" />
+        </FormControlLabel>
+    </FormControl>
+    <br />
+    <FormControl>
+        <Button Variant="@ButtonVariant.Contained" Type="ButtonType.Submit" Color="@Color.Primary">Start</Button>
+    </FormControl>
+    <List>
+        @foreach (var error in errors)
+        {
+            <ListItem>
+                <ListItemText Primary="@error" />
+            </ListItem>
+        }
+    </List>
+</form>
+
+@code {
+    private ImportSpotifyPlaylistCommand command = new ImportSpotifyPlaylistCommand();
+    private readonly List<string> errors = new List<string>();
+
+    private void OnMinimumNumberOfSongsChange(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out var result))
+        {
+            this.command.MinimumNumberOfSongs = result;
+            this.StateHasChanged();
+        }
+    }
+    private void OnBmiCheckboxChange(ChangeEventArgs e)
+    {
+        this.command.EnableBmi = !this.command.EnableBmi;
+        this.StateHasChanged();
+    }
+
+    private void OnAscapCheckboxChange(ChangeEventArgs e)
+    {
+        this.command.EnableAscap = !this.command.EnableAscap;
+        this.StateHasChanged();
+
+    }
+
+    private void OnSesacCheckboxChange(ChangeEventArgs e)
+    {
+        this.command.EnableSesac = !this.command.EnableSesac;
+        this.StateHasChanged();
+
+    }
+
+    private void ChangeSpotifyId(ChangeEventArgs e)
+    {
+        this.command.SpotifyId = e.Value?.ToString();
+    }
+
+    private async void OnFormSubmit(EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(this.command.SpotifyId) && !this.errors.Contains("Spotify Id is required"))
+        {
+            this.errors.Add("Spotify Id is required");
+            this.StateHasChanged();
+            return;
+        }
+        if (this.command.MinimumNumberOfSongs < 10 && !this.errors.Contains("Minimum 10 songs supported"))
+        {
+            this.errors.Add("Minimum 10 songs supported");
+            this.StateHasChanged();
+            return;
+        }
+        var startResult = await this.jobService.StartNewAsync(this.command);
+        this.navigationManager.NavigateTo($"/jobs/{startResult.JobId}");
+    }
+}

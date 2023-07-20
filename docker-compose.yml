@@ -1,0 +1,98 @@
+version: "3.5"
+
+services: 
+    musicserver:
+        image: us.gcr.io/music-production-292306/musicserver:${ENVIRONMENT_NAME}
+        container_name: musicserver
+        build:
+            context: .
+            dockerfile: ./MusicServer/Dockerfile
+        volumes:
+            - ./Infrastructure/musicserver.pfx:/app/ssl/musicserver.pfx
+        networks:
+            - music_dev
+        ports:
+            - 5000:80
+        environment: 
+            ASPNETCORE_ENVIRONMENT: "Production"
+            ASPNETCORE_URLS: "http://+;https://+"
+            Logging__LogLevel__Microsoft: "Information"
+            ASPNETCORE_Kestrel__Certificates__Default__Path: "/app/ssl/musicserver.pfx"
+            MusicApiServerlessEndpoint: "${MUSICAPISERVERLESSENDPOINT}"
+            EnablePerformanceTesting: "true" 
+            GoogleStorageOptions__BucketName: "${GOOGLESTORAGEOPTIONSBUCKETNAME}"
+            GoogleStorageOptions__PlaylistImgPrefix: "${GOOGLESTORAGEOPTIONSPLAYLISTIMGPREFIX}"
+            GoogleStorageOptions__SongPreviewsPrefix: "${GOOGLESTORAGEOPTIONSSONGPREVIEWSPREFIX}"           
+
+    musicwebclient:
+        image: us.gcr.io/music-production-292306/musicwebclient:${ENVIRONMENT_NAME}
+        container_name: musicwebclient
+        build: 
+            context: ./Music.WebClient
+            dockerfile: Dockerfile
+        volumes:
+            - ./Infrastructure/musicwebclient.pfx:/app/ssl/musicwebclient.pfx
+        networks:
+            - music_dev
+        ports:
+            - 3000:80
+        environment:
+            ASPNETCORE_ENVIRONMENT: "Production"
+            ASPNETCORE_URLS: "http://+;https://+" 
+            Logging__LogLevel__Microsoft: "Information"
+            ASPNETCORE_Kestrel__Certificates__Default__Path: "/app/ssl/musicwebclient.pfx"
+            CharacterPath: "https://storage.googleapis.com/music-storage-euw/static/characters/"
+
+    nginx:
+        image: nginx
+        container_name: nginx
+        volumes: 
+            - ./Infrastructure/nginx.template:/etc/nginx/nginx.template
+            - ./Infrastructure/localhostkey.pem:/etc/nginx/ssl/cert.key
+            - ./Infrastructure/localhostcert.pem:/etc/nginx/ssl/cert.pem
+            - ./Infrastructure/localhostdhparam.pem:/etc/nginx/ssl/dhparam.pem
+        networks:
+            - music_dev
+        ports:
+            - 80:80
+            - 443:443
+            - 8081:8081
+        environment: 
+            MUSICSERVER_URL: "http://musicserver"
+            MUSICWEBCLIENT_URL: "http://musicwebclient"
+            SERVER_NAME: ${DOMAIN}
+        command: /bin/bash -c "envsubst '$${MUSICSERVER_URL},$${MUSICWEBCLIENT_URL},$${SERVER_NAME}' < /etc/nginx/nginx.template > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
+
+    musicapiserverless:
+        image: us.gcr.io/music-production-292306/musicapiserverless:${ENVIRONMENT_NAME}
+        container_name: musicapiserverless
+        build: 
+            context: .
+            dockerfile: ./MusicApi.Serverless/Dockerfile
+        environment: 
+            ASPNETCORE_ENVIRONMENT: Production
+            ASPNETCORE_URLS: http://+:8080
+
+    backofficeweb:
+        image: us.gcr.io/music-production-292306/backofficeweb:${ENVIRONMENT_NAME}
+        container_name: backofficeweb
+        build: 
+            context: .
+            dockerfile: ./BackOffice.Web/Dockerfile
+        volumes:
+                - ./Infrastructure/backofficecert.pfx:/app/ssl/backofficecert.pfx
+        networks:
+                - music_dev
+        ports:
+            - 4000:443
+        environment: 
+            ASPNETCORE_ENVIRONMENT: Production
+            ASPNETCORE_URLS: "http://+;https://+"
+            ASPNETCORE_Kestrel__Certificates__Default__Path: "/app/ssl/backofficecert.pfx"
+            MusicServerApiClientOptions__GameControllerUrl: "http://musicserver/api/game"
+            GoogleStorageOptions__BucketName: "${GOOGLESTORAGEOPTIONSBUCKETNAME}"
+            GoogleStorageOptions__PlaylistImgPrefix: "${GOOGLESTORAGEOPTIONSPLAYLISTIMGPREFIX}"
+            GoogleStorageOptions__SongPreviewsPrefix: "${GOOGLESTORAGEOPTIONSSONGPREVIEWSPREFIX}"
+
+networks:
+    music_dev:
