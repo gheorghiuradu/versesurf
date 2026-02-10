@@ -1,5 +1,4 @@
-﻿using FirestoreExtensions;
-using Google.Cloud.Firestore;
+﻿using Microsoft.EntityFrameworkCore;
 using MusicDbApi.Models;
 using System;
 using System.Collections.Generic;
@@ -11,165 +10,162 @@ namespace MusicDbApi
 {
     public class MusicDbClient
     {
-        private readonly FirestoreDb db;
+        private readonly MusicDbContext db;
         private readonly Random random = new Random(DateTime.Now.Millisecond);
 
-        private readonly Dictionary<Type, string> namedCollections = new Dictionary<Type, string>
+        public MusicDbClient(MusicDbContext db)
         {
-            {typeof(Playlist), "playlists" }
-        };
-
-        public MusicDbClient(string projectId)
-        {
-            this.db = FirestoreDb.Create(projectId);
+            this.db = db;
         }
 
         public async Task<string> AddPlaylistAsync(Playlist playlist, CancellationToken token = default)
         {
             this.EnsureSongsHaveIds(playlist.Songs);
 
-            var document = await this.Collection<Playlist>().AddAsync(playlist, token);
+            if (string.IsNullOrEmpty(playlist.Id))
+            {
+                playlist.Id = Guid.NewGuid().ToString();
+            }
+            playlist.AddedAt = DateTime.UtcNow;
+            playlist.UpdatedAt = DateTime.UtcNow;
 
-            return document.Id;
+            this.db.Playlists.Add(playlist);
+            await this.db.SaveChangesAsync(token);
+
+            return playlist.Id;
         }
 
-        public Task UpdatePlaylistAsync(Playlist playlist, CancellationToken token = default)
+        public async Task UpdatePlaylistAsync(Playlist playlist, CancellationToken token = default)
         {
             this.EnsureSongsHaveIds(playlist.Songs);
+            playlist.UpdatedAt = DateTime.UtcNow;
 
-            var document = this.Collection<Playlist>().Document(playlist.Id);
-
-            return document.SetAsync(playlist, SetOptions.MergeAll, token);
+            this.db.Playlists.Update(playlist);
+            await this.db.SaveChangesAsync(token);
         }
 
-        public Task<IList<WriteResult>> IncrementPlaylistMetadataAsync(IEnumerable<Playlist> playlists, CancellationToken token = default)
+        public async Task IncrementPlaylistMetadataAsync(IEnumerable<Playlist> playlists, CancellationToken token = default)
         {
-            var batch = db.StartBatch();
-
             foreach (var playlist in playlists)
             {
-                var documentRef = this.Collection<Playlist>().Document(playlist.Id);
-
-                var metadataUpdates = new Dictionary<string, object>
+                var existing = await this.db.Playlists.FindAsync(new object[] { playlist.Id }, token);
+                if (existing != null)
                 {
-                    { nameof(Playlist.Votes), FieldValue.Increment(playlist.Votes) },
-                    { nameof(Playlist.Plays), FieldValue.Increment(playlist.Plays) }
-                };
-
-                batch.Update(documentRef, metadataUpdates);
+                    existing.Votes += playlist.Votes;
+                    existing.Plays += playlist.Plays;
+                }
             }
-
-            return batch.CommitAsync(token);
+            await this.db.SaveChangesAsync(token);
         }
 
         public async Task<List<Playlist>> GetEnabledPlaylistsAsync(string language = null, bool includeExplicit = false, CancellationToken token = default)
         {
-            var documents = await this.Collection<Playlist>()
-                .WhereEqualTo(PropertyPathProvider<Playlist>.GetPropertyPath(playlist => playlist.Enabled), true)
-                .GetSnapshotAsync(token);
+            var query = this.db.Playlists
+                .Include(p => p.Songs)
+                .Where(p => p.Enabled);
 
-            var playlists = documents.ConvertTo<Playlist>();
+            var playlists = await query.ToListAsync(token);
+
+            IEnumerable<Playlist> result = playlists;
             if (!includeExplicit)
             {
-                playlists = playlists.Where(p => !p.Songs.Any(s => s.IsExplicit));
+                result = result.Where(p => !p.Songs.Any(s => s.IsExplicit));
             }
             if (!string.IsNullOrEmpty(language))
             {
-                playlists = playlists.Where(p => string.Equals(p.Language, language, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(p.Language));
+                result = result.Where(p => string.Equals(p.Language, language, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(p.Language));
             }
 
-            return playlists.OrderByDescending(p => p.Featured).ThenByDescending(p => p.UpdatedAt).ThenByDescending(p => p.Plays).ToList();
+            return result.OrderByDescending(p => p.Featured).ThenByDescending(p => p.UpdatedAt).ThenByDescending(p => p.Plays).ToList();
         }
 
         public async Task<List<Playlist>> GetAllPlaylistsAsync(string language = null, bool includeExplicit = false, CancellationToken token = default)
         {
-            var documents = await this.Collection<Playlist>()
-                .GetSnapshotAsync(token);
+            var playlists = await this.db.Playlists
+                .Include(p => p.Songs)
+                .ToListAsync(token);
 
-            var playlists = documents.ConvertTo<Playlist>();
+            IEnumerable<Playlist> result = playlists;
             if (!includeExplicit)
             {
-                playlists = playlists.Where(p => !p.Songs.Any(s => s.IsExplicit));
+                result = result.Where(p => !p.Songs.Any(s => s.IsExplicit));
             }
             if (!string.IsNullOrEmpty(language))
             {
-                playlists = playlists.Where(p => string.Equals(p.Language, language, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(p.Language));
+                result = result.Where(p => string.Equals(p.Language, language, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(p.Language));
             }
 
-            return playlists.OrderByDescending(p => p.Featured).ThenByDescending(p => p.UpdatedAt).ThenByDescending(p => p.Plays).ToList();
+            return result.OrderByDescending(p => p.Featured).ThenByDescending(p => p.UpdatedAt).ThenByDescending(p => p.Plays).ToList();
         }
 
         public async Task<Playlist> GetRandomPlaylistAsync(string language = null, bool includeExplicit = false, bool onlyEnabled = true)
         {
-            Query query = this.Collection<Playlist>();
+            var query = this.db.Playlists.Include(p => p.Songs).AsQueryable();
             if (onlyEnabled)
             {
-                query = query.WhereEqualTo(PropertyPathProvider<Playlist>.GetPropertyPath(p => p.Enabled), true);
+                query = query.Where(p => p.Enabled);
             }
-            var documents = await query.GetSnapshotAsync();
+            var playlists = await query.ToListAsync();
 
-            var playlists = documents.ConvertTo<Playlist>();
+            IEnumerable<Playlist> result = playlists;
             if (!includeExplicit)
             {
-                playlists = playlists.Where(p => !p.Songs.Any(s => s.IsExplicit));
+                result = result.Where(p => !p.Songs.Any(s => s.IsExplicit));
             }
             if (!string.IsNullOrEmpty(language))
             {
-                playlists = playlists.Where(p => string.Equals(p.Language, language, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(p.Language));
+                result = result.Where(p => string.Equals(p.Language, language, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(p.Language));
             }
 
-            return playlists.ElementAt(random.Next(0, playlists.Count() - 1));
+            var list = result.ToList();
+            return list.ElementAt(random.Next(0, list.Count));
         }
 
         public async Task<Playlist> GetPlaylistByIdAsync(string id, CancellationToken token = default)
         {
-            var document = await this.Collection<Playlist>().Document(id).GetSnapshotAsync(token);
-
-            return document.ConvertTo<Playlist>();
+            return await this.db.Playlists
+                .Include(p => p.Songs)
+                .FirstOrDefaultAsync(p => p.Id == id, token);
         }
 
         public async Task<List<Playlist>> GetPlaylistsByIdAsync(IEnumerable<string> ids, CancellationToken token = default)
         {
-            var documents = await this.Collection<Playlist>()
-                            .WhereIn(FieldPath.DocumentId, ids)
-                            .GetSnapshotAsync(token);
-
-            return documents.ConvertTo<Playlist>().ToList();
+            return await this.db.Playlists
+                .Include(p => p.Songs)
+                .Where(p => ids.Contains(p.Id))
+                .ToListAsync(token);
         }
 
         public async Task<Playlist> GetPlaylistBySpotifyIdAsync(string id, CancellationToken token = default)
         {
-            var documents = await this.Collection<Playlist>()
-                .WhereEqualTo(PropertyPathProvider<Playlist>.GetPropertyPath(p => p.SpotifyId), id)
-                .GetSnapshotAsync(token);
-
-            return documents.ConvertTo<Playlist>().FirstOrDefault(p => string.Equals(id, p.SpotifyId));
+            return await this.db.Playlists
+                .Include(p => p.Songs)
+                .FirstOrDefaultAsync(p => p.SpotifyId == id, token);
         }
 
         public async Task<bool> PlaylistExistsByIdAsync(string id, CancellationToken token = default)
         {
-            var document = await this.Collection<Playlist>().Document(id).GetSnapshotAsync(token);
-
-            return document.Exists;
+            return await this.db.Playlists.AnyAsync(p => p.Id == id, token);
         }
 
         public async Task<bool> PlaylistExistsBySpotifyIdAsync(string id, CancellationToken token = default)
         {
-            var documents = await this.Collection<Playlist>()
-                .WhereEqualTo(PropertyPathProvider<Playlist>.GetPropertyPath(p => p.SpotifyId), id)
-                .GetSnapshotAsync(token);
-
-            return documents.ConvertTo<Playlist>().Any(p => string.Equals(p.SpotifyId, id));
+            return await this.db.Playlists.AnyAsync(p => p.SpotifyId == id, token);
         }
 
-        public Task DeletePlaylistAsync(string id, CancellationToken token = default)
+        public async Task DeletePlaylistAsync(string id, CancellationToken token = default)
         {
-            var doc = this.Collection<Playlist>().Document(id);
-            return doc.DeleteAsync(cancellationToken: token);
+            var playlist = await this.db.Playlists.FindAsync(new object[] { id }, token);
+            if (playlist != null)
+            {
+                this.db.Playlists.Remove(playlist);
+                await this.db.SaveChangesAsync(token);
+            }
         }
 
         private void EnsureSongsHaveIds(IEnumerable<Song> songs)
         {
+            if (songs == null) return;
             foreach (var song in songs)
             {
                 if (string.IsNullOrEmpty(song.Id))
@@ -177,11 +173,6 @@ namespace MusicDbApi
                     song.Id = Guid.NewGuid().ToString();
                 }
             }
-        }
-
-        private CollectionReference Collection<T>()
-        {
-            return this.db.Collection(this.namedCollections[typeof(T)]);
         }
     }
 }

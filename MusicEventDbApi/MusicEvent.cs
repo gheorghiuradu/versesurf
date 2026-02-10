@@ -1,27 +1,23 @@
-﻿using Google.Cloud.Firestore;
-using System;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MusicEventDbApi
 {
-    [FirestoreData]
     public class MusicEvent
     {
-        [FirestoreProperty]
+        [Key]
+        public int Id { get; set; }
+
         public string Sender { get; set; }
 
-        [FirestoreProperty]
         public DateTime TimeStamp { get; set; }
 
-        [FirestoreProperty]
         public string EventType { get; set; }
 
-        [FirestoreProperty]
         public string PayloadJson { get; set; }
 
-        [FirestoreProperty]
         public string PayloadName { get; set; }
 
-        [FirestoreProperty]
         public string PayloadType { get; set; }
     }
 }

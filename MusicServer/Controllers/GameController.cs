@@ -1,12 +1,12 @@
 ﻿using GamePlaying.Application;
-using GcloudWebApiExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using MusicApi.Serverless.Client;
+using Microsoft.Extensions.Configuration;
 using MusicServer.CustomAuth;
 using MusicServer.Hubs;
 using MusicServer.Models;
+using MusicServer.Services;
 using MusicStorageClient;
 using SharedDomain;
 using SharedDomain.InfraEvents;
@@ -24,21 +24,21 @@ namespace MusicServer.Controllers
         private readonly RoomAppService roomAppService;
         private readonly IHubContext<GameHub> gameHub;
         private readonly GoogleStorage googleStorage;
-        private readonly GCloudSecretProvider gCloudSecretProvider;
-        private readonly MusicEventClient musicEventClient;
+        private readonly IConfiguration configuration;
+        private readonly MusicEventService musicEventService;
 
         public GameController(
             GoogleStorage googleStorage,
             RoomAppService roomAppService,
             IHubContext<GameHub> gameHub,
-            GCloudSecretProvider gCloudSecretProvider,
-            MusicEventClient musicEventClient)
+            IConfiguration configuration,
+            MusicEventService musicEventService)
         {
             this.googleStorage = googleStorage;
             this.roomAppService = roomAppService;
             this.gameHub = gameHub;
-            this.gCloudSecretProvider = gCloudSecretProvider;
-            this.musicEventClient = musicEventClient;
+            this.configuration = configuration;
+            this.musicEventService = musicEventService;
         }
 
         [Authorize(Roles = Roles.Host)]
@@ -75,10 +75,10 @@ namespace MusicServer.Controllers
                 return this.BadRequest();
             }
 
-            var actualKey = await this.gCloudSecretProvider.GetSecretAsync(nameof(NotificationRequest.BoKey));
+            var actualKey = this.configuration["BoKey"] ?? "";
             if (!string.Equals(notificationRequest.BoKey, actualKey))
             {
-                await this.musicEventClient.PostEventAsync(EventType.NotificationRequestUnauthorized, new
+                await this.musicEventService.PostEventAsync(EventType.NotificationRequestUnauthorized, new
                 {
                     Ip = this.HttpContext.Connection.RemoteIpAddress,
                     HttpRequest = this.HttpContext.Request
@@ -98,7 +98,7 @@ namespace MusicServer.Controllers
                     });
             }
 
-            await this.musicEventClient.PostEventAsync(EventType.NotificationRequestAuthorized, new
+            await this.musicEventService.PostEventAsync(EventType.NotificationRequestAuthorized, new
             {
                 Request = notificationRequest,
                 HostConnectionIds = connectionIdResult.ConnectionIds

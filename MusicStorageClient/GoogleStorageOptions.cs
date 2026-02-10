@@ -1,12 +1,10 @@
-﻿using GcloudWebApiExtensions;
-using Microsoft.Extensions.Configuration;
+﻿using System.IO;
 
 namespace MusicStorageClient
 {
     public class GoogleStorageOptions
     {
-        public string GoogleAccountEmail { get; set; }
-        public string BucketName { get; set; }
+        public string BasePath { get; set; }
         public string SongPreviewsPrefix { get; set; }
         public string PlaylistImgPrefix { get; set; }
 
@@ -14,10 +12,16 @@ namespace MusicStorageClient
         {
         }
 
-        public GoogleStorageOptions(IConfiguration configuration)
+        public void EnsureDirectoriesExist()
         {
-            configuration.GetSection(nameof(GoogleStorageOptions)).Bind(this);
-            this.GoogleAccountEmail = configuration.GetGcloudCredentialEmail();
+            if (!string.IsNullOrWhiteSpace(BasePath))
+            {
+                var songPreviewsPath = Path.Combine(BasePath, SongPreviewsPrefix ?? "");
+                var playlistImgPath = Path.Combine(BasePath, PlaylistImgPrefix ?? "");
+
+                Directory.CreateDirectory(songPreviewsPath);
+                Directory.CreateDirectory(playlistImgPath);
+            }
         }
     }
 }

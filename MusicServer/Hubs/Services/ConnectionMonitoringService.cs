@@ -3,7 +3,7 @@ using GamePlaying.Application.Commands;
 using Microsoft.AspNetCore.Connections.Features;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
-using MusicApi.Serverless.Client;
+using MusicServer.Services;
 using SharedDomain;
 using SharedDomain.InfraEvents;
 using System;
@@ -18,16 +18,16 @@ namespace MusicServer.Hubs.Services
         private readonly object pendingKickLock = new object();
         private readonly ILogger logger;
         private readonly IHubContext<GameHub> hubContext;
-        private readonly MusicEventClient musicEventClient;
+        private readonly MusicEventService musicEventService;
 
         public ConnectionMonitoringService(
             ILogger<ConnectionMonitoringService> logger,
             IHubContext<GameHub> hubContext,
-            MusicEventClient musicEventClient)
+            MusicEventService musicEventService)
         {
             this.logger = logger;
             this.hubContext = hubContext;
-            this.musicEventClient = musicEventClient;
+            this.musicEventService = musicEventService;
         }
 
         public void InitializeMonitoring(HubCallerContext callerContext)
@@ -124,7 +124,7 @@ namespace MusicServer.Hubs.Services
 
             await this.hubContext.Clients.Clients(purgeRoomResult.Value.GuestConnectionIds)
                 .SendAsync(WebClientMethods.RemoveRoom);
-            await this.musicEventClient.PostEventAsync(EventType.PurgedRoom, (Code: roomCode, Result: purgeRoomResult.Value));
+            await this.musicEventService.PostEventAsync(EventType.PurgedRoom, (Code: roomCode, Result: purgeRoomResult.Value));
 
             if (!string.IsNullOrWhiteSpace(purgeRoomResult.Value.ActiveGameId))
             {
