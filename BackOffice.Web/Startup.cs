@@ -1,10 +1,10 @@
 using ArtManager;
 using AudioProcessing;
 using BackOffice.Web.Services;
-using GcloudWebApiExtensions;
 using LicensingService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -45,23 +45,28 @@ namespace BackOffice.Web
                 Converters = new List<JsonConverter> { new StringEnumConverter() }
             };
 
-            services.ConfigureGcloudUserSecrets();
-            services.ConfigureGCloudSecretManager();
+            var connectionString = this.Configuration.GetConnectionString("MusicDb")
+                ?? "Host=localhost;Port=5432;Database=music-db;Username=developer;Password=kt7Hdzkk";
 
-            var gcloudSecretProvider = this.Configuration.GetGCloudSecretProvider();
-            var spotifyJson = gcloudSecretProvider.GetSecret(nameof(SpotifyServiceOptions));
-            this.Configuration.AddJson(spotifyJson);
-            this.Configuration[MusixApiClient.ConfigKeyForApiKey] =
-                gcloudSecretProvider.GetSecret(MusixApiClient.ConfigKeyForApiKey);
-            var gcloudProjectId = this.Configuration.GetGCloudProjectId();
+            services.AddDbContext<MusicDbApi.MusicDbContext>(options =>
+                options.UseNpgsql(connectionString));
+            services.AddScoped<MusicDbClient>();
+
+            services.AddDbContext<MusicEventDbContext>(options =>
+                options.UseNpgsql(connectionString));
+            services.AddScoped<MusicEventDbClient>();
 
             services.AddTransient<MusicServerApiClientOptions>();
             services.AddScoped<MusicServerApiClient>();
 
-            services.AddTransient(_ => new MusicEventDbClient(gcloudProjectId));
             services.AddTransient<PlayFabServiceOptions>();
             services.AddTransient<EconomyService>();
-            services.AddTransient<GoogleStorageOptions>();
+            services.AddTransient(sp =>
+            {
+                var options = new GoogleStorageOptions();
+                Configuration.GetSection(nameof(GoogleStorageOptions)).Bind(options);
+                return options;
+            });
             services.AddTransient<GoogleStorage>();
             services.AddTransient<SpotifyServiceOptions>();
             services.AddTransient<SpotifyService>();
@@ -69,7 +74,6 @@ namespace BackOffice.Web
             services.AddTransient<MusixApiClient>();
             services.AddTransient<AudioProcessingService>();
             services.AddTransient<MusicBrainzApiClient>();
-            services.AddTransient(_ => new MusicDbClient(this.Configuration.GetGCloudProjectId()));
             services.AddTransient<ImportSpotifyPlaylistJob>();
             services.AddTransient<CleanupUnusedStorageJob>();
             services.AddTransient<ReplaceGSPathJob>();
