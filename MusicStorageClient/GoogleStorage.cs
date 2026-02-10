@@ -79,13 +79,13 @@ namespace MusicStorageClient
         public Task<Stream> DownloadFileByUrlAsync(string url)
         {
             var filePath = this.ResolveFilePath(url);
-            Stream stream = new MemoryStream();
+            var stream = new MemoryStream();
             using (var source = File.OpenRead(filePath))
             {
                 source.CopyTo(stream);
             }
             stream.Position = 0;
-            return Task.FromResult(stream);
+            return Task.FromResult<Stream>(stream);
         }
 
         public Task DownloadFileByUrlAsync(string url, string destination)
