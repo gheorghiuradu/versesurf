@@ -152,7 +152,7 @@ namespace Assets.Scripts.Score
 
         private async void ShowWinner()
         {
-            ServiceProvider.Get<CustomEventService>().TryPushRemainingEventsAsync().CatchErrors();
+            // ServiceProvider.Get<CustomEventService>().TryPushRemainingEventsAsync().CatchErrors();
 
             var scores = this.room.ScoreBoard.Scores.OrderBy(s => s.Value);
             var highestScore = scores.Last().Value;
@@ -260,11 +260,7 @@ namespace Assets.Scripts.Score
         public void OnClickReview()
         {
             this.gameOptions.HasClickedOnReview = true;
-            ServiceProvider.Get<PlayFabService>().SaveGameOptionsAsync(this.gameOptions).CatchErrors();
             this.ReviewButton.gameObject.SetActive(false);
-#if UNITY_STANDALONE
-            SteamFriends.ActivateGameOverlayToWebPage("https://store.steampowered.com/app/1315390/Verse_Surf/#review_create");
-#endif
         }
     }
 }

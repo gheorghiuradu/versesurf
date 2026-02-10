@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MusicApi.Serverless.Client\MusicApi.Serverless.Client.csproj" />
     <ProjectReference Include="..\GamePlaying\GamePlaying.csproj" />
   </ItemGroup>
 

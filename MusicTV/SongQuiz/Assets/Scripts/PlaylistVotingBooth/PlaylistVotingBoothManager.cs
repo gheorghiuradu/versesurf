@@ -204,15 +204,8 @@ namespace Assets.Scripts.PlaylistVotingBooth
             //Prepare actions, UI
             var isVip = this.vipManager.VipPerks.Contains(VipPerk.SelectPlaylist);
             var toolTipText = isVip ? string.Empty : "Only VIP players can select playlist";
-            UnityAction<string> onClick = null;
-            if (isVip)
-            {
-                onClick = this.OnSelectPlaylist;
-            }
-            else
-            {
-                onClick = _ => StoreManagerScript.Instantiate();
-            }
+            UnityAction<string> onClick = this.OnSelectPlaylist;
+
 
             //Add random button
             this.playlistScripts.Add(PlaylistButton.Instantiate(

@@ -46,11 +46,11 @@ namespace Assets.Scripts.Services
             ServiceCollection.Add(settings);
 
             var client = new MusicClient(settings.HubUrl, settings.ApiUrl);
-            var playfabService = new PlayFabService();
+            // var playfabService = new PlayFabService();
             ServiceCollection.Add(client);
             ServiceCollection.Add(new CacheService(client));
-            ServiceCollection.Add(playfabService);
-            ServiceCollection.Add(new CustomEventService(playfabService, client));
+            // ServiceCollection.Add(playfabService);
+            // ServiceCollection.Add(new CustomEventService(playfabService, client));
 
             IsInitialized = true;
 

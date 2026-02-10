@@ -16,7 +16,7 @@ namespace Assets.Scripts.Panels
     {
         private const string SelectPassPanelPrefabPath = "Prefabs/SelectPassPanel";
 
-        private PlayFabService playFabService;
+        // private PlayFabService playFabService;
         private MusicClient musicClient;
         private Room room;
 
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Panels
 
         private void Start()
         {
-            this.playFabService = ServiceProvider.Get<PlayFabService>();
+            // this.playFabService = ServiceProvider.Get<PlayFabService>();
             this.musicClient = ServiceProvider.Get<MusicClient>();
             this.room = ServiceProvider.Get<Room>();
             this.LoadInventoryItemsAsync().CatchErrors();
@@ -103,21 +103,21 @@ namespace Assets.Scripts.Panels
 
         private async Task LoadInventoryItemsAsync()
         {
-            LoadingSpinner.Instantiate(this.transform);
-            var inventory = await this.playFabService.GetInventoryItemsAsync();
-
-            InventoryItemScript.InstantiateCustom("Free game", string.Empty, "∞", this.PassGrid, this.SelectPass);
-            foreach (var item in inventory)
-            {
-                InventoryItemScript.Instantiate(item, this.PassGrid, this.SelectPass);
-            }
-            InventoryItemBlackScript.Instantiate("Go to store", this.PassGrid, () =>
-            {
-                StoreManagerScript.Instantiate();
-                this.Close();
-            });
-            LoadingSpinner.Destroy();
-            this.PassGrid.GetComponentInChildren<Button>().Select();
+            // LoadingSpinner.Instantiate(this.transform);
+            // var inventory = await this.playFabService.GetInventoryItemsAsync();
+            //
+            // InventoryItemScript.InstantiateCustom("Free game", string.Empty, "∞", this.PassGrid, this.SelectPass);
+            // foreach (var item in inventory)
+            // {
+            //     InventoryItemScript.Instantiate(item, this.PassGrid, this.SelectPass);
+            // }
+            // InventoryItemBlackScript.Instantiate("Go to store", this.PassGrid, () =>
+            // {
+            //     StoreManagerScript.Instantiate();
+            //     this.Close();
+            // });
+            // LoadingSpinner.Destroy();
+            // this.PassGrid.GetComponentInChildren<Button>().Select();
         }
     }
 }

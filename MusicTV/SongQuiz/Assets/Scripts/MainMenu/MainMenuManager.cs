@@ -152,7 +152,7 @@ public class MainMenuManager : UnityEventUser
 
     public void Exit() => Application.Quit();
 
-    public void OpenStore() => StoreManagerScript.Instantiate();
+    // public void OpenStore() => StoreManagerScript.Instantiate();
 
     public void OpenOptions() =>
         OptionsPanelScript.Instantiate().MenuMusicToggle.onValueChanged.AddListener(isOn =>

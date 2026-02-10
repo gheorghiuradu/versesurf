@@ -72,7 +72,7 @@ namespace Assets.Scripts.Round
         {
             if (this.changedVolume)
             {
-                ServiceProvider.Get<PlayFabService>().SaveGameOptionsAsync(this.gameOptions).CatchErrors();
+                // ServiceProvider.Get<PlayFabService>().SaveGameOptionsAsync(this.gameOptions).CatchErrors();
                 ServiceProvider.AddOrReplace(this.gameOptions);
             }
         }

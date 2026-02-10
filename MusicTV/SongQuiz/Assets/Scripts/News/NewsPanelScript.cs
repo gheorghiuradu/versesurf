@@ -46,20 +46,20 @@ namespace Assets.Scripts.News
 
         public static async Task AutoCheckAsync()
         {
-            var playFab = ServiceProvider.Get<PlayFabService>();
-            var titles = await playFab.GetTitleNewsAsync();
-            if (titles?.Count > 0)
-            {
-                var canvas = GameObject.FindObjectOfType<Canvas>();
-                var prefab = Resources.Load<GameObject>(PrefabPath);
-                var instance = GameObject.Instantiate(prefab, canvas.transform).GetComponent<NewsPanelScript>();
-                foreach (var title in titles)
-                {
-                    var localTime = title.Timestamp.ToLocalTime();
-                    NewsItemScript.Instantiate(title.Title, $"{localTime.ToShortDateString()} {localTime.ToShortTimeString()}",
-                        title.Body, instance.Content);
-                }
-            }
+            // var playFab = ServiceProvider.Get<PlayFabService>();
+            // var titles = await playFab.GetTitleNewsAsync();
+            // if (titles?.Count > 0)
+            // {
+            //     var canvas = GameObject.FindObjectOfType<Canvas>();
+            //     var prefab = Resources.Load<GameObject>(PrefabPath);
+            //     var instance = GameObject.Instantiate(prefab, canvas.transform).GetComponent<NewsPanelScript>();
+            //     foreach (var title in titles)
+            //     {
+            //         var localTime = title.Timestamp.ToLocalTime();
+            //         NewsItemScript.Instantiate(title.Title, $"{localTime.ToShortDateString()} {localTime.ToShortTimeString()}",
+            //             title.Body, instance.Content);
+            //     }
+            // }
         }
     }
 }

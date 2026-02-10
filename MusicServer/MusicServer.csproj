@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <UserSecretsId>89668912-5957-4e6f-be29-4c5654090fc9</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -39,7 +39,6 @@
     <ProjectReference Include="..\GamePlayingContext\GamePlaying.Repositories\GamePlaying.Repositories.csproj" />
     <ProjectReference Include="..\GamePlayingContext\GamePlaying\GamePlaying.csproj" />
     <ProjectReference Include="..\GcloudWebApiExtensions\GcloudWebApiExtensions.csproj" />
-    <ProjectReference Include="..\MusicApi.Serverless.Client\MusicApi.Serverless.Client.csproj" />
     <ProjectReference Include="..\MusicStorageClient\MusicStorageClient.csproj" />
     <ProjectReference Include="..\SharedDomain\SharedDomain.csproj" />
     <ProjectReference Include="..\SteamWebApi.Client\SteamWebApi.Client.csproj" />

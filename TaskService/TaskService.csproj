@@ -20,7 +20,6 @@
     <ProjectReference Include="..\MusicEventDbApi\MusicEventDbApi.csproj" />
     <ProjectReference Include="..\MusicStorageClient\MusicStorageClient.csproj" />
     <ProjectReference Include="..\MusixClient\MusixClient.csproj" />
-    <ProjectReference Include="..\PlayFabService\PlayFabService.csproj" />
     <ProjectReference Include="..\SpotifyApiService\SpotifyApiService.csproj" />
   </ItemGroup>
 

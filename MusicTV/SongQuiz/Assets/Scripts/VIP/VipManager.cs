@@ -15,7 +15,6 @@ namespace Assets.Scripts.VIP
     public class VipManager : MonoBehaviourEventProvider
     {
         private MusicClient musicClient;
-        private PlayFabService playFab;
 
         private AudioSource audioSource;
 
@@ -87,7 +86,7 @@ namespace Assets.Scripts.VIP
         {
             if (!this.hasAttemptedAutoActivation && !this.IsVip)
             {
-                var inventory = await this.playFab.GetInventoryItemsAsync();
+                var inventory = new List<ItemInstance>();
                 if (inventory.Count == 0)
                 {
                     this.hasAttemptedAutoActivation = true;
@@ -141,12 +140,17 @@ namespace Assets.Scripts.VIP
             }
         }
 
-        public static void Initialize(MusicClient musicClient, PlayFabService playFab)
+        public static void Initialize(MusicClient musicClient)
         {
             var instance = new GameObject(nameof(VipManager)).AddComponent<VipManager>();
             instance.gameObject.AddComponent<AudioSource>();
             instance.musicClient = musicClient;
-            instance.playFab = playFab;
         }
+    }
+    
+    public sealed record ItemInstance
+    {
+        public string ItemInstanceId { get; set; }
+        public DateTime? Expiration { get; set; }
     }
 }
