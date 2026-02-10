@@ -1,4 +1,4 @@
-﻿using Google.Cloud.Firestore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +9,21 @@ namespace MusicEventDbApi
 {
     public class MusicEventDbClient
     {
-        private const string EventCollectionName = "events";
-        private readonly FirestoreDb db;
+        private readonly MusicEventDbContext db;
 
-        public MusicEventDbClient(string projectId)
+        public MusicEventDbClient(MusicEventDbContext db)
         {
-            this.db = FirestoreDb.Create(projectId);
+            this.db = db;
         }
 
-        public Task AddEventAsync(MusicEvent @event)
+        public async Task AddEventAsync(MusicEvent @event)
         {
             if (@event.TimeStamp.Kind != DateTimeKind.Utc)
             {
                 @event.TimeStamp = @event.TimeStamp.ToUniversalTime();
             }
-            return this.db.Collection(EventCollectionName).AddAsync(@event);
+            this.db.Events.Add(@event);
+            await this.db.SaveChangesAsync();
         }
 
         public async ValueTask<List<MusicEvent>> GetEventsByDateAsync(
@@ -32,18 +32,15 @@ namespace MusicEventDbApi
             IEnumerable<string> eventTypes = null,
             CancellationToken cancellationToken = default)
         {
-            var query = this.db.Collection(EventCollectionName)
-                .WhereGreaterThanOrEqualTo(nameof(MusicEvent.TimeStamp), start)
-                .WhereLessThanOrEqualTo(nameof(MusicEvent.TimeStamp), end);
+            var query = this.db.Events
+                .Where(e => e.TimeStamp >= start && e.TimeStamp <= end);
 
-            if (!(eventTypes is null))
+            if (eventTypes != null)
             {
-                query = query.WhereIn(nameof(MusicEvent.EventType), eventTypes);
+                query = query.Where(e => eventTypes.Contains(e.EventType));
             }
 
-            var snapshots = await query.GetSnapshotAsync(cancellationToken);
-
-            return snapshots.Documents.Select(d => d.ConvertTo<MusicEvent>()).ToList();
+            return await query.ToListAsync(cancellationToken);
         }
     }
 }

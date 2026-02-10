@@ -3,19 +3,21 @@ using GamePlaying.Domain.GameAggregate;
 using GamePlaying.Domain.PlaylistMetadataAggregate;
 using GamePlaying.Domain.RoomAggregate;
 using GamePlaying.Repositories;
-using GcloudWebApiExtensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using MusicApi.Serverless.Client;
+using MusicDbApi;
+using MusicEventDbApi;
 using MusicServer.CustomAuth;
 using MusicServer.CustomMiddleware;
 using MusicServer.Hubs;
 using MusicServer.Hubs.Services;
 using MusicServer.PerformanceTesting;
+using MusicServer.Services;
 using MusicServer.Words;
 using MusicStorageClient;
 using Newtonsoft.Json;
@@ -46,9 +48,6 @@ namespace MusicServer
                 Converters = new List<JsonConverter> { new StringEnumConverter() }
             };
 
-            services.ConfigureGcloudUserSecrets();
-            services.ConfigureGCloudSecretManager();
-
             //ASP.NET Core Infrastructure
             services.AddAuthentication("GameAuthentication")
                 .AddScheme<BasicAuthenticationOptions, GameAuthenticationHandler>("GameAuthentication", null);
@@ -69,21 +68,26 @@ namespace MusicServer
             //Hub Services
             services.AddSingleton<ConnectionMonitoringService>();
 
-            //Api Serverless
-            this.AddMusicApiServerless(services);
+            //Database services
+            this.AddDatabaseServices(services);
 
             //Gameplaying context
             this.AddGamePlayingContext(services);
 
             //Other services
-            services.AddTransient<GoogleStorageOptions>();
+            services.AddTransient(sp =>
+            {
+                var options = new GoogleStorageOptions();
+                Configuration.GetSection(nameof(GoogleStorageOptions)).Bind(options);
+                return options;
+            });
             services.AddScoped<GoogleStorage>();
             services.AddScoped<WordProvider>();
             services.AddScoped<VersioningService>();
 
             services.AddTransient(serviceProvider => new SteamWebApiClientOptions
             {
-                ApiKey = serviceProvider.GetRequiredService<GCloudSecretProvider>().GetSecret("SteamWebApiKey"),
+                ApiKey = this.Configuration["SteamWebApiKey"] ?? "",
                 UseSandbox = this.Configuration.GetValue<bool>("UseSteamSandbox")
             });
             services.AddTransient<SteamWebApiClient>();
@@ -96,14 +100,19 @@ namespace MusicServer
             }
         }
 
-        private void AddMusicApiServerless(IServiceCollection services)
+        private void AddDatabaseServices(IServiceCollection services)
         {
-            services.AddTransient(_ => new EndpointUrl(this.Configuration["MusicApiServerlessEndpoint"]));
-            services.AddTransient<MusicApiServerlessOptions>();
-            services.AddTransient<MusicEventClient>();
-            services.AddScoped<MusicDbApiClient>();
-            services.AddScoped<EconomyClient>();
-            services.AddTransient<MetadataClient>();
+            var connectionString = this.Configuration.GetConnectionString("MusicDb")
+                ?? "Host=localhost;Port=5432;Database=music-db;Username=developer;Password=kt7Hdzkk";
+
+            services.AddDbContext<MusicDbApi.MusicDbContext>(options =>
+                options.UseNpgsql(connectionString));
+            services.AddScoped<MusicDbClient>();
+
+            services.AddDbContext<MusicEventDbContext>(options =>
+                options.UseNpgsql(connectionString));
+            services.AddScoped<MusicEventDbClient>();
+            services.AddScoped<MusicEventService>();
         }
 
         private void AddGamePlayingContext(IServiceCollection services)
@@ -111,6 +120,7 @@ namespace MusicServer
             services.AddSingleton<IRoomRepository, InMemoryRoomRepository>();
             services.AddSingleton<IGameRepository, InMemoryGameRepository>();
 
+            services.AddSingleton<MetadataClient>();
             services.AddSingleton<IPlaylistMetadataBuffer, PlaylistMetadataBuffer>();
             services.AddScoped<MetadataService>();
 
