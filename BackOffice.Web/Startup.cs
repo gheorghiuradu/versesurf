@@ -15,10 +15,12 @@ using MusicStorageClient;
 using MusixClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Npgsql;
 using PlayFabService;
 using Skclusive.Material.Component;
 using Skclusive.Material.Core;
 using SpotifyApiService;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using TaskService;
@@ -92,6 +94,23 @@ namespace BackOffice.Web
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             logger.LogInformation(Assembly.GetExecutingAssembly().FullName);
+
+            try
+            {
+                var connectionString = Configuration.GetConnectionString("MusicDb");
+                using var connection = new NpgsqlConnection(connectionString);
+                var evolve = new EvolveDb.Evolve(connection, msg => logger.LogInformation(msg))
+                {
+                    Locations = new[] { "db/migrations" },
+                    IsEraseDisabled = true
+                };
+                evolve.Migrate();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Database migration failed.");
+                throw;
+            }
 
             if (env.IsDevelopment())
             {
