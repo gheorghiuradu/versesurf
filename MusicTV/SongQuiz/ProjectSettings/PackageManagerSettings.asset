@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 13964, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EnablePreviewPackages: 0
-  m_EnablePackageDependencies: 0
+  m_EnablePreReleasePackages: 0
   m_AdvancedSettingsExpanded: 1
   m_ScopedRegistriesSettingsExpanded: 1
+  m_SeeAllPackageVersions: 0
+  m_DismissPreviewPackagesInUse: 0
   oneTimeWarningShown: 0
+  oneTimePackageErrorsPopUpShown: 0
   m_Registries:
   - m_Id: main
     m_Name: 
@@ -24,7 +26,11 @@ MonoBehaviour:
     m_Scopes: []
     m_IsDefault: 1
     m_Capabilities: 7
-  - m_Id: scoped:package.openupm.com
+    m_ConfigSource: 0
+    m_Compliance:
+      m_Status: 0
+      m_Violations: []
+  - m_Id: scoped:project:package.openupm.com
     m_Name: package.openupm.com
     m_Url: https://package.openupm.com
     m_Scopes:
@@ -32,28 +38,26 @@ MonoBehaviour:
     - com.openupm
     m_IsDefault: 0
     m_Capabilities: 0
-  - m_Id: scoped:steamworks
+    m_ConfigSource: 4
+    m_Compliance:
+      m_Status: 0
+      m_Violations: []
+  - m_Id: scoped:project:steamworks
     m_Name: steamworks
     m_Url: https://github.com/rlabrecque/Steamworks.NET.git?path=/com.rlabrecque.steamworks.net
     m_Scopes:
     - com.rlabrecque.steamworks.net
     m_IsDefault: 0
     m_Capabilities: 0
-  m_UserSelectedRegistryName: steamworks
+    m_ConfigSource: 4
+    m_Compliance:
+      m_Status: 0
+      m_Violations: []
+  m_UserSelectedRegistryName: package.openupm.com
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
-    m_ErrorMessage: 
-    m_Original:
-      m_Id: scoped:steamworks
-      m_Name: steamworks
-      m_Url: https://github.com/rlabrecque/Steamworks.NET.git?path=/com.rlabrecque.steamworks.net
-      m_Scopes:
-      - com.rlabrecque.steamworks.net
-      m_IsDefault: 0
-      m_Capabilities: 0
     m_Modified: 0
-    m_Name: steamworks
-    m_Url: https://github.com/rlabrecque/Steamworks.NET.git?path=/com.rlabrecque.steamworks.net
-    m_Scopes:
-    - com.rlabrecque.steamworks.net
-    m_SelectedScopeIndex: 0
+    m_ErrorMessage: 
+    m_UserModificationsInstanceId: -898
+    m_OriginalInstanceId: -902
+  m_LoadAssets: 0

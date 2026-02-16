@@ -5,13 +5,6 @@ using Assets.Scripts.Serialization;
 using Assets.Scripts.Services;
 using SharedDomain;
 using SharedDomain.Domain;
-
-#if UNITY_STANDALONE
-
-using Steamworks;
-
-#endif
-
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -260,11 +253,7 @@ namespace Assets.Scripts.Score
         public void OnClickReview()
         {
             this.gameOptions.HasClickedOnReview = true;
-            ServiceProvider.Get<PlayFabService>().SaveGameOptionsAsync(this.gameOptions).CatchErrors();
             this.ReviewButton.gameObject.SetActive(false);
-#if UNITY_STANDALONE
-            SteamFriends.ActivateGameOverlayToWebPage("https://store.steampowered.com/app/1315390/Verse_Surf/#review_create");
-#endif
         }
     }
 }

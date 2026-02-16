@@ -1,6 +1,5 @@
 ﻿using SpotifyAPI.Web;
 using SpotifyAPI.Web.Auth;
-using SpotifyAPI.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace SpotifyApiService
     public class SpotifyService
     {
         private readonly SpotifyServiceOptions options;
-        private SpotifyWebAPI spotifyWebApi;
+        private ISpotifyClient spotifyWebApi;
 
         public SpotifyService(SpotifyServiceOptions options)
         {
@@ -44,7 +43,7 @@ namespace SpotifyApiService
             return this.spotifyWebApi.GetPlaylist(spotifyPlaylistId);
         }
 
-        public IEnumerable<PlaylistTrack> GetTracks(string spotifyPlaylistId)
+        public IEnumerable<PlaylistTrack<IPlayableItem>> GetTracks(string spotifyPlaylistId)
         {
             var spotifyTracksResult = spotifyWebApi.GetPlaylistTracks(spotifyPlaylistId, market: "us");
             var tracks = spotifyTracksResult

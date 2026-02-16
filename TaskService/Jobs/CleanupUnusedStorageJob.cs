@@ -9,13 +9,13 @@ namespace TaskService.Jobs
 {
     public class CleanupUnusedStorageJob : Job
     {
-        private readonly GoogleStorage googleStorage;
+        private readonly FileStorage fileStorage;
         private readonly MusicDbClient musicDbClient;
 
-        public CleanupUnusedStorageJob(MusicDbClient musicDbClient, GoogleStorage googleStorage)
+        public CleanupUnusedStorageJob(MusicDbClient musicDbClient, FileStorage fileStorage)
         {
             this.musicDbClient = musicDbClient;
-            this.googleStorage = googleStorage;
+            this.fileStorage = fileStorage;
         }
 
         public override async Task RunAsync(IJobCommand internalCommand)
@@ -43,14 +43,14 @@ namespace TaskService.Jobs
                     this.ReportCancel();
                     return;
                 }
-                var allPlaylistImages = await this.googleStorage.GetAllPlaylistImagesAsync();
+                var allPlaylistImages = await this.fileStorage.GetAllPlaylistImagesAsync();
                 this.ReportProgress(20, $"Got {allPlaylistImages.Count} playlist images");
                 if (internalCommand.Token.IsCancellationRequested)
                 {
                     this.ReportCancel();
                     return;
                 }
-                var allSongPreviews = await this.googleStorage.GetAllSongPreviewsAsync();
+                var allSongPreviews = await this.fileStorage.GetAllSongPreviewsAsync();
                 this.ReportProgress(30, $"Got {allPlaylists.Select(p => p.Songs).Count()} songs");
                 this.ReportProgress($"Got {allSongPreviews.Count} song previews");
                 if (internalCommand.Token.IsCancellationRequested)
@@ -78,7 +78,7 @@ namespace TaskService.Jobs
                             this.ReportCancel();
                             return;
                         }
-                        await this.googleStorage.DeleteObjectByUrlAsync(unusedImage);
+                        await this.fileStorage.DeleteObjectByUrlAsync(unusedImage);
                         progress++;
                         this.ReportProgress(progress);
                     }
@@ -97,7 +97,7 @@ namespace TaskService.Jobs
                             this.ReportCancel();
                             return;
                         }
-                        await this.googleStorage.DeleteObjectByUrlAsync(preview);
+                        await this.fileStorage.DeleteObjectByUrlAsync(preview);
                         progress++;
                         this.ReportProgress(progress);
                     }

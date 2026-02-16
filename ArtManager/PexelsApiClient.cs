@@ -14,7 +14,7 @@ namespace ArtManager
     {
         private const string ApiKey = "PEXELSAPIKEY";
         private readonly PexelsClient pexels = new PexelsClient(ApiKey);
-        private readonly GoogleStorage storage = new GoogleStorage(new GoogleStorageOptions());
+        private readonly FileStorage fileStorage = new FileStorage(new FileStorageOptions());
         private SpotifyWebAPI spotifyWebApi;
 
         public async Task<string> GetImageForPlaylistAsync(Playlist playlist, CancellationToken token = default)
@@ -60,10 +60,10 @@ namespace ArtManager
                     Uri.TryCreate(result.Src.Medium, UriKind.Absolute, out var uri);
                     var extension = Path.GetExtension(uri.LocalPath);
                     var fileKey = $"{result.Id}{extension}";
-                    var exists = await this.storage.PlaylistImageExistsAsync(fileKey);
+                    var exists = await this.fileStorage.PlaylistImageExistsAsync(fileKey);
                     if (!exists)
                     {
-                        return await this.storage.UploadPlaylistImageAsync(result.Src.Medium, fileKey);
+                        return await this.fileStorage.UploadPlaylistImageAsync(result.Src.Medium, fileKey);
                     }
                 }
             }

@@ -6,7 +6,6 @@ using MusicDbApi;
 using MusicServer.Extensions;
 using MusicServer.Hubs.Services;
 using MusicServer.Models;
-using MusicServer.Services;
 using MusicServer.Words;
 using MusicStorageClient;
 using SharedDomain;
@@ -24,33 +23,30 @@ namespace MusicServer.Hubs
 {
     public class GameHub : Hub
     {
-        private readonly MusicEventService musicEventService;
         private readonly WordProvider wordProvider;
         private readonly RoomAppService roomAppService;
         private readonly GameAppService gameAppService;
         private readonly MusicDbClient musicDbClient;
-        private readonly GoogleStorage googleStorage;
+        private readonly FileStorage fileStorage;
         private readonly MetadataService metadataService;
         private readonly ConnectionMonitoringService connectionMonitoringService;
         private readonly VersioningService versioningService;
 
         public GameHub(
-            MusicEventService musicEventService,
             WordProvider wordProvider,
             RoomAppService roomAppService,
             GameAppService gameAppService,
             MusicDbClient musicDbClient,
-            GoogleStorage googleStorage,
+            FileStorage fileStorage,
             MetadataService metadataService,
             ConnectionMonitoringService connectionMonitoringService,
             VersioningService versioningService)
         {
-            this.musicEventService = musicEventService;
             this.wordProvider = wordProvider;
             this.roomAppService = roomAppService;
             this.gameAppService = gameAppService;
             this.musicDbClient = musicDbClient;
-            this.googleStorage = googleStorage;
+            this.fileStorage = fileStorage;
             this.metadataService = metadataService;
             this.connectionMonitoringService = connectionMonitoringService;
             this.versioningService = versioningService;
@@ -102,14 +98,6 @@ namespace MusicServer.Hubs
             //    }
             //    return null;
             //}, this.Clients.Client(this.Context.ConnectionId), HostMethods.Message);
-
-            // TODO: raise event in app service
-            this.musicEventService.PostEventAsync(EventType.CreatedRoom, new CreatedRoomEvent
-            {
-                PlayFabId = request.PlayfabId,
-                RoomCode = code,
-                LocaleId = request.LocaleId
-            }).Forget();
 
             return Task.FromResult(HubResponse.Success(code));
         }
@@ -167,8 +155,6 @@ namespace MusicServer.Hubs
 
             await this.Clients.Client(registration.HostConnectionId)
                 .SendAsync(HostMethods.PlayerJoined, registration.Player);
-
-            this.musicEventService.PostEventAsync(EventType.PlayerJoined, registration.Player).Forget();
 
             return HubResponse.Success(registration.Player);
         }
@@ -261,7 +247,7 @@ namespace MusicServer.Hubs
                     var playlistViewModels = rawPlaylists.ConvertTo<List<PlaylistViewModel>>();
                     foreach (var playlist in playlistViewModels)
                     {
-                        playlist.PictureHash = await this.googleStorage.GetFileMd5Async(playlist.PictureUrl);
+                        playlist.PictureHash = await this.fileStorage.GetFileMd5Async(playlist.PictureUrl);
                     }
 
                     return playlistViewModels.ConvertTo<IEnumerable<PlaylistDto>>();
@@ -273,8 +259,6 @@ namespace MusicServer.Hubs
             {
                 return HubResponse.Error(result.Error.Message);
             }
-
-            this.musicEventService.PostEventAsync(EventType.GameStarted, message).Forget();
 
             return HubResponse.Success(result.Value.Playlists);
         }
@@ -291,10 +275,10 @@ namespace MusicServer.Hubs
                     var playlist = await this.musicDbClient.GetPlaylistByIdAsync(message.PlaylistId);
 
                     var fullPlaylist = playlist.ConvertTo<FullPlaylistDto>();
-                    fullPlaylist.PictureHash = await this.googleStorage.GetFileMd5Async(fullPlaylist.PictureUrl);
+                    fullPlaylist.PictureHash = await this.fileStorage.GetFileMd5Async(fullPlaylist.PictureUrl);
                     foreach (var song in fullPlaylist.Songs)
                     {
-                        song.PreviewHash = await this.googleStorage.GetFileMd5Async(song.PreviewUrl);
+                        song.PreviewHash = await this.fileStorage.GetFileMd5Async(song.PreviewUrl);
                     }
 
                     return fullPlaylist;
@@ -304,10 +288,10 @@ namespace MusicServer.Hubs
                     var playlist = await this.musicDbClient.GetRandomPlaylistAsync(message.PlaylistOptions.Language, message.PlaylistOptions.AllowExplicit, true);
 
                     var fullPlaylist = playlist.ConvertTo<FullPlaylistDto>();
-                    fullPlaylist.PictureHash = await this.googleStorage.GetFileMd5Async(fullPlaylist.PictureUrl);
+                    fullPlaylist.PictureHash = await this.fileStorage.GetFileMd5Async(fullPlaylist.PictureUrl);
                     foreach (var song in fullPlaylist.Songs)
                     {
-                        song.PreviewHash = await this.googleStorage.GetFileMd5Async(song.PreviewUrl);
+                        song.PreviewHash = await this.fileStorage.GetFileMd5Async(song.PreviewUrl);
                     }
 
                     return fullPlaylist;
@@ -339,7 +323,6 @@ namespace MusicServer.Hubs
             }
 
             await this.Clients.Clients(result.Value.PlayerConnectionIds).SendAsync(WebClientMethods.Ask);
-            this.musicEventService.PostEventAsync(EventType.PlayedSong, message).Forget();
 
             return HubResponse.Success();
         }
@@ -358,7 +341,6 @@ namespace MusicServer.Hubs
             }
 
             await this.Clients.Clients(result.Value.PlayerConnectionIds).SendAsync(WebClientMethods.AskSpeed);
-            this.musicEventService.PostEventAsync(EventType.PlayedSong, message).Forget();
 
             return HubResponse.Success();
         }
@@ -531,13 +513,6 @@ namespace MusicServer.Hubs
                 return Task.FromResult(HubResponse.Error(result.Error.Message));
             }
 
-            this.musicEventService.PostEventAsync(EventType.GameQuit, new
-            {
-                Message = message,
-                Command = command,
-                Result = result.Value
-            });
-
             this.Clients.Clients(result.Value.PlayerConnectionIds).SendAsync(WebClientMethods.EndGame);
 
             return Task.FromResult(HubResponse.Success());
@@ -561,7 +536,6 @@ namespace MusicServer.Hubs
 
             await this.Clients.Clients(result.Value.PlayerOrGuestConnectionIds).SendAsync(WebClientMethods.EndGame);
             // In self-hosted mode, PlayFab economy operations are not needed
-            this.musicEventService.PostEventAsync(EventType.GameEnded, result.Value).Forget();
 
             return HubResponse.Success();
         }
@@ -586,16 +560,9 @@ namespace MusicServer.Hubs
                 {
                     return HubResponse.Error(purgeGameResult.Error.Message);
                 }
-
-                // We do not consume items at end of game anymore
-                //if (!string.IsNullOrWhiteSpace(purgeGameResult.Value.InventoryItemId))
-                //{
-                //    await this.economyClient.ConsumeItemAsync(result.Value.PlayFabId, purgeGameResult.Value.InventoryItemId);
-                //}
             }
 
             await this.Clients.Clients(result.Value.GuestConnectionIds).SendAsync(WebClientMethods.RemoveRoom);
-            this.musicEventService.PostEventAsync(EventType.RemovedRoom, message).Forget();
 
             return HubResponse.Success();
         }
@@ -621,12 +588,6 @@ namespace MusicServer.Hubs
                     payload.PlayFabId = result.Value.PlayFabId;
                     @event.UpdatePayload(payload);
                 }
-            }
-
-            var pushResult = await this.musicEventService.PutEventsAsync(message.Events);
-            if (!pushResult)
-            {
-                return HubResponse.Error("Failed to push events to database.");
             }
 
             return HubResponse.Success();
@@ -699,7 +660,6 @@ namespace MusicServer.Hubs
             if (hostResult.IsSuccess)
             {
                 this.Clients.Clients(hostResult.Value.GuestConnectionIds).SendAsync(WebClientMethods.HostDisconnected);
-                this.musicEventService.PostEventAsync(EventType.HostDisconnected, hostResult.Value);
 
                 this.connectionMonitoringService.SchedulePurge(
                     TimeSpan.FromMinutes(10),

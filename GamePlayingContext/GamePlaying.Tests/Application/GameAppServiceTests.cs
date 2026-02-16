@@ -21,7 +21,7 @@ namespace GamePlaying.Tests.Application
 
             var codeMock = Code.Create(codeString).Value;
             var roomMock = Room.Create(codeMock, GameSetup.Create(new List<string>(), new List<string>()).Value).Value;
-            var organizerMock = Organizer.Create(hostConnectionId, "test platform", "1.0", Guid.NewGuid().ToString()).Value;
+            var organizerMock = Organizer.Create(hostConnectionId, "test platform", "1.0", Guid.NewGuid().ToString(), "tst").Value;
             organizerMock.BookRoom(roomMock);
 
             var roomRepoMock = new Mock<IRoomRepository>();
@@ -41,7 +41,7 @@ namespace GamePlaying.Tests.Application
             { 
                 RoomCode = codeString, 
                 HostConnectionId = hostConnectionId,
-            });
+            }).Result;
 
             Assert.IsTrue(actual.IsSuccess);
             Assert.NotNull(createdGame);

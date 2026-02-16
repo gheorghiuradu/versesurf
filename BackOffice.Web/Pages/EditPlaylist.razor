@@ -15,7 +15,7 @@
 @inject MusicDbClient musicDbClient;
 @inject NavigationManager navigationManager;
 @inject SpotifyApiService.SpotifyService spotify;
-@inject GoogleStorage googleStorage;
+@inject FileStorage FileStorage;
 @inject LicenseService licenseService;
 @inject MusicBrainzApiClient musicBrainzApiClient;
 @inject AudioProcessingService audioProcessingService;
@@ -374,7 +374,7 @@
         {
             return;
         }
-        var signedUrl = await this.googleStorage.GetSignedUrlAsync(audioUrl);
+        var signedUrl = await this.FileStorage.GetSignedUrlAsync(audioUrl);
         if (this.songSignedUrls.ContainsKey(audioUrl))
         {
             this.songSignedUrls[audioUrl] = signedUrl;
@@ -438,7 +438,7 @@
         this.uploadFullAudioStatus = "Working....";
         var fileStream = e.File.OpenReadStream(100000000);
         this.uploadFullAudioStatus = "Started upload to cloud storage.";
-        var link = await this.googleStorage.UploadSongAudioAsync(fileStream, $"{song.SpotifyId}_full.mp3");
+        var link = await this.FileStorage.UploadSongAudioAsync(fileStream, $"{song.SpotifyId}_full.mp3");
         song.FullAudioUrl = link;
         this.uploadFullAudioStatus = "Upload finished succesfully";
         this.StateHasChanged();
@@ -449,7 +449,7 @@
         this.uploadPreviewStatus = "Working....";
         var fileStream = e.File.OpenReadStream(100000000);
         this.uploadPreviewStatus = "Started upload to cloud storage.";
-        var link = await this.googleStorage.GetOrUploadSongPreviewAsync(fileStream, this.GetTrimmedFileName(song));
+        var link = await this.FileStorage.GetOrUploadSongPreviewAsync(fileStream, this.GetTrimmedFileName(song));
         song.PreviewUrl = link;
         this.uploadPreviewStatus = "Upload finished succesfully";
         this.StateHasChanged();
@@ -465,7 +465,7 @@
         var resized = await ImageProcessingService.ResizeImageAsync(originalStream);
 
         this.playlistPictureStatus = "Starting upload...";
-        var pictureUrl = await this.googleStorage.UploadPlaylistImageAsync(resized, fileName);
+        var pictureUrl = await this.FileStorage.UploadPlaylistImageAsync(resized, fileName);
         this.playlist.PictureUrl = pictureUrl;
         resized.Dispose();
         this.playlistPictureStatus = "Finished successfully.";
@@ -481,7 +481,7 @@
         }
 
         this.trimSongStatus = "Starting work.";
-        var fullSongStream = await this.googleStorage.DownloadFileByUrlAsync(song.FullAudioUrl);
+        var fullSongStream = await this.FileStorage.DownloadFileByUrlAsync(song.FullAudioUrl);
 
         this.trimSongStatus = "Trimming mp3 clip...";
         var trimmedSongStream =
@@ -489,7 +489,7 @@
 
         this.trimSongStatus = "Uploading trimmed mp3 clip...";
 
-        song.PreviewUrl = await this.googleStorage.GetOrUploadSongPreviewAsync(trimmedSongStream, this.GetTrimmedFileName(song));
+        song.PreviewUrl = await this.FileStorage.GetOrUploadSongPreviewAsync(trimmedSongStream, this.GetTrimmedFileName(song));
         this.trimSongStatus = "Finished successfully.";
         this.StateHasChanged();
 

@@ -2,8 +2,6 @@
 using Microsoft.Extensions.Hosting;
 using MusicDbApi;
 using MusicEventDbApi;
-using PlayFab.ServerModels;
-using PlayFabService;
 using SharedDomain.InfraEvents;
 using SharedDomain.Messages.Commands;
 using System;
@@ -23,18 +21,15 @@ namespace TaskService.Jobs
         private const string FolderName = "reports";
 
         private readonly MusicEventDbClient musicEventDbClient;
-        private readonly EconomyService economyService;
         private readonly MusicDbClient musicDbClient;
         private readonly IHostEnvironment hostEnvironment;
 
         public GeneratePlayedSongsReportJob(
             MusicEventDbClient musicEventDbClient,
-            EconomyService economyService,
             MusicDbClient musicDbClient,
             IHostEnvironment hostEnvironment)
         {
             this.musicEventDbClient = musicEventDbClient;
-            this.economyService = economyService;
             this.musicDbClient = musicDbClient;
             this.hostEnvironment = hostEnvironment;
         }
@@ -130,13 +125,6 @@ namespace TaskService.Jobs
                         continue;
                     }
 
-                    var playerProfiles = new List<PlayerProfileModel>();
-                    foreach (var player in playfabIds)
-                    {
-                        var profile = await this.economyService.GetPlayerProfileAsync(player);
-                        playerProfiles.Add(profile);
-                    }
-
                     for (int playedCount = 0; playedCount < playedSongEvents.Count; playedCount++)
                     {
                         if (internalCommand.Token.IsCancellationRequested)
@@ -161,7 +149,6 @@ namespace TaskService.Jobs
                         var playFabId = bookRoomMessage[playfabKey];
                         var playlist = playlists.Find(p => !(p.Songs.Find(s => s.Id.Equals(askMessage.SongId)) is null));
                         var song = playlist?.Songs?.Find(s => s.Id.Equals(askMessage.SongId));
-                        var playerProfile = playerProfiles.Find(pp => pp.PlayerId.Equals(playFabId));
 
                         using (var workbook = new XLWorkbook(filePath))
                         {
@@ -178,7 +165,6 @@ namespace TaskService.Jobs
                             worksheet.Cell(nextRow, 10).SetValue(playlist?.Name);
                             worksheet.Cell(nextRow, 11).SetValue(askMessage.RoomCode);
                             worksheet.Cell(nextRow, 12).SetValue(playFabId);
-                            worksheet.Cell(nextRow, 13).SetValue(playerProfile?.Locations?.FirstOrDefault()?.CountryCode);
                             workbook.Save();
                         }
                         nextRow++;

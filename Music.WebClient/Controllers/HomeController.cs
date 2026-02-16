@@ -23,7 +23,7 @@ namespace Music.WebClient.Controllers
             var serverUrl = string.Empty;
             if (this.env.IsDevelopment())
             {
-                serverUrl = "http://localhost:5000";
+                serverUrl = "https://localhost:6001";
             }
 
             this.ViewData["HubUrl"] = $"{serverUrl}/ws/gamehub";

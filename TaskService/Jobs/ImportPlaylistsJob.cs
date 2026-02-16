@@ -17,13 +17,13 @@ namespace TaskService.Jobs
         private const string FolderName = "imports";
 
         private readonly MusicDbClient musicDbClient;
-        private readonly GoogleStorage googleStorage;
+        private readonly FileStorage fileStorage;
         private readonly IHostEnvironment hostEnvironment;
 
-        public ImportPlaylistsJob(MusicDbClient musicDbClient, GoogleStorage googleStorage, IHostEnvironment hostEnvironment)
+        public ImportPlaylistsJob(MusicDbClient musicDbClient, FileStorage fileStorage, IHostEnvironment hostEnvironment)
         {
             this.musicDbClient = musicDbClient;
-            this.googleStorage = googleStorage;
+            this.fileStorage = fileStorage;
             this.hostEnvironment = hostEnvironment;
         }
 
@@ -81,17 +81,17 @@ namespace TaskService.Jobs
                     {
                         if (!string.IsNullOrEmpty(song.FullAudioUrl))
                         {
-                            song.FullAudioUrl = await this.googleStorage.UploadSongAudioAsync(Path.Combine(importDirectory, song.FullAudioUrl));
+                            song.FullAudioUrl = await this.fileStorage.UploadSongAudioAsync(Path.Combine(importDirectory, song.FullAudioUrl));
                         }
                         if (!string.IsNullOrEmpty(song.PreviewUrl))
                         {
-                            song.PreviewUrl = await this.googleStorage.UploadSongAudioAsync(Path.Combine(importDirectory, song.PreviewUrl));
+                            song.PreviewUrl = await this.fileStorage.UploadSongAudioAsync(Path.Combine(importDirectory, song.PreviewUrl));
                         }
                     }
 
                     if (!string.IsNullOrEmpty(playlist.PictureUrl))
                     {
-                        playlist.PictureUrl = await this.googleStorage.UploadPlaylistImageAsync(Path.Combine(importDirectory, playlist.PictureUrl));
+                        playlist.PictureUrl = await this.fileStorage.UploadPlaylistImageAsync(Path.Combine(importDirectory, playlist.PictureUrl));
                     }
 
                     var existingPlaylist = await this.musicDbClient.GetPlaylistByIdAsync(playlist.Id, internalCommand.Token);

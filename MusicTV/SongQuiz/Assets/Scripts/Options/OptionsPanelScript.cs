@@ -19,13 +19,11 @@ namespace Assets.Scripts.Options
         public Toggle FullScreenToggle;
         public ArraySliderControlScript ResolutionControl;
 
-        private PlayFabService playFab;
         private GameOptions gameOptions;
         private AudioSource audioSource;
 
         private void Start()
         {
-            this.playFab = ServiceProvider.Get<PlayFabService>();
             this.gameOptions = ServiceProvider.Get<GameOptions>();
             this.audioSource = this.GetComponent<AudioSource>();
 
@@ -76,9 +74,6 @@ namespace Assets.Scripts.Options
             this.gameOptions.FullScreen = this.FullScreenToggle.isOn;
             this.gameOptions.SetResolution(this.GetSelectedResolution());
 #endif
-
-            await this.playFab.SaveGameOptionsAsync(this.gameOptions);
-
             ServiceProvider.AddOrReplace(this.gameOptions);
 
             GameObject.Destroy(this.gameObject);

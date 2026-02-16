@@ -16,7 +16,6 @@ using MusixClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Npgsql;
-using PlayFabService;
 using Skclusive.Material.Component;
 using Skclusive.Material.Core;
 using SpotifyApiService;
@@ -47,12 +46,11 @@ namespace BackOffice.Web
                 Converters = new List<JsonConverter> { new StringEnumConverter() }
             };
 
-            var connectionString = this.Configuration.GetConnectionString("MusicDb")
-                ?? "Host=localhost;Port=5432;Database=music-db;Username=developer;Password=kt7Hdzkk";
-
-            services.AddDbContext<MusicDbApi.MusicDbContext>(options =>
-                options.UseNpgsql(connectionString));
-            services.AddScoped<MusicDbClient>();
+            var connectionString = this.Configuration.GetConnectionString("MusicDb");
+            if(string.IsNullOrWhiteSpace(connectionString)) throw new Exception("Connection string 'MusicDb' is missing.");
+            services.AddDbContext<MusicDbContext>(options =>
+                options.UseNpgsql(connectionString), ServiceLifetime.Transient, ServiceLifetime.Transient);
+            services.AddTransient<MusicDbClient>();
 
             services.AddDbContext<MusicEventDbContext>(options =>
                 options.UseNpgsql(connectionString));
@@ -60,16 +58,13 @@ namespace BackOffice.Web
 
             services.AddTransient<MusicServerApiClientOptions>();
             services.AddScoped<MusicServerApiClient>();
-
-            services.AddTransient<PlayFabServiceOptions>();
-            services.AddTransient<EconomyService>();
-            services.AddTransient(sp =>
+            services.AddTransient(_ =>
             {
-                var options = new GoogleStorageOptions();
-                Configuration.GetSection(nameof(GoogleStorageOptions)).Bind(options);
+                var options = new FileStorageOptions();
+                Configuration.GetSection(nameof(FileStorageOptions)).Bind(options);
                 return options;
             });
-            services.AddTransient<GoogleStorage>();
+            services.AddTransient<FileStorage>();
             services.AddTransient<SpotifyServiceOptions>();
             services.AddTransient<SpotifyService>();
             services.AddTransient<LicenseService>();
@@ -98,7 +93,10 @@ namespace BackOffice.Web
             try
             {
                 var connectionString = Configuration.GetConnectionString("MusicDb");
+                EnsureDatabaseExists(connectionString, logger);
+
                 using var connection = new NpgsqlConnection(connectionString);
+                
                 var evolve = new EvolveDb.Evolve(connection, msg => logger.LogInformation(msg))
                 {
                     Locations = new[] { "db/migrations" },
@@ -133,6 +131,40 @@ namespace BackOffice.Web
             });
 
             app.UseStaticFiles();
+        }
+
+        private static void EnsureDatabaseExists(string connectionString, ILogger logger)
+        {
+            var builder = new NpgsqlConnectionStringBuilder(connectionString);
+            var targetDatabase = builder.Database;
+            if (string.IsNullOrWhiteSpace(targetDatabase))
+            {
+                throw new InvalidOperationException("Database name is missing in the connection string.");
+            }
+
+            var adminBuilder = new NpgsqlConnectionStringBuilder(connectionString)
+            {
+                Database = "postgres"
+            };
+
+            using var adminConnection = new NpgsqlConnection(adminBuilder.ConnectionString);
+            adminConnection.Open();
+
+            using var existsCommand = adminConnection.CreateCommand();
+            existsCommand.CommandText = "SELECT 1 FROM pg_database WHERE datname = @dbName;";
+            existsCommand.Parameters.AddWithValue("dbName", targetDatabase);
+            var exists = existsCommand.ExecuteScalar() != null;
+
+            if (exists)
+            {
+                logger.LogInformation("Database '{Database}' already exists.", targetDatabase);
+                return;
+            }
+            var commandBuilder = new NpgsqlCommandBuilder();
+            using var createCommand = adminConnection.CreateCommand();
+            createCommand.CommandText = $"CREATE DATABASE {commandBuilder.QuoteIdentifier(targetDatabase)};";
+            createCommand.ExecuteNonQuery();
+            logger.LogInformation("Database '{Database}' created.", targetDatabase);
         }
     }
 }

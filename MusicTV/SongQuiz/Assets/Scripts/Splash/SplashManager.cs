@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Panels;
+﻿using System;
+using Assets.Scripts.Panels;
 using Assets.Scripts.Serialization;
 using Assets.Scripts.Services;
 using Assets.Scripts.VIP;
@@ -18,30 +19,19 @@ namespace Assets.Scripts.Splash
                 Application.targetFrameRate = 60;
                 UnityMainThreadDispatcher.Initialize();
                 ServiceProvider.Initialize();
-#if UNITY_STANDALONE
-                new GameObject(nameof(SteamManager)).AddComponent<SteamManager>();
-#endif
                 var musicClient = ServiceProvider.Get<MusicClient>();
-                var playFab = ServiceProvider.Get<PlayFabService>();
                 var waiter = new Waiter(5);
 
                 var success = await waiter.WithRetryAsync(async () =>
                 {
-#if UNITY_STANDALONE
-                    while (!SteamManager.Initialized)
-                    {
-                        await new WaitForSeconds(1);
-                    }
-#endif
                     await LocalizationSettings.InitializationOperation;
-                    var playFabId = await playFab.TryLoginAsync();
-                    var gameOptions = await playFab.GetGameOptionsAsync();
+                    var gameOptions = new GameOptions();
                     ServiceProvider.Add(gameOptions);
                     await musicClient.ConnectAsync();
-                    await this.BookRoomAsync(playFabId, LocalizationSettings.SelectedLocale.Formatter.ToString());
+                    await this.BookRoomAsync(Guid.NewGuid().ToString(), LocalizationSettings.SelectedLocale.Formatter.ToString());
                     gameOptions.ApplySelectedResolution();
                     gameOptions.ApplyVolume();
-                    VipManager.Initialize(musicClient, playFab);
+                    VipManager.Initialize(musicClient);
                 }, 5);
 
                 if (!success)

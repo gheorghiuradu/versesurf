@@ -2,6 +2,7 @@
 using SpotifyAPI.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
+using SpotifyAPI.Web;
 
 namespace TaskService.Extensions
 {
@@ -13,11 +14,11 @@ namespace TaskService.Extensions
             if (playlist.Songs is null) playlist.Songs = new List<Song>();
         }
 
-        public static Song ToSong(this PlaylistTrack playlistTrack)
+        public static Song ToSong(this PlaylistTrack<IPlayableItem> playlistTrack)
         {
             return new Song
             {
-                Artist = string.Join(" & ", playlistTrack.Track.Artists.Select(a => a.Name)),
+                Artist = string.Join(" & ", playlistTrack.Artists.Select(a => a.Name)),
                 IsExplicit = playlistTrack.Track.Explicit,
                 ISRC = playlistTrack.Track.ExternalIds["isrc"],
                 SpotifyId = playlistTrack.Track.Id,

@@ -16,13 +16,13 @@ namespace TaskService.Jobs
         private const string FolderName = "exports";
 
         private readonly MusicDbClient musicDbClient;
-        private readonly GoogleStorage googleStorage;
+        private readonly FileStorage fileStorage;
         private readonly IHostEnvironment hostEnvironment;
 
-        public ExportPlaylistsJob(MusicDbClient musicDbClient, GoogleStorage googleStorage, IHostEnvironment hostEnvironment)
+        public ExportPlaylistsJob(MusicDbClient musicDbClient, FileStorage fileStorage, IHostEnvironment hostEnvironment)
         {
             this.musicDbClient = musicDbClient;
-            this.googleStorage = googleStorage;
+            this.fileStorage = fileStorage;
             this.hostEnvironment = hostEnvironment;
         }
 
@@ -72,13 +72,13 @@ namespace TaskService.Jobs
                         if (!string.IsNullOrEmpty(song.FullAudioUrl))
                         {
                             var fullSongFileName = this.GetCleanFileName(song.FullAudioUrl);
-                            await this.googleStorage.DownloadFileByUrlAsync(song.FullAudioUrl, Path.Combine(exportFolderPath, fullSongFileName));
+                            await this.fileStorage.DownloadFileByUrlAsync(song.FullAudioUrl, Path.Combine(exportFolderPath, fullSongFileName));
                             song.FullAudioUrl = fullSongFileName;
                         }
                         if (!string.IsNullOrEmpty(song.PreviewUrl))
                         {
                             var songPreviewFileName = this.GetCleanFileName(song.PreviewUrl);
-                            await this.googleStorage.DownloadFileByUrlAsync(song.PreviewUrl, Path.Combine(exportFolderPath, songPreviewFileName));
+                            await this.fileStorage.DownloadFileByUrlAsync(song.PreviewUrl, Path.Combine(exportFolderPath, songPreviewFileName));
                             song.PreviewUrl = songPreviewFileName;
                         }
                     }
@@ -86,7 +86,7 @@ namespace TaskService.Jobs
                     if (!string.IsNullOrEmpty(playlist.PictureUrl))
                     {
                         var pictureNewFileName = this.GetCleanFileName(playlist.PictureUrl);
-                        await this.googleStorage.DownloadFileByUrlAsync(playlist.PictureUrl, Path.Combine(exportFolderPath, pictureNewFileName));
+                        await this.fileStorage.DownloadFileByUrlAsync(playlist.PictureUrl, Path.Combine(exportFolderPath, pictureNewFileName));
                         playlist.PictureUrl = pictureNewFileName;
                     }
 

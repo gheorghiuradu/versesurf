@@ -17,7 +17,7 @@ namespace MusicDbApi.Models
 
         public string PictureUrl { get; set; }
 
-        public List<Song> Songs { get; set; }
+        public virtual List<Song> Songs { get; set; }
 
         public int Votes { get; set; }
 

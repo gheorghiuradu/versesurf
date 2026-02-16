@@ -19,21 +19,21 @@ namespace TaskService
         private readonly LicenseService licenseService;
         private readonly MusicDbClient musicDbClient;
         private readonly MusixApiClient musixApiClient;
-        private readonly GoogleStorage googleStorage;
+        private readonly FileStorage fileStorage;
         private readonly MusicBrainzApiClient musicBrainzApiClient;
 
         public ImportSpotifyPlaylistJob(
             SpotifyService spotifyService,
             LicenseService licenseService,
             MusixApiClient musixApiClient,
-            GoogleStorage googleStorage,
+            FileStorage fileStorage,
             MusicBrainzApiClient musicBrainzApiClient,
             MusicDbClient musicDbClient)
         {
             this.spotifyService = spotifyService;
             this.licenseService = licenseService;
             this.musixApiClient = musixApiClient;
-            this.googleStorage = googleStorage;
+            this.fileStorage = fileStorage;
             this.musicBrainzApiClient = musicBrainzApiClient;
             this.musicDbClient = musicDbClient;
         }
@@ -141,7 +141,7 @@ namespace TaskService
                         }
                     }
 
-                    song.PreviewUrl = await this.googleStorage.GetOrUploadSongPreviewAsync
+                    song.PreviewUrl = await this.fileStorage.GetOrUploadSongPreviewAsync
                                 (playlistTrack.Track.PreviewUrl, $"{song.SpotifyId}.mp3");
 
                     if (string.IsNullOrWhiteSpace(song.PlaylistId))

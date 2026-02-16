@@ -20,18 +20,18 @@ namespace ArtManager
     public class MusicBrainzApiClient : ICoverArtService
     {
         private SpotifyWebAPI spotifyWebAPI;
-        private readonly GoogleStorage googleStorage;
+        private readonly FileStorage fileStorage;
 
         private readonly HttpClient httpClient = new HttpClient
         {
             BaseAddress = new Uri("http://coverartarchive.org")
         };
 
-        public MusicBrainzApiClient(GoogleStorage googleStorage)
+        public MusicBrainzApiClient(FileStorage fileStorage)
         {
             this.httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
             this.httpClient.DefaultRequestHeaders.Add("User-Agent", "verse.surf  Version/1 mymailatmaildotcom");
-            this.googleStorage = googleStorage;
+            this.fileStorage = fileStorage;
         }
 
         public async Task<string> GetImageForPlaylistAsync(Playlist playlist, CancellationToken token = default)
@@ -42,9 +42,9 @@ namespace ArtManager
             }
 
             var fileKey = string.IsNullOrWhiteSpace(playlist.SpotifyId) ? $"{playlist.Id}.jpg" : $"{playlist.SpotifyId}.jpg";
-            if (await this.googleStorage.PlaylistImageExistsAsync(fileKey))
+            if (await this.fileStorage.PlaylistImageExistsAsync(fileKey))
             {
-                var existingUrl = await this.googleStorage.GetPlaylistImageUrlAsync(fileKey);
+                var existingUrl = await this.fileStorage.GetPlaylistImageUrlAsync(fileKey);
                 using var web = new WebClient();
                 web.DownloadFile(existingUrl, fileKey);
                 ImageProcessingService.ResizeImage(fileKey);
@@ -52,7 +52,7 @@ namespace ArtManager
                 string newUrl;
                 using (var stream = File.OpenRead(fileKey))
                 {
-                    newUrl = await this.googleStorage.UploadPlaylistImageAsync(stream, fileKey);
+                    newUrl = await this.fileStorage.UploadPlaylistImageAsync(stream, fileKey);
                 }
                 File.Delete(fileKey);
 
@@ -128,7 +128,7 @@ namespace ArtManager
                 string publicUrl;
                 using (var stream = File.OpenRead(fileKey))
                 {
-                    publicUrl = await this.googleStorage.UploadPlaylistImageAsync(stream, fileKey);
+                    publicUrl = await this.fileStorage.UploadPlaylistImageAsync(stream, fileKey);
                 }
                 File.Delete(fileKey);
 
