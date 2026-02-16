@@ -26,22 +26,6 @@
     </FormControl>
     <br />
     <FormControl>
-        <FormControlLabel Label="Enable BMI">
-            <Checkbox Value="command.EnableBmi" OnChange="@OnBmiCheckboxChange" Checked="@command.EnableBmi" />
-        </FormControlLabel>
-    </FormControl>
-    <FormControl>
-        <FormControlLabel Label="Enable ASCAP">
-            <Checkbox Value="command.EnableAscap" OnChange="@OnAscapCheckboxChange" Checked="@command.EnableAscap" />
-        </FormControlLabel>
-    </FormControl>
-    <FormControl>
-        <FormControlLabel Label="Enable SESAC">
-            <Checkbox Value="command.EnableSesac" OnChange="@OnSesacCheckboxChange" Checked="@command.EnableSesac" />
-        </FormControlLabel>
-    </FormControl>
-    <br />
-    <FormControl>
         <Button Variant="@ButtonVariant.Contained" Type="ButtonType.Submit" Color="@Color.Primary">Start</Button>
     </FormControl>
     <List>
@@ -65,25 +49,6 @@
             this.command.MinimumNumberOfSongs = result;
             this.StateHasChanged();
         }
-    }
-    private void OnBmiCheckboxChange(ChangeEventArgs e)
-    {
-        this.command.EnableBmi = !this.command.EnableBmi;
-        this.StateHasChanged();
-    }
-
-    private void OnAscapCheckboxChange(ChangeEventArgs e)
-    {
-        this.command.EnableAscap = !this.command.EnableAscap;
-        this.StateHasChanged();
-
-    }
-
-    private void OnSesacCheckboxChange(ChangeEventArgs e)
-    {
-        this.command.EnableSesac = !this.command.EnableSesac;
-        this.StateHasChanged();
-
     }
 
     private void ChangeSpotifyId(ChangeEventArgs e)

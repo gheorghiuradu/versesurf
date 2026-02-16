@@ -13,9 +13,9 @@ namespace ArtManager.Tests
         {
             MockServiceConfiguration.Build();
             this.mockDb = new MockDb();
-            this.musicBrainzApi = new MusicBrainzApiClient(new GoogleStorage(new GoogleStorageOptions
+            this.musicBrainzApi = new MusicBrainzApiClient(new FileStorage(new FileStorageOptions
             {
-                BucketName = "music-storage-euw",
+                BasePath = "music-storage-euw",
                 PlaylistImgPrefix = "static/playlist-img",
                 SongPreviewsPrefix = "static/song-previews"
             }));

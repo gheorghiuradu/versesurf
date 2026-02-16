@@ -11,13 +11,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MusicDbApi;
-using MusicEventDbApi;
 using MusicServer.CustomAuth;
 using MusicServer.CustomMiddleware;
 using MusicServer.Hubs;
 using MusicServer.Hubs.Services;
 using MusicServer.PerformanceTesting;
-using MusicServer.Services;
 using MusicServer.Words;
 using MusicStorageClient;
 using Newtonsoft.Json;
@@ -30,14 +28,9 @@ using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 namespace MusicServer
 {
-    public class Startup
+    public class Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; } = configuration;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -61,8 +54,9 @@ namespace MusicServer
             services.AddSignalR().AddJsonProtocol(opt =>
             {
                 opt.PayloadSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-                opt.PayloadSerializerOptions.IgnoreNullValues = true;
+                opt.PayloadSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             });
+            services.AddRazorPages();
             services.AddLogging();
 
             //Hub Services
@@ -77,11 +71,11 @@ namespace MusicServer
             //Other services
             services.AddTransient(sp =>
             {
-                var options = new GoogleStorageOptions();
-                Configuration.GetSection(nameof(GoogleStorageOptions)).Bind(options);
+                var options = new FileStorageOptions();
+                Configuration.GetSection(nameof(FileStorageOptions)).Bind(options);
                 return options;
             });
-            services.AddScoped<GoogleStorage>();
+            services.AddScoped<FileStorage>();
             services.AddScoped<WordProvider>();
             services.AddScoped<VersioningService>();
 
@@ -102,17 +96,12 @@ namespace MusicServer
 
         private void AddDatabaseServices(IServiceCollection services)
         {
-            var connectionString = this.Configuration.GetConnectionString("MusicDb")
-                ?? "Host=localhost;Port=5432;Database=music-db;Username=developer;Password=kt7Hdzkk";
+            var connectionString = this.Configuration.GetConnectionString("MusicDb");
+            if(string.IsNullOrWhiteSpace(connectionString)) { throw new System.Exception("Connection string 'MusicDb' is not configured."); }
 
-            services.AddDbContext<MusicDbApi.MusicDbContext>(options =>
-                options.UseNpgsql(connectionString));
+            services.AddDbContext<MusicDbContext>(options =>
+                options.UseSqlite(connectionString));
             services.AddScoped<MusicDbClient>();
-
-            services.AddDbContext<MusicEventDbContext>(options =>
-                options.UseNpgsql(connectionString));
-            services.AddScoped<MusicEventDbClient>();
-            services.AddScoped<MusicEventService>();
         }
 
         private void AddGamePlayingContext(IServiceCollection services)
@@ -153,11 +142,6 @@ namespace MusicServer
                     }
                 }
             }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                //app.UseHsts();
-            }
 
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -172,6 +156,7 @@ namespace MusicServer
                 }
                 endpoints.MapHub<GameHub>("/ws/gamehub");
                 endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

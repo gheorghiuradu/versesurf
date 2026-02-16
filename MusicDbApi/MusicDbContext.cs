@@ -3,15 +3,10 @@ using MusicDbApi.Models;
 
 namespace MusicDbApi
 {
-    public class MusicDbContext : DbContext
+    public class MusicDbContext(DbContextOptions<MusicDbContext> options) : DbContext(options)
     {
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<Song> Songs { get; set; }
-
-        public MusicDbContext(DbContextOptions<MusicDbContext> options)
-            : base(options)
-        {
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

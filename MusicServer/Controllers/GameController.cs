@@ -6,10 +6,8 @@ using Microsoft.Extensions.Configuration;
 using MusicServer.CustomAuth;
 using MusicServer.Hubs;
 using MusicServer.Models;
-using MusicServer.Services;
 using MusicStorageClient;
 using SharedDomain;
-using SharedDomain.InfraEvents;
 using SharedDomain.Messages.Commands;
 using System;
 using System.Threading.Tasks;
@@ -23,29 +21,26 @@ namespace MusicServer.Controllers
     {
         private readonly RoomAppService roomAppService;
         private readonly IHubContext<GameHub> gameHub;
-        private readonly GoogleStorage googleStorage;
+        private readonly FileStorage fileStorage;
         private readonly IConfiguration configuration;
-        private readonly MusicEventService musicEventService;
 
         public GameController(
-            GoogleStorage googleStorage,
+            FileStorage fileStorage,
             RoomAppService roomAppService,
             IHubContext<GameHub> gameHub,
-            IConfiguration configuration,
-            MusicEventService musicEventService)
+            IConfiguration configuration)
         {
-            this.googleStorage = googleStorage;
+            this.fileStorage = fileStorage;
             this.roomAppService = roomAppService;
             this.gameHub = gameHub;
             this.configuration = configuration;
-            this.musicEventService = musicEventService;
         }
 
         [Authorize(Roles = Roles.Host)]
         [HttpGet]
         public async Task<IActionResult> GetSignedSongPreviewUrl([FromQuery] string previewUrl)
         {
-            var signedUrl = await this.googleStorage.GetSignedUrlAsync(previewUrl);
+            var signedUrl = await this.fileStorage.GetSignedUrlAsync(previewUrl);
 
             if (string.IsNullOrEmpty(signedUrl)) return this.NotFound();
 
@@ -58,7 +53,7 @@ namespace MusicServer.Controllers
         {
             try
             {
-                return this.Ok(await this.googleStorage.GetFileMd5Async(fileUrl));
+                return this.Ok(await this.fileStorage.GetFileMd5Async(fileUrl));
             }
             catch (Exception)
             {
@@ -78,11 +73,6 @@ namespace MusicServer.Controllers
             var actualKey = this.configuration["BoKey"] ?? "";
             if (!string.Equals(notificationRequest.BoKey, actualKey))
             {
-                await this.musicEventService.PostEventAsync(EventType.NotificationRequestUnauthorized, new
-                {
-                    Ip = this.HttpContext.Connection.RemoteIpAddress,
-                    HttpRequest = this.HttpContext.Request
-                });
                 return this.Unauthorized();
             }
 
@@ -97,12 +87,6 @@ namespace MusicServer.Controllers
                         Message = notificationRequest.Message
                     });
             }
-
-            await this.musicEventService.PostEventAsync(EventType.NotificationRequestAuthorized, new
-            {
-                Request = notificationRequest,
-                HostConnectionIds = connectionIdResult.ConnectionIds
-            });
 
             return this.Ok(connectionIdResult.ConnectionIds.Count);
         }

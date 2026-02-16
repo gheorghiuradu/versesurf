@@ -37,3 +37,25 @@ msbuild.wrn
 .vs/
 
 [Ll]ogs/.nuget/
+
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emory[Cc]aptures/
+[Uu]ser[Ss]ettings/
+*.unityproj
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
