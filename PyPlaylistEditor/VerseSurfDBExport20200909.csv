@@ -1,8 +1,1324 @@
 Name,PictureUrl,Songs.SpotifyId,Songs.Artist,Songs.Title,Songs.TimedLyrics,Songs.Snippet,Songs.StartSecond,Songs.EndSecond,Songs.IsExplicit,Enabled,Featured
-'90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,3kVIFDE3G89I2RPVkiRaRj,112,Cupid,,But you won't know {unless} you give it a try,,,FALSE,TRUE,FALSE
-'90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,6SkGfPa77E4giShVbk9N6R,Faith Evans,Soon as I Get Home,,Baby I'll do what I gotta do,,,FALSE,TRUE,FALSE
-'90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,2cXdUg5c57C4b2qLCqHAOX,Prince,Insatiable,,Insatiable's my name when it comes 2 u,,,FALSE,TRUE,FALSE
-'90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,5ljnOdrl3v8oYC2Llknvna,Sade,Cherish the Day,,You're ruling the way that I move,,,FALSE,TRUE,FALSE
+'90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,3kVIFDE3G89I2RPVkiRaRj,112,Cupid,"[
+    {
+      ""id"": ""tvw0mw"",
+      ""text"": ""But you won't know unless you give it a try"",
+      ""words"": [
+        {
+          ""id"": ""38hqvn"",
+          ""text"": ""But"",
+          ""start_time"": 0.0,
+          ""end_time"": 2.06,
+          ""confidence"": 0.113,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""xt9uuo"",
+          ""text"": ""you"",
+          ""start_time"": 2.06,
+          ""end_time"": 2.74,
+          ""confidence"": 0.915,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""9t6wmq"",
+          ""text"": ""won't"",
+          ""start_time"": 2.74,
+          ""end_time"": 3.22,
+          ""confidence"": 0.934,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""6lavl7"",
+          ""text"": ""know"",
+          ""start_time"": 3.22,
+          ""end_time"": 3.64,
+          ""confidence"": 0.985,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""z4og00"",
+          ""text"": ""unless"",
+          ""start_time"": 3.64,
+          ""end_time"": 4.06,
+          ""confidence"": 0.938,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""f7ch2d"",
+          ""text"": ""you"",
+          ""start_time"": 4.06,
+          ""end_time"": 4.56,
+          ""confidence"": 0.982,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""f309jh"",
+          ""text"": ""give"",
+          ""start_time"": 4.56,
+          ""end_time"": 4.94,
+          ""confidence"": 0.962,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""q7b5r7"",
+          ""text"": ""it"",
+          ""start_time"": 4.94,
+          ""end_time"": 5.22,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""d8v7fv"",
+          ""text"": ""a"",
+          ""start_time"": 5.22,
+          ""end_time"": 5.64,
+          ""confidence"": 0.993,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""5etb4f"",
+          ""text"": ""try"",
+          ""start_time"": 5.64,
+          ""end_time"": 5.92,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 0.0,
+      ""end_time"": 5.92
+    },
+    {
+      ""id"": ""b7f8z5"",
+      ""text"": ""Ain't no doubt about it, Lord knows I really mean it"",
+      ""words"": [
+        {
+          ""id"": ""f4c0jg"",
+          ""text"": ""Ain't"",
+          ""start_time"": 6.84,
+          ""end_time"": 7.44,
+          ""confidence"": 0.983,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""lupmno"",
+          ""text"": ""no"",
+          ""start_time"": 7.44,
+          ""end_time"": 7.88,
+          ""confidence"": 0.992,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""9zk352"",
+          ""text"": ""doubt"",
+          ""start_time"": 7.88,
+          ""end_time"": 8.42,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""841grd"",
+          ""text"": ""about"",
+          ""start_time"": 8.42,
+          ""end_time"": 9.02,
+          ""confidence"": 0.991,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""yxz228"",
+          ""text"": ""it,"",
+          ""start_time"": 9.02,
+          ""end_time"": 9.34,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""shz5p7"",
+          ""text"": ""Lord"",
+          ""start_time"": 9.54,
+          ""end_time"": 10.0,
+          ""confidence"": 0.714,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""7860tu"",
+          ""text"": ""knows"",
+          ""start_time"": 10.0,
+          ""end_time"": 10.46,
+          ""confidence"": 0.965,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""uvr76r"",
+          ""text"": ""I"",
+          ""start_time"": 10.46,
+          ""end_time"": 10.88,
+          ""confidence"": 0.644,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""k5doe3"",
+          ""text"": ""really"",
+          ""start_time"": 10.88,
+          ""end_time"": 11.4,
+          ""confidence"": 0.942,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""c1e194"",
+          ""text"": ""mean"",
+          ""start_time"": 11.4,
+          ""end_time"": 11.74,
+          ""confidence"": 0.936,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""zxyu3r"",
+          ""text"": ""it"",
+          ""start_time"": 11.74,
+          ""end_time"": 12.12,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 6.84,
+      ""end_time"": 12.12
+    },
+    {
+      ""id"": ""bdenc8"",
+      ""text"": ""I'd rather die before, before I lie to you"",
+      ""words"": [
+        {
+          ""id"": ""4drsii"",
+          ""text"": ""I'd"",
+          ""start_time"": 12.78,
+          ""end_time"": 13.38,
+          ""confidence"": 0.82,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""p402xo"",
+          ""text"": ""rather"",
+          ""start_time"": 13.38,
+          ""end_time"": 13.98,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""vqo0zh"",
+          ""text"": ""die"",
+          ""start_time"": 13.98,
+          ""end_time"": 14.46,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""fz8c1n"",
+          ""text"": ""before,"",
+          ""start_time"": 14.46,
+          ""end_time"": 15.24,
+          ""confidence"": 0.99,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""fa5uss"",
+          ""text"": ""before"",
+          ""start_time"": 15.4,
+          ""end_time"": 16.4,
+          ""confidence"": 0.921,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""pm6f8k"",
+          ""text"": ""I"",
+          ""start_time"": 16.4,
+          ""end_time"": 16.82,
+          ""confidence"": 0.905,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""6h74af"",
+          ""text"": ""lie"",
+          ""start_time"": 16.82,
+          ""end_time"": 17.06,
+          ""confidence"": 0.694,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""5lql09"",
+          ""text"": ""to"",
+          ""start_time"": 17.06,
+          ""end_time"": 17.32,
+          ""confidence"": 0.917,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""c704hs"",
+          ""text"": ""you"",
+          ""start_time"": 17.32,
+          ""end_time"": 17.46,
+          ""confidence"": 0.965,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 12.78,
+      ""end_time"": 17.46
+    },
+    {
+      ""id"": ""j9ey4b"",
+      ""text"": ""Never want to be there, ain't no life without you"",
+      ""words"": [
+        {
+          ""id"": ""sh37y7"",
+          ""text"": ""Never"",
+          ""start_time"": 17.72,
+          ""end_time"": 18.64,
+          ""confidence"": 0.907,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""2n1mcy"",
+          ""text"": ""want"",
+          ""start_time"": 18.64,
+          ""end_time"": 19.38,
+          ""confidence"": 0.653,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""i8bmir"",
+          ""text"": ""to"",
+          ""start_time"": 19.38,
+          ""end_time"": 19.68,
+          ""confidence"": 0.982,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""4fk1vv"",
+          ""text"": ""be"",
+          ""start_time"": 19.68,
+          ""end_time"": 20.0,
+          ""confidence"": 0.704,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ka7it1"",
+          ""text"": ""there,"",
+          ""start_time"": 20.0,
+          ""end_time"": 20.3,
+          ""confidence"": 0.194,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""pog738"",
+          ""text"": ""ain't"",
+          ""start_time"": 20.42,
+          ""end_time"": 21.22,
+          ""confidence"": 0.93,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""aynjza"",
+          ""text"": ""no"",
+          ""start_time"": 21.22,
+          ""end_time"": 21.54,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""4s8n10"",
+          ""text"": ""life"",
+          ""start_time"": 21.54,
+          ""end_time"": 22.04,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""uaqyd4"",
+          ""text"": ""without"",
+          ""start_time"": 22.04,
+          ""end_time"": 22.5,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""x9iw8u"",
+          ""text"": ""you"",
+          ""start_time"": 22.5,
+          ""end_time"": 22.86,
+          ""confidence"": 0.902,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 17.72,
+      ""end_time"": 22.86
+    },
+    {
+      ""id"": ""ws1ivd"",
+      ""text"": ""Never gonna leave, never gonna go"",
+      ""words"": [
+        {
+          ""id"": ""l8bjjp"",
+          ""text"": ""Never"",
+          ""start_time"": 23.64,
+          ""end_time"": 24.22,
+          ""confidence"": 0.467,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""22kwgi"",
+          ""text"": ""gonna"",
+          ""start_time"": 24.22,
+          ""end_time"": 24.54,
+          ""confidence"": 0.953,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""smiflp"",
+          ""text"": ""leave,"",
+          ""start_time"": 24.54,
+          ""end_time"": 24.96,
+          ""confidence"": 0.965,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""chbob6"",
+          ""text"": ""never"",
+          ""start_time"": 25.38,
+          ""end_time"": 25.6,
+          ""confidence"": 0.979,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""hxjipf"",
+          ""text"": ""gonna"",
+          ""start_time"": 25.6,
+          ""end_time"": 25.94,
+          ""confidence"": 0.995,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""0j9fco"",
+          ""text"": ""go"",
+          ""start_time"": 25.94,
+          ""end_time"": 26.62,
+          ""confidence"": 0.995,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 23.64,
+      ""end_time"": 26.62
+    }
+  ]",But you won't know {unless} you give it a try,0,3.64,FALSE,TRUE,FALSE
+'90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,6SkGfPa77E4giShVbk9N6R,Faith Evans,Soon as I Get Home,"[
+    {
+      ""id"": ""o6ih6y"",
+      ""text"": ""As I get home, I'll make it up to you."",
+      ""words"": [
+        {
+          ""id"": ""s027rh"",
+          ""text"": ""As"",
+          ""start_time"": 0.08,
+          ""end_time"": 0.78,
+          ""confidence"": 0.368,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""qni49i"",
+          ""text"": ""I"",
+          ""start_time"": 0.78,
+          ""end_time"": 1.12,
+          ""confidence"": 0.538,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""5rucmy"",
+          ""text"": ""get"",
+          ""start_time"": 1.12,
+          ""end_time"": 2.22,
+          ""confidence"": 0.823,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""fbclz0"",
+          ""text"": ""home,"",
+          ""start_time"": 2.22,
+          ""end_time"": 4.88,
+          ""confidence"": 0.993,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""nm5vbi"",
+          ""text"": ""I'll"",
+          ""start_time"": 5.12,
+          ""end_time"": 6.62,
+          ""confidence"": 0.828,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""zh8tws"",
+          ""text"": ""make"",
+          ""start_time"": 6.62,
+          ""end_time"": 7.1,
+          ""confidence"": 0.975,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""y7u7fp"",
+          ""text"": ""it"",
+          ""start_time"": 7.1,
+          ""end_time"": 7.56,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""oac6va"",
+          ""text"": ""up"",
+          ""start_time"": 7.56,
+          ""end_time"": 7.92,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""owq344"",
+          ""text"": ""to"",
+          ""start_time"": 7.92,
+          ""end_time"": 8.28,
+          ""confidence"": 0.995,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ln39mh"",
+          ""text"": ""you."",
+          ""start_time"": 8.28,
+          ""end_time"": 8.64,
+          ""confidence"": 0.992,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 0.08,
+      ""end_time"": 8.64
+    },
+    {
+      ""id"": ""co2q8b"",
+      ""text"": ""Baby, I'll do what I gotta do."",
+      ""words"": [
+        {
+          ""id"": ""d5pfd0"",
+          ""text"": ""Baby,"",
+          ""start_time"": 9.08,
+          ""end_time"": 10.1,
+          ""confidence"": 0.367,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""cme8e0"",
+          ""text"": ""I'll"",
+          ""start_time"": 10.24,
+          ""end_time"": 10.5,
+          ""confidence"": 0.993,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""2q7ot7"",
+          ""text"": ""do"",
+          ""start_time"": 10.5,
+          ""end_time"": 10.94,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""t8zt4f"",
+          ""text"": ""what"",
+          ""start_time"": 10.94,
+          ""end_time"": 11.32,
+          ""confidence"": 0.993,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""up93p3"",
+          ""text"": ""I"",
+          ""start_time"": 11.32,
+          ""end_time"": 11.62,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""hgvpha"",
+          ""text"": ""gotta"",
+          ""start_time"": 11.62,
+          ""end_time"": 11.9,
+          ""confidence"": 0.86,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""edoioe"",
+          ""text"": ""do."",
+          ""start_time"": 11.9,
+          ""end_time"": 13.38,
+          ""confidence"": 0.992,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 9.08,
+      ""end_time"": 13.38
+    },
+    {
+      ""id"": ""38pbfa"",
+      ""text"": ""Soon as I get home, I'll make it up to you."",
+      ""words"": [
+        {
+          ""id"": ""a8b1zm"",
+          ""text"": ""Soon"",
+          ""start_time"": 14.28,
+          ""end_time"": 15.36,
+          ""confidence"": 0.724,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""wmnczk"",
+          ""text"": ""as"",
+          ""start_time"": 15.36,
+          ""end_time"": 16.48,
+          ""confidence"": 0.964,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""2petpd"",
+          ""text"": ""I"",
+          ""start_time"": 16.48,
+          ""end_time"": 17.24,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""osnsq0"",
+          ""text"": ""get"",
+          ""start_time"": 17.24,
+          ""end_time"": 18.22,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""aorgml"",
+          ""text"": ""home,"",
+          ""start_time"": 18.22,
+          ""end_time"": 19.98,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""i58s1f"",
+          ""text"": ""I'll"",
+          ""start_time"": 20.64,
+          ""end_time"": 22.52,
+          ""confidence"": 0.904,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""reuxwu"",
+          ""text"": ""make"",
+          ""start_time"": 22.52,
+          ""end_time"": 23.2,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""z8vykm"",
+          ""text"": ""it"",
+          ""start_time"": 23.2,
+          ""end_time"": 23.54,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""kto0aj"",
+          ""text"": ""up"",
+          ""start_time"": 23.54,
+          ""end_time"": 23.92,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ab5vu8"",
+          ""text"": ""to"",
+          ""start_time"": 23.92,
+          ""end_time"": 24.3,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""nsrqt2"",
+          ""text"": ""you."",
+          ""start_time"": 24.3,
+          ""end_time"": 24.5,
+          ""confidence"": 1.0,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 14.28,
+      ""end_time"": 24.5
+    },
+    {
+      ""id"": ""82nrw8"",
+      ""text"": ""Baby, I'll do what I gotta do."",
+      ""words"": [
+        {
+          ""id"": ""zcp4w0"",
+          ""text"": ""Baby,"",
+          ""start_time"": 25.54,
+          ""end_time"": 25.94,
+          ""confidence"": 0.964,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""14xw3r"",
+          ""text"": ""I'll"",
+          ""start_time"": 25.98,
+          ""end_time"": 26.66,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""6irnju"",
+          ""text"": ""do"",
+          ""start_time"": 26.66,
+          ""end_time"": 26.98,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ql42bx"",
+          ""text"": ""what"",
+          ""start_time"": 26.98,
+          ""end_time"": 27.32,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""068g0o"",
+          ""text"": ""I"",
+          ""start_time"": 27.32,
+          ""end_time"": 27.62,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""z9hvhu"",
+          ""text"": ""gotta"",
+          ""start_time"": 27.62,
+          ""end_time"": 27.92,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""s84322"",
+          ""text"": ""do."",
+          ""start_time"": 27.92,
+          ""end_time"": 28.46,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 25.54,
+      ""end_time"": 28.46
+    }
+  ]",Baby I'll do what I {gotta} do,5.12,11.62,FALSE,TRUE,FALSE
+'90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,2cXdUg5c57C4b2qLCqHAOX,Prince,Insatiable,"[
+    {
+      ""id"": ""vsi82x"",
+      ""text"": ""Hey, mother"",
+      ""words"": [
+        {
+          ""id"": ""2vrp65"",
+          ""text"": ""Hey,"",
+          ""start_time"": 0.0,
+          ""end_time"": 0.62,
+          ""confidence"": 0.164,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""1isocc"",
+          ""text"": ""mother"",
+          ""start_time"": 0.82,
+          ""end_time"": 1.22,
+          ""confidence"": 0.185,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 0.0,
+      ""end_time"": 1.22
+    },
+    {
+      ""id"": ""y9131b"",
+      ""text"": ""My body, baby"",
+      ""words"": [
+        {
+          ""id"": ""ovydun"",
+          ""text"": ""My"",
+          ""start_time"": 7.76,
+          ""end_time"": 8.3,
+          ""confidence"": 0.308,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""utz28c"",
+          ""text"": ""body,"",
+          ""start_time"": 8.3,
+          ""end_time"": 8.9,
+          ""confidence"": 0.527,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""0m01n6"",
+          ""text"": ""baby"",
+          ""start_time"": 9.1,
+          ""end_time"": 9.74,
+          ""confidence"": 0.967,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 7.76,
+      ""end_time"": 9.74
+    },
+    {
+      ""id"": ""3et03l"",
+      ""text"": ""You truly do"",
+      ""words"": [
+        {
+          ""id"": ""o97ma4"",
+          ""text"": ""You"",
+          ""start_time"": 10.5,
+          ""end_time"": 10.98,
+          ""confidence"": 0.893,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""qnd7d8"",
+          ""text"": ""truly"",
+          ""start_time"": 10.98,
+          ""end_time"": 11.82,
+          ""confidence"": 0.964,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""qehy19"",
+          ""text"": ""do"",
+          ""start_time"": 11.82,
+          ""end_time"": 12.66,
+          ""confidence"": 0.993,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 10.5,
+      ""end_time"": 12.66
+    },
+    {
+      ""id"": ""c1b291"",
+      ""text"": ""It's actionable"",
+      ""words"": [
+        {
+          ""id"": ""7e2mz6"",
+          ""text"": ""It's"",
+          ""start_time"": 13.42,
+          ""end_time"": 13.82,
+          ""confidence"": 0.869,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""m5jb2n"",
+          ""text"": ""actionable"",
+          ""start_time"": 13.82,
+          ""end_time"": 14.76,
+          ""confidence"": 0.212,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 13.42,
+      ""end_time"": 14.76
+    },
+    {
+      ""id"": ""2zedap"",
+      ""text"": ""But never when it comes to you"",
+      ""words"": [
+        {
+          ""id"": ""neojj8"",
+          ""text"": ""But"",
+          ""start_time"": 14.9,
+          ""end_time"": 15.48,
+          ""confidence"": 0.707,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""tjp29c"",
+          ""text"": ""never"",
+          ""start_time"": 15.48,
+          ""end_time"": 16.12,
+          ""confidence"": 0.611,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""oaqixq"",
+          ""text"": ""when"",
+          ""start_time"": 16.12,
+          ""end_time"": 16.48,
+          ""confidence"": 0.566,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""te1a5t"",
+          ""text"": ""it"",
+          ""start_time"": 16.48,
+          ""end_time"": 17.14,
+          ""confidence"": 0.887,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""x5taz8"",
+          ""text"": ""comes"",
+          ""start_time"": 17.14,
+          ""end_time"": 17.66,
+          ""confidence"": 0.989,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""hg2xjc"",
+          ""text"": ""to"",
+          ""start_time"": 17.66,
+          ""end_time"": 18.04,
+          ""confidence"": 0.99,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""0n7a7q"",
+          ""text"": ""you"",
+          ""start_time"": 18.04,
+          ""end_time"": 18.46,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 14.9,
+      ""end_time"": 18.46
+    },
+    {
+      ""id"": ""by4tf1"",
+      ""text"": ""Tonight, we video"",
+      ""words"": [
+        {
+          ""id"": ""l1qqbt"",
+          ""text"": ""Tonight,"",
+          ""start_time"": 20.62,
+          ""end_time"": 21.26,
+          ""confidence"": 0.982,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""xalp3b"",
+          ""text"": ""we"",
+          ""start_time"": 22.14,
+          ""end_time"": 22.42,
+          ""confidence"": 0.897,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""5xdmpi"",
+          ""text"": ""video"",
+          ""start_time"": 22.42,
+          ""end_time"": 23.16,
+          ""confidence"": 0.97,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 20.62,
+      ""end_time"": 23.16
+    },
+    {
+      ""id"": ""9hv2ic"",
+      ""text"": ""No one will ever know"",
+      ""words"": [
+        {
+          ""id"": ""h7nurx"",
+          ""text"": ""No"",
+          ""start_time"": 26.3,
+          ""end_time"": 26.88,
+          ""confidence"": 0.792,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""di9pdl"",
+          ""text"": ""one"",
+          ""start_time"": 26.88,
+          ""end_time"": 27.5,
+          ""confidence"": 0.962,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""f3p7fc"",
+          ""text"": ""will"",
+          ""start_time"": 27.5,
+          ""end_time"": 28.34,
+          ""confidence"": 0.889,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""asf17i"",
+          ""text"": ""ever"",
+          ""start_time"": 28.34,
+          ""end_time"": 28.62,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""wt6aea"",
+          ""text"": ""know"",
+          ""start_time"": 28.62,
+          ""end_time"": 29.26,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 26.3,
+      ""end_time"": 29.26
+    }
+  ]","Tonight, we {video}",14.9,22.42,FALSE,TRUE,FALSE
+'90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,5ljnOdrl3v8oYC2Llknvna,Sade,Cherish the Day,"[
+    {
+      ""id"": ""goze9o"",
+      ""text"": ""I cherish the day I won't go astray"",
+      ""words"": [
+        {
+          ""id"": ""mcz35a"",
+          ""text"": ""I"",
+          ""start_time"": 0.0,
+          ""end_time"": 10.96,
+          ""confidence"": 0.089,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""755tgv"",
+          ""text"": ""cherish"",
+          ""start_time"": 10.96,
+          ""end_time"": 11.76,
+          ""confidence"": 0.48,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""w0mwhx"",
+          ""text"": ""the"",
+          ""start_time"": 11.76,
+          ""end_time"": 12.14,
+          ""confidence"": 0.983,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""c4tpdu"",
+          ""text"": ""day"",
+          ""start_time"": 12.14,
+          ""end_time"": 12.7,
+          ""confidence"": 0.972,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""c5wnpd"",
+          ""text"": ""I"",
+          ""start_time"": 12.7,
+          ""end_time"": 14.24,
+          ""confidence"": 0.352,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""pu2lt8"",
+          ""text"": ""won't"",
+          ""start_time"": 14.24,
+          ""end_time"": 14.56,
+          ""confidence"": 0.978,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""q3ir99"",
+          ""text"": ""go"",
+          ""start_time"": 14.56,
+          ""end_time"": 14.94,
+          ""confidence"": 0.982,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""379lrs"",
+          ""text"": ""astray"",
+          ""start_time"": 14.94,
+          ""end_time"": 15.96,
+          ""confidence"": 0.995,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 0.0,
+      ""end_time"": 15.96
+    },
+    {
+      ""id"": ""dh1kok"",
+      ""text"": ""I won't be afraid You won't catch me running"",
+      ""words"": [
+        {
+          ""id"": ""xs2jue"",
+          ""text"": ""I"",
+          ""start_time"": 16.98,
+          ""end_time"": 17.38,
+          ""confidence"": 0.732,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""a3o0fl"",
+          ""text"": ""won't"",
+          ""start_time"": 17.38,
+          ""end_time"": 17.66,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""8q2l96"",
+          ""text"": ""be"",
+          ""start_time"": 17.66,
+          ""end_time"": 18.02,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""7e4ky5"",
+          ""text"": ""afraid"",
+          ""start_time"": 18.02,
+          ""end_time"": 18.9,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""kz9f44"",
+          ""text"": ""You"",
+          ""start_time"": 18.9,
+          ""end_time"": 20.34,
+          ""confidence"": 0.644,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""itsm83"",
+          ""text"": ""won't"",
+          ""start_time"": 20.34,
+          ""end_time"": 20.68,
+          ""confidence"": 0.993,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""qsubk1"",
+          ""text"": ""catch"",
+          ""start_time"": 20.68,
+          ""end_time"": 21.02,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""x3cpgx"",
+          ""text"": ""me"",
+          ""start_time"": 21.02,
+          ""end_time"": 21.36,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""l3ry2h"",
+          ""text"": ""running"",
+          ""start_time"": 21.36,
+          ""end_time"": 21.88,
+          ""confidence"": 0.797,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 16.98,
+      ""end_time"": 21.88
+    },
+    {
+      ""id"": ""cen12h"",
+      ""text"": ""I cherish the day I won't go astray"",
+      ""words"": [
+        {
+          ""id"": ""1ch5o3"",
+          ""text"": ""I"",
+          ""start_time"": 22.62,
+          ""end_time"": 23.5,
+          ""confidence"": 0.805,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""4oski4"",
+          ""text"": ""cherish"",
+          ""start_time"": 23.5,
+          ""end_time"": 23.76,
+          ""confidence"": 0.989,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""k6rz3q"",
+          ""text"": ""the"",
+          ""start_time"": 23.76,
+          ""end_time"": 24.16,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""2nuq26"",
+          ""text"": ""day"",
+          ""start_time"": 24.16,
+          ""end_time"": 25.08,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""zuv2b6"",
+          ""text"": ""I"",
+          ""start_time"": 25.08,
+          ""end_time"": 26.22,
+          ""confidence"": 0.981,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""5rta3w"",
+          ""text"": ""won't"",
+          ""start_time"": 26.22,
+          ""end_time"": 26.52,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ckafgp"",
+          ""text"": ""go"",
+          ""start_time"": 26.52,
+          ""end_time"": 26.86,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""07icbf"",
+          ""text"": ""astray"",
+          ""start_time"": 26.86,
+          ""end_time"": 27.07,
+          ""confidence"": 1.0,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 22.62,
+      ""end_time"": 27.07
+    },
+    {
+      ""id"": ""p06sur"",
+      ""text"": ""I won't be afraid"",
+      ""words"": [
+        {
+          ""id"": ""s4s23g"",
+          ""text"": ""I"",
+          ""start_time"": 27.07,
+          ""end_time"": 27.09,
+          ""confidence"": 0.495,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ng3bzx"",
+          ""text"": ""won't"",
+          ""start_time"": 27.09,
+          ""end_time"": 27.11,
+          ""confidence"": 0.983,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""bw1213"",
+          ""text"": ""be"",
+          ""start_time"": 27.11,
+          ""end_time"": 27.13,
+          ""confidence"": 0.874,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""a09lgk"",
+          ""text"": ""afraid"",
+          ""start_time"": 27.13,
+          ""end_time"": 27.56,
+          ""confidence"": 0.264,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 27.07,
+      ""end_time"": 27.56
+    },
+    {
+      ""id"": ""6xqxhk"",
+      ""text"": ""I won't be afraid"",
+      ""words"": [
+        {
+          ""id"": ""fa5vwa"",
+          ""text"": ""I"",
+          ""start_time"": 27.62,
+          ""end_time"": 27.64,
+          ""confidence"": 0.442,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""w5ogfs"",
+          ""text"": ""won't"",
+          ""start_time"": 27.64,
+          ""end_time"": 27.66,
+          ""confidence"": 0.846,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""sv82jr"",
+          ""text"": ""be"",
+          ""start_time"": 27.66,
+          ""end_time"": 27.68,
+          ""confidence"": 0.841,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""yoofsb"",
+          ""text"": ""afraid"",
+          ""start_time"": 27.68,
+          ""end_time"": 28.9,
+          ""confidence"": 0.958,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 27.62,
+      ""end_time"": 28.9
+    },
+    {
+      ""id"": ""c87t0a"",
+      ""text"": ""I won't be..."",
+      ""words"": [
+        {
+          ""id"": ""zxrlon"",
+          ""text"": ""I"",
+          ""start_time"": 29.26,
+          ""end_time"": 29.56,
+          ""confidence"": 0.551,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""es08b7"",
+          ""text"": ""won't"",
+          ""start_time"": 29.56,
+          ""end_time"": 29.68,
+          ""confidence"": 0.947,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""hab6ig"",
+          ""text"": ""be..."",
+          ""start_time"": 29.68,
+          ""end_time"": 29.7,
+          ""confidence"": 0.956,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 29.26,
+      ""end_time"": 29.7
+    }
+  ]",I won't {be afraid} You won't catch me running,12.7,18.02,FALSE,TRUE,FALSE
 '90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,5nS5mDWAyce9gjD8crHcZX,Jagged Edge,I Gotta Be,,"You make me whole, you make me right",,,FALSE,TRUE,FALSE
 '90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,19asXa48FNoDzO8PaQm9MN,Xscape,Softest Place On Earth,,Baby wont you come inside,,,FALSE,TRUE,FALSE
 '90s Baby Makers,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWVEvzGeX3eRs.jpg?generation=1596469757342897&alt=media,4htbAEZWr53J08x3dUv00W,En Vogue,Giving Him Something He Can Feel,,To let him know this love is real,,,FALSE,TRUE,FALSE
@@ -207,7 +1523,584 @@ Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-sto
 Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWXMg4uP5o3dm.jpg?generation=1596461065976334&alt=media,6dYiwoRJ5Ce27phy4H2bGT,PVRIS,Gimme a Minute,,"Just gimme a minute, gimme a minute",,,FALSE,TRUE,FALSE
 Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWXMg4uP5o3dm.jpg?generation=1596461065976334&alt=media,2sYvZnDtkQ7Fa0JdjRdqZD,Saro,Eyelids,,I've tattooed your words,,,FALSE,TRUE,FALSE
 Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWXMg4uP5o3dm.jpg?generation=1596461065976334&alt=media,3qBPuv74orQcONs5sR5jIz,8 Graves,Better Off Dead,,It's all razors and chains,,,FALSE,TRUE,FALSE
-Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWXMg4uP5o3dm.jpg?generation=1596461065976334&alt=media,69IosokH54HzpJZoFIIy74,THE DRIVER ERA,A Kiss,,"Nothing the matter with a {kiss}, a kiss",,,TRUE,TRUE,FALSE
+Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWXMg4uP5o3dm.jpg?generation=1596461065976334&alt=media,69IosokH54HzpJZoFIIy74,THE DRIVER ERA,A Kiss,"[
+    {
+      ""id"": ""fic1tp"",
+      ""text"": ""The hips, just the satisfaction of the trends, the trends"",
+      ""words"": [
+        {
+          ""id"": ""2r9u09"",
+          ""text"": ""The"",
+          ""start_time"": 0.0,
+          ""end_time"": 0.64,
+          ""confidence"": 0.165,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""1vc1ie"",
+          ""text"": ""hips,"",
+          ""start_time"": 0.64,
+          ""end_time"": 1.16,
+          ""confidence"": 0.646,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""1ztal3"",
+          ""text"": ""just"",
+          ""start_time"": 1.58,
+          ""end_time"": 1.6,
+          ""confidence"": 0.514,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""3gdctk"",
+          ""text"": ""the"",
+          ""start_time"": 1.6,
+          ""end_time"": 1.78,
+          ""confidence"": 0.816,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""xd2zhb"",
+          ""text"": ""satisfaction"",
+          ""start_time"": 1.78,
+          ""end_time"": 2.44,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""sehre2"",
+          ""text"": ""of"",
+          ""start_time"": 2.44,
+          ""end_time"": 2.74,
+          ""confidence"": 0.907,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""6mjpmc"",
+          ""text"": ""the"",
+          ""start_time"": 2.74,
+          ""end_time"": 2.98,
+          ""confidence"": 0.974,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""phj3mp"",
+          ""text"": ""trends,"",
+          ""start_time"": 2.98,
+          ""end_time"": 3.34,
+          ""confidence"": 0.381,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""7b7ib6"",
+          ""text"": ""the"",
+          ""start_time"": 3.44,
+          ""end_time"": 3.6,
+          ""confidence"": 0.802,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""88texm"",
+          ""text"": ""trends"",
+          ""start_time"": 3.6,
+          ""end_time"": 4.0,
+          ""confidence"": 0.99,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 0.0,
+      ""end_time"": 4.0
+    },
+    {
+      ""id"": ""lhv2jo"",
+      ""text"": ""Nothing to matter with the kiss, the kiss"",
+      ""words"": [
+        {
+          ""id"": ""7zp923"",
+          ""text"": ""Nothing"",
+          ""start_time"": 4.28,
+          ""end_time"": 4.7,
+          ""confidence"": 0.736,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ho3iff"",
+          ""text"": ""to"",
+          ""start_time"": 4.7,
+          ""end_time"": 5.0,
+          ""confidence"": 0.602,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""xy4dvs"",
+          ""text"": ""matter"",
+          ""start_time"": 5.0,
+          ""end_time"": 5.24,
+          ""confidence"": 0.965,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""s9fpha"",
+          ""text"": ""with"",
+          ""start_time"": 5.24,
+          ""end_time"": 5.52,
+          ""confidence"": 0.773,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""wsouju"",
+          ""text"": ""the"",
+          ""start_time"": 5.52,
+          ""end_time"": 5.78,
+          ""confidence"": 0.808,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""5mcomf"",
+          ""text"": ""kiss,"",
+          ""start_time"": 5.78,
+          ""end_time"": 6.16,
+          ""confidence"": 0.566,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""otw03a"",
+          ""text"": ""the"",
+          ""start_time"": 6.34,
+          ""end_time"": 6.46,
+          ""confidence"": 0.952,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""sxo024"",
+          ""text"": ""kiss"",
+          ""start_time"": 6.46,
+          ""end_time"": 6.76,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 4.28,
+      ""end_time"": 6.76
+    },
+    {
+      ""id"": ""nt9l1n"",
+      ""text"": ""Nothing to matter with the kiss, the kiss"",
+      ""words"": [
+        {
+          ""id"": ""ur17u8"",
+          ""text"": ""Nothing"",
+          ""start_time"": 6.88,
+          ""end_time"": 7.62,
+          ""confidence"": 0.96,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""pp2gs5"",
+          ""text"": ""to"",
+          ""start_time"": 7.62,
+          ""end_time"": 7.84,
+          ""confidence"": 0.995,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""3uc9fw"",
+          ""text"": ""matter"",
+          ""start_time"": 7.84,
+          ""end_time"": 8.04,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""h7fczm"",
+          ""text"": ""with"",
+          ""start_time"": 8.04,
+          ""end_time"": 8.34,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""9cmhcj"",
+          ""text"": ""the"",
+          ""start_time"": 8.34,
+          ""end_time"": 8.76,
+          ""confidence"": 0.99,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""1031r1"",
+          ""text"": ""kiss,"",
+          ""start_time"": 8.76,
+          ""end_time"": 9.02,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""1smr8x"",
+          ""text"": ""the"",
+          ""start_time"": 9.2,
+          ""end_time"": 9.3,
+          ""confidence"": 0.989,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ce12ik"",
+          ""text"": ""kiss"",
+          ""start_time"": 9.3,
+          ""end_time"": 9.68,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 6.88,
+      ""end_time"": 9.68
+    },
+    {
+      ""id"": ""bp7mp1"",
+      ""text"": ""It's just a curve upon the lips, the hips"",
+      ""words"": [
+        {
+          ""id"": ""fvaevq"",
+          ""text"": ""It's"",
+          ""start_time"": 10.02,
+          ""end_time"": 10.3,
+          ""confidence"": 0.976,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""48dv0i"",
+          ""text"": ""just"",
+          ""start_time"": 10.3,
+          ""end_time"": 10.54,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""7zfoik"",
+          ""text"": ""a"",
+          ""start_time"": 10.54,
+          ""end_time"": 10.7,
+          ""confidence"": 0.763,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""sm0bmo"",
+          ""text"": ""curve"",
+          ""start_time"": 10.7,
+          ""end_time"": 10.86,
+          ""confidence"": 0.544,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""o5gvoa"",
+          ""text"": ""upon"",
+          ""start_time"": 10.86,
+          ""end_time"": 11.12,
+          ""confidence"": 0.451,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""xj4cxk"",
+          ""text"": ""the"",
+          ""start_time"": 11.12,
+          ""end_time"": 11.38,
+          ""confidence"": 0.954,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""oxf531"",
+          ""text"": ""lips,"",
+          ""start_time"": 11.38,
+          ""end_time"": 11.78,
+          ""confidence"": 0.923,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""f553g5"",
+          ""text"": ""the"",
+          ""start_time"": 11.94,
+          ""end_time"": 12.08,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""rxd45k"",
+          ""text"": ""hips"",
+          ""start_time"": 12.08,
+          ""end_time"": 12.46,
+          ""confidence"": 0.989,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 10.02,
+      ""end_time"": 12.46
+    },
+    {
+      ""id"": ""pofkvz"",
+      ""text"": ""Just the satisfaction of the trends, the trends"",
+      ""words"": [
+        {
+          ""id"": ""ceo6v0"",
+          ""text"": ""Just"",
+          ""start_time"": 12.5,
+          ""end_time"": 12.9,
+          ""confidence"": 0.982,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""fczfzf"",
+          ""text"": ""the"",
+          ""start_time"": 12.9,
+          ""end_time"": 13.18,
+          ""confidence"": 0.991,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""qny0a9"",
+          ""text"": ""satisfaction"",
+          ""start_time"": 13.18,
+          ""end_time"": 13.72,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""a5iq3i"",
+          ""text"": ""of"",
+          ""start_time"": 13.72,
+          ""end_time"": 14.02,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""4urmbe"",
+          ""text"": ""the"",
+          ""start_time"": 14.02,
+          ""end_time"": 14.3,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""9a4jp9"",
+          ""text"": ""trends,"",
+          ""start_time"": 14.3,
+          ""end_time"": 14.64,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""lvqmkn"",
+          ""text"": ""the"",
+          ""start_time"": 14.76,
+          ""end_time"": 14.9,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""nqpq1p"",
+          ""text"": ""trends"",
+          ""start_time"": 14.9,
+          ""end_time"": 15.32,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 12.5,
+      ""end_time"": 15.32
+    },
+    {
+      ""id"": ""bod8cc"",
+      ""text"": ""Nothing to matter with the kiss, the kiss"",
+      ""words"": [
+        {
+          ""id"": ""os5ihd"",
+          ""text"": ""Nothing"",
+          ""start_time"": 15.58,
+          ""end_time"": 16.1,
+          ""confidence"": 0.982,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ctjqct"",
+          ""text"": ""to"",
+          ""start_time"": 16.1,
+          ""end_time"": 16.28,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""vxucfr"",
+          ""text"": ""matter"",
+          ""start_time"": 16.28,
+          ""end_time"": 16.52,
+          ""confidence"": 0.999,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""xfwf2d"",
+          ""text"": ""with"",
+          ""start_time"": 16.52,
+          ""end_time"": 16.78,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""uj2m7u"",
+          ""text"": ""the"",
+          ""start_time"": 16.78,
+          ""end_time"": 17.2,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""sp5hka"",
+          ""text"": ""kiss,"",
+          ""start_time"": 17.2,
+          ""end_time"": 17.5,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""q91icm"",
+          ""text"": ""the"",
+          ""start_time"": 17.62,
+          ""end_time"": 17.78,
+          ""confidence"": 0.998,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""fabl9h"",
+          ""text"": ""kiss"",
+          ""start_time"": 17.78,
+          ""end_time"": 18.06,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 15.58,
+      ""end_time"": 18.06
+    },
+    {
+      ""id"": ""0x09kp"",
+      ""text"": ""Nothing, it's just a little, it's just a little, it's just a little kiss"",
+      ""words"": [
+        {
+          ""id"": ""r0qq79"",
+          ""text"": ""Nothing,"",
+          ""start_time"": 18.5,
+          ""end_time"": 18.86,
+          ""confidence"": 0.872,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""vo6v0l"",
+          ""text"": ""it's"",
+          ""start_time"": 18.98,
+          ""end_time"": 19.12,
+          ""confidence"": 0.948,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""vrnu3y"",
+          ""text"": ""just"",
+          ""start_time"": 19.12,
+          ""end_time"": 19.4,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""j2ue5r"",
+          ""text"": ""a"",
+          ""start_time"": 19.4,
+          ""end_time"": 19.5,
+          ""confidence"": 0.996,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""87lacp"",
+          ""text"": ""little,"",
+          ""start_time"": 19.5,
+          ""end_time"": 19.78,
+          ""confidence"": 0.983,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""n830rp"",
+          ""text"": ""it's"",
+          ""start_time"": 19.94,
+          ""end_time"": 20.58,
+          ""confidence"": 0.698,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""ckthrb"",
+          ""text"": ""just"",
+          ""start_time"": 20.58,
+          ""end_time"": 20.76,
+          ""confidence"": 0.995,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""c4chrt"",
+          ""text"": ""a"",
+          ""start_time"": 20.76,
+          ""end_time"": 20.96,
+          ""confidence"": 0.997,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""dd3uct"",
+          ""text"": ""little,"",
+          ""start_time"": 20.96,
+          ""end_time"": 21.24,
+          ""confidence"": 0.995,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""8a2231"",
+          ""text"": ""it's"",
+          ""start_time"": 21.26,
+          ""end_time"": 21.98,
+          ""confidence"": 0.928,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""5txcjr"",
+          ""text"": ""just"",
+          ""start_time"": 21.98,
+          ""end_time"": 22.18,
+          ""confidence"": 0.991,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""did3av"",
+          ""text"": ""a"",
+          ""start_time"": 22.18,
+          ""end_time"": 22.36,
+          ""confidence"": 0.994,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""8fuzb7"",
+          ""text"": ""little"",
+          ""start_time"": 22.36,
+          ""end_time"": 22.54,
+          ""confidence"": 0.99,
+          ""created_during_correction"": false
+        },
+        {
+          ""id"": ""bx0ta1"",
+          ""text"": ""kiss"",
+          ""start_time"": 22.54,
+          ""end_time"": 23.28,
+          ""confidence"": 0.965,
+          ""created_during_correction"": false
+        }
+      ],
+      ""start_time"": 18.5,
+      ""end_time"": 23.28
+    }
+  ]","It's just {a curve} upon the lips, the hips",5.25,10.54,TRUE,TRUE,FALSE
 Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWXMg4uP5o3dm.jpg?generation=1596461065976334&alt=media,58L9BLQuOAwAzHhCvTpp3l,Paper Idol,Feel Real Pretty,,Come back for more when you feel real pretty,,,FALSE,TRUE,FALSE
 Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWXMg4uP5o3dm.jpg?generation=1596461065976334&alt=media,63SevszngYpZOwf63o61K4,Dennis Lloyd,Nevermind,,What if I left and it made no sense,,,FALSE,TRUE,FALSE
 Alternative Beats,https://storage.googleapis.com/download/storage/v1/b/music-storage-euw/o/static%2Fplaylist-img%2F37i9dQZF1DWXMg4uP5o3dm.jpg?generation=1596461065976334&alt=media,17KGTOb8fkxlyTnB5eFnsh,MISSIO & Death Stranding: Timefall,Sing To Me,,"Sing to me, I am not doing well",,,FALSE,TRUE,FALSE
