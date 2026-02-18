@@ -267,7 +267,7 @@
         "spotifyId": "7njoWVpJbAiTkyT6rKwbze",
         "artist": "Clay Walker",
         "title": "If I Could Make a Living",
-        "snippet": "If I could make a living out of loving {you}",
+        "snippet": "If I could make a living out of {loving} you",
         "startSecond": 0.78,
         "endSecond": 8.16
     },
@@ -315,9 +315,9 @@
         "spotifyId": "2TAQ9YGehOKWDqDak5DuXc",
         "artist": "Stone Temple Pilots",
         "title": "Plush",
-        "snippet": "But you'll find it, you'll find it, you'll find {it}",
-        "startSecond": 8.5,
-        "endSecond": 13.6
+        "snippet": "Got time, time, waiting for {tomorrow}",
+        "startSecond": 4.32,
+        "endSecond": 8.18
     },
     {
         "spotifyId": "7nnWIPM5hwE3DaUBkvOIpy",
@@ -355,9 +355,9 @@
         "spotifyId": "4ReyTz0y3TGkX48wO3Llot",
         "artist": "Faith No More",
         "title": "Epic",
-        "snippet": "What is {it}?",
-        "startSecond": 23.4,
-        "endSecond": 28.66
+        "snippet": "You want it all, but you {can't} have it",
+        "startSecond": 27.26,
+        "endSecond": 29.14
     },
     {
         "spotifyId": "31RTFPrB7wmYBhlkM2ILXG",
@@ -387,7 +387,7 @@
         "spotifyId": "0ttHpMs250dpFkCYAnuhnE",
         "artist": "Better Than Ezra",
         "title": "Good",
-        "snippet": "Uh-oh, it was good living with {you}",
+        "snippet": "Uh-oh, it was good {living} with you",
         "startSecond": 15.83,
         "endSecond": 21.62
     },
@@ -523,7 +523,7 @@
         "spotifyId": "2DnJjbjNTV9Nd5NOa1KGba",
         "artist": "Carly Simon",
         "title": "You're so Vain",
-        "snippet": "I bet you think this song is about {you}",
+        "snippet": "I bet you think this song is {about} you",
         "startSecond": 4.2,
         "endSecond": 6.98
     },
@@ -547,9 +547,9 @@
         "spotifyId": "4kOfxxnW1ukZdsNbCKY9br",
         "artist": "Tina Turner",
         "title": "What's Love Got to Do with It",
-        "snippet": "What's love got to do with {it}",
-        "startSecond": 20.52,
-        "endSecond": 24.82
+        "snippet": "Who needs a heart when a heart can be {broken}",
+        "startSecond": 15.84,
+        "endSecond": 20.48
     },
     {
         "spotifyId": "4jDmJ51x1o9NZB5Nxxc7gY",
@@ -579,7 +579,7 @@
         "spotifyId": "3RMeOetCdXttthQK0clPuz",
         "artist": "Michael Bolton",
         "title": "How Am I Supposed to Live Without You",
-        "snippet": "How am I supposed to live without {you}",
+        "snippet": "How am I supposed to {live} without you",
         "startSecond": 0.0,
         "endSecond": 8.58
     },
@@ -619,7 +619,7 @@
         "spotifyId": "1lx8ddGT5wCD6W2xmLeRKG",
         "artist": "Whitney Houston",
         "title": "Saving All My Love for You",
-        "snippet": "I'm saving all my love for {you}",
+        "snippet": "I'm saving all my {love} for you",
         "startSecond": 7.14,
         "endSecond": 11.1
     },
@@ -699,7 +699,7 @@
         "spotifyId": "6vGW3d8X48CBaLdU0PQbey",
         "artist": "M People",
         "title": "Moving on Up",
-        "snippet": "Nothing can stop {me}",
+        "snippet": "Nothing can {stop} me",
         "startSecond": 4.36,
         "endSecond": 6.0
     },
@@ -715,7 +715,7 @@
         "spotifyId": "0q90594hk25yo0xZmBTqCd",
         "artist": "George Michael & Elton John",
         "title": "Don't Let the Sun Go Down on Me",
-        "snippet": "Don't let the sun go down on {me}",
+        "snippet": "Don't let the {sun} go down on me",
         "startSecond": 10.88,
         "endSecond": 14.8
     },
@@ -739,7 +739,7 @@
         "spotifyId": "7mnGQesk1TzQLzQ9bYWZPR",
         "artist": "Tal Bachman",
         "title": "She's so High",
-        "snippet": "She's so high, high above {me}",
+        "snippet": "She's so high, high {above} me",
         "startSecond": 0.68,
         "endSecond": 6.02
     },
@@ -787,7 +787,7 @@
         "spotifyId": "144JMbvbR5txNzoZ112wo4",
         "artist": "Cher",
         "title": "Strong Enough",
-        "snippet": "I'm strong enough to live without {you}",
+        "snippet": "I'm {strong} enough to live without you",
         "startSecond": 0.0,
         "endSecond": 4.92
     },
@@ -795,15 +795,15 @@
         "spotifyId": "7A0apkTSTvMbSI7yplcmlh",
         "artist": "Christina Aguilera",
         "title": "Come on over Baby (All I Want Is You) - Radio Version",
-        "snippet": "Come on over, come on over {baby}",
-        "startSecond": 10.54,
-        "endSecond": 13.02
+        "snippet": "You better cross the {line}",
+        "startSecond": 4.24,
+        "endSecond": 5.98
     },
     {
         "spotifyId": "6lbme14HiDWYmGiw1I2Dv6",
         "artist": "Ten Sharp",
         "title": "You",
-        "snippet": "And you, lying beside {me}",
+        "snippet": "And you, lying {beside} me",
         "startSecond": 5.68,
         "endSecond": 9.26
     },
@@ -811,7 +811,7 @@
         "spotifyId": "5oQx6XZyrOOkGbme8DA9GO",
         "artist": "Lonestar",
         "title": "Amazed",
-        "snippet": "Baby I'm amazed by {you}",
+        "snippet": "Baby I'm {amazed} by you",
         "startSecond": 8.1,
         "endSecond": 10.52
     },
@@ -819,7 +819,7 @@
         "spotifyId": "1KGi9sZVMeszgZOWivFpxs",
         "artist": "TLC",
         "title": "No Scrubs",
-        "snippet": "A scrub is a guy that can't get no love from {me}",
+        "snippet": "A scrub is a guy that can't get no {love} from me",
         "startSecond": 0.0,
         "endSecond": 2.54
     },
@@ -891,7 +891,7 @@
         "spotifyId": "0bb8oI0Y3E4FDp6YaFYqTp",
         "artist": "La Dispute",
         "title": "FOOTSTEPS AT THE POND",
-        "snippet": "I just wanted you to carry on and carry for {me}",
+        "snippet": "I just {wanted} you to carry on and carry for me",
         "startSecond": 2.22,
         "endSecond": 5.18
     },
@@ -995,7 +995,7 @@
         "spotifyId": "7s2b12DS3zShmxHl2SKYq0",
         "artist": "PVRIS",
         "title": "Death of Me",
-        "snippet": "Baby, you could be the death of {me}",
+        "snippet": "Baby, you could be the {death} of me",
         "startSecond": 1.48,
         "endSecond": 3.88
     },
@@ -1003,7 +1003,7 @@
         "spotifyId": "5dLP5JbgWGZttnUv4NFJeg",
         "artist": "Marshmello & A Day To Remember",
         "title": "Rescue Me",
-        "snippet": "When I found you, I found {me}",
+        "snippet": "When I found you, I {found} me",
         "startSecond": 3.46,
         "endSecond": 7.56
     },
@@ -1059,15 +1059,15 @@
         "spotifyId": "1bRjwdtScY2eMe9uMmsOkG",
         "artist": "Chloe x Halle",
         "title": "Do It",
-        "snippet": "Yeah that's just how we do {it}",
+        "snippet": "Yeah that's just how we do it, and you can do it {too}",
         "startSecond": 14.68,
-        "endSecond": 15.84
+        "endSecond": 17.44
     },
     {
         "spotifyId": "6qBFSepqLCuh5tehehc1bd",
         "artist": "Giveon",
         "title": "LIKE I WANT YOU",
-        "snippet": "But I can't make it seem like I want {you}",
+        "snippet": "But I can't make it seem like I {want} you",
         "startSecond": 0.0,
         "endSecond": 6.9
     },
@@ -1099,7 +1099,7 @@
         "spotifyId": "0oufSLnKQDoBFX5mgkDCgR",
         "artist": "Brent Faiyaz",
         "title": "Trust",
-        "snippet": "You told me I could trust {you}",
+        "snippet": "You told me I could {trust} you",
         "startSecond": 6.86,
         "endSecond": 8.24
     },
@@ -1107,7 +1107,7 @@
         "spotifyId": "3f3cliOygeuUpGRwdohy12",
         "artist": "H.E.R.",
         "title": "Comfortable",
-        "snippet": "Lay your head on my pillow and say {ooh}, ooh",
+        "snippet": "Lay your head on my {pillow} and say ooh, ooh",
         "startSecond": 14.28,
         "endSecond": 16.86
     },
@@ -1155,7 +1155,7 @@
         "spotifyId": "1tNJrcVe6gwLEiZCtprs1u",
         "artist": "A Boogie Wit da Hoodie",
         "title": "Look Back at It",
-        "snippet": "I get goosebumps when I look at {it}",
+        "snippet": "I get {goosebumps} when I look at it",
         "startSecond": 2.0,
         "endSecond": 4.28
     },
@@ -1227,7 +1227,7 @@
         "spotifyId": "2UNHhozqXtbaq3HA9eQVfV",
         "artist": "Bleachers & Tinashe",
         "title": "I Wanna Get Better",
-        "snippet": "Even if it's gonna kill {me}",
+        "snippet": "Even if it's gonna {kill} me",
         "startSecond": 5.32,
         "endSecond": 7.26
     },
@@ -1291,7 +1291,7 @@
         "spotifyId": "698eQRku24PIYPQPHItKlA",
         "artist": "Luke Combs",
         "title": "She Got the Best of Me",
-        "snippet": "She got the best of {me}",
+        "snippet": "She got the {best} of me",
         "startSecond": 13.7,
         "endSecond": 15.32
     },
@@ -1379,7 +1379,7 @@
         "spotifyId": "6CyJlVAEFlNdpggOLanytL",
         "artist": "Chris Young",
         "title": "Hangin' On",
-        "snippet": "You hanging on, hanging on to {me}",
+        "snippet": "You hanging on, {hanging} on to me",
         "startSecond": 13.06,
         "endSecond": 16.48
     },
@@ -1747,7 +1747,7 @@
         "spotifyId": "5oxq2hf8u0S8RVypWZgjLf",
         "artist": "VASSY",
         "title": "Trouble",
-        "snippet": "You bring the devil out of {me}",
+        "snippet": "You bring the {devil} out of me",
         "startSecond": 1.88,
         "endSecond": 3.8
     },
@@ -1771,7 +1771,7 @@
         "spotifyId": "77BDJDKKWm11KXQh0Sv4Jf",
         "artist": "NERVO & Plastik Funk & Tim Morrison",
         "title": "Dare Me",
-        "snippet": "Come on tell {me}",
+        "snippet": "Come on {tell} me",
         "startSecond": 6.98,
         "endSecond": 8.08
     },
@@ -1779,7 +1779,7 @@
         "spotifyId": "1ZhpOYEE0nGcn0k7Ai7DK1",
         "artist": "Yolanda Be Cool",
         "title": "Dance and Chant",
-        "snippet": "S.N.J. P.O.N.S.{A.}",
+        "snippet": "S.N.J. {P.O.N.S.} A.",
         "startSecond": 25.8,
         "endSecond": 27.06
     },
@@ -1875,7 +1875,7 @@
         "spotifyId": "6BYRWJcmVR36DUO7Dghcxb",
         "artist": "Hidden In Plain View",
         "title": "Bleed for You",
-        "snippet": "And I'll bleed for {you}",
+        "snippet": "And I'll {bleed} for you",
         "startSecond": 4.1,
         "endSecond": 5.84
     },
@@ -1907,9 +1907,9 @@
         "spotifyId": "2i4yyBwHqj91tSHu0gIeUg",
         "artist": "Silverstein",
         "title": "My Heroine",
-        "snippet": "How do you do {it}?",
-        "startSecond": 12.22,
-        "endSecond": 13.96
+        "snippet": "You won't leave me {alone}",
+        "startSecond": 20.22,
+        "endSecond": 24.56
     },
     {
         "spotifyId": "4sPJgy0CksvmXp9jC0W4gv",
@@ -1979,7 +1979,7 @@
         "spotifyId": "4yQw7FR9lcvL6RHtegbJBh",
         "artist": "Aretha Franklin",
         "title": "Think",
-        "snippet": "You gotta think, think, think about what you're trying to do to {me}",
+        "snippet": "You gotta think, think, think about what you're {trying} to do to me",
         "startSecond": 8.16,
         "endSecond": 12.16
     },
@@ -1995,7 +1995,7 @@
         "spotifyId": "42rFOQqHmXf9IkdwVqkooK",
         "artist": "Bootsy Collins",
         "title": "I'd Rather Be with You",
-        "snippet": "I'd rather be with {you}",
+        "snippet": "I'd {rather} be with you",
         "startSecond": 0.0,
         "endSecond": 2.88
     },
@@ -2011,7 +2011,7 @@
         "spotifyId": "7DnNU5rQLgy4KEYvFMrGgW",
         "artist": "Jimmie Allen & Noah Cyrus",
         "title": "This is Us",
-        "snippet": "Cause it was just you, and that was just {me}",
+        "snippet": "Cause it was just you, and that was {just} me",
         "startSecond": 17.98,
         "endSecond": 21.1
     },
@@ -2083,7 +2083,7 @@
         "spotifyId": "1D7cfiC5mxqHfTCcOiRBej",
         "artist": "Russell Dickerson",
         "title": "Love You Like I Used To",
-        "snippet": "It's stronger the longer I'm with {you}",
+        "snippet": "It's stronger the {longer} I'm with you",
         "startSecond": 2.94,
         "endSecond": 5.9
     },
@@ -2187,7 +2187,7 @@
         "spotifyId": "5xPcLp3G2eaR2rrKHKsFME",
         "artist": "Prelow",
         "title": "Guitar Beat",
-        "snippet": "Cause I'm looking at her, and she's looking at {me}",
+        "snippet": "Cause I'm looking at her, and she's {looking} at me",
         "startSecond": 17.18,
         "endSecond": 22.16
     },
@@ -2307,7 +2307,7 @@
         "spotifyId": "3VOrtLsn6VBoqfcB8BqIU0",
         "artist": "Nothing But Thieves",
         "title": "Graveyard Whistling",
-        "snippet": "It can't hurt {you}",
+        "snippet": "It can't {hurt} you",
         "startSecond": 8.28,
         "endSecond": 9.72
     },
@@ -2315,7 +2315,7 @@
         "spotifyId": "513vyBdge2xHB2OpMGlP14",
         "artist": "Bad Suns",
         "title": "Disappear Here",
-        "snippet": "Would you run after {me}",
+        "snippet": "Would you run {after} me",
         "startSecond": 0.0,
         "endSecond": 0.92
     },
@@ -2331,7 +2331,7 @@
         "spotifyId": "3Zx2Y9oVMbjI0iuo9ZXMft",
         "artist": "8 Graves",
         "title": "Begging To Bleed",
-        "snippet": "Tell me that you're sick like {me}",
+        "snippet": "Tell me that you're sick {like} me",
         "startSecond": 10.56,
         "endSecond": 13.08
     },
@@ -2363,7 +2363,7 @@
         "spotifyId": "3K4HG9evC7dg3N0R9cYqk4",
         "artist": "Linkin Park",
         "title": "One Step Closer",
-        "snippet": "Everything you say to {me}",
+        "snippet": "Everything you {say} to me",
         "startSecond": 0.3,
         "endSecond": 2.2
     },
@@ -2395,7 +2395,7 @@
         "spotifyId": "1y1sChqjzdNWzwdHQADMrR",
         "artist": "Linkin Park",
         "title": "Numb",
-        "snippet": "And be less like {you}",
+        "snippet": "And be less {like} you",
         "startSecond": 9.26,
         "endSecond": 11.86
     },
@@ -2403,7 +2403,7 @@
         "spotifyId": "61mWefnWQOLf90gepjOCb3",
         "artist": "Slipknot",
         "title": "Duality",
-        "snippet": "If the pain goes on, I'm not gonna make {it}",
+        "snippet": "If the pain goes on, I'm not gonna {make} it",
         "startSecond": 23.98,
         "endSecond": 28.2
     },
@@ -2651,7 +2651,7 @@
         "spotifyId": "16815x8pHjZuPcpzzz4Bnn",
         "artist": "Stone Sour",
         "title": "St. Marie",
-        "snippet": "You're the one, you're the {one}",
+        "snippet": "Cause I don't think I'll ever be the {same}",
         "startSecond": 0.0,
         "endSecond": 2.52
     },
@@ -2699,7 +2699,7 @@
         "spotifyId": "2ZqV1xehFhYryqzus2ksnj",
         "artist": "Halestorm",
         "title": "Break In",
-        "snippet": "You are the only one that knows {me}",
+        "snippet": "You are the only one that {knows} me",
         "startSecond": 2.9,
         "endSecond": 10.14
     },
@@ -2707,7 +2707,7 @@
         "spotifyId": "2CpMHblH2jRF9NqtaW8MKZ",
         "artist": "Theory of a Deadman",
         "title": "Wake Up Call",
-        "snippet": "Cause you are home to {me}",
+        "snippet": "Cause you are {home} to me",
         "startSecond": 22.14,
         "endSecond": 25.08
     },
@@ -2835,7 +2835,7 @@
         "spotifyId": "2SiXAy7TuUkycRVbbWDEpo",
         "artist": "AC/DC",
         "title": "You Shook Me All Night Long",
-        "snippet": "My mind was aching and we were making {it}",
+        "snippet": "My mind was {aching} and we were making it",
         "startSecond": 0.0,
         "endSecond": 6.44
     },
@@ -2891,7 +2891,7 @@
         "spotifyId": "5OxclJsdFESni44YlpNpkR",
         "artist": "Bring Me The Horizon",
         "title": "Parasite Eve",
-        "snippet": "Don't forget what they told {you}",
+        "snippet": "Don't {forget} what they told you",
         "startSecond": 9.1,
         "endSecond": 10.72
     },
@@ -2931,7 +2931,7 @@
         "spotifyId": "2HzoSBdq66iBoJXnnh1Tsq",
         "artist": "Asking Alexandria",
         "title": "Antisocialist",
-        "snippet": "Please stay away from {me}",
+        "snippet": "Please stay {away} from me",
         "startSecond": 3.5,
         "endSecond": 8.02
     },
@@ -2939,7 +2939,7 @@
         "spotifyId": "0YZEYxd1oiqZRFhnnmTKKi",
         "artist": "Motionless In White",
         "title": "Another Life",
-        "snippet": "Now I hate that I need {you}",
+        "snippet": "Now I hate that I {need} you",
         "startSecond": 18.86,
         "endSecond": 22.98
     },
@@ -2995,7 +2995,7 @@
         "spotifyId": "7v6fVgqEbmbS8nmTvXb5nt",
         "artist": "Avatar",
         "title": "Colossus",
-        "snippet": "Tell me what I feel like to {you}",
+        "snippet": "Tell me what I feel {like} to you",
         "startSecond": 7.26,
         "endSecond": 9.96
     },
@@ -3083,7 +3083,7 @@
         "spotifyId": "0bTjMx79m5NMCsHDTyAwBY",
         "artist": "Hollywood Undead",
         "title": "Already Dead",
-        "snippet": "You can shame me, you can try and break {me}",
+        "snippet": "You can shame me, you can try and {break} me",
         "startSecond": 7.7,
         "endSecond": 12.48
     },
@@ -3115,7 +3115,7 @@
         "spotifyId": "6WjD2x0UB9p9dgoZmRsh0o",
         "artist": "Tetrarch",
         "title": "I'm Not Right",
-        "snippet": "My reflection lies to {me}",
+        "snippet": "My {reflection} lies to me",
         "startSecond": 15.58,
         "endSecond": 18.34
     },
@@ -3179,7 +3179,7 @@
         "spotifyId": "66Avcq6c51vcMGXLzHH5d7",
         "artist": "Highly Suspect",
         "title": "Bloodfeather",
-        "snippet": "In the name of love I'll kill for {you}",
+        "snippet": "In the name of love I'll {kill} for you",
         "startSecond": 6.74,
         "endSecond": 9.34
     },
@@ -3211,7 +3211,7 @@
         "spotifyId": "3SUusuA9jH1v6PVwtYMbdv",
         "artist": "The Strokes",
         "title": "Last Nite",
-        "snippet": "So I, I turned {'round}",
+        "snippet": "So I, I {turned} 'round",
         "startSecond": 27.32,
         "endSecond": 28.86
     },
@@ -3376,26 +3376,18 @@
         "endSecond": 20.06
     },
     {
-        "spotifyId": "28qibzvW2qqNDfAsAS71pL",
-        "artist": "The Hunna",
-        "title": "You & Me",
-        "snippet": "You and {me}",
-        "startSecond": 0.0,
-        "endSecond": 21.0
-    },
-    {
         "spotifyId": "6ooluO7DiEhI1zmK94nRCM",
         "artist": "Franz Ferdinand",
         "title": "Take Me Out",
-        "snippet": "I say, take me {out}",
-        "startSecond": 10.24,
-        "endSecond": 11.6
+        "snippet": "If I {move} this could die",
+        "startSecond": 11.64,
+        "endSecond": 13.68
     },
     {
         "spotifyId": "2mDYYGaGd9uXKkK2YhDA3i",
         "artist": "The Strokes",
         "title": "Brooklyn Bridge To Chorus",
-        "snippet": "I want new friends, but they don't want {me}",
+        "snippet": "I want new {friends}, but they don't want me",
         "startSecond": 0.0,
         "endSecond": 6.0
     },
@@ -3403,7 +3395,7 @@
         "spotifyId": "3lPr8ghNDBLc2uZovNyLs9",
         "artist": "Muse",
         "title": "Supermassive Black Hole",
-        "snippet": "Oh baby I'm a fool for {you}",
+        "snippet": "Oh baby I'm a {fool} for you",
         "startSecond": 26.44,
         "endSecond": 29.64
     },
@@ -3435,7 +3427,7 @@
         "spotifyId": "5FZxsHWIvUsmSK1IAvm2pp",
         "artist": "Foo Fighters",
         "title": "Best of You",
-        "snippet": "Is someone getting the best of {you}",
+        "snippet": "Is someone getting the {best} of you",
         "startSecond": 28.06,
         "endSecond": 31.32
     },
@@ -3443,7 +3435,7 @@
         "spotifyId": "5dKBaysNJtfpyNTRa5lqDb",
         "artist": "Vampire Weekend",
         "title": "A-Punk",
-        "snippet": "Got his teeth, I took all his harmonicas, {oh}",
+        "snippet": "Got his teeth, I took all his {harmonicas}, oh",
         "startSecond": 8.72,
         "endSecond": 9.96
     },
@@ -3771,7 +3763,7 @@
         "spotifyId": "6rAXHPd18PZ6W8m9EectzH",
         "artist": "Nothing But Thieves",
         "title": "Sorry",
-        "snippet": "I've been waiting for this, I'm ready for {it}",
+        "snippet": "I've been waiting for this, I'm {ready} for it",
         "startSecond": 0.0,
         "endSecond": 9.62
     },
@@ -3843,7 +3835,7 @@
         "spotifyId": "5jsDxDkJ1PqyYUWhDMr86B",
         "artist": "Stone Sour",
         "title": "Song #3",
-        "snippet": "If you reached out for {me}",
+        "snippet": "If you reached {out} for me",
         "startSecond": 0.0,
         "endSecond": 20.56
     },
@@ -3883,9 +3875,9 @@
         "spotifyId": "1rPCgtaIF0CyKRgAwhtpbF",
         "artist": "Amy Shark",
         "title": "Adore",
-        "snippet": "Ooh, ooh, {ooh}",
-        "startSecond": 0.02,
-        "endSecond": 2.88
+        "snippet": "Just so I can {adore} you",
+        "startSecond": 5.94,
+        "endSecond": 8.28
     },
     {
         "spotifyId": "7MUNNBJKYo3cdokp06wEOB",
@@ -3898,7 +3890,7 @@
     {
         "spotifyId": "3zSaWBoojpQGDPO2oIL80H",
         "artist": "New Politics",
-        "title": "One of Us",
+        "snippet": "I've been waiting for this, I'm {ready} for it",
         "snippet": "So raise your flag one last {time}",
         "startSecond": 0.0,
         "endSecond": 6.22
@@ -4051,15 +4043,15 @@
         "spotifyId": "4IBxcZ0oQnCghA7srGgkOE",
         "artist": "Welshly Arms",
         "title": "Stand",
-        "snippet": "This is what we {do}",
-        "startSecond": 1.46,
-        "endSecond": 2.92
+        "snippet": "So just stand by me and I'll {stand} by you",
+        "startSecond": 6.3,
+        "endSecond": 9.72
     },
     {
         "spotifyId": "4hXyXsww7q7ETKeVKD034T",
         "artist": "The Teskey Brothers",
         "title": "So Caught Up",
-        "snippet": "Even if I try to break {it}",
+        "snippet": "Even if I try to {break} it",
         "startSecond": 1.18,
         "endSecond": 3.9
     },
@@ -4083,7 +4075,7 @@
         "spotifyId": "3NRql0A1Ef4RCvT473iqgD",
         "artist": "Bakar",
         "title": "Hell N Back",
-        "snippet": "Could you tell where my head was at when you found {me}",
+        "snippet": "Could you tell where my head was at when you {found} me",
         "startSecond": 22.32,
         "endSecond": 25.08
     },
@@ -4235,7 +4227,7 @@
         "spotifyId": "5xWnVYACxl4VyRePi9oXd7",
         "artist": "Hoops",
         "title": "Fall Back",
-        "snippet": "Fall back in my arms again, {oh}",
+        "snippet": "Fall back in my arms {again}, oh",
         "startSecond": 0.0,
         "endSecond": 0.0
     },
@@ -4299,7 +4291,7 @@
         "spotifyId": "3yR8cAdli5Ohn3dUlS1PgV",
         "artist": "DIIV",
         "title": "Under the Sun",
-        "snippet": "Yes i'll come back to {you}",
+        "snippet": "Yes i'll come {back} to you",
         "startSecond": 0.02,
         "endSecond": 4.76
     },
@@ -4315,7 +4307,7 @@
         "spotifyId": "5pvmhSKAEGovYtUQW8xqJp",
         "artist": "Ringo Deathstarr",
         "title": "Stare at the Sun",
-        "snippet": "Turn back to pieces when I saw you (turn back to pieces when I saw {you})",
+        "snippet": "Turn back to pieces when I saw you (turn back to {pieces} when I saw you)",
         "startSecond": 0.26,
         "endSecond": 3.5
     },
@@ -4347,7 +4339,7 @@
         "spotifyId": "2kz4JUPAQLcaViOVgYxzfF",
         "artist": "SASAMI",
         "title": "Not The Time",
-        "snippet": "One of these nights {I'm}",
+        "snippet": "One of these {nights} I'm",
         "startSecond": 0.38,
         "endSecond": 1.78
     },
@@ -4419,8 +4411,8 @@
         "spotifyId": "7kmSIKAk4VHP4QUjpBPbGg",
         "artist": "Lewis Del Mar",
         "title": "Painting (Masterpiece)",
-        "snippet": "If you want it, you can have {it}",
-        "startSecond": 2.16,
+        "snippet": "Build yourself a technical {masterpiece}",
+        "startSecond": 4.2,
         "endSecond": 6.86
     },
     {
@@ -4475,7 +4467,7 @@
         "spotifyId": "5rYcKq7mpdhmGj3Z6WzhMa",
         "artist": "Just Loud",
         "title": "Electrified",
-        "snippet": "And I want you to know, {oh}",
+        "snippet": "And I want you to {know}, oh",
         "startSecond": 0.14,
         "endSecond": 4.2
     },
@@ -4627,7 +4619,7 @@
         "spotifyId": "4fxtYgcIOqjCq9Ix1pvrzn",
         "artist": "New Beat Fund",
         "title": "No Type",
-        "snippet": "I ain't got no type {(nah)}",
+        "snippet": "I ain't got no {type} (nah)",
         "startSecond": 0.0,
         "endSecond": 7.48
     },
@@ -4707,7 +4699,7 @@
         "spotifyId": "3NRql0A1Ef4RCvT473iqgD",
         "artist": "Bakar",
         "title": "Hell N Back",
-        "snippet": "Could you tell where my head was at when you found {me}?",
+        "snippet": "Could you tell where my head was at when you {found} me?",
         "startSecond": 22.32,
         "endSecond": 25.08
     },
@@ -4715,7 +4707,7 @@
         "spotifyId": "5gzm0zFeHjYfteQu7x2uus",
         "artist": "The Strokes",
         "title": "Brooklyn Bridge To Chorus",
-        "snippet": "I want new friends, but they don't want {me}",
+        "snippet": "I want new {friends}, but they don't want me",
         "startSecond": 0.0,
         "endSecond": 6.0
     },
@@ -4787,7 +4779,7 @@
         "spotifyId": "6tnedmxMVEHzPJfWucWzHo",
         "artist": "Lime Cordiale",
         "title": "On Our Own",
-        "snippet": "I don't know how we're finally on our own now, {baby}",
+        "snippet": "I don't know how we're finally on our {own} now, baby",
         "startSecond": 0.0,
         "endSecond": 4.32
     },
@@ -4859,7 +4851,7 @@
         "spotifyId": "1g795gFDpVVmUF4RNbNjue",
         "artist": "Anita Baker",
         "title": "Whatever It Takes",
-        "snippet": "Whatever it takes to make you happy, {baby}",
+        "snippet": "Whatever it takes to make you {happy}, baby",
         "startSecond": 0.0,
         "endSecond": 5.74
     },
@@ -4875,7 +4867,7 @@
         "spotifyId": "7zFXmv6vqI4qOt4yGf3jYZ",
         "artist": "Daniel Caesar & Kali Uchis",
         "title": "Get You (feat. Kali Uchis)",
-        "snippet": "Ooh, who would've thought I'd get {you}?",
+        "snippet": "Ooh, who would've {thought} I'd get you?",
         "startSecond": 15.82,
         "endSecond": 18.82
     },
@@ -5059,7 +5051,7 @@
         "spotifyId": "48CE17Zs6TryXwxoNBRI3T",
         "artist": "Swervedriver",
         "title": "Spiked Flower",
-        "snippet": "But hey, why don't you talk to {me}?",
+        "snippet": "But hey, why don't you {talk} to me?",
         "startSecond": 22.94,
         "endSecond": 27.9
     },
@@ -5075,7 +5067,7 @@
         "spotifyId": "3B2FeobPJ5LPVdF0H40Kgf",
         "artist": "PUP",
         "title": "Kids",
-        "snippet": "I don't care about nothing but {you}",
+        "snippet": "I don't care about {nothing} but you",
         "startSecond": 9.96,
         "endSecond": 12.78
     },
@@ -5083,9 +5075,9 @@
         "spotifyId": "3UYxSVaquXGHP1yIovi4g9",
         "artist": "Tokyo Police Club",
         "title": "Simple Dude",
-        "snippet": "And I been waiting for {it}",
-        "startSecond": 10.58,
-        "endSecond": 12.48
+        "snippet": "Your touch, my touch, I feel the {rush}",
+        "startSecond": 4.46,
+        "endSecond": 8.46
     },
     {
         "spotifyId": "02DLxouSNCY7D8CT3K8jvt",
@@ -5131,7 +5123,7 @@
         "spotifyId": "0YZEYxd1oiqZRFhnnmTKKi",
         "artist": "Motionless In White",
         "title": "Another Life",
-        "snippet": "I don't hate that I need {you}",
+        "snippet": "I don't hate that I {need} you",
         "startSecond": 18.86,
         "endSecond": 22.98
     },
@@ -5139,7 +5131,7 @@
         "spotifyId": "1184omF5xTwYyI6fMijVrr",
         "artist": "Godsmack",
         "title": "Unforgettable",
-        "snippet": "I feel a rise inside {me}",
+        "snippet": "I feel a {rise} inside me",
         "startSecond": 0.0,
         "endSecond": 7.52
     },
@@ -5235,7 +5227,7 @@
         "spotifyId": "2HzoSBdq66iBoJXnnh1Tsq",
         "artist": "Asking Alexandria",
         "title": "Antisocialist",
-        "snippet": "Please, stay away from {me}",
+        "snippet": "Please, stay {away} from me",
         "startSecond": 3.5,
         "endSecond": 8.02
     },
@@ -5251,7 +5243,7 @@
         "spotifyId": "3JpJ9aIPUMcgeOfw2kT67L",
         "artist": "Picturesque",
         "title": "ATTN:",
-        "snippet": "Don't want, don't want {you}",
+        "snippet": "Don't {want}, don't want you",
         "startSecond": 20.76,
         "endSecond": 21.67
     },
@@ -5331,7 +5323,7 @@
         "spotifyId": "31xmybhg0i4lxMIn45aVq4",
         "artist": "From Ashes to New",
         "title": "Crazy",
-        "snippet": "Yeah, I think you made {me}",
+        "snippet": "Yeah, I think you {made} me",
         "startSecond": 10.72,
         "endSecond": 14.92
     },
@@ -5339,7 +5331,7 @@
         "spotifyId": "5jsDxDkJ1PqyYUWhDMr86B",
         "artist": "Stone Sour",
         "title": "Song #3",
-        "snippet": "If you reached out for {me}",
+        "snippet": "If you reached {out} for me",
         "startSecond": 0.0,
         "endSecond": 20.56
     },
@@ -5435,7 +5427,7 @@
         "spotifyId": "28KYBZXnvRk560ty8mdVIQ",
         "artist": "Foo Fighters",
         "title": "Run",
-        "snippet": "Run for your life with {me}",
+        "snippet": "Run for your {life} with me",
         "startSecond": 9.48,
         "endSecond": 15.5
     },
@@ -5475,7 +5467,7 @@
         "spotifyId": "66Avcq6c51vcMGXLzHH5d7",
         "artist": "Highly Suspect",
         "title": "Bloodfeather",
-        "snippet": "In the name of love, I'll follow {you}",
+        "snippet": "In the name of {love}, I'll follow you",
         "startSecond": 6.74,
         "endSecond": 9.34
     },
@@ -5491,8 +5483,8 @@
         "spotifyId": "6NWdgyVsjp2bJ11PToXCr1",
         "artist": "Erica Banks",
         "title": "Buss It",
-        "snippet": "Is you fuckin 2 shots fuck {it}",
-        "startSecond": 0.48,
+        "snippet": "Drop it down low and pick it {up}",
+        "startSecond": 1.06,
         "endSecond": 2.58
     },
     {
@@ -5563,7 +5555,7 @@
         "spotifyId": "68UU9oaQtMDnh6PRlW842H",
         "artist": "Princess Nokia",
         "title": "I Like Him",
-        "snippet": "I do not see you taming {me}",
+        "snippet": "I do not see you {taming} me",
         "startSecond": 25.81,
         "endSecond": 29.64
     },
@@ -5571,9 +5563,9 @@
         "spotifyId": "3WLwkFXJpZ1VpDxAh0DXzz",
         "artist": "The Hunna",
         "title": "She's Casual",
-        "snippet": "Mine and she knows {it}",
-        "startSecond": 16.66,
-        "endSecond": 18.48
+        "snippet": "I've been searching for you {baby}",
+        "startSecond": 6.98,
+        "endSecond": 11.76
     },
     {
         "spotifyId": "6o4lFpp8OAFhBqGQbWyAob",
@@ -5587,7 +5579,7 @@
         "spotifyId": "0xORFaXxl07BtES8IAJ7OD",
         "artist": "COIN",
         "title": "Youuu",
-        "snippet": "Oh, it's always been {you}",
+        "snippet": "Oh, it's {always} been you",
         "startSecond": 0.0,
         "endSecond": 16.72
     },
@@ -5603,25 +5595,25 @@
         "spotifyId": "7BVwi9cIzSc6tpyxsp47vJ",
         "artist": "Vance Joy",
         "title": "Mess Is Mine",
-        "snippet": "This body is yours, this body is yours and {mine}",
-        "startSecond": 1.48,
-        "endSecond": 3.98
+        "snippet": "Sorry for the mess, hey I don't {mind}",
+        "startSecond": 23.34,
+        "endSecond": 28.02
     },
     {
         "spotifyId": "01OOLvNYxeSttThtUj8Mor",
         "artist": "Colony House",
         "title": "Julia",
-        "snippet": "Than to be loved by {Julia}",
-        "startSecond": 26.48,
-        "endSecond": 29.48
+        "snippet": "Her voice is the sound that I hear when I start to disappear into the noise {again}",
+        "startSecond": 0.0,
+        "endSecond": 5.78
     },
     {
         "spotifyId": "4lRuRtvftdSSUA7hLP7zAr",
         "artist": "Amber Run",
         "title": "I Found",
-        "snippet": "That if you talk enough sense, then you'll lose your {mind}",
-        "startSecond": 0.0,
-        "endSecond": 6.1
+        "snippet": "Right in {front} of me",
+        "startSecond": 7.06,
+        "endSecond": 9.24
     },
     {
         "spotifyId": "1W2TYUenzUdOOuATtQIWS2",
@@ -5635,9 +5627,9 @@
         "spotifyId": "0pdKRp2sUthTPe7RLWpPqQ",
         "artist": "flora cash",
         "title": "You're Somebody Else",
-        "snippet": "Well, you look like {yourself}",
-        "startSecond": 0.46,
-        "endSecond": 2.56
+        "snippet": "And now you're making me {nervous}",
+        "startSecond": 14.6,
+        "endSecond": 17.14
     },
     {
         "spotifyId": "4fbvXwMTXPWaFyaMWUm9CR",
@@ -5651,7 +5643,7 @@
         "spotifyId": "0P2xmlbhOoQd5LOztoe0yF",
         "artist": "The Temper Trap",
         "title": "Trembling hands",
-        "snippet": "Somebody out there help {me}",
+        "snippet": "Somebody out there {help} me",
         "startSecond": 12.74,
         "endSecond": 16.38
     },
@@ -5715,9 +5707,9 @@
         "spotifyId": "08LxaBHzxNSxHdCSitATLW",
         "artist": "Paper Route",
         "title": "Better Life",
-        "snippet": "A better life, a better life is {waiting}.",
-        "startSecond": 0.0,
-        "endSecond": 2.04
+        "snippet": "I'm ready to lose, I'm ready to lose this {way}",
+        "startSecond": 2.38,
+        "endSecond": 5.03
     },
     {
         "spotifyId": "0uKyC5TIiwfeh0evennKOO",
@@ -5739,7 +5731,7 @@
         "spotifyId": "3SLdLEQ8xz6limRM51RpZ3",
         "artist": "Arkells",
         "title": "My Heart's Always Yours",
-        "snippet": "You know, I'll be waiting for {you}",
+        "snippet": "You know, I'll be {waiting} for you",
         "startSecond": 11.28,
         "endSecond": 12.5
     },
@@ -5747,7 +5739,7 @@
         "spotifyId": "7vEeYo34dX7geZhQVotCJi",
         "artist": "Amy Shark",
         "title": "Weekends",
-        "snippet": "Only on weekends I have no room for anyone else, but {you}",
+        "snippet": "Only on weekends I have no room for {anyone} else, but you",
         "startSecond": 10.94,
         "endSecond": 17.1
     },
@@ -5755,7 +5747,7 @@
         "spotifyId": "41X9To0bQ4fpoSRri4NHiI",
         "artist": "Future Islands",
         "title": "Seasons (Waiting On You)",
-        "snippet": "Cause I've been waiting on {you}",
+        "snippet": "Cause I've been {waiting} on you",
         "startSecond": 27.26,
         "endSecond": 29.98
     },
@@ -5763,9 +5755,9 @@
         "spotifyId": "0d0bU9qHxAHvuJRjio7cU6",
         "artist": "Vance Joy",
         "title": "Play with Fire",
-        "snippet": "You say you're used to playin with {fire}",
-        "startSecond": 10.66,
-        "endSecond": 16.88
+        "snippet": "Well that ain't {showing} through to me",
+        "startSecond": 18.46,
+        "endSecond": 24.78
     },
     {
         "spotifyId": "3ypXaNibspfxvUIKpzUkfz",
@@ -5779,7 +5771,7 @@
         "spotifyId": "6VVd4kRfzBsZqFbvEAjloh",
         "artist": "Night Riots",
         "title": "All For You",
-        "snippet": "It's all for you, for you, for {you}",
+        "snippet": "Forever in the twilight, like a diamond in the {calm}",
         "startSecond": 9.08,
         "endSecond": 13.94
     },
@@ -5787,9 +5779,9 @@
         "spotifyId": "0geaQiAZN8AhkxLfyAiUXe",
         "artist": "Joywave",
         "title": "Anemone",
-        "snippet": "You gave me just what I {need}",
-        "startSecond": 9.5,
-        "endSecond": 12.54
+        "snippet": "I'm falling back to the {sea}",
+        "startSecond": 14.26,
+        "endSecond": 15.65
     },
     {
         "spotifyId": "6SgHlKcfkRQ6XohmDR1ugQ",
