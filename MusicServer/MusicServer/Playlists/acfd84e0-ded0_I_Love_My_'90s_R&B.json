@@ -1,0 +1,92 @@
+{
+    "Id": "acfd84e0-ded0",
+    "Enabled": true,
+    "Name": "I Love My '90s R&B",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02e89a5a64dde4e95130e79de4",
+    "Songs": [
+        {
+            "Id": "55134916-863b-4efa-99cc-e4729ab2af2f",
+            "SpotifyId": "5u3FywQOPJ5O7ZAjm31cnq",
+            "Title": "Right Here - Human Nature Radio Mix",
+            "Artist": "SWV",
+            "Snippet": "Our love will {grow}",
+            "StartSecond": 6.6,
+            "EndSecond": 9.6,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/e1ffac9beb2340f41e5580f63fc6fbdbf8f16a03",
+            "Enabled": true
+        },
+        {
+            "Id": "5113273c-b614-4499-bf5c-edce9dc1a45e",
+            "SpotifyId": "5hzdcPTFKEuRVuN8cTkcvl",
+            "Title": "Love On My Mind",
+            "Artist": "Xscape",
+            "Snippet": "I really can't help {myself}",
+            "StartSecond": 19.06,
+            "EndSecond": 22.06,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/337eb190a4d5ba7f31c1e2e683f21cfa175e7c2e",
+            "Enabled": true
+        },
+        {
+            "Id": "9dec58b5-0874-4e1d-afbd-00193053aec3",
+            "SpotifyId": "6mz1fBdKATx6qP4oP1I65G",
+            "Title": "Pony",
+            "Artist": "Ginuwine",
+            "Snippet": "My {saddle}",
+            "StartSecond": 4.24,
+            "EndSecond": 7.24,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/c4694c8eeac6ffc53603ae187d3d29c79c99a40d",
+            "Enabled": true
+        },
+        {
+            "Id": "3197ff58-c688-47e3-8eac-d1b650a7aaeb",
+            "SpotifyId": "0mIuIBLkaRvPCz6A0mPqbM",
+            "Title": "My Little Secret",
+            "Artist": "Xscape",
+            "Snippet": "And that's how we should {be}",
+            "StartSecond": 25.94,
+            "EndSecond": 28.94,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/071e6be903a9854746479863c101bc387eb0f25b",
+            "Enabled": true
+        },
+        {
+            "Id": "30a41cd2-75f8-465d-986e-b2a753d34869",
+            "SpotifyId": "1ckU1EhAO0Nr73QYw24SWJ",
+            "Title": "My Love Is Your Love",
+            "Artist": "Whitney Houston",
+            "Snippet": "If I should die this very {day}",
+            "StartSecond": 17.46,
+            "EndSecond": 20.46,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/d85095d0b3a149f2a8b0e0a19f5f07afc0de92c1",
+            "Enabled": true
+        },
+        {
+            "Id": "01f8f824-5a7e-4534-a37c-eb3a495b5e42",
+            "SpotifyId": "63PIgPkDf3rswlU4ZWCYAM",
+            "Title": "What About Your Friends",
+            "Artist": "TLC",
+            "Snippet": "They're standing {ground}",
+            "StartSecond": 14.34,
+            "EndSecond": 17.34,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/8927e72f307a252bc6d50b7fa521485e662bc96d",
+            "Enabled": true
+        },
+        {
+            "Id": "570d30d7-be4e-4ff0-9cca-f3d4a3e5822f",
+            "SpotifyId": "7tsRp7QKUBp6hc9bth0h7x",
+            "Title": "Don't Walk Away",
+            "Artist": "Jade",
+            "Snippet": "Baby don't {misunderstand}",
+            "StartSecond": 6.78,
+            "EndSecond": 9.78,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/49bbc2c5509d1478d05e55c1ecefbaa743314d58",
+            "Enabled": true
+        }
+    ]
+}

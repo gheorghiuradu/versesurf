@@ -5,43 +5,33 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using MusicServer.Models;
 
-namespace MusicServer.Controllers
+namespace MusicServer.Controllers;
+
+public class HomeController(IWebHostEnvironment env, IConfiguration config) : Controller
 {
-    public class HomeController(IWebHostEnvironment env, IConfiguration config) : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            this.ViewData["HubUrl"] = "/ws/gamehub";
-            this.ViewData["ApiUrl"] = "/api";
-            this.ViewData["GenericAlbumUrl"] = "/img/generic-album.png";
-            this.ViewData["CharacterPath"] = "/img/characters";
+        ViewData["HubUrl"] = "/ws/gamehub";
+        ViewData["ApiUrl"] = "/api";
+        ViewData["GenericAlbumUrl"] = "/img/generic-album.png";
+        ViewData["CharacterPath"] = "/img/characters/";
 
-            return View();
-        }
+        return View();
+    }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+    public IActionResult Privacy() => View();
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 
-        public IActionResult Debug()
-        {
-            if (!env.IsDevelopment())
-            {
-                return this.RedirectToAction(nameof(this.Error));
-            }
+    public IActionResult Debug()
+    {
+        if (!env.IsDevelopment()) return RedirectToAction(nameof(Error));
 
-            this.ViewData["EnvironmentName"] = env.EnvironmentName;
-            this.ViewData["IsProduction"] = env.IsProduction();
-            this.ViewData["IsDevelopment"] = env.IsDevelopment();
+        ViewData["EnvironmentName"] = env.EnvironmentName;
+        ViewData["IsProduction"] = env.IsProduction();
+        ViewData["IsDevelopment"] = env.IsDevelopment();
 
-            return View();
-        }
+        return View();
     }
 }

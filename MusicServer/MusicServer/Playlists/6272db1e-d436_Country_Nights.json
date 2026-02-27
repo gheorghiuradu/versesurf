@@ -1,0 +1,152 @@
+{
+    "Id": "6272db1e-d436",
+    "Enabled": true,
+    "Name": "Country Nights",
+    "PictureUrl": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023223704e053760c4b8a8fc66",
+    "Songs": [
+        {
+            "Id": "3d9cf7ca-dd8a-4870-91a0-fadbe57ce383",
+            "SpotifyId": "3QvOV1QYPPre7gjppKyeON",
+            "Title": "Pickup Man",
+            "Artist": "Joe Diffie",
+            "Snippet": "You can set my truck on fire and roll it {down}",
+            "StartSecond": 8.99,
+            "EndSecond": 13.93,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/5d2a8a86d8d1846bcadaf5da6a3a21c797702b18",
+            "Enabled": true
+        },
+        {
+            "Id": "aa3fbecc-085e-430a-a9b2-0ed52cfb3210",
+            "SpotifyId": "14GwnOeC9qYEKEA6uOZepa",
+            "Title": "One Of Them Girls",
+            "Artist": "Lee Brice",
+            "Snippet": "You're just here for the {party}, if I'm wrong then stop me",
+            "StartSecond": 7.12,
+            "EndSecond": 10.12,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/4febdd30e7aa9c65ac6cdab4bb6d74b8945087c7",
+            "Enabled": true
+        },
+        {
+            "Id": "a00c2ce0-836a-420c-8c22-cca5108cd2be",
+            "SpotifyId": "6leiB1fEsTnVCuPiielde5",
+            "Title": "Something Like That",
+            "Artist": "Tim McGraw",
+            "Snippet": "Like an old photograph, time can make a feeling {fade}",
+            "StartSecond": 13.88,
+            "EndSecond": 17.68,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/ab1456b62aa6e65012494cf080d3911429c161ae",
+            "Enabled": true
+        },
+        {
+            "Id": "0c19f958-1dfd-4974-a0c0-4ed75c4ecbba",
+            "SpotifyId": "1WtdhlaiUoDTrVNSwaya0L",
+            "Title": "Just Gettin' Started",
+            "Artist": "Jason Aldean",
+            "Snippet": "Already having the time of our {lives}",
+            "StartSecond": 10.82,
+            "EndSecond": 13.82,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/17469ec87cf03b9c4a8b0c931fafaaff73fbd2e0",
+            "Enabled": true
+        },
+        {
+            "Id": "600a6496-e103-4a26-93c7-137a4521befc",
+            "SpotifyId": "6FniJZn4agmDtPx1pKZQsa",
+            "Title": "More Than My Hometown",
+            "Artist": "Morgan Wallen",
+            "Snippet": "When the guy gets the girl at the end of the {book}",
+            "StartSecond": 3.78,
+            "EndSecond": 7.18,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9141599aff5d54d75777c44ee2ee2056f0460871",
+            "Enabled": true
+        },
+        {
+            "Id": "280c7685-fe77-48c3-87a4-6eaf2adad2a7",
+            "SpotifyId": "3rh2f6nqswpfDN3Ef6Bi5J",
+            "Title": "Ready Set Roll",
+            "Artist": "Chase Rice",
+            "Snippet": "Pedal to the metal till the sun comes {up}",
+            "StartSecond": 4.92,
+            "EndSecond": 7.92,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/883b8969bdee7b2ebc0b2071e8c8615bb2eb6305",
+            "Enabled": true
+        },
+        {
+            "Id": "45961fa4-04a7-49e2-860d-ed7ddc902a2e",
+            "SpotifyId": "6QbcLktLNe7eYqh8TjZeCd",
+            "Title": "It’s America",
+            "Artist": "Rodney Atkins",
+            "Snippet": "It's a high school {prom}",
+            "StartSecond": 1.08,
+            "EndSecond": 2.34,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/582faa9b52ce92f27557859bf570d744fc786b80",
+            "Enabled": true
+        },
+        {
+            "Id": "0616151e-5f45-4941-b79c-b7d22815189d",
+            "SpotifyId": "49oBFP6ZHPtd6t33LFTD3E",
+            "Title": "Good Vibes",
+            "Artist": "Chris Janson",
+            "Snippet": "I got me a full cup and there ain't nothing gonna {spill} it",
+            "StartSecond": 4.26,
+            "EndSecond": 8.42,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/51ec976ca7d4a459b9396fe702dfeced5a79d59d",
+            "Enabled": true
+        },
+        {
+            "Id": "e507dbe6-6596-4ff1-a3b3-06a28b5a1b77",
+            "SpotifyId": "65N3RYCN1DgfY0Zcv5k9kr",
+            "Title": "Down On The Farm",
+            "Artist": "Tim McGraw",
+            "Snippet": "Ain't no closing time, ain't no cover {charge}",
+            "StartSecond": 18.66,
+            "EndSecond": 21.66,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/3a232bae858b55a8519b48cbd70bd1a34ae68c48",
+            "Enabled": true
+        },
+        {
+            "Id": "fd688e02-282d-4671-9239-56d53152e759",
+            "SpotifyId": "2qYsSHsYkihWx043HVJQRV",
+            "Title": "Dirt Road Anthem",
+            "Artist": "Jason Aldean",
+            "Snippet": "reminiscing on the good {times}",
+            "StartSecond": 5.04,
+            "EndSecond": 8.04,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/1e31b55d599f685137afedacb0487656ac2bed72",
+            "Enabled": true
+        },
+        {
+            "Id": "95add170-8769-4aeb-b14f-e4a2c57e4a92",
+            "SpotifyId": "6PN7QeNItfzZBpCTQvsLyq",
+            "Title": "Short Skirt Weather",
+            "Artist": "Kane Brown",
+            "Snippet": "Oh my {baby's} made for short skirt weather",
+            "StartSecond": 0.9,
+            "EndSecond": 1.82,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/2f7c2ad3e9613e61823f2c51f1a9073fd331ccca",
+            "Enabled": true
+        },
+        {
+            "Id": "247de2d1-f3bc-42b1-b383-db4c764bb646",
+            "SpotifyId": "5ZManJDV3CexO66nRCkdiV",
+            "Title": "Break Up with Him",
+            "Artist": "Old Dominion",
+            "Snippet": "Stringing them along any longer, girl, is just wasting precious {time}",
+            "StartSecond": 8.48,
+            "EndSecond": 12.92,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/70b1971c609f6280672a8f53b6d12779f14bfab9",
+            "Enabled": true
+        }
+    ]
+}

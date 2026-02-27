@@ -1,0 +1,128 @@
+{
+    "Id": "0d39c913-356c",
+    "Enabled": true,
+    "Name": "Behind The Lyrics: The Complete Experience",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a6d26c8b8b7b00f4776dabcc",
+    "Songs": [
+        {
+            "Id": "1283de12-1314-4596-87cf-700eb9bb25a4",
+            "SpotifyId": "2gOOW3dkYAAyjSZnYaEVZN",
+            "Title": "Neon Light",
+            "Artist": "Blake Shelton",
+            "Snippet": "There's a neon light at the end of the {tunnel}",
+            "StartSecond": 0.0,
+            "EndSecond": 3.58,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9f505e2e35dc40cce7d3d7e03be56c580f26e4c5",
+            "Enabled": true
+        },
+        {
+            "Id": "5b451bd9-7d60-4b27-a371-33fa9d6c67d0",
+            "SpotifyId": "4b5Z76krusEOdN1zUusfQN",
+            "Title": "Doin' What She Likes",
+            "Artist": "Blake Shelton",
+            "Snippet": "I like doing what she {likes}",
+            "StartSecond": 8.98,
+            "EndSecond": 11.98,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9cc53999b22e9983c34b5ae17ead32b0012dc0dd",
+            "Enabled": true
+        },
+        {
+            "Id": "d46935b4-647a-4231-bbfd-ff001d3a6c0d",
+            "SpotifyId": "2UNHhozqXtbaq3HA9eQVfV",
+            "Title": "I Wanna Get Better",
+            "Artist": "Bleachers & Tinashe",
+            "Snippet": "Even if it's gonna {kill} me",
+            "StartSecond": 3.64,
+            "EndSecond": 6.64,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/5b35ad6bb61a168ca76c3e9a5003f7a820c2887a",
+            "Enabled": true
+        },
+        {
+            "Id": "c47d1083-6a17-4641-800e-6adb6f521e1e",
+            "SpotifyId": "43PuMrRfbyyuz4QpZ3oAwN",
+            "Title": "Exchange",
+            "Artist": "Bryson Tiller",
+            "Snippet": "Guess you changed for the {better}",
+            "StartSecond": 9.78,
+            "EndSecond": 12.78,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/ee1b19a890ecb7e45d74d7ddefcd2e3b853dc0ae",
+            "Enabled": true
+        },
+        {
+            "Id": "cadf4c05-e379-448a-b022-268d155ea4d5",
+            "SpotifyId": "3gaWozYU01iAGUwWrmZ2xV",
+            "Title": "Something Soon",
+            "Artist": "Car Seat Headrest",
+            "Snippet": "I need solvents {too}",
+            "StartSecond": 0.48,
+            "EndSecond": 3.48,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/65dca7860499f5f991fa8c3530bf27c3ecf6c345",
+            "Enabled": true
+        },
+        {
+            "Id": "e08e0327-6d04-4785-958e-01c88efe04e9",
+            "SpotifyId": "5TmgLf3eXrAAfNIk5bURJL",
+            "Title": "Angels (feat. Saba)",
+            "Artist": "Chance the Rapper & Saba",
+            "Snippet": "I got angels all around me they keep me {surrounded}",
+            "StartSecond": 3.88,
+            "EndSecond": 6.88,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/ab474772f5379e62233262cfca741d3419fc5e21",
+            "Enabled": true
+        },
+        {
+            "Id": "12025e83-8120-4a88-92f7-cc7e122aaebd",
+            "SpotifyId": "2uEJanMvnA1dXgX1ASnPQm",
+            "Title": "One Call Away",
+            "Artist": "Charlie Puth",
+            "Snippet": "I'm only one call {away}",
+            "StartSecond": 22.78,
+            "EndSecond": 25.9,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f43776f3699d69a2d5a4da9966520ac264e83831",
+            "Enabled": true
+        },
+        {
+            "Id": "249c7fdf-c4e9-47c5-bb47-36f2abd1356a",
+            "SpotifyId": "37FXw5QGFN7uwwsLy8uAc0",
+            "Title": "We Don't Talk Anymore (feat. Selena Gomez)",
+            "Artist": "Charlie Puth & Selena Gomez",
+            "Snippet": "We don't talk {anymore}",
+            "StartSecond": 0.0,
+            "EndSecond": 0.82,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/0af9ac246a60236b73e34854631a6c3de5cca602",
+            "Enabled": true
+        },
+        {
+            "Id": "2736b5ca-b4ff-4f89-8b48-fccd2724a74a",
+            "SpotifyId": "69uxyAqqPIsUyTO8txoP2M",
+            "Title": "Adventure of a Lifetime",
+            "Artist": "Coldplay",
+            "Snippet": "Like I'm alive {again}",
+            "StartSecond": 15.72,
+            "EndSecond": 18.72,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/0b666b9a07035a659c7e5b7cb754f1b81bf1535b",
+            "Enabled": true
+        },
+        {
+            "Id": "29e53b62-0692-4656-b891-1b4be6187919",
+            "SpotifyId": "6OJMVcgJYX3rJrjN6txUOI",
+            "Title": "Gone",
+            "Artist": "Day Wave",
+            "Snippet": "And you're {gone}",
+            "StartSecond": 12.88,
+            "EndSecond": 15.88,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f012e91c4dbef868652d136e262103a047f226f1",
+            "Enabled": true
+        }
+    ]
+}

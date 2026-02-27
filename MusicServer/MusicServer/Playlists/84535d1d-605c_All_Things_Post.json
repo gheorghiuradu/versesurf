@@ -1,0 +1,80 @@
+{
+    "Id": "84535d1d-605c",
+    "Enabled": true,
+    "Name": "All Things Post",
+    "PictureUrl": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0262c767bc079bba6a42471124",
+    "Songs": [
+        {
+            "Id": "9630a7e2-015c-4561-8f59-b51196c026b5",
+            "SpotifyId": "4ALLjfDmAioOkLkE4hTHLK",
+            "Title": "Paper Wings",
+            "Artist": "Throw The Fight",
+            "Snippet": "Take me higher up towards the {sun}",
+            "StartSecond": 0.0,
+            "EndSecond": 3.42,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/0a8e3c157093c751005a0b1f8afd854298fc8d06",
+            "Enabled": true
+        },
+        {
+            "Id": "6927327c-f04e-492e-9e45-78bd2678986f",
+            "SpotifyId": "1kiT87f5XRcGQEglXfnQp2",
+            "Title": "Wolves in the Dark",
+            "Artist": "Throw The Fight",
+            "Snippet": "We are the wolves in the {dark}",
+            "StartSecond": 3.9,
+            "EndSecond": 7.34,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/001087073ef87d0e95235737f3da883d4e699284",
+            "Enabled": true
+        },
+        {
+            "Id": "67bf88eb-1a62-4e07-81d1-080b8685ac30",
+            "SpotifyId": "1n1IeCWKNGZpNMKdWWTQA6",
+            "Title": "Seamless",
+            "Artist": "Higher Power",
+            "Snippet": "A list of all the things inside my {head}",
+            "StartSecond": 0.54,
+            "EndSecond": 4.88,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/e66cd76461fb5571e649e91dbdfde498b0054f6b",
+            "Enabled": true
+        },
+        {
+            "Id": "dafd9e4b-0539-420d-b080-7aa464e1922f",
+            "SpotifyId": "7foB3FgACotzkH5hkWOOAS",
+            "Title": "Cave In",
+            "Artist": "I The Mighty",
+            "Snippet": "Knowing that you're throwing it all {away}",
+            "StartSecond": 2.9,
+            "EndSecond": 5.9,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/81bbcee590ec5488f0692ac39f91ff6f346f2680",
+            "Enabled": true
+        },
+        {
+            "Id": "aae25785-5a2f-4634-8207-7161eaa07339",
+            "SpotifyId": "0bb8oI0Y3E4FDp6YaFYqTp",
+            "Title": "FOOTSTEPS AT THE POND",
+            "Artist": "La Dispute",
+            "Snippet": "I just {wanted} you to carry on and carry for me",
+            "StartSecond": 2.18,
+            "EndSecond": 5.18,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/8b44270c476605b69a2d7b07e2d96f6c6e16c3ce",
+            "Enabled": true
+        },
+        {
+            "Id": "2a70e728-8441-485e-99ce-8ab411089ef8",
+            "SpotifyId": "6UrxFYkDpAGYrlh43U0xcH",
+            "Title": "God Damn",
+            "Artist": "All Get Out",
+            "Snippet": "Something so right can give you {hope}",
+            "StartSecond": 0.62,
+            "EndSecond": 2.44,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/61245af06a812f9a4940d67314211767740645e4",
+            "Enabled": true
+        }
+    ]
+}

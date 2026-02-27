@@ -48,8 +48,13 @@ with csv_path.open(newline="", encoding="utf-8") as csv_file:
                         json.dump(current_playlist, playlist_file, ensure_ascii=False, indent=4)
                     print(f"Finished playlist: {current_playlist['Name']} with {len(current_playlist['Songs'])} songs")
 
-                current_playlist["Id"] = short_uuid()
-                current_playlist["Name"] = playlist_name
+                current_playlist={
+                    "Id": short_uuid(),
+                    "Enabled": True,
+                    "Name": playlist_name,
+                    "PictureUrl": "",
+                    "Songs": [],
+                }
                 print(f"Playlist: {current_playlist['Name']}")
 
             track_id = (row.get("Songs.SpotifyId") or "").strip()

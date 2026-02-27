@@ -8,7 +8,6 @@
         public string PreviewUrl { get; set; }
         public string Snippet { get; set; }
         public bool IsExplicit { get; set; }
-        public string PreviewHash { get; set; }
         public float? StartSecond { get; set; }
         public float? EndSecond { get; set; }
     }
