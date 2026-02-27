@@ -10,19 +10,19 @@ namespace Assets.Scripts.Services
 {
     public static class ServiceProvider
     {
-        public static bool IsInitialized;
+        private static bool _isInitialized;
         private static List<object> ServiceCollection { get; } = new List<object>();
 
         public static T Get<T>() where T : class
         {
-            if (!IsInitialized) throw new System.Exception("ServiceCollection not initialized");
+            if (!_isInitialized) throw new System.Exception("ServiceCollection not initialized");
 
             return ServiceCollection.Find(s => s is T) as T;
         }
 
         public static void Initialize()
         {
-            if (IsInitialized) return;
+            if (_isInitialized) return;
 
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
@@ -47,10 +47,10 @@ namespace Assets.Scripts.Services
 
             var client = new MusicClient(settings.HubUrl, settings.ApiUrl);
             ServiceCollection.Add(client);
-            ServiceCollection.Add(new CacheService(client));
+            ServiceCollection.Add(new CacheService());
             ServiceCollection.Add(new CustomEventService(client));
 
-            IsInitialized = true;
+            _isInitialized = true;
 
             Application.quitting += () =>
             {

@@ -10,6 +10,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
+using Image = UnityEngine.UI.Image;
 
 namespace Assets.Scripts.Reusable
 {
@@ -66,7 +67,7 @@ namespace Assets.Scripts.Reusable
         private async void LoadAlbumImageAsync()
         {
             var cacheSerice = ServiceProvider.Get<CacheService>();
-            this.AlbumCover.sprite = await cacheSerice.HandlePlaylistImageAsync(this.PlaylistPictureUrl, this.PlaylistPictureHash);
+            this.AlbumCover.sprite = await cacheSerice.HandlePlaylistImageAsync(this.PlaylistPictureUrl);
         }
 
         private void ToggleGrayScale()
@@ -134,8 +135,6 @@ namespace Assets.Scripts.Reusable
             script.PlaylistName = playlistViewModel.Name;
             script.PlaylistEnabled = enabled;
             script.ToolTipText = tooltipText;
-            script.PlaylistPictureUrl = playlistViewModel.PictureUrl;
-            script.PlaylistPictureHash = playlistViewModel.PictureHash;
             script.PlaylistKeyWords = (playlistViewModel as PlaylistViewModel)?.KeyWords;
             script.onClick = onClick;
 

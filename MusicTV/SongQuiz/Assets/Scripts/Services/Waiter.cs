@@ -6,9 +6,9 @@ namespace Assets.Scripts.Services
 {
     public class Waiter
     {
-        private readonly float waitSeconds;
+        private readonly int waitSeconds;
 
-        public Waiter(float waitSeconds)
+        public Waiter(int waitSeconds)
         {
             this.waitSeconds = waitSeconds;
         }
@@ -17,7 +17,6 @@ namespace Assets.Scripts.Services
         {
             var successful = false;
             while (!successful)
-            {
                 try
                 {
                     action();
@@ -28,7 +27,6 @@ namespace Assets.Scripts.Services
                     Debug.LogError(ex);
                     System.Threading.Thread.Sleep(TimeSpan.FromSeconds(waitSeconds));
                 }
-            }
         }
 
         public bool WithRetry(Action action, int retryCount)
@@ -37,7 +35,6 @@ namespace Assets.Scripts.Services
             var runCount = 0;
 
             while (!successful && runCount < retryCount)
-            {
                 try
                 {
                     action();
@@ -52,7 +49,6 @@ namespace Assets.Scripts.Services
                 {
                     runCount++;
                 }
-            }
 
             return successful;
         }
@@ -61,7 +57,6 @@ namespace Assets.Scripts.Services
         {
             var successful = false;
             while (!successful)
-            {
                 try
                 {
                     await task();
@@ -70,9 +65,8 @@ namespace Assets.Scripts.Services
                 catch (Exception ex)
                 {
                     Debug.LogError(ex);
-                    await new WaitForSecondsRealtime(waitSeconds);
+                    await Task.Delay(TimeSpan.FromSeconds(waitSeconds));
                 }
-            }
         }
 
         public async Task<bool> WithRetryAsync(Func<Task> task, int retryCount)
@@ -80,7 +74,6 @@ namespace Assets.Scripts.Services
             var successful = false;
             var runCount = 0;
             while (!successful && runCount < retryCount)
-            {
                 try
                 {
                     await task();
@@ -89,13 +82,12 @@ namespace Assets.Scripts.Services
                 catch (Exception ex)
                 {
                     Debug.LogError(ex);
-                    await new WaitForSecondsRealtime(waitSeconds);
+                    await Task.Delay(TimeSpan.FromSeconds(waitSeconds));
                 }
                 finally
                 {
                     runCount++;
                 }
-            }
 
             return successful;
         }
