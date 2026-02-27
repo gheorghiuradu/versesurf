@@ -15,6 +15,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Constants = Assets.Scripts.Services.Constants;
+using Image = UnityEngine.UI.Image;
 
 public class MainMenuManager : UnityEventUser
 {

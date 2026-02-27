@@ -14,6 +14,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 namespace Assets.Scripts.PlaylistVotingBooth
 {

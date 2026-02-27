@@ -34,8 +34,8 @@ def _extract_cover_image_url(entity: dict) -> str | None:
     if not images:
         return None
 
-    if len(images) > 2 and isinstance(images[2], dict):
-        return images[2].get("url")
+    if len(images) > 0 and isinstance(images[0], dict):
+        return images[0].get("url")
 
     if isinstance(images[-1], dict):
         return images[-1].get("url")
@@ -85,7 +85,7 @@ def get_track_data(track_id: str) -> TrackData | None:
         "title": entity["name"],
         "artists": artist_names,
         "cover_image_url": _extract_cover_image_url(entity),
-        "audio_preview_url": audio_preview.get("url"),
+        "audio_preview_url": audio_preview.get("url") if audio_preview else None,
     }
 
 

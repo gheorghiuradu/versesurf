@@ -35,7 +35,7 @@ public class PlaylistScript : MonoBehaviour
     {
         var coverImage = this.transform.Find("CoverImage").gameObject;
         coverImage.GetComponent<Image>().sprite =
-        await ServiceProvider.Get<CacheService>().HandlePlaylistImageAsync(playlist.PictureUrl, playlist.PictureHash);
+        await ServiceProvider.Get<CacheService>().HandlePlaylistImageAsync(playlist.PictureUrl);
 
         this.Id = playlist.Id;
         this.AlbumName.text = playlist.Name;
@@ -48,7 +48,7 @@ public class PlaylistScript : MonoBehaviour
     {
         var coverImage = this.transform.Find("CoverImage").gameObject;
         coverImage.GetComponent<Image>().sprite =
-        await ServiceProvider.Get<CacheService>().HandlePlaylistImageAsync(playlist.PictureUrl, playlist.PictureHash);
+        await ServiceProvider.Get<CacheService>().HandlePlaylistImageAsync(playlist.PictureUrl);
 
         this.Id = playlist.Id;
         this.AlbumName.text = $"{song.Artist} - {song.Title}\n{playlist.Name}";
