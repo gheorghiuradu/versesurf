@@ -85,7 +85,7 @@ namespace Assets.Scripts.Round
             var song = this.room.Playlist.Songs[this.room.CurrentRound.Number - 1];
             this.PlaylistScript.InitializeAsync(this.room.Playlist, song).CatchErrors();
 
-            this.audioSource.clip = await ServiceProvider.Get<CacheService>().HandleSongAsync(song.Id);
+            this.audioSource.clip = await ServiceProvider.Get<CacheService>().HandleSongAsync(song.PreviewUrl);
             this.gameOptions.ApplyVolume();
 
             this.snippet = song.Snippet.Contains("{") ?

@@ -1,0 +1,68 @@
+{
+    "Id": "7c0d44f7-07c3",
+    "Enabled": true,
+    "Name": "Country Gold",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0212cb094ddcb7ac54d3259633",
+    "Songs": [
+        {
+            "Id": "751dcab1-a76e-42c6-aca3-67c3b65aab46",
+            "SpotifyId": "6CyJlVAEFlNdpggOLanytL",
+            "Title": "Hangin' On",
+            "Artist": "Chris Young",
+            "Snippet": "You hanging on, {hanging} on to me",
+            "StartSecond": 11.96,
+            "EndSecond": 14.96,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/d937285e70e4adf94aab5208f4fd0404ede1473f",
+            "Enabled": true
+        },
+        {
+            "Id": "84e74f3b-9231-437d-8517-8e924284089c",
+            "SpotifyId": "6E9V9TRlVOLjenGjHemzEH",
+            "Title": "Hard To Love",
+            "Artist": "Lee Brice",
+            "Snippet": "I'm hard to love, hard to love, {though} I don't make it easy",
+            "StartSecond": 0.1,
+            "EndSecond": 3.1,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/dcf16761e3130355e015493b6e5f86e3defb6f3f",
+            "Enabled": true
+        },
+        {
+            "Id": "97c288ba-39ba-42d1-9985-ce5f7e0759cd",
+            "SpotifyId": "1HXy5I3HTWq8OvxCn0z7G7",
+            "Title": "Heaven",
+            "Artist": "Kane Brown",
+            "Snippet": "Heaven could be better than {this}",
+            "StartSecond": 15.2,
+            "EndSecond": 18.2,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/3701d880aca42dc3de0af4653cc76f438f679542",
+            "Enabled": true
+        },
+        {
+            "Id": "d907eb36-2d73-43dc-86dd-4c2541500a36",
+            "SpotifyId": "2ZxTjs4EdJl4Y9YByIiNoo",
+            "Title": "You Make It Easy",
+            "Artist": "Jason Aldean",
+            "Snippet": "Stealing {kisses} undercover babe",
+            "StartSecond": 21.96,
+            "EndSecond": 24.96,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/792310fb793bf0821bd23c10614b918872c961e4",
+            "Enabled": true
+        },
+        {
+            "Id": "19290faf-9bfe-4bb8-8395-9439c735c393",
+            "SpotifyId": "09iyGiljLWRYXdRazFkdtJ",
+            "Title": "I Could Use a Love Song",
+            "Artist": "Maren Morris",
+            "Snippet": "I could use a love {song}",
+            "StartSecond": 6.04,
+            "EndSecond": 9.04,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/a9bc02f2451ec5d15f917ee0f21d31c231aa6baa",
+            "Enabled": true
+        }
+    ]
+}

@@ -42,32 +42,29 @@ namespace Assets.Scripts.Services
 
         public Task<AudioClip> HandleSongAsync(string songUrl)
         {
-            return Task.Run(() =>
+            try
             {
-                try
+                var escapedUrl = Uri.EscapeDataString(songUrl);
+                var localFilePath = Path.Combine(Constants.SongCacheFullPath, Path.GetFileName(GetLocalPath(songUrl)));
+
+                if (File.Exists(localFilePath)) return Task.FromResult(NAudioPlayer.FromMp3File(localFilePath));
+
+                var songRequest = UnityWebRequest.Get(escapedUrl);
+                songRequest.SendWebRequest();
+                while (!songRequest.downloadHandler.isDone)
                 {
-                    var escapedUrl = Uri.EscapeDataString(songUrl);
-                    var localFilePath = Path.Combine(Constants.SongCacheFullPath, Path.GetFileName(GetLocalPath(songUrl)));
-
-                    if (File.Exists(localFilePath)) return Task.FromResult(NAudioPlayer.FromMp3File(localFilePath));
-
-                    var songRequest = UnityWebRequest.Get(escapedUrl);
-                    songRequest.SendWebRequest();
-                    while (!songRequest.downloadHandler.isDone)
-                    {
-                        //wait
-                    }
-
-                    var songData = songRequest.downloadHandler.data;
-                    AddToCache(localFilePath, songData);
-
-                    return Task.FromResult(NAudioPlayer.FromMp3File(localFilePath));
+                    //wait
                 }
-                catch (Exception exception)
-                {
-                    return Task.FromException<AudioClip>(exception);
-                }
-            });
+
+                var songData = songRequest.downloadHandler.data;
+                AddToCache(localFilePath, songData);
+
+                return Task.FromResult(NAudioPlayer.FromMp3File(localFilePath));
+            }
+            catch (Exception exception)
+            {
+                return Task.FromException<AudioClip>(exception);
+            }
         }
 
         private static void AddToCache(string fullPath, byte[] bytes)

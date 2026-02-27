@@ -1,0 +1,116 @@
+{
+    "Id": "5b01f4f6-a051",
+    "Enabled": true,
+    "Name": "All Out 70s",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02f64b9ea8a8a409c6af86134f",
+    "Songs": [
+        {
+            "Id": "67068abb-7249-45c6-9d46-6df35d86decf",
+            "SpotifyId": "1k1Bqnv2R0uJXQN4u6LKYt",
+            "Title": "Ain't No Sunshine",
+            "Artist": "Bill Withers",
+            "Snippet": "Ain't no sunshine when she's {gone}",
+            "StartSecond": 5.72,
+            "EndSecond": 12.72,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/4dcf6b02099894e4fc981272ce337ee9095be853",
+            "Enabled": true
+        },
+        {
+            "Id": "f4111097-165a-4408-86d4-ada657dad83c",
+            "SpotifyId": "5p3JunprHCxClJjOmcLV8G",
+            "Title": "Walk On the Wild Side",
+            "Artist": "Lou Reed",
+            "Snippet": "Take a walk on the wild {side}",
+            "StartSecond": 0.0,
+            "EndSecond": 2.86,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f20ab574615b301c85810c1453868b7668180d47",
+            "Enabled": true
+        },
+        {
+            "Id": "f5424e7a-3d9c-4cfd-bdc6-4723607c9ef0",
+            "SpotifyId": "3M8FzayQWtkvOhqMn2V4T2",
+            "Title": "Lean on Me",
+            "Artist": "Bill Withers",
+            "Snippet": "I'll help you carry {on}",
+            "StartSecond": 8.06,
+            "EndSecond": 14.36,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/6de43db7d0bdb57ff1d97b155020a1d4f7751cd6",
+            "Enabled": true
+        },
+        {
+            "Id": "cbe7fde8-1dc8-4e1f-9d1a-3ff81f5515eb",
+            "SpotifyId": "70C4NyhjD5OZUMzvWZ3njJ",
+            "Title": "Piano Man",
+            "Artist": "Billy Joel",
+            "Snippet": "They're sharing a drink they call {loneliness}",
+            "StartSecond": 8.32,
+            "EndSecond": 11.32,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/15c3badbac17e832e321cfb0be8f53f92708021b",
+            "Enabled": true
+        },
+        {
+            "Id": "ea1b4a5c-a47e-492b-ab98-60ad72977cfe",
+            "SpotifyId": "714hERk9U1W8FMYkoC83CO",
+            "Title": "You Sexy Thing",
+            "Artist": "Hot Chocolate",
+            "Snippet": "I believe in {miracles}",
+            "StartSecond": 16.3,
+            "EndSecond": 19.3,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/cf7d6e0e8f7cb98c438805bbb5631fbc45891e3f",
+            "Enabled": true
+        },
+        {
+            "Id": "d65c6768-c65c-4053-afc0-256c28df44d2",
+            "SpotifyId": "2SUpC3UgKwLVOS2FtZif9N",
+            "Title": "Carry on Wayward Son",
+            "Artist": "Kansas",
+            "Snippet": "Carry on my wayward {son}",
+            "StartSecond": 7.72,
+            "EndSecond": 10.72,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/906bc723615987e6eb299a8ea4f7a73e59b4972f",
+            "Enabled": true
+        },
+        {
+            "Id": "2eb98574-62f6-400c-addf-29e5fea34a04",
+            "SpotifyId": "6zeE5tKyr8Nu882DQhhSQI",
+            "Title": "Dust in the Wind",
+            "Artist": "Kansas",
+            "Snippet": "All we are is dust in the {wind}",
+            "StartSecond": 0.0,
+            "EndSecond": 23.54,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/ddfc248171b5199053bafdefbc94ab5b335faa48",
+            "Enabled": true
+        },
+        {
+            "Id": "29df9113-a5c4-4411-8977-12f6c4745c0a",
+            "SpotifyId": "2DnJjbjNTV9Nd5NOa1KGba",
+            "Title": "You're so Vain",
+            "Artist": "Carly Simon",
+            "Snippet": "I bet you think this song is {about} you",
+            "StartSecond": 3.38,
+            "EndSecond": 6.38,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f4a1b79744edc4652f60e676e77193b4bf1e9528",
+            "Enabled": true
+        },
+        {
+            "Id": "3009bd62-d832-433d-b9ca-7eb4aa6204d9",
+            "SpotifyId": "5ihS6UUlyQAfmp48eSkxuQ",
+            "Title": "Landslide",
+            "Artist": "Fleetwood Mac",
+            "Snippet": "Even children get {older}",
+            "StartSecond": 7.14,
+            "EndSecond": 12.6,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/c56024c487393715da130f026ba98a4a529a46e0",
+            "Enabled": true
+        }
+    ]
+}

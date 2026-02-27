@@ -1,0 +1,32 @@
+{
+    "Id": "d7aa1227-0a67",
+    "Enabled": true,
+    "Name": "Behind The Lyrics: HITS",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02e5855edffddef46b7feff49b",
+    "Songs": [
+        {
+            "Id": "0680029a-fb40-4137-b1d4-a5d8ab891251",
+            "SpotifyId": "0qxYx4F3vm1AOnfux6dDxP",
+            "Title": "You Can Call Me Al",
+            "Artist": "Paul Simon",
+            "Snippet": "I can call you {Betty}",
+            "StartSecond": 6.54,
+            "EndSecond": 9.54,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/d9144f35328ebf1e07dea90119171fcf468e9f45",
+            "Enabled": true
+        },
+        {
+            "Id": "9c01e941-7b61-4af9-8f63-ae2cfd336bfc",
+            "SpotifyId": "5eU8qMd0TpaLqTGDZJaLDs",
+            "Title": "Need You Tonight",
+            "Artist": "INXS",
+            "Snippet": "So slide over here and give me a {moment}",
+            "StartSecond": 16.26,
+            "EndSecond": 19.84,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/3b272d8783ab1350da669cb8fd71cbdbc174c23c",
+            "Enabled": true
+        }
+    ]
+}

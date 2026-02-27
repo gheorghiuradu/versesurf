@@ -25,7 +25,6 @@ public class GameHub : Hub
     private readonly RoomAppService roomAppService;
     private readonly GameAppService gameAppService;
     private readonly MusicDbClient musicDbClient;
-    private readonly FileStorage fileStorage;
     private readonly MetadataService metadataService;
     private readonly ConnectionMonitoringService connectionMonitoringService;
     private readonly VersioningService versioningService;
@@ -35,7 +34,6 @@ public class GameHub : Hub
         RoomAppService roomAppService,
         GameAppService gameAppService,
         MusicDbClient musicDbClient,
-        FileStorage fileStorage,
         MetadataService metadataService,
         ConnectionMonitoringService connectionMonitoringService,
         VersioningService versioningService,
@@ -44,7 +42,6 @@ public class GameHub : Hub
         this.roomAppService = roomAppService;
         this.gameAppService = gameAppService;
         this.musicDbClient = musicDbClient;
-        this.fileStorage = fileStorage;
         this.metadataService = metadataService;
         this.connectionMonitoringService = connectionMonitoringService;
         this.versioningService = versioningService;
@@ -237,18 +234,13 @@ public class GameHub : Hub
                 var playlist = await musicDbClient.GetPlaylistByIdAsync(message.PlaylistId);
 
                 var fullPlaylist = playlist.ConvertTo<FullPlaylistDto>();
-                fullPlaylist.PictureHash = await fileStorage.GetFileMd5Async(fullPlaylist.PictureUrl);
-                foreach (var song in fullPlaylist.Songs) song.PreviewHash = await fileStorage.GetFileMd5Async(song.PreviewUrl);
 
                 return fullPlaylist;
             },
             GetRandomPlaylistAsyncTask = async () =>
             {
                 var playlist = await musicDbClient.GetRandomPlaylistAsync(message.PlaylistOptions.Language, message.PlaylistOptions.AllowExplicit);
-
                 var fullPlaylist = playlist.ConvertTo<FullPlaylistDto>();
-                fullPlaylist.PictureHash = await fileStorage.GetFileMd5Async(fullPlaylist.PictureUrl);
-                foreach (var song in fullPlaylist.Songs) song.PreviewHash = await fileStorage.GetFileMd5Async(song.PreviewUrl);
 
                 return fullPlaylist;
             }

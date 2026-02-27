@@ -1,0 +1,140 @@
+{
+    "Id": "36f01fa6-79a5",
+    "Enabled": true,
+    "Name": "Rock Party",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02bf68b5be16edfc6f489a17d7",
+    "Songs": [
+        {
+            "Id": "81071488-c7b0-46d2-9097-ef76bb400899",
+            "SpotifyId": "6ooluO7DiEhI1zmK94nRCM",
+            "Title": "Take Me Out",
+            "Artist": "Franz Ferdinand",
+            "Snippet": "If I {move} this could die",
+            "StartSecond": 6.84,
+            "EndSecond": 12.14,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/26adf2fb00f38a010317c303c4991873557f5df3",
+            "Enabled": true
+        },
+        {
+            "Id": "4680ae22-746c-4ca6-b254-93d1136eb4d6",
+            "SpotifyId": "2mDYYGaGd9uXKkK2YhDA3i",
+            "Title": "Brooklyn Bridge To Chorus",
+            "Artist": "The Strokes",
+            "Snippet": "I want new {friends}, but they don't want me",
+            "StartSecond": 0.0,
+            "EndSecond": 6.0,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f31e4cfa05f64e1846c1b4bfb092e79dd7aa17bb",
+            "Enabled": true
+        },
+        {
+            "Id": "6d38aac9-bab6-44c1-9a71-76307149f113",
+            "SpotifyId": "3lPr8ghNDBLc2uZovNyLs9",
+            "Title": "Supermassive Black Hole",
+            "Artist": "Muse",
+            "Snippet": "Oh baby I'm a {fool} for you",
+            "StartSecond": 25.14,
+            "EndSecond": 28.14,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f4fe399267e6093182d576a6c84c0e081c81ff90",
+            "Enabled": true
+        },
+        {
+            "Id": "a0b5306d-0d5c-422d-988b-0ca533a6d3ab",
+            "SpotifyId": "1E1uGhNdBe6Dddbgs2KqtZ",
+            "Title": "Jumpsuit",
+            "Artist": "Twenty One Pilots",
+            "Snippet": "I'm a {man}",
+            "StartSecond": 5.84,
+            "EndSecond": 8.84,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/c8d121d39409151df43660ce5c6d4ef1aaaef160",
+            "Enabled": true
+        },
+        {
+            "Id": "1a253da7-43da-496b-859e-e047dadcc7e5",
+            "SpotifyId": "305WCRhhS10XUcH6AEwZk6",
+            "Title": "Are You Gonna Be My Girl",
+            "Artist": "Jet",
+            "Snippet": "But you were with another {man}",
+            "StartSecond": 14.96,
+            "EndSecond": 17.96,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f1fe6d0f585d5ea6ad5ad9fa1fdecf5e7d3d9f2c",
+            "Enabled": true
+        },
+        {
+            "Id": "f1004c66-0f1c-4c01-a90e-ae9a54966846",
+            "SpotifyId": "4BggEwLhGfrbrl7JBhC8EC",
+            "Title": "Butterfly",
+            "Artist": "Crazy Town",
+            "Snippet": "You're my butterfly, sugar {baby}",
+            "StartSecond": 9.02,
+            "EndSecond": 12.02,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9d3bbc954641720af57379d0ef40a9e3dd807335",
+            "Enabled": true
+        },
+        {
+            "Id": "e17f8bd8-e0f4-4a35-acd3-e0d1a35c546f",
+            "SpotifyId": "5FZxsHWIvUsmSK1IAvm2pp",
+            "Title": "Best of You",
+            "Artist": "Foo Fighters",
+            "Snippet": "Is someone getting the {best} of you",
+            "StartSecond": 28.06,
+            "EndSecond": 31.32,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/00687d636a95fc2ba1bb89d74cca532f441a436e",
+            "Enabled": true
+        },
+        {
+            "Id": "c86e8814-a43f-40c8-a089-279a2fe7cc0a",
+            "SpotifyId": "5dKBaysNJtfpyNTRa5lqDb",
+            "Title": "A-Punk",
+            "Artist": "Vampire Weekend",
+            "Snippet": "Got his teeth, I took all his {harmonicas}, oh",
+            "StartSecond": 8.72,
+            "EndSecond": 9.96,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/3afe492f2ee66f7a77041a6a5c2a5f4b523fe3d1",
+            "Enabled": true
+        },
+        {
+            "Id": "b4694f41-c946-4990-a39c-dd882e776921",
+            "SpotifyId": "2DlHlPMa4M17kufBvI2lEN",
+            "Title": "Chop Suey!",
+            "Artist": "System Of A Down",
+            "Snippet": "Fall into your {hands}",
+            "StartSecond": 11.3,
+            "EndSecond": 14.3,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/00ee92420f3919ac0014fdb108b747abd704f2fe",
+            "Enabled": true
+        },
+        {
+            "Id": "d79ea161-c77b-47a8-9f8c-e81713aa00f8",
+            "SpotifyId": "5eU8qMd0TpaLqTGDZJaLDs",
+            "Title": "Need You Tonight",
+            "Artist": "INXS",
+            "Snippet": "So slide over here and give me a {moment}",
+            "StartSecond": 16.26,
+            "EndSecond": 19.84,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/3b272d8783ab1350da669cb8fd71cbdbc174c23c",
+            "Enabled": true
+        },
+        {
+            "Id": "6b2e33d0-57c6-47e0-9071-2197c029fa1f",
+            "SpotifyId": "3SUusuA9jH1v6PVwtYMbdv",
+            "Title": "Last Nite",
+            "Artist": "The Strokes",
+            "Snippet": "So I, I {turned} 'round",
+            "StartSecond": 27.32,
+            "EndSecond": 28.86,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9757c503fb2174e4db5ff087bb14d5d7d0b8f62a",
+            "Enabled": true
+        }
+    ]
+}

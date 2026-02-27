@@ -203,7 +203,7 @@ namespace Assets.Scripts.PlaylistVotingBooth
             this.playlistScripts.Clear();
 
             //Prepare actions, UI
-            var isVip = this.vipManager.VipPerks.Contains(VipPerk.SelectPlaylist);
+            var isVip = true;//this.vipManager.VipPerks.Contains(VipPerk.SelectPlaylist);
             var toolTipText = isVip ? string.Empty : "Only VIP players can select playlist";
             UnityAction<string> onClick = this.OnSelectPlaylist;
 

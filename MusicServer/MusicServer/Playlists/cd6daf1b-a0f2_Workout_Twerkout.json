@@ -1,0 +1,140 @@
+{
+    "Id": "cd6daf1b-a0f2",
+    "Enabled": true,
+    "Name": "Workout Twerkout",
+    "PictureUrl": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02be6a0a805118cec1db7d77e9",
+    "Songs": [
+        {
+            "Id": "aea1e55e-a65e-46a0-83d6-8adcc95455a0",
+            "SpotifyId": "4Hpib09wXgD84w4uwTPnYD",
+            "Title": "Tap In",
+            "Artist": "Saweetie",
+            "Snippet": "Lil' waist, fat {ass}, bitch, tap in",
+            "StartSecond": 0.24,
+            "EndSecond": 1.24,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/509c1985560759c848c64d71654e27b63122f3e3",
+            "Enabled": true
+        },
+        {
+            "Id": "1f9df5e8-3c2e-46d3-bee0-f12a8503093d",
+            "SpotifyId": "6NWdgyVsjp2bJ11PToXCr1",
+            "Title": "Buss It",
+            "Artist": "Erica Banks",
+            "Snippet": "Drop it down low and pick it {up}",
+            "StartSecond": 1.06,
+            "EndSecond": 2.3,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/22fb409e0f701ed70b8081292d61a1ac0de450a1",
+            "Enabled": true
+        },
+        {
+            "Id": "24adfa14-6111-43e8-92e8-0574fcdb2fd8",
+            "SpotifyId": "6WbTTAGKrQtCQvmc5BuYfh",
+            "Title": "Girls in the Hood",
+            "Artist": "Megan Thee Stallion",
+            "Snippet": "I'm a hot girl, I do hot {shit}",
+            "StartSecond": 0.0,
+            "EndSecond": 1.64,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/b34175cd5d6317c8ccaf1d943dced50500d3d7a7",
+            "Enabled": true
+        },
+        {
+            "Id": "565aa7c2-4355-4602-b586-053b8c65767d",
+            "SpotifyId": "1IIKrJVP1C9N7iPtG6eOsK",
+            "Title": "Go Crazy",
+            "Artist": "Chris Brown & Young Thug",
+            "Snippet": "Trips to your crib in the middle of the {night}",
+            "StartSecond": 1.56,
+            "EndSecond": 4.56,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/0d8ee87fbfe05df674e5784553118b487198cb39",
+            "Enabled": true
+        },
+        {
+            "Id": "f35a1cbf-1e8f-407f-b213-d0eee4c517df",
+            "SpotifyId": "5x5sLaZGX6BeecyfCYF5Qm",
+            "Title": "Hit Yo Dance",
+            "Artist": "Rubi Rose & Yella Beezy & NLE Choppa",
+            "Snippet": "I wonder if them hoes {ready}",
+            "StartSecond": 25.42,
+            "EndSecond": 27.88,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/1eb578030454ec05962bf1cbcc9cccc0c9ed395f",
+            "Enabled": true
+        },
+        {
+            "Id": "bc02543a-082a-4912-aeeb-42262c1dbc57",
+            "SpotifyId": "20I5tUtRqw1rBCawim6wo2",
+            "Title": "Cool Off",
+            "Artist": "Missy Elliott",
+            "Snippet": "'Round like a ceiling {fan}",
+            "StartSecond": 17.9,
+            "EndSecond": 21.14,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/a58a4b723ca0ad6d9f97250444100fd973d3e32f",
+            "Enabled": true
+        },
+        {
+            "Id": "60a72f03-3222-4247-a456-ca8886d18d36",
+            "SpotifyId": "4gxh3vX2vDeiey5cDQvXDR",
+            "Title": "Get the Gat",
+            "Artist": "Lil Elt",
+            "Snippet": "Shake, shake, a-shake, shake-a, shake dat {thang}",
+            "StartSecond": 0.0,
+            "EndSecond": 19.82,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/596b518f7a201dbd9c427e63894db31789457e76",
+            "Enabled": true
+        },
+        {
+            "Id": "1a35eea0-6f7b-428e-923b-fdeb6181f2b4",
+            "SpotifyId": "3NILSt8vgJrRqwWkwB8das",
+            "Title": "Discounts",
+            "Artist": "cupcakKe",
+            "Snippet": "'Cause I got discounts on discounts if you think that I'm {soft}",
+            "StartSecond": 14.02,
+            "EndSecond": 17.02,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/fa2d2447ce3235f6e8ff82563e4e957117556615",
+            "Enabled": true
+        },
+        {
+            "Id": "a4eb088f-23fe-4c71-8d2b-7bb8e69a0326",
+            "SpotifyId": "1LxKKYsJNPeBdOwdudsJzv",
+            "Title": "Down In the DM",
+            "Artist": "Yo Gotti",
+            "Snippet": "It goes down in the DM (It go {down})",
+            "StartSecond": 0.54,
+            "EndSecond": 3.54,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/39e00d5b2a72c452efc3679a977bebe201194b5e",
+            "Enabled": true
+        },
+        {
+            "Id": "bb0a93da-1b61-424c-96dd-9764df7bf364",
+            "SpotifyId": "4D8KWoUe3oTaQSQq928X7B",
+            "Title": "B.O.M.B.S.",
+            "Artist": "Yung Baby Tate",
+            "Snippet": "I'm back on my {bullshit}",
+            "StartSecond": 10.64,
+            "EndSecond": 13.64,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/36d791f3b618b0192aa38d1c0cc3c8082476d7ec",
+            "Enabled": true
+        },
+        {
+            "Id": "58b4a77e-2d9e-4ed9-962c-1d8d241f049e",
+            "SpotifyId": "68UU9oaQtMDnh6PRlW842H",
+            "Title": "I Like Him",
+            "Artist": "Princess Nokia",
+            "Snippet": "I do not see you {taming} me",
+            "StartSecond": 25.81,
+            "EndSecond": 29.64,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/81f8c55a1a73af403980382e623a1c40784dadb2",
+            "Enabled": true
+        }
+    ]
+}
