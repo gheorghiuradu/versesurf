@@ -1,10 +1,8 @@
-﻿using Assets.Scripts.Panels;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Assets.Scripts.Reusable;
 using Assets.Scripts.Services;
 using SharedDomain.Messages.Commands;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -20,34 +18,30 @@ namespace Assets.Scripts.VIP
         private bool hasNotifiedExpiration;
 
         public bool IsVip => VipPerks?.Count > 0;
-        public HashSet<VipPerk> VipPerks { get; } = new HashSet<VipPerk>();
-        public UnityEvent VipActivated { get; } = new UnityEvent();
+
+        public HashSet<VipPerk> VipPerks { get; } = new() { VipPerk.SelectPlaylist };
+
+        public UnityEvent VipActivated { get; } = new();
 
         private void Start()
         {
-            GameObject.DontDestroyOnLoad(this.gameObject);
-            this.audioSource = this.GetComponent<AudioSource>();
+            DontDestroyOnLoad(gameObject);
+            audioSource = GetComponent<AudioSource>();
             SceneManager.sceneLoaded += OnSceneLoaded;
-            this.musicClient.GameEnded.AddListener(this.OnGameEnded);
+            musicClient.GameEnded.AddListener(OnGameEnded);
         }
 
         private async void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             await new WaitForEndOfFrame();
-            while (GameObject.FindObjectOfType<Fader>() != null)
-            {
+            while (FindObjectOfType<Fader>() != null)
                 //Wait for fader scene transition
                 await new WaitForSeconds(0.5f);
-            }
 
-            if (!this.IsVip)
-            {
-                await this.AttemptAutoActivation();
-            }
+            if (!IsVip)
+                await AttemptAutoActivation();
             else
-            {
-                this.ApplyVipAssets();
-            }
+                ApplyVipAssets();
         }
 
         private void OnGameEnded()
@@ -56,28 +50,22 @@ namespace Assets.Scripts.VIP
 
         public async Task AttemptAutoActivation()
         {
-            if (!this.hasAttemptedAutoActivation && !this.IsVip)
+            if (!hasAttemptedAutoActivation && !IsVip)
             {
-                this.ApplyVipAssets();
-                this.audioSource.PlayOneShot(Constants.AudioClips.GetVipActivatedSound());
-                this.hasNotifiedExpiration = false;
+                ApplyVipAssets();
+                audioSource.PlayOneShot(Constants.AudioClips.GetVipActivatedSound());
+                hasNotifiedExpiration = false;
             }
         }
 
         public void ApplyVipAssets()
         {
-            foreach (var asset in GameObject.FindObjectOfType<Canvas>().GetComponentsInChildren<IVipAsset>(true))
-            {
-                asset.ApplyVip();
-            }
+            foreach (var asset in FindObjectOfType<Canvas>().GetComponentsInChildren<IVipAsset>(true)) asset.ApplyVip();
         }
 
         public void DiscardVipAssets()
         {
-            foreach (var asset in GameObject.FindObjectOfType<Canvas>().GetComponentsInChildren<IVipAsset>(true))
-            {
-                asset.DiscardVip();
-            }
+            foreach (var asset in FindObjectOfType<Canvas>().GetComponentsInChildren<IVipAsset>(true)) asset.DiscardVip();
         }
 
         public static void Initialize(MusicClient musicClient)

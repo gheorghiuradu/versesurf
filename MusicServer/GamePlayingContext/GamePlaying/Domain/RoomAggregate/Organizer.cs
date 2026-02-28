@@ -28,7 +28,7 @@ namespace GamePlaying.Domain.RoomAggregate
         public string LocaleId { get; }
         public Room BookedRoom { get; set; }
         public bool IsConnected { get; private set; }
-        public HashSet<VipPerk> VipPerks { get; } = new HashSet<VipPerk>();
+        public HashSet<VipPerk> VipPerks { get; } = [VipPerk.SelectPlaylist];
         public string CurrentInventoryItemId { get; private set; }
         public bool IsVip => this.VipPerks.Count > 0;
 
