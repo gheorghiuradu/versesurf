@@ -44,12 +44,11 @@ namespace Assets.Scripts.Services
         {
             try
             {
-                var escapedUrl = Uri.EscapeDataString(songUrl);
                 var localFilePath = Path.Combine(Constants.SongCacheFullPath, Path.GetFileName(GetLocalPath(songUrl)));
 
                 if (File.Exists(localFilePath)) return Task.FromResult(NAudioPlayer.FromMp3File(localFilePath));
 
-                var songRequest = UnityWebRequest.Get(escapedUrl);
+                var songRequest = UnityWebRequest.Get(songUrl);
                 songRequest.SendWebRequest();
                 while (!songRequest.downloadHandler.isDone)
                 {
