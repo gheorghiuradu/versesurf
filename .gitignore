@@ -61,5 +61,9 @@ msbuild.wrn
 *.VC.db
 
 
+# Unity
+[Aa]ddresableAssetsData/
+
 PyPlaylistEditor/playlists
 MusicServer/packages
+*.app
