@@ -5,7 +5,7 @@
     <version>2.0.1</version>
     <authors>SharedDomain</authors>
     <description>Package Description</description>
-    <repository type="git" commit="b1cdb8edffb91022f0f62b429d8cd63ed86ed9f5" />
+    <repository type="git" commit="b8ce1d8e1b463b88503b4263000c3a7e30df578c" />
     <dependencies>
       <group targetFramework=".NETStandard2.0">
         <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />

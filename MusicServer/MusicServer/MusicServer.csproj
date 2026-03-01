@@ -24,7 +24,6 @@
     <ProjectReference Include="..\GamePlayingContext\GamePlaying.Repositories\GamePlaying.Repositories.csproj" />
     <ProjectReference Include="..\GamePlayingContext\GamePlaying\GamePlaying.csproj" />
     <ProjectReference Include="..\MusicDbApi\MusicDbApi.csproj" />
-    <ProjectReference Include="..\MusicStorageClient\MusicStorageClient.csproj" />
     <ProjectReference Include="..\SharedDomain\SharedDomain.csproj" />
     <ProjectReference Include="..\SteamWebApi.Client\SteamWebApi.Client.csproj" />
   </ItemGroup>

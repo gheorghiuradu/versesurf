@@ -1,9 +1,9 @@
-﻿using Assets.Scripts.Serialization;
+﻿using System.Collections.Generic;
+using System.IO;
+using Assets.Scripts.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using SharedDomain;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 namespace Assets.Scripts.Services
@@ -11,7 +11,7 @@ namespace Assets.Scripts.Services
     public static class ServiceProvider
     {
         private static bool _isInitialized;
-        private static List<object> ServiceCollection { get; } = new List<object>();
+        private static List<object> ServiceCollection { get; } = new();
 
         public static T Get<T>() where T : class
         {
@@ -40,6 +40,7 @@ namespace Assets.Scripts.Services
             {
                 //wait
             }
+
             var json = request.downloadHandler.text;
 #endif
             var settings = JsonConvert.DeserializeObject<AppSettings>(json);
@@ -54,10 +55,7 @@ namespace Assets.Scripts.Services
 
             Application.quitting += () =>
             {
-                if (!(Get<Room>() is null))
-                {
-                    client.RemoveRoomAsync().Wait();
-                }
+                if (!(Get<Room>() is null)) client.RemoveRoomAsync().Wait();
                 client.DisconnectAsync();
             };
         }
@@ -70,10 +68,7 @@ namespace Assets.Scripts.Services
         public static void AddOrReplace<T>(T obj) where T : class
         {
             var existing = ServiceCollection.Find(o => o is T);
-            if (!(existing is null))
-            {
-                ServiceCollection.Remove(existing);
-            }
+            if (!(existing is null)) ServiceCollection.Remove(existing);
             ServiceCollection.Add(obj);
         }
     }

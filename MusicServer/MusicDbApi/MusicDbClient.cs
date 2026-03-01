@@ -73,11 +73,11 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
     //     }
     // }
     // await this.db.SaveChangesAsync(token);
-    public async Task<List<Playlist>> GetEnabledPlaylistsAsync(string language = null, bool includeExplicit = false, CancellationToken token = default)
+    public async Task<List<Playlist>> GetEnabledPlaylistsAsync(string language = null, bool includeExplicit = false, int numberOfSongs =5, CancellationToken token = default)
     {
         await EnsurePlaylistsLoaded();
         var result = _playlists
-            .Where(p => p.Enabled);
+            .Where(p => p.Enabled && p.Songs.Count >= numberOfSongs);
 
         if (!includeExplicit) result = result.Where(p => !p.Songs.Any(s => s.IsExplicit));
         if (!string.IsNullOrEmpty(language)) result = result.Where(p => string.Equals(p.Language, language, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(p.Language));

@@ -1,8 +1,8 @@
-﻿namespace SharedDomain.Messages.Queries
+﻿namespace SharedDomain.Messages.Queries;
+
+public class PlaylistOptions
 {
-    public class PlaylistOptions
-    {
-        public bool AllowExplicit { get; set; }
-        public string Language { get; set; }
-    }
+    public bool AllowExplicit { get; set; }
+    public string Language { get; set; }
+    public int NumberOfSongs { get; set; }
 }

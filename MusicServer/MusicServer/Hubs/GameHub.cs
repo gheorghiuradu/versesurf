@@ -11,7 +11,6 @@ using MusicServer.Extensions;
 using MusicServer.Hubs.Services;
 using MusicServer.Models;
 using MusicServer.Words;
-using MusicStorageClient;
 using SharedDomain;
 using SharedDomain.Domain;
 using SharedDomain.InfraEvents;
@@ -209,8 +208,14 @@ public class GameHub : Hub
             {
                 var rawPlaylists = await musicDbClient.GetEnabledPlaylistsAsync(
                     message.PlaylistOptions.Language,
-                    message.PlaylistOptions.AllowExplicit);
+                    message.PlaylistOptions.AllowExplicit,
+                    message.PlaylistOptions.NumberOfSongs);
                 var playlistViewModels = rawPlaylists.ConvertTo<List<PlaylistViewModel>>();
+                foreach (var playlistViewModel in playlistViewModels)
+                {
+                    var rawPlaylist = rawPlaylists.First(p => p.Id == playlistViewModel.Id);
+                    playlistViewModel.KeyWords = string.Join(", ", rawPlaylist.Songs.SelectMany(s => new[] { s.Title, s.Artist }).Concat([rawPlaylist.Name]));
+                }
 
                 return playlistViewModels.ConvertTo<IEnumerable<PlaylistDto>>();
             }
