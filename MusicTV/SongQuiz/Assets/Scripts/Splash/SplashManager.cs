@@ -1,9 +1,10 @@
-﻿using Assets.Scripts.Panels;
+﻿using System;
+using System.Threading.Tasks;
+using Assets.Scripts.Panels;
 using Assets.Scripts.Serialization;
 using Assets.Scripts.Services;
 using Assets.Scripts.VIP;
 using SharedDomain;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
@@ -20,9 +21,8 @@ namespace Assets.Scripts.Splash
                 ServiceProvider.Initialize();
 #if UNITY_STANDALONE
                 new GameObject(nameof(SteamManager)).AddComponent<SteamManager>();
-#endif
+#endif                
                 var musicClient = ServiceProvider.Get<MusicClient>();
-                var playFab = ServiceProvider.Get<PlayFabService>();
                 var waiter = new Waiter(5);
 
                 var success = await waiter.WithRetryAsync(async () =>
@@ -32,27 +32,25 @@ namespace Assets.Scripts.Splash
                     {
                         await new WaitForSeconds(1);
                     }
-#endif
+#endif                    
                     await LocalizationSettings.InitializationOperation;
-                    var playFabId = await playFab.TryLoginAsync();
-                    var gameOptions = await playFab.GetGameOptionsAsync();
+                    var gameOptions = new GameOptions();
                     ServiceProvider.Add(gameOptions);
                     await musicClient.ConnectAsync();
-                    await this.BookRoomAsync(playFabId, LocalizationSettings.SelectedLocale.Formatter.ToString());
+                    var locale = LocalizationSettings.SelectedLocale;
+                    var localeId = locale?.Formatter?.ToString() ?? "en";
+                    await BookRoomAsync(Guid.NewGuid().ToString(), localeId);
                     gameOptions.ApplySelectedResolution();
                     gameOptions.ApplyVolume();
-                    VipManager.Initialize(musicClient, playFab);
+                    VipManager.Initialize(musicClient);
                 }, 5);
 
-                if (!success)
-                {
-                    throw new System.Exception("Failed to initialize game");
-                }
+                if (!success) throw new Exception("Failed to initialize game");
 
                 //await LocalizationSettings.InitializationOperation;
                 SceneFader.Fade("MainMenu", Color.black, 2);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 Debug.LogError(ex);
                 var errorPanel = ErrorPanelScript.Instantiate("There was a problem initializing the game and communicating with the servers. Please try again later, or check your connection.");
@@ -67,24 +65,25 @@ namespace Assets.Scripts.Splash
             var musicClient = ServiceProvider.Get<MusicClient>();
 
             var request = new BookRoomRequest(
-                    appSettings.AvailableCharacters,
-                    appSettings.AvailableColorCodes,
-                    Application.version,
-                    Application.platform.ToString(),
-                    playFabId,
-                    localeId);
+                appSettings.AvailableCharacters,
+                appSettings.AvailableColorCodes,
+                Application.version,
+                Application.platform.ToString(),
+                playFabId,
+                localeId);
 
             var roomResponse = await musicClient.BookRoomAsync(request);
 
             if (!roomResponse.IsSuccess)
             {
                 ErrorPanelScript.Instantiate(roomResponse.ErrorMessage);
-                throw new System.Exception(roomResponse.ErrorMessage);
+                throw new Exception(roomResponse.ErrorMessage);
             }
+
             var room = new Room
             {
                 Code = roomResponse.GetData<string>(),
-                RoomRequest = request,
+                RoomRequest = request
             };
             musicClient.BindEventsToRoom(room);
             ServiceProvider.AddOrReplace(room);

@@ -6,11 +6,13 @@ using SharedDomain.InfraEvents;
 using SharedDomain.Messages.Commands;
 using SharedDomain.Messages.Queries;
 using SharedDomain.Purchasing;
-using SignalrCoreWrapper;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.DependencyInjection;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +20,7 @@ namespace Assets.Scripts.Services
 {
     public class MusicClient : UnityEventProvider
     {
-        private readonly MusicHubClient hubClient;
+        private readonly HubConnection hubClient;
         private readonly HttpClient httpClient;
 
         private string roomCode;
@@ -38,7 +40,15 @@ namespace Assets.Scripts.Services
         public MusicClient(string hubUrl, string apiUrl)
         {
             this.httpClient = new HttpClient() { BaseAddress = new Uri(apiUrl) };
-            this.hubClient = new MusicHubClient(hubUrl);
+            this.hubClient = new HubConnectionBuilder()
+                .WithUrl(hubUrl)
+                .WithAutomaticReconnect()
+                .AddJsonProtocol(opt =>
+                {
+                    opt.PayloadSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                    opt.PayloadSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+                })
+                .Build();
 
             this.hubClient.On<Player>(HostMethods.PlayerJoined, p =>
                 UnityMainThreadDispatcher.Instance().Enqueue(() => this.PlayerJoined.Invoke(p)));
@@ -55,24 +65,35 @@ namespace Assets.Scripts.Services
             this.hubClient.On<NotificationMessage>(HostMethods.Message, message =>
                 UnityMainThreadDispatcher.Instance().Enqueue(() => this.Message.Invoke(message)));
 
-            this.hubClient.Disconnected += error =>
-                UnityMainThreadDispatcher.Instance().Enqueue(() => this.Disconnected.Invoke(error));
+            this.hubClient.Closed += error =>
+                Task.Run(() =>UnityMainThreadDispatcher.Instance().Enqueue(() => this.Disconnected.Invoke(error)));
             this.hubClient.Reconnected += connectionId =>
-            {
-                this.SetHostHeader();
-                UnityMainThreadDispatcher.Instance().Enqueue(() => this.Reconnected.Invoke(connectionId));
-            };
-            this.hubClient.Reconnecting += error =>
-            UnityMainThreadDispatcher.Instance().Enqueue(() => this.Reconnecting.Invoke(error));
+                Task.Run(() =>
+                {
+                    this.SetHostHeader();
+                    UnityMainThreadDispatcher.Instance().Enqueue(() => this.Reconnected.Invoke(connectionId));
+
+                });
+                
+            this.hubClient.Reconnecting += error => Task.Run(() =>
+            UnityMainThreadDispatcher.Instance().Enqueue(() => this.Reconnecting.Invoke(error)));
         }
 
         public Task ConnectAsync()
         {
-            if (this.hubClient.State == MusicHubClient.ConnectionState.Disconnected)
+            try
             {
-                return this.hubClient.ConnectAsync();
+                if (this.hubClient.State == HubConnectionState.Disconnected)
+                {
+                    return this.hubClient.StartAsync();
+                }
+                return Task.CompletedTask;
             }
-            return Task.CompletedTask;
+            catch (Exception e)
+            {
+                Debug.LogError("Error connecting to MusicHub: " + e);
+                throw;
+            }
         }
 
         public async Task ScheduleActionAsync(TimeSpan timeSpan, string methodName, object message)
@@ -228,7 +249,7 @@ namespace Assets.Scripts.Services
 
         public Task DisconnectAsync()
         {
-            return this.hubClient.DisconnectAsync();
+            return this.hubClient.StopAsync();
         }
 
         public Task RelaxAsync(string playerId)
@@ -247,25 +268,6 @@ namespace Assets.Scripts.Services
                 RoomCode = this.roomCode,
                 PlayerOrGuestIds = playerIds
             });
-        }
-
-        public Task<string> GetFileMd5Async(string songUrl)
-        {
-            return this.httpClient.GetStringAsync($"/api/game/GetFileMd5/?fileUrl={Uri.EscapeDataString(songUrl)}");
-        }
-
-        public async Task<byte[]> DownloadSongAsync(string songUrl)
-        {
-            var signedUrl = await this.httpClient.GetStringAsync
-                ($"/api/game/GetSignedSongPreviewUrl/?previewUrl={Uri.EscapeDataString(songUrl)}");
-
-            byte[] result;
-            using (var client = new HttpClient())
-            {
-                result = await client.GetByteArrayAsync(signedUrl);
-            }
-
-            return result;
         }
 
         public async Task<SteamUserInfoResponseDto> GetSteamUserInfoAsync(string steamId)

@@ -1,0 +1,80 @@
+{
+    "Id": "da044cc7-c9a6",
+    "Enabled": true,
+    "Name": "All Out 00s",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02c919cc963e27a28375201a5a",
+    "Songs": [
+        {
+            "Id": "e2919f03-8e5d-4ea7-9422-00d100fe0790",
+            "SpotifyId": "6ZLGthToczpvnL5Eoy6yrY",
+            "Title": "Pure Shores",
+            "Artist": "All Saints",
+            "Snippet": "Can you hear what I {hear}",
+            "StartSecond": 0.0,
+            "EndSecond": 3.44,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/a6ec2efde6ef4607d05ae00b75d1e38f6a61b712",
+            "Enabled": true
+        },
+        {
+            "Id": "0f2ef83d-0b4b-43bc-b8cf-b17d320389fc",
+            "SpotifyId": "4BggEwLhGfrbrl7JBhC8EC",
+            "Title": "Butterfly",
+            "Artist": "Crazy Town",
+            "Snippet": "You're my butterfly, sugar {baby}",
+            "StartSecond": 9.02,
+            "EndSecond": 12.02,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9d3bbc954641720af57379d0ef40a9e3dd807335",
+            "Enabled": true
+        },
+        {
+            "Id": "c35d7ed8-c7b7-4706-91d2-6cd48628ec0a",
+            "SpotifyId": "5FZxsHWIvUsmSK1IAvm2pp",
+            "Title": "Best of You",
+            "Artist": "Foo Fighters",
+            "Snippet": "Is someone getting the {best} of you",
+            "StartSecond": 28.06,
+            "EndSecond": 31.32,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/00687d636a95fc2ba1bb89d74cca532f441a436e",
+            "Enabled": true
+        },
+        {
+            "Id": "c71c762c-d226-4c72-ab73-d94684672dcd",
+            "SpotifyId": "2QsZVnbWVSjKMXK6K3uRBL",
+            "Title": "U Remind Me",
+            "Artist": "Usher",
+            "Snippet": "Believe on a good thing she put me {through}",
+            "StartSecond": 9.7,
+            "EndSecond": 15.08,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/df188beb4f88284a6b4db41a7d8a7f8ab4150ac9",
+            "Enabled": true
+        },
+        {
+            "Id": "d81698df-5775-4be2-8dfa-9f2a6e424d76",
+            "SpotifyId": "1AWQoqb9bSvzTjaLralEkT",
+            "Title": "Rock Your Body",
+            "Artist": "Justin Timberlake",
+            "Snippet": "Talk to me {boy}",
+            "StartSecond": 11.58,
+            "EndSecond": 17.86,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/1c8a20b021ebce522a3d01c8e1961d1903b96e01",
+            "Enabled": true
+        },
+        {
+            "Id": "d9c0d244-fb35-4445-8982-4f8b4b10f0e3",
+            "SpotifyId": "1258tSoXDDa43uqT75r5N0",
+            "Title": "Because of You",
+            "Artist": "Kelly Clarkson",
+            "Snippet": "I never strayed too far from the {sidewalk}",
+            "StartSecond": 7.08,
+            "EndSecond": 11.76,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f512ae3909b294b982bc7a316affec0b3a761602",
+            "Enabled": true
+        }
+    ]
+}

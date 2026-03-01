@@ -38,7 +38,8 @@ namespace Assets.Scripts.Serialization
         public PlaylistOptions PlaylistOptions => new PlaylistOptions
         {
             AllowExplicit = this.AllowExplicit,
-            Language = (LocalizationSettings.SelectedLocale?.Identifier.CultureInfo.TwoLetterISOLanguageName)
+            Language = (LocalizationSettings.SelectedLocale?.Identifier.CultureInfo.TwoLetterISOLanguageName),
+            NumberOfSongs = this.NumberOfRounds
         };
 
         public static GameOptions Default => new GameOptions

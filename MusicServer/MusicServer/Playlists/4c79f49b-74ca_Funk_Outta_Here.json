@@ -1,0 +1,80 @@
+{
+    "Id": "4c79f49b-74ca",
+    "Enabled": true,
+    "Name": "Funk Outta Here",
+    "PictureUrl": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027163b82729a39208df40c3e4",
+    "Songs": [
+        {
+            "Id": "60cb6362-0b4a-4a8b-8c94-a0d933adf2b3",
+            "SpotifyId": "6uqTETWok9npbL4c9cuLVh",
+            "Title": "Clean up Woman",
+            "Artist": "Betty Wright",
+            "Snippet": "Made it easy for the clean up {woman}",
+            "StartSecond": 16.16,
+            "EndSecond": 19.96,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/3c34463e08bef3ae167e9f6c55d53e88f8d64479",
+            "Enabled": true
+        },
+        {
+            "Id": "e4e95338-97b2-4dcd-ae93-9cd69f399c56",
+            "SpotifyId": "5uuJruktM9fMdN9Va0DUMl",
+            "Title": "Play That Funky Music",
+            "Artist": "Wild Cherry",
+            "Snippet": "Hey, wait a {minute}!",
+            "StartSecond": 7.26,
+            "EndSecond": 10.26,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/4b3c574d2e102bf5140c29d2934f2f0d5dc7bfcf",
+            "Enabled": true
+        },
+        {
+            "Id": "6bf5d79a-8ee6-4c92-a01f-27499a2b9631",
+            "SpotifyId": "4yQw7FR9lcvL6RHtegbJBh",
+            "Title": "Think",
+            "Artist": "Aretha Franklin",
+            "Snippet": "You gotta think, think, think about what you're {trying} to do to me",
+            "StartSecond": 8.04,
+            "EndSecond": 11.04,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9c6ac431a91feba82882d2d33beeb25d456da663",
+            "Enabled": true
+        },
+        {
+            "Id": "7cc6d6cd-e420-4e14-8ec8-3cfb9f177bf7",
+            "SpotifyId": "20zOIoex7YchUh87d8tlvg",
+            "Title": "Boogie Nights",
+            "Artist": "Heatwave",
+            "Snippet": "Boogie nights are always the best in {town}",
+            "StartSecond": 21.3,
+            "EndSecond": 24.76,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/31e7f6be40bba001381b9170abda55360b811e8c",
+            "Enabled": true
+        },
+        {
+            "Id": "68d4183a-14a3-4fd8-9e9c-ab0e76e02bc4",
+            "SpotifyId": "42rFOQqHmXf9IkdwVqkooK",
+            "Title": "I'd Rather Be with You",
+            "Artist": "Bootsy Collins",
+            "Snippet": "I'd {rather} be with you",
+            "StartSecond": 0.0,
+            "EndSecond": 0.68,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/a5306b26112854a294074388c9c82abec65448f7",
+            "Enabled": true
+        },
+        {
+            "Id": "f6b5a84b-a441-4b1d-a010-9fe17e7db95d",
+            "SpotifyId": "3nFJbZCHP4d9vduKjJLdBL",
+            "Title": "Never Too Much",
+            "Artist": "Luther Vandross",
+            "Snippet": "I'd rather be with you, cause you make my heart scream and {holler}",
+            "StartSecond": 5.66,
+            "EndSecond": 9.18,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/e4d517205ff047947b4ff1e31be9f40d40eb617d",
+            "Enabled": true
+        }
+    ]
+}

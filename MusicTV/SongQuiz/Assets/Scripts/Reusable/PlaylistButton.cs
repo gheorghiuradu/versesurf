@@ -10,6 +10,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
+using Image = UnityEngine.UI.Image;
 
 namespace Assets.Scripts.Reusable
 {
@@ -45,14 +46,13 @@ namespace Assets.Scripts.Reusable
         public string ToolTipText { get; private set; }
         public string PlaylistId { get; private set; }
         public string PlaylistPictureUrl { get; private set; }
-        public string PlaylistPictureHash { get; private set; }
         public string PlaylistKeyWords { get; private set; }
 
         private void Start()
         {
             this.defaultMaterial = this.AlbumCover.material;
             this.PlaylistNameTMP.text = this.PlaylistName;
-            if (!string.IsNullOrEmpty(this.PlaylistPictureUrl) && !string.IsNullOrEmpty(this.PlaylistPictureHash))
+            if (!string.IsNullOrEmpty(this.PlaylistPictureUrl))
             {
                 this.LoadAlbumImageAsync();
             }
@@ -66,7 +66,7 @@ namespace Assets.Scripts.Reusable
         private async void LoadAlbumImageAsync()
         {
             var cacheSerice = ServiceProvider.Get<CacheService>();
-            this.AlbumCover.sprite = await cacheSerice.HandlePlaylistImageAsync(this.PlaylistPictureUrl, this.PlaylistPictureHash);
+            this.AlbumCover.sprite = await cacheSerice.HandlePlaylistImageAsync(this.PlaylistPictureUrl);
         }
 
         private void ToggleGrayScale()
@@ -132,10 +132,9 @@ namespace Assets.Scripts.Reusable
             var script = InstantiateScript(parent);
             script.PlaylistId = playlistViewModel.Id;
             script.PlaylistName = playlistViewModel.Name;
+            script.PlaylistPictureUrl = playlistViewModel.PictureUrl;
             script.PlaylistEnabled = enabled;
             script.ToolTipText = tooltipText;
-            script.PlaylistPictureUrl = playlistViewModel.PictureUrl;
-            script.PlaylistPictureHash = playlistViewModel.PictureHash;
             script.PlaylistKeyWords = (playlistViewModel as PlaylistViewModel)?.KeyWords;
             script.onClick = onClick;
 

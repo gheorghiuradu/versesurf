@@ -1,0 +1,116 @@
+{
+    "Id": "5f9339c3-25a3",
+    "Enabled": true,
+    "Name": "Dance Hits",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e022d90487e303600c0a1575603",
+    "Songs": [
+        {
+            "Id": "2d62b1d7-59af-4a59-bed3-80598fdd3e0c",
+            "SpotifyId": "1ysP0xeOMwpdaPvYbZtBN5",
+            "Title": "When In Rome",
+            "Artist": "GATTÜSO & Damon Sharpe",
+            "Snippet": "When in Rome, let's make a promise we won't spend the night {alone}",
+            "StartSecond": 24.02,
+            "EndSecond": 28.34,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/4ffd1dcfcde85d48f6c8f1e9891565a64a5acae7",
+            "Enabled": true
+        },
+        {
+            "Id": "1d00c847-132e-48bb-bfd0-d87ecbea6869",
+            "SpotifyId": "7gHs73wELdeycvS48JfIos",
+            "Title": "Faded",
+            "Artist": "Alan Walker",
+            "Snippet": "These shallow waters never met what I {needed}",
+            "StartSecond": 26.02,
+            "EndSecond": 29.64,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/633dfd35d836f9b62bab2344510e68270e5e3873",
+            "Enabled": true
+        },
+        {
+            "Id": "f8865dfd-957c-4109-b345-de858d1a60c9",
+            "SpotifyId": "7ir1tVqAtNjctvteJPw5MF",
+            "Title": "Cola",
+            "Artist": "CamelPhat & Elderbrook",
+            "Snippet": "She can't tell the {difference} yet",
+            "StartSecond": 17.82,
+            "EndSecond": 20.82,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9603c2f084eacf76ccd786b58e4f24309ac8ebf0",
+            "Enabled": true
+        },
+        {
+            "Id": "5c4255b9-184a-40a4-b23c-11fac7159f16",
+            "SpotifyId": "1vvNmPOiUuyCbgWmtc6yfm",
+            "Title": "My Way",
+            "Artist": "Calvin Harris",
+            "Snippet": "You are the one {thing} in my way",
+            "StartSecond": 1.5,
+            "EndSecond": 2.28,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/292e7836ecbb83dead4e9b5987b87b9d8563019c",
+            "Enabled": true
+        },
+        {
+            "Id": "9b4f8706-63a9-4437-9760-5baee2a56b4a",
+            "SpotifyId": "5lXY6PTuWXOludKy4zDQwM",
+            "Title": "On My Mind",
+            "Artist": "Diplo & SIDEPIECE",
+            "Snippet": "You stay on my mind, think about you all the {time}",
+            "StartSecond": 7.32,
+            "EndSecond": 10.86,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/8b4247786ff62cd06538af48bbfff1ebf94d0a58",
+            "Enabled": true
+        },
+        {
+            "Id": "3d72ea56-cc6d-48db-8371-549ce6ef2033",
+            "SpotifyId": "1dDDVfAfms7M6VLLKmubaJ",
+            "Title": "See The End",
+            "Artist": "Above & Beyond & Seven Lions & Opposite the Other",
+            "Snippet": "I'll shut my eyes and hold you {close}",
+            "StartSecond": 23.3,
+            "EndSecond": 26.3,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/ed82fb71682bfb294bbea3580c5cac5733da98f0",
+            "Enabled": true
+        },
+        {
+            "Id": "a509fc63-7656-4e62-ad12-b5b083691c49",
+            "SpotifyId": "2tnVG71enUj33Ic2nFN6kZ",
+            "Title": "Ride It",
+            "Artist": "Regard",
+            "Snippet": "Body, body, touch my {soul}",
+            "StartSecond": 2.66,
+            "EndSecond": 5.66,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/ce29bb243cf40118b87070b00a49822e09a317b1",
+            "Enabled": true
+        },
+        {
+            "Id": "85407316-8e5e-4695-882b-df3136669aa6",
+            "SpotifyId": "5oxq2hf8u0S8RVypWZgjLf",
+            "Title": "Trouble",
+            "Artist": "VASSY",
+            "Snippet": "You bring the {devil} out of me",
+            "StartSecond": 1.88,
+            "EndSecond": 2.94,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/2bcb7365c6549c7af424e62c653bd323911e0e92",
+            "Enabled": true
+        },
+        {
+            "Id": "3debc031-37d7-4b2e-ba63-eebf29f829b9",
+            "SpotifyId": "59jHH3RyODRyVPCgpM106o",
+            "Title": "I Know",
+            "Artist": "DallasK",
+            "Snippet": "Don't give up on me, oh I, I, I didn't know {that}",
+            "StartSecond": 5.5,
+            "EndSecond": 8.52,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/6dc41c170ba37534e3e979ef3343d95a559314ae",
+            "Enabled": true
+        }
+    ]
+}

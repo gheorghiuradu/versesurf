@@ -15,6 +15,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Constants = Assets.Scripts.Services.Constants;
+using Image = UnityEngine.UI.Image;
 
 public class MainMenuManager : UnityEventUser
 {
@@ -30,7 +31,6 @@ public class MainMenuManager : UnityEventUser
     public TextMeshProUGUI InstructionsWebUrl;
     public TextMeshProUGUI RoomCode;
     public Button StartButton;
-    public Button StoreButton;
     public Button OptionsButton;
     public Image QRCodeImage;
     public Animator ArmAnimator;
@@ -43,7 +43,6 @@ public class MainMenuManager : UnityEventUser
 
         this.StartButton.interactable = false;
         this.OptionsButton.interactable = false;
-        this.StoreButton.interactable = false;
         this.StartButton.Select();
 
         this.room = ServiceProvider.Get<Room>();
@@ -62,7 +61,6 @@ public class MainMenuManager : UnityEventUser
     private void LoadUI()
     {
         this.OptionsButton.interactable = true;
-        this.StoreButton.interactable = true;
         this.RoomCode.text = this.room.Code;
         this.InstructionsWebUrl.text = this.appSettings.WebClientUri.Host;
         this.QRCodeImage.sprite = QRUtility.GenerateQrCodeTexture($"{appSettings.WebClientUrl}/?code={this.room.Code}").ToSprite();
@@ -151,8 +149,6 @@ public class MainMenuManager : UnityEventUser
     }
 
     public void Exit() => Application.Quit();
-
-    public void OpenStore() => StoreManagerScript.Instantiate();
 
     public void OpenOptions() =>
         OptionsPanelScript.Instantiate().MenuMusicToggle.onValueChanged.AddListener(isOn =>

@@ -7,13 +7,11 @@ namespace Assets.Scripts.Services
 {
     public class CustomEventService
     {
-        private readonly PlayFabService playFabService;
         private readonly MusicClient musicClient;
         private List<MusicEvent> unpushedEvents = new List<MusicEvent>();
 
-        public CustomEventService(PlayFabService playFabService, MusicClient musicClient)
+        public CustomEventService(MusicClient musicClient)
         {
-            this.playFabService = playFabService;
             this.musicClient = musicClient;
         }
 
@@ -31,32 +29,6 @@ namespace Assets.Scripts.Services
 
         public async Task TryPushRemainingEventsAsync()
         {
-            var savedEvents = await this.playFabService.GetCustomEventsAsync();
-            if (savedEvents.Any())
-            {
-                this.unpushedEvents.AddRange(savedEvents);
-            }
-
-            if (unpushedEvents.Count > 0)
-            {
-                try
-                {
-                    var result = await this.musicClient.PushEventsAsync(unpushedEvents);
-                    if (!result.IsSuccess)
-                    {
-                        await this.playFabService.SaveCustomEventsAsync(unpushedEvents);
-                    }
-                    else
-                    {
-                        await this.playFabService.ClearCustomEventsAsync();
-                        this.unpushedEvents.Clear();
-                    }
-                }
-                catch (System.Exception)
-                {
-                    await this.playFabService.SaveCustomEventsAsync(unpushedEvents);
-                }
-            }
         }
     }
 }

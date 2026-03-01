@@ -93,7 +93,7 @@ namespace Assets.Scripts.SpeedRound
             this.roundNumberPanel.GetComponentInChildren<TextMeshProUGUI>().text = $"Round {this.room.CurrentRound.Number}";
             var song = this.room.Playlist.Songs[this.room.CurrentRound.Number - 1];
             this.playlistScript.InitializeAsync(this.room.Playlist, song).CatchErrors();
-            this.music.clip = await ServiceProvider.Get<CacheService>().HandleSongAsync(song.PreviewUrl, song.PreviewHash);
+            this.music.clip = await ServiceProvider.Get<CacheService>().HandleSongAsync(song.PreviewUrl);
             this.gameOptions.ApplyVolume();
 
             this.snippet = song.Snippet.Contains("{") ?

@@ -1,0 +1,104 @@
+{
+    "Id": "50b3f060-aef4",
+    "Enabled": true,
+    "Name": "Rock This",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0286bd44e4b3e2eb335c17c625",
+    "Songs": [
+        {
+            "Id": "2710ab17-4157-4182-af67-bd835294ae65",
+            "SpotifyId": "5OxclJsdFESni44YlpNpkR",
+            "Title": "Parasite Eve",
+            "Artist": "Bring Me The Horizon",
+            "Snippet": "Don't {forget} what they told you",
+            "StartSecond": 6.3,
+            "EndSecond": 9.3,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/da5de98f6de9999e0a969ba2d763f1b9f6d564a3",
+            "Enabled": true
+        },
+        {
+            "Id": "28ba4a54-dae8-4d87-9fca-6693754cb12d",
+            "SpotifyId": "4GUj9MfPPkjpZskxb45uiX",
+            "Title": "Angels & Demons",
+            "Artist": "jxdn",
+            "Snippet": "No one in the world can help me {out}",
+            "StartSecond": 4.22,
+            "EndSecond": 7.22,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9f1fe7a4aac5e6f2e7ae4aabed5c1bce15cb0058",
+            "Enabled": true
+        },
+        {
+            "Id": "a0c27eae-32de-4c09-9b4b-205db1997352",
+            "SpotifyId": "5yIHw5bnDscFViNtQRPlNn",
+            "Title": "Canals",
+            "Artist": "Highly Suspect",
+            "Snippet": "So you better be {prepared}",
+            "StartSecond": 3.48,
+            "EndSecond": 6.48,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/1de9653eb7ee3ada095a84ef1d24dd9709dd8c4e",
+            "Enabled": true
+        },
+        {
+            "Id": "95fc0eba-d052-4d84-a5b4-b02debca26c7",
+            "SpotifyId": "3oQYe7FdyIzyQXZtoO0TPc",
+            "Title": "Flowers On A Grave",
+            "Artist": "Bush",
+            "Snippet": "She covered me in {loneliness}",
+            "StartSecond": 0.0,
+            "EndSecond": 4.02,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/8d0cfae456d586a922a12cb9c32228cfa4f3eff8",
+            "Enabled": true
+        },
+        {
+            "Id": "b62a4d3d-5852-4a89-9c54-0c00123ede8c",
+            "SpotifyId": "7hM9ShrZMCV7xYOQwqBnNb",
+            "Title": "Dead Weight",
+            "Artist": "PVRIS",
+            "Snippet": "Dead weight hanging off of my {shoulders}",
+            "StartSecond": 4.04,
+            "EndSecond": 7.7,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/68b8648d368d7165fbec952dc058aa49b48a0032",
+            "Enabled": true
+        },
+        {
+            "Id": "0c632b5e-5d40-475c-b171-bcd323e40493",
+            "SpotifyId": "0L1ry7JWL67O1O1s67V2fx",
+            "Title": "SUPREMACY",
+            "Artist": "FEVER 333",
+            "Snippet": "But we won't stay {silent}",
+            "StartSecond": 1.14,
+            "EndSecond": 4.14,
+            "IsExplicit": true,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f8e8f063b9c71b72d8cab1f7a11b9f2a48fa328e",
+            "Enabled": true
+        },
+        {
+            "Id": "3eb5a745-eeef-4c71-857b-a857fcd3fca5",
+            "SpotifyId": "6Uaqf3LCwuVebfm5u3ndq9",
+            "Title": "Sober",
+            "Artist": "Bad Wolves",
+            "Snippet": "Baby did you let me {go}?",
+            "StartSecond": 13.58,
+            "EndSecond": 16.58,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/9564449c1d1213af81214ab4b164dbbd22bb54c1",
+            "Enabled": true
+        },
+        {
+            "Id": "b109ad62-def2-42ac-8354-1c09b083a086",
+            "SpotifyId": "74SEdRYWaNerEpJZZW3VBs",
+            "Title": "Talk to a Friend",
+            "Artist": "Slaves",
+            "Snippet": "I really need some {help}",
+            "StartSecond": 4.48,
+            "EndSecond": 7.48,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/99e4e307f0f2fc1bbb691befc86bd6e89e4db259",
+            "Enabled": true
+        }
+    ]
+}
