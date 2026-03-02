@@ -43,6 +43,16 @@ jobs:
                       Library-${{ matrix.targetPlatform }}-
                       Library-
 
+            - name: Compute Unity build version
+              id: unityBuildVersion
+              run: |
+                  PROJECT_VERSION=$(grep -m1 '^  bundleVersion:' MusicTV/SongQuiz/ProjectSettings/ProjectSettings.asset | sed 's/^  bundleVersion:[[:space:]]*//')
+                  if [ -z "$PROJECT_VERSION" ]; then
+                      echo "Could not read bundleVersion from ProjectSettings.asset" >&2
+                      exit 1
+                  fi
+                  echo "version=$PROJECT_VERSION.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+
             - name: Build Unity project
               uses: game-ci/unity-builder@v4
               env:
@@ -53,6 +63,8 @@ jobs:
                   projectPath: MusicTV/SongQuiz
                   targetPlatform: ${{ matrix.targetPlatform }}
                   unityVersion: auto
+                  versioning: Custom
+                  version: ${{ steps.unityBuildVersion.outputs.version }}
 
             - name: Upload build artifact
               uses: actions/upload-artifact@v4
