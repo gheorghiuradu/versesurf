@@ -72,19 +72,19 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                   name: Build-StandaloneWindows64
-                  path: build/StandaloneWindows64
+                  path: build/verse.surf
 
             - name: Download StandaloneLinux64 artifact
               uses: actions/download-artifact@v4
               with:
                   name: Build-StandaloneLinux64
-                  path: build/StandaloneLinux64
+                  path: build/verse.surf.x64
 
             - name: Download StandaloneOSX artifact
               uses: actions/download-artifact@v4
               with:
                   name: Build-StandaloneOSX
-                  path: build/StandaloneOSX
+                  path: build/verse.surf.app
 
             - name: Deploy build to Steam Beta
               uses: game-ci/steam-deploy@v3
