@@ -95,6 +95,6 @@ jobs:
                   buildDescription: Beta build ${{ github.run_number }} (${{ github.sha }})
                   rootPath: build
                   depot1Path: StandaloneWindows64
-                  depot2Path: StandaloneLinux64
-                  depot3Path: StandaloneOSX
+                  depot8Path: StandaloneLinux64
+                  depot9Path: StandaloneOSX
                   releaseBranch: beta
