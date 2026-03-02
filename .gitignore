@@ -47,6 +47,7 @@ msbuild.wrn
 [Ll]ogs/
 [Mm]emory[Cc]aptures/
 [Uu]ser[Ss]ettings/
+*.ulf
 *.unityproj
 *.suo
 *.tmp
