@@ -106,7 +106,7 @@ jobs:
                   appId: ${{ env.STEAM_APP_ID }}
                   buildDescription: Beta build ${{ github.run_number }} (${{ github.sha }})
                   rootPath: build
-                  depot1Path: StandaloneWindows64
-                  depot9Path: StandaloneLinux64
-                  depot8Path: StandaloneOSX
+                  depot1Path: verse.surf
+                  depot9Path: verse.surf.x64
+                  depot8Path: verse.surf.app
                   releaseBranch: beta
