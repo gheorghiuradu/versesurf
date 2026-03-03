@@ -22,10 +22,13 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                targetPlatform:
-                    - StandaloneWindows64
-                    - StandaloneLinux64
-                    - StandaloneOSX
+                include:
+                    - targetPlatform: StandaloneWindows64
+                      buildName: verse.surf
+                    - targetPlatform: StandaloneLinux64
+                      buildName: verse.surf.x64
+                    - targetPlatform: StandaloneOSX
+                      buildName: verse.surf.app
 
         steps:
             - name: Checkout repository
@@ -48,8 +51,8 @@ jobs:
               run: |
                   PROJECT_VERSION=$(grep -m1 '^  bundleVersion:' MusicTV/SongQuiz/ProjectSettings/ProjectSettings.asset | sed 's/^  bundleVersion:[[:space:]]*//')
                   if [ -z "$PROJECT_VERSION" ]; then
-                      echo "Could not read bundleVersion from ProjectSettings.asset" >&2
-                      exit 1
+                    echo "Could not read bundleVersion from ProjectSettings.asset" >&2
+                    exit 1
                   fi
                   echo "version=$PROJECT_VERSION.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
 
@@ -62,6 +65,7 @@ jobs:
               with:
                   projectPath: MusicTV/SongQuiz
                   targetPlatform: ${{ matrix.targetPlatform }}
+                  buildName: ${{ matrix.buildName }}
                   unityVersion: auto
                   versioning: Custom
                   version: ${{ steps.unityBuildVersion.outputs.version }}
@@ -84,19 +88,19 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                   name: Build-StandaloneWindows64
-                  path: build/verse.surf
+                  path: build/StandaloneWindows64
 
             - name: Download StandaloneLinux64 artifact
               uses: actions/download-artifact@v4
               with:
                   name: Build-StandaloneLinux64
-                  path: build/verse.surf.x64
+                  path: build/StandaloneLinux64
 
             - name: Download StandaloneOSX artifact
               uses: actions/download-artifact@v4
               with:
                   name: Build-StandaloneOSX
-                  path: build/verse.surf.app
+                  path: build/StandaloneOSX
 
             - name: Deploy build to Steam Beta
               uses: game-ci/steam-deploy@v3
@@ -106,7 +110,7 @@ jobs:
                   appId: ${{ env.STEAM_APP_ID }}
                   buildDescription: Beta build ${{ github.run_number }} (${{ github.sha }})
                   rootPath: build
-                  depot1Path: verse.surf
-                  depot9Path: verse.surf.x64
-                  depot8Path: verse.surf.app
+                  depot1Path: StandaloneWindows64
+                  depot9Path: StandaloneLinux64
+                  depot8Path: StandaloneOSX
                   releaseBranch: beta
