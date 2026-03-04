@@ -47,7 +47,7 @@ namespace SteamWebApi.Client
         public async ValueTask<SteamResponse<InitTxnParams>> InitiateTransactionAsync(InitTxnRequest initTxnRequest,
             List<Item> items)
         {
-            var request = new RestRequest("InitTxn/v3", Method.POST);
+            var request = new RestRequest("InitTxn/v3", Method.Post);
             var contentDictionary = initTxnRequest.ToDictionary();
 
             for (int i = 0; i < items.Count; i++)
@@ -86,7 +86,7 @@ namespace SteamWebApi.Client
         /// <returns></returns>
         public async ValueTask<SteamResponse<InitTxnParams>> FinalizeTransactionAsync(string orderId, string appId)
         {
-            var request = new RestRequest("FinalizeTxn/v2", Method.POST);
+            var request = new RestRequest("FinalizeTxn/v2", Method.Post);
             request.AddParameter(nameof(orderId), orderId, ParameterType.GetOrPost);
             request.AddParameter(nameof(appId), appId, ParameterType.GetOrPost);
 

@@ -128,9 +128,9 @@ a {
     float: right;
 }
 
-    .btn-menu:focus {
-        outline: none;
-    }
+.btn-menu:focus {
+    outline: none;
+}
 
 .img-menu {
     float: right;
@@ -163,17 +163,17 @@ a {
     color: white;
 }
 
-    .form-control::-webkit-input-placeholder {
-        color: white;
-    }
+.form-control::-webkit-input-placeholder {
+    color: white;
+}
 
-    .form-control:focus {
-        background-color: #C77F6A !important;
-        outline: 0 !important;
-        color: white;
-        border: 2px solid #8E4942;
-        box-shadow: none;
-    }
+.form-control:focus {
+    background-color: #C77F6A !important;
+    outline: 0 !important;
+    color: white;
+    border: 2px solid #8E4942;
+    box-shadow: none;
+}
 
 .btn-submit {
     height: 62px;
@@ -221,7 +221,9 @@ input[type=submit]:focus {
     display: inline-block;
 }
 
-#code, #nick, #answer {
+#code,
+#nick,
+#answer {
     text-indent: 35px;
 }
 
@@ -334,9 +336,9 @@ input[type=submit]:focus {
     border-bottom: 0;
 }
 
-    .card-header:first-child {
-        border-radius: 0;
-    }
+.card-header:first-child {
+    border-radius: 0;
+}
 
 .list-item {
     display: flex;
@@ -392,9 +394,9 @@ img.album-art {
     background-color: #8e4942;
 }
 
-    .alert-info a {
-        color: #381f1c
-    }
+.alert-info a {
+    color: #381f1c
+}
 
 #cookieConsent {
     position: absolute;
@@ -428,17 +430,17 @@ img.album-art {
     padding: 12px;
 }
 
-    .modal-footer button {
-        width: 100%;
-    }
+.modal-footer button {
+    width: 100%;
+}
 
-    .modal-footer > :not(:last-child) {
-        margin-right: 0;
-    }
+.modal-footer> :not(:last-child) {
+    margin-right: 0;
+}
 
-    .modal-footer > :not(:first-child) {
-        margin-left: 0;
-    }
+.modal-footer> :not(:first-child) {
+    margin-left: 0;
+}
 
 .text-bold {
     font-family: 'Montserrat Alternates ExtraBold'
@@ -484,7 +486,7 @@ img.album-art {
         max-width: 47%;
     }
 
-    .bottom-links img[alt="Join our discord"] {
+    .bottom-links img[alt="Star on GitHub"] {
         max-width: 41%;
     }
 }
@@ -498,14 +500,21 @@ img.album-art {
     height: max-content;
 }
 
-    #loading > img {
-        width: 50%;
-    }
+#loading>img {
+    width: 50%;
+}
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
     font-size: large;
 }
 
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder {
+    /* Firefox 19+ */
     font-size: large;
+}
+
+.bottom-button {
+    height: 47px;
+    width: 147px;
 }
