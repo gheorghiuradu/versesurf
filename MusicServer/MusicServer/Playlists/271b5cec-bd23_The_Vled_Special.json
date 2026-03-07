@@ -1,0 +1,73 @@
+{
+    "Id": "271b5cec-bd23-49f9-8412-04a7e0287225",
+    "Enabled": true,
+    "Name": "The Vled Special",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b273ce80c662bcf0596f9877e3e5",
+    "Songs": [
+        {
+            "Id": "00a0a090-1d82-45a1-b5fd-c1de60bc3eda",
+            "SpotifyId": "52Zr0sinhWTCRrQhRRY4EP",
+            "Title": "Dragostea din tei",
+            "Artist": "O-Zone",
+            "Snippet": "Vrei să {pleci}",
+            "StartSecond": 0,
+            "EndSecond": 5.22,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/80e9ea6cd288991bd8d8cdbfb79ed17d10061ee2",
+            "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b2736ed1042195c7228f6bd3548e",
+            "Enabled": true
+        },
+        {
+            "Id": "20aa0082-ba4e-4f1e-833e-4ccc0aae5007",
+            "SpotifyId": "5Q1ZpJSD1H2xtsxwlMkjUf",
+            "Title": "Fly With Me",
+            "Artist": "Body & Soul",
+            "Snippet": "See the {world} out there",
+            "StartSecond": 10.8,
+            "EndSecond": 16.6,
+            "IsExplicit": false,
+            "PreviewUrl": "https://raw.githubusercontent.com/gheorghiuradu/versesurf/refs/heads/main/PyPlaylistEditor/vled.mp3",
+            "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b273ce80c662bcf0596f9877e3e5",
+            "Enabled": true
+        },
+        {
+            "Id": "b914f25f-3390-4dc2-8800-e41d0d08bf30",
+            "SpotifyId": "0gBfLS4aqbrr1ZvVv8dqWB",
+            "Title": "Stereo Love",
+            "Artist": "Edward Maya & Vika Jigulina",
+            "Snippet": "You won't see me {cry}, I'm hiding inside",
+            "StartSecond": 3.8,
+            "EndSecond": 9.6,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/f698c2ab6ec2a962a5485189bb307a6512dfe41f",
+            "PictureUrl": "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b27382cd7c9b928ad028f9afb73a",
+            "Enabled": true
+        },
+        {
+            "Id": "05f299d7-9f47-44fa-92d5-811e447fa49c",
+            "SpotifyId": "3LWDPEXEaLBRGNLbdcbwBR",
+            "Title": "Mr. Saxobeat - Radio Edit",
+            "Artist": "Alexandra Stan",
+            "Snippet": "Makes me dance, brings me up, brings me down, plays it {sweet}",
+            "StartSecond": 0.42,
+            "EndSecond": 6.22,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/c6074d24a6466cf2f7e978e10b52272cf5ffe303",
+            "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b273b787b5b057751c4d5bb5de54",
+            "Enabled": true
+        },
+        {
+            "Id": "ebf77e19-fe47-4351-85e1-34caae8aa913",
+            "SpotifyId": "00NyawKalE0pkyiNL4fOPQ",
+            "Title": "Cheeky Song (Touch My Bum)",
+            "Artist": "The Cheeky Girls",
+            "Snippet": "Touch my {bum} - this is life",
+            "StartSecond": 9.96,
+            "EndSecond": 15.76,
+            "IsExplicit": false,
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/6bd634e1ca088dbe685c859f6527d09f4dfb9808",
+            "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b27376809f69a9d5134bc87f7d74",
+            "Enabled": true
+        }
+    ]
+}
