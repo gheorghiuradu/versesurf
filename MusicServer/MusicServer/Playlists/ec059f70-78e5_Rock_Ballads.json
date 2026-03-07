@@ -10,23 +10,25 @@
             "Title": "Hold on to Memories",
             "Artist": "Disturbed",
             "Snippet": "Souls who are not {remembered}",
-            "StartSecond": 6.42,
-            "EndSecond": 9.42,
+            "StartSecond": 4,
+            "EndSecond": 9,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/d5ed08b7f4ff0222445bea1a9b5383da7e382812",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "ec5b0deb-b688-4cc5-9319-3dd65a37f06a",
             "SpotifyId": "6GqqGv8frU7kqzXkm2rewI",
             "Title": "A Little Bit Off",
             "Artist": "Five Finger Death Punch",
-            "Snippet": "Now I'm getting {sober}",
-            "StartSecond": 8.94,
-            "EndSecond": 11.28,
+            "Snippet": "I got a little too {high} today",
+            "StartSecond": 15.78,
+            "EndSecond": 21.58,
             "IsExplicit": true,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/4aa0cfe8982cf23e28417dff2088d3365ba75c55",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "9c00df20-4f4a-44fa-8f8c-c6564d394af0",
@@ -34,143 +36,155 @@
             "Title": "All I Had To Lose (feat. Mark Morales)",
             "Artist": "Mark Morton & Mark Morales",
             "Snippet": "And when you came up for a {breath}",
-            "StartSecond": 13.04,
-            "EndSecond": 16.04,
+            "StartSecond": 9.6,
+            "EndSecond": 15.4,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/a679808cb4df63873bb0c82381a6b5ef3e36e75b",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "1e157742-721d-4398-844f-013ad4ff12e5",
             "SpotifyId": "34fv3psKQOOwWZBRxoIF4I",
             "Title": "Once",
             "Artist": "Liam Gallagher",
-            "Snippet": "I remember how you used to shine back {then}",
-            "StartSecond": 0.0,
-            "EndSecond": 5.58,
+            "Snippet": "But oh, I remember how you used to {shine}, back then",
+            "StartSecond": 0,
+            "EndSecond": 3.2,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/f4d6016742645744453d669116d7605d3aa2eb71",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "96b3882c-efce-4b8c-bd41-9b45b630f813",
             "SpotifyId": "1IbaGRC0Yrovu3MP1ipf1u",
             "Title": "A Reason to Fight",
             "Artist": "Disturbed",
-            "Snippet": "There's still a reason to {fight}",
-            "StartSecond": 14.8,
-            "EndSecond": 17.8,
+            "Snippet": "When you're {aching} for the fire",
+            "StartSecond": 0,
+            "EndSecond": 7,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/3708a56a982b08a3bd1ad80e9f32af76666a570f",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "a1128d0f-88c8-469d-89a0-ce8fe21ca7aa",
             "SpotifyId": "1vNoA9F5ASnlBISFekDmg3",
             "Title": "Zombie",
             "Artist": "Bad Wolves",
-            "Snippet": "Hey, hey, hey, hey, {hey}",
-            "StartSecond": 0.0,
-            "EndSecond": 1.96,
+            "Snippet": "What's in your Head? {Zombie}",
+            "StartSecond": 0,
+            "EndSecond": 4.5,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/b6c6dcd2f9a6769f0246991aea5f4ab08579c24b",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "fc9b2c52-8b4c-4f83-b52f-81142094de50",
             "SpotifyId": "1OKQIvaO7yn7R2BpdUFG7D",
             "Title": "GET UP",
             "Artist": "Shinedown",
-            "Snippet": "Get up, get up, get a move {on}",
-            "StartSecond": 1.94,
-            "EndSecond": 4.94,
+            "Snippet": "Get up, get up, get a {move} on",
+            "StartSecond": 0,
+            "EndSecond": 4.12,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/ae5c637f42220fe9b248d89f41c36ae69a149168",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "ce52f0d1-8a25-4516-8d0a-6d4a67144746",
             "SpotifyId": "6lFUdRItQEsEuD7dSINL47",
             "Title": "Follow You",
             "Artist": "Bring Me The Horizon",
-            "Snippet": "So you can drag me through {hell}",
-            "StartSecond": 15.6,
-            "EndSecond": 18.6,
+            "Snippet": "I will follow you 'cause I'm under your {spell}",
+            "StartSecond": 1.84,
+            "EndSecond": 7.5,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/40c5b34865a39612d71695ecf3255fd6a70b5938",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "c0094a24-9776-4c57-8fb7-4d4d6f0aa0d3",
             "SpotifyId": "18xmRkPWE0sGUzFyNNAAhN",
             "Title": "Dying in LA",
             "Artist": "Panic! At The Disco",
-            "Snippet": "When you're dying in {LA}",
-            "StartSecond": 12.72,
-            "EndSecond": 15.72,
+            "Snippet": "Nobody {knows} you now",
+            "StartSecond": 1.44,
+            "EndSecond": 7.6,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/4f22423b64b1ac6ed30297eab9700bf7d0ab5368",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "0f6b0560-bc5c-429f-a76f-ef32f0f0c2eb",
             "SpotifyId": "2nBWxgSZ79w9l6t2rUg6pl",
             "Title": "Call Me",
             "Artist": "Shinedown",
-            "Snippet": "Call me a {sinner}",
-            "StartSecond": 0.64,
-            "EndSecond": 3.64,
+            "Snippet": "Call me a {saint}",
+            "StartSecond": 0,
+            "EndSecond": 5.2,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/3866e103c87a8f0ad2ae9760cd19431740701f9b",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "33d6c293-1f4d-4fd1-bca7-29098a794a61",
             "SpotifyId": "16815x8pHjZuPcpzzz4Bnn",
             "Title": "St. Marie",
             "Artist": "Stone Sour",
-            "Snippet": "Cause I don't think I'll ever be the {same}",
-            "StartSecond": 0.0,
-            "EndSecond": 2.52,
+            "Snippet": "There's only so much {left}",
+            "StartSecond": 1,
+            "EndSecond": 6.92,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/c2b0aa5f1722945f34a89c3078d35355ceaced39",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "abbaaa1b-fd5b-49ec-8083-14ab5f30b38a",
             "SpotifyId": "0fxGA5lxrdYNYoE7yJxTNZ",
             "Title": "My December",
             "Artist": "Linkin Park",
-            "Snippet": "And I'd give it all {away}",
-            "StartSecond": 2.1,
-            "EndSecond": 5.1,
+            "Snippet": "To have {someone} to come home to",
+            "StartSecond": 12.56,
+            "EndSecond": 18.1,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/f287d08a9c317517708b5f7e041aeb9c93100dc2",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "08acbe9d-64bc-4b2e-8815-9d44f687387e",
             "SpotifyId": "2ZceU5sfgcH5h7bIsFuuXT",
             "Title": "Things My Father Said",
             "Artist": "Black Stone Cherry",
-            "Snippet": "Somewhere there's a {star}",
-            "StartSecond": 0.0,
-            "EndSecond": 21.64,
+            "Snippet": "Just to hear you say {goodbye}",
+            "StartSecond": 8,
+            "EndSecond": 16,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/3418cc64e9664667e6d726627064ae4626c7ff47",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "c2c7f4d1-525d-4a41-9b7a-cfa9668dc05a",
             "SpotifyId": "0AfIsqZ4gTUg9CwwW2jLeK",
             "Title": "Bother",
             "Artist": "Stone Sour",
-            "Snippet": "You don't need to {bother}",
-            "StartSecond": 2.5,
-            "EndSecond": 5.5,
+            "Snippet": "I'll keep {slipping} farther",
+            "StartSecond": 7,
+            "EndSecond": 14.54,
             "IsExplicit": true,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/b68bc282a64a6b19c67d70daf9cc619e2c88cd95",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "f09002cb-43c2-4a1a-825e-9e6c898c6794",
@@ -178,23 +192,25 @@
             "Title": "Never Too Late",
             "Artist": "Three Days Grace",
             "Snippet": "Maybe we'll turn it all {around}",
-            "StartSecond": 0.0,
-            "EndSecond": 19.36,
+            "StartSecond": 7,
+            "EndSecond": 14.5,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/b9c71e2a81619e0062b101e05a999b8850b6901e",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "6762d5c0-078c-4ca4-b0fd-2b94d17e305f",
             "SpotifyId": "7mXmxXLAnsvXKt4Q37KoMI",
             "Title": "Over You",
             "Artist": "Daughtry",
-            "Snippet": "Well, I never saw it {coming}",
-            "StartSecond": 0.0,
-            "EndSecond": 19.1,
+            "Snippet": "Putting my {heart} back together",
+            "StartSecond": 6,
+            "EndSecond": 11.5,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/6ca29a3cfd993b807ec527c9e81cad9ef709b041",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "eda6e207-33a4-4a21-bec6-9b05fd0b361c",
@@ -202,11 +218,12 @@
             "Title": "Break In",
             "Artist": "Halestorm",
             "Snippet": "You are the only one that {knows} me",
-            "StartSecond": 2.9,
-            "EndSecond": 9.28,
+            "StartSecond": 2.4,
+            "EndSecond": 8.8,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/b5f21f463c9f44c885f2e1a3dff94ed575a53175",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "2c46d42d-b49c-4f29-b321-b75cbb665773",
@@ -214,35 +231,38 @@
             "Title": "Wake Up Call",
             "Artist": "Theory of a Deadman",
             "Snippet": "Cause you are {home} to me",
-            "StartSecond": 20.28,
-            "EndSecond": 23.28,
+            "StartSecond": 18,
+            "EndSecond": 23,
             "IsExplicit": true,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/01e9f503cbc87050654a172d8684160d063cac34",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "3a41560e-b60c-462a-9154-9063c941acee",
             "SpotifyId": "4VqkhvOP0FkcVrDxgJXtxM",
             "Title": "Lucy",
             "Artist": "Skillet",
-            "Snippet": "I just wanna hold {her}",
-            "StartSecond": 0.0,
-            "EndSecond": 19.28,
+            "Snippet": "I just wanna {hold} her",
+            "StartSecond": 19,
+            "EndSecond": 23.5,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/47e7e561d7c7bd1b2473aa04bb3e5f7749026a0e",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "db1b6581-a2c4-4362-b40f-a297ece4427f",
             "SpotifyId": "0GXmTWQBqvNZwpcfNeijlt",
             "Title": "Goodbye",
             "Artist": "Slipknot",
-            "Snippet": "Nothing could stop {us}",
-            "StartSecond": 2.84,
-            "EndSecond": 8.62,
+            "Snippet": "Nothing could {stop} us",
+            "StartSecond": 2,
+            "EndSecond": 7.8,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/8559affe8c47540ad9e90afdb12c418435c80a78",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "6ceeb5bb-1efe-4ec3-8229-ab5f32f2b672",
@@ -250,11 +270,12 @@
             "Title": "The Blue, The Green",
             "Artist": "Lonely The Brave",
             "Snippet": "And I wanna know what it's {like}",
-            "StartSecond": 7.46,
-            "EndSecond": 10.46,
+            "StartSecond": 5,
+            "EndSecond": 9.7,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/cb6a3a9e09aced554bbf27c720ce653bef7cb3fa",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         },
         {
             "Id": "2a396113-6dd7-4e93-8a86-3447e14b33f2",
@@ -262,11 +283,12 @@
             "Title": "The Fighter",
             "Artist": "In This Moment",
             "Snippet": "I will not fall from {grace}",
-            "StartSecond": 0.34,
-            "EndSecond": 3.34,
+            "StartSecond": 0,
+            "EndSecond": 3,
             "IsExplicit": false,
             "PreviewUrl": "https://p.scdn.co/mp3-preview/a2e377128bef60c54c9016fcefa8519884eb3e7a",
-            "Enabled": true
+            "Enabled": true,
+            "PictureUrl": ""
         }
     ]
 }
