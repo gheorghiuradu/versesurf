@@ -66,7 +66,7 @@ namespace Assets.Scripts.SpeedRound
         private Timer timer;
         private Room room;
         private bool isPaused;
-        private float secondsToPlay;
+        private float _endSecond;
         private Snippet snippet;
 
         // Awake is called first
@@ -110,11 +110,12 @@ namespace Assets.Scripts.SpeedRound
             this.speedRoundLogo.gameObject.SetActive(false);
 
             this.instructionsListen.gameObject.SetActive(true);
-            this.secondsToPlay = song.EndSecond.HasValue ?
-                song.EndSecond.Value - song.StartSecond.GetValueOrDefault() : this.gameOptions.SongPlayLengthSeconds;
+            this._endSecond = song.EndSecond.HasValue ?
+                song.EndSecond.Value : this.gameOptions.SongPlayLengthSeconds;
+            _endSecond += 0.19f; // Manually fix timing to be exactly the same as in editor
             this.music.Play();
 
-            while (this.music.time <= this.secondsToPlay)
+            while (this.music.time <= this._endSecond)
             {
                 await new WaitForSeconds(0.01f);
             }
@@ -161,7 +162,7 @@ namespace Assets.Scripts.SpeedRound
             this.isPaused = true;
             Time.timeScale = 0;
             var pauseScript = PausePanelScript.Instantiate(onPlayerKicked: this.OnPlayerKicked);
-            pauseScript.ShouldRestart = this.music.time < this.secondsToPlay;
+            pauseScript.ShouldRestart = this.music.time < this._endSecond;
             if (this.music.isPlaying) this.music.Pause();
             this.bgMusic.Pause();
             if (this.timer.Enabled)
