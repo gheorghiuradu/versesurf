@@ -75,6 +75,7 @@ namespace Assets.Scripts.Options
             this.gameOptions.SetResolution(this.GetSelectedResolution());
 #endif
             ServiceProvider.AddOrReplace(this.gameOptions);
+            this.gameOptions.Save();
 
             GameObject.Destroy(this.gameObject);
         }

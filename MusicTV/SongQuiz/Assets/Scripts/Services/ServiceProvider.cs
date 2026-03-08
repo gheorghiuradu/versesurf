@@ -45,6 +45,7 @@ namespace Assets.Scripts.Services
 #endif
             var settings = JsonConvert.DeserializeObject<AppSettings>(json);
             ServiceCollection.Add(settings);
+            ServiceCollection.Add(GameOptions.Load());
 
             var client = new MusicClient(settings.HubUrl, settings.ApiUrl);
             ServiceCollection.Add(client);

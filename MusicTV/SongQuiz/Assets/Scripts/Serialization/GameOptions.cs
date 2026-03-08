@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using SharedDomain.Messages.Queries;
+﻿using SharedDomain.Messages.Queries;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Assets.Scripts.Serialization
 {
@@ -55,8 +56,8 @@ namespace Assets.Scripts.Serialization
 
         public Dictionary<string, string> ToDictionary()
         {
-            return JsonConvert.DeserializeObject<Dictionary<string, string>>(
-                JsonConvert.SerializeObject(this));
+            return JsonSerializer.Deserialize<Dictionary<string, string>>(
+                JsonSerializer.Serialize(this));
         }
 
         public void ApplyVolume()
@@ -89,6 +90,30 @@ namespace Assets.Scripts.Serialization
         public void ApplySelectedResolution()
         {
             Screen.SetResolution(this.ResolutionWidth, this.ResolutionHeigth, this.FullScreen);
+        }
+
+        private static string SavePath => System.IO.Path.Combine(Application.persistentDataPath, "gameOptions.json");
+
+        public void Save()
+        {
+            var json = JsonSerializer.Serialize(this);
+            System.IO.File.WriteAllText(SavePath, json);
+        }
+
+        public static GameOptions Load()
+        {
+            if (!System.IO.File.Exists(SavePath))
+                return Default;
+
+            try
+            {
+                var json = System.IO.File.ReadAllText(SavePath);
+                return JsonSerializer.Deserialize<GameOptions>(json) ?? Default;
+            }
+            catch
+            {
+                return Default;
+            }
         }
     }
 }
