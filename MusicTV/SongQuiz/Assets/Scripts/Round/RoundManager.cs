@@ -8,6 +8,7 @@ using Assets.Scripts.Panels;
 using Assets.Scripts.Reusable;
 using Assets.Scripts.Serialization;
 using Assets.Scripts.Services;
+using Cysharp.Threading.Tasks;
 using SharedDomain;
 using SharedDomain.Domain;
 using TMPro;
@@ -30,64 +31,64 @@ namespace Assets.Scripts.Round
         public GameObject RoundNumberPanel;
         public AudioSource BgMusic;
 
-        private MusicClient musicClient;
-        private GameOptions gameOptions;
+        private MusicClient _musicClient;
+        private GameOptions _gameOptions;
 
-        private ConcurrentDictionary<string, Answer> answers;
-        private List<AnswerScript> UIAnswers;
-        private List<PlayerScript> playerScripts;
+        private ConcurrentDictionary<string, Answer> _answers;
+        private List<AnswerScript> _uiAnswers;
+        private List<PlayerScript> _playerScripts;
 
-        private Timer timer;
-        private Snippet snippet;
-        private Answer correctAnswer;
-        private Room room;
-        private bool isPaused;
+        private Timer _timer;
+        private Snippet _snippet;
+        private Answer _correctAnswer;
+        private Room _room;
+        private bool _isPaused;
         private float _endSecond;
 
-        private AudioClip uiMenuButtonScroll01Sound;
-        private AudioSource audioSource;
+        private AudioClip _uiMenuButtonScroll01Sound;
+        private AudioSource _audioSource;
 
         // Awake is called first
         private void Awake()
         {
-            correctAnswer = new Answer { Id = Guid.NewGuid().ToString(), Player = new Player { Id = "CORRECT" } };
-            timer = new Timer();
-            answers = new ConcurrentDictionary<string, Answer>();
-            audioSource = GetComponent<AudioSource>();
+            _correctAnswer = new Answer { Id = Guid.NewGuid().ToString(), Player = new Player { Id = "CORRECT" } };
+            _timer = new Timer();
+            _answers = new ConcurrentDictionary<string, Answer>();
+            _audioSource = GetComponent<AudioSource>();
 
-            timer.OnStep(2, () => { ShowAnswers().CatchErrors(); });
+            _timer.OnStep(2, () => { ShowAnswers().CatchErrors(); });
 
-            timer.OnStep(3, () =>
+            _timer.OnStep(3, () =>
             {
                 BgMusic.Stop();
                 ShowVotes().CatchErrors();
             });
             var bellSound = Resources.Load<AudioClip>(Constants.BellSmallMutedSoundPath);
             var cinematicBoomSound = Resources.Load<AudioClip>(Constants.CinematicBoomSoundPath);
-            uiMenuButtonScroll01Sound = Resources.Load<AudioClip>(Constants.UiMenuButtonScroll01SoundPath);
-            timer.OnLastSeconds(10, () => PanelAudio.PlayOneShot(bellSound));
-            timer.OnLastSeconds(1, () => PanelAudio.PlayOneShot(cinematicBoomSound));
+            _uiMenuButtonScroll01Sound = Resources.Load<AudioClip>(Constants.UiMenuButtonScroll01SoundPath);
+            _timer.OnLastSeconds(10, () => PanelAudio.PlayOneShot(bellSound));
+            _timer.OnLastSeconds(1, () => PanelAudio.PlayOneShot(cinematicBoomSound));
 
-            room = ServiceProvider.Get<Room>();
-            musicClient = ServiceProvider.Get<MusicClient>();
-            gameOptions = ServiceProvider.Get<GameOptions>();
+            _room = ServiceProvider.Get<Room>();
+            _musicClient = ServiceProvider.Get<MusicClient>();
+            _gameOptions = ServiceProvider.Get<GameOptions>();
             BindToMusicClient();
         }
 
         // Start is called after Awake and OnEnable
         private async void Start()
         {
-            RoundNumberPanel.GetComponentInChildren<TextMeshProUGUI>().text = $"Round {room.CurrentRound.Number}";
+            RoundNumberPanel.GetComponentInChildren<TextMeshProUGUI>().text = $"Round {_room.CurrentRound.Number}";
 
-            var song = room.Playlist.Songs[room.CurrentRound.Number - 1];
-            PlaylistScript.InitializeAsync(room.Playlist, song).CatchErrors();
+            var song = _room.Playlist.Songs[_room.CurrentRound.Number - 1];
+            PlaylistScript.InitializeAsync(_room.Playlist, song).CatchErrors();
 
-            audioSource.clip = await ServiceProvider.Get<CacheService>().HandleSongAsync(song.PreviewUrl);
-            gameOptions.ApplyVolume();
+            _audioSource.clip = await ServiceProvider.Get<CacheService>().HandleSongAsync(song.PreviewUrl);
+            _gameOptions.ApplyVolume();
 
-            snippet = song.Snippet.Contains("{") ? new Snippet(song.Snippet) : new Snippet(song.Snippet, Snippet.Mode.LastTwoWords);
+            _snippet = song.Snippet.Contains("{") ? new Snippet(song.Snippet) : new Snippet(song.Snippet, Snippet.Mode.LastTwoWords);
 
-            correctAnswer.Name = snippet.Answer;
+            _correctAnswer.Name = _snippet.Answer;
 
             LoadPlayers();
             InstructionsListen.gameObject.SetActive(true);
@@ -96,25 +97,25 @@ namespace Assets.Scripts.Round
             if (Time.timeSinceLevelLoad < 1) await new WaitForSeconds(1 - Time.timeSinceLevelLoad);
             Destroy(RoundNumberPanel);
 
-            _endSecond = song.EndSecond ?? gameOptions.SongPlayLengthSeconds;
+            _endSecond = song.EndSecond ?? _gameOptions.SongPlayLengthSeconds;
             _endSecond += 0.19f; // Manually fix timing to be exactly the same as in editor
-            if (!Mathf.Approximately(song.StartSecond.GetValueOrDefault(), audioSource.time))
-                audioSource.time = song.StartSecond.GetValueOrDefault();
-            audioSource.Play();
+            if (!Mathf.Approximately(song.StartSecond.GetValueOrDefault(), _audioSource.time))
+                _audioSource.time = song.StartSecond.GetValueOrDefault();
+            _audioSource.Play();
 
-            while (audioSource.time <= _endSecond) await new WaitForSeconds(0.01f);
+            while (_audioSource.time <= _endSecond) await new WaitForSeconds(0.01f);
 
-            audioSource.Pause();
-            Instructions.text = snippet.Question;
+            _audioSource.Pause();
+            Instructions.text = _snippet.Question;
             InstructionsListen.gameObject.SetActive(false);
             InstructionsHeader.gameObject.SetActive(true);
             Instructions.gameObject.SetActive(true);
-            foreach (var player in playerScripts) player.SetActionState(ActionState.Pending);
+            foreach (var player in _playerScripts) player.SetActionState(ActionState.Pending);
 
-            if (this && !isPaused)
+            if (this && !_isPaused)
             {
-                await musicClient.AskAsync(song.Id, snippet.Answer);
-                timer.StartCountdown(36);
+                await _musicClient.AskAsync(song.Id, _snippet.Answer);
+                _timer.StartCountdown(36);
                 PlayBgMusic();
             }
             ////Enable this for testing
@@ -157,61 +158,70 @@ namespace Assets.Scripts.Round
 
         private void BindToMusicClient()
         {
-            musicClient.Disconnected.AddListener(this, error => { Debug.LogException(error); });
-            musicClient.Message.AddListener(this, message => ToastPanelScript.Instantiate(message));
-            musicClient.Answered.AddListener(this, answer =>
+            _musicClient.Disconnected.AddListener(this, error => { Debug.LogException(error); });
+            _musicClient.Message.AddListener(this, message => ToastPanelScript.Instantiate(message));
+            _musicClient.Answered.AddListener(this, async answer =>
             {
-                musicClient.RelaxAsync(answer.Player.Id).CatchErrors();
+                _musicClient.RelaxAsync(answer.Player.Id).CatchErrors();
 
-                answer.Normalize(correctAnswer.Name);
-                answers.TryAdd(answer.Player.Id, answer);
+                answer.Normalize(_correctAnswer.Name);
+                _answers.TryAdd(answer.Player.Id, answer);
 
-                playerScripts.Find(p => p.Id.Equals(answer.Player.Id)).SetActionState(ActionState.Completed);
-                PanelAudio.PlayOneShot(uiMenuButtonScroll01Sound);
+                _playerScripts.Find(p => p.Id.Equals(answer.Player.Id)).SetActionState(ActionState.Completed);
+                PanelAudio.PlayOneShot(_uiMenuButtonScroll01Sound);
 
-                if (answers.Count == room.Players.Count) timer.SkipStep();
+                if (_answers.Count == _room.Players.Count)
+                {
+                    while (_isPaused) await UniTask.WaitForSeconds(0.5f);
+
+                    _timer.SkipStep();
+                }
             });
-            musicClient?.VotedAnswer.AddListener(this, vote =>
+            _musicClient?.VotedAnswer.AddListener(this, async vote =>
             {
-                musicClient.RelaxAsync(vote.By.Id).CatchErrors();
+                _musicClient.RelaxAsync(vote.By.Id).CatchErrors();
 
-                var answer = UIAnswers.Find(a => string.Equals(a.AnswerText, vote.Item.Name,
+                var answer = _uiAnswers.Find(a => string.Equals(a.AnswerText, vote.Item.Name,
                     StringComparison.OrdinalIgnoreCase));
                 answer.AddVote(vote);
-                answer.VotePlayerScripts.Add(playerScripts.Find(ps => string.Equals(ps.Id, vote.By.Id)));
+                answer.VotePlayerScripts.Add(_playerScripts.Find(ps => string.Equals(ps.Id, vote.By.Id)));
 
                 if (answer.IsCorrect)
-                    room.CurrentRound.Score.AddScore(vote.By, Constants.CorrectAnswerPoints);
+                    _room.CurrentRound.Score.AddScore(vote.By, Constants.CorrectAnswerPoints);
                 else
-                    foreach (var sameAnswer in answers.Values
+                    foreach (var sameAnswer in _answers.Values
                                  .Where(a => string.Equals(vote.Item.Name, a.Name, StringComparison.OrdinalIgnoreCase)))
-                        room.CurrentRound.Score.AddScore(sameAnswer.Player, sameAnswer.IsAutoGenerated ? Constants.VotePoints / 2 : Constants.VotePoints);
+                        _room.CurrentRound.Score.AddScore(sameAnswer.Player, sameAnswer.IsAutoGenerated ? Constants.VotePoints / 2 : Constants.VotePoints);
 
-                PanelAudio.PlayOneShot(uiMenuButtonScroll01Sound);
-                playerScripts.Find(p => p.Id.Equals(vote.By.Id)).SetActionState(ActionState.Completed);
+                PanelAudio.PlayOneShot(_uiMenuButtonScroll01Sound);
+                _playerScripts.Find(p => p.Id.Equals(vote.By.Id)).SetActionState(ActionState.Completed);
 
-                if (UIAnswers.Select(a => a.VoteCount).Sum() == room.Players.Count) timer.SkipStep();
+                if (_uiAnswers.Select(a => a.VoteCount).Sum() == _room.Players.Count)
+                {
+                    while (_isPaused) await UniTask.WaitForSeconds(0.5f);
+                    _timer.SkipStep();
+                }
             });
         }
 
         private void LateUpdate()
         {
-            TimerTMP.text = timer.Text;
-            timer.Tick(Time.deltaTime);
+            TimerTMP.text = _timer.Text;
+            _timer.Tick(Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.Escape)) Pause();
         }
 
         private void LoadPlayers()
         {
-            playerScripts = new List<PlayerScript>();
-            foreach (var player in room.Players) playerScripts.Add(LoadPlayer(player));
+            _playerScripts = new List<PlayerScript>();
+            foreach (var player in _room.Players) _playerScripts.Add(LoadPlayer(player));
         }
 
         private PlayerScript LoadPlayer(Player player)
         {
             var playerScript = PlayerScript.Instantiate(PlayersContainer.transform, player);
-            playerScript.ListenTo(audioSource, GetComponent<AudioPeer>());
+            playerScript.ListenTo(_audioSource, GetComponent<AudioPeer>());
 
             return playerScript;
         }
@@ -220,24 +230,24 @@ namespace Assets.Scripts.Round
         {
             AnswersContainerHeader.gameObject.SetActive(false);
 
-            musicClient.RelaxAsync(room.Players.Select(p => p.Id).ToList()).CatchErrors();
+            _musicClient.RelaxAsync(_room.Players.Select(p => p.Id).ToList()).CatchErrors();
 
-            gameOptions.ApplyVolume();
-            var answersToShow = UIAnswers.Where(a => !a.IsCorrect && a.VoteCount > 0).OrderBy(a => a.VoteCount);
-            audioSource.UnPause();
-            var playTask = audioSource.FadeOut();
+            _gameOptions.ApplyVolume();
+            var answersToShow = _uiAnswers.Where(a => !a.IsCorrect && a.VoteCount > 0).OrderBy(a => a.VoteCount);
+            _audioSource.UnPause();
+            var playTask = _audioSource.FadeOut();
 
             foreach (var uiAnswer in answersToShow)
             {
                 ShrinkAnswersExcept(uiAnswer);
                 await uiAnswer.ShowVotes();
-                UIAnswers.Remove(uiAnswer);
+                _uiAnswers.Remove(uiAnswer);
                 Destroy(uiAnswer);
                 GrowBackAnswersExcept(uiAnswer);
                 await new WaitForSeconds(1);
             }
 
-            var correctUiAnswer = UIAnswers.Find(a => a.IsCorrect);
+            var correctUiAnswer = _uiAnswers.Find(a => a.IsCorrect);
             ShrinkAnswersExcept(correctUiAnswer);
             await correctUiAnswer.ShowVotes();
             Destroy(correctUiAnswer);
@@ -247,52 +257,52 @@ namespace Assets.Scripts.Round
 
         private void OnDestroy()
         {
-            musicClient.RemoveAllListenersFrom(this);
+            _musicClient.RemoveAllListenersFrom(this);
         }
 
-        private async Task GetMissingAsnwersAsync()
+        private async Task GetMissingAnswersAsync()
         {
-            var missingPlayerIds = room.Players
+            var missingPlayerIds = _room.Players
                 .Select(p => p.Id)
-                .Except(answers.Keys);
+                .Except(_answers.Keys);
 
             if (missingPlayerIds.Any())
             {
-                var hubResponse = await musicClient.GetMissingAnswersAsync(missingPlayerIds);
+                var hubResponse = await _musicClient.GetMissingAnswersAsync(missingPlayerIds);
                 if (hubResponse.IsSuccess)
                     foreach (var answer in hubResponse.GetData<IEnumerable<Answer>>())
                     {
-                        answer.Normalize(correctAnswer.Name);
-                        answers.TryAdd(answer.Player.Id, answer);
+                        answer.Normalize(_correctAnswer.Name);
+                        _answers.TryAdd(answer.Player.Id, answer);
                     }
             }
         }
 
         private async Task ShowAnswers()
         {
-            musicClient.RelaxAsync(room.Players.Select(p => p.Id)).CatchErrors();
-            await GetMissingAsnwersAsync();
-            answers.TryAdd(correctAnswer.Player.Id, correctAnswer);
-            var shuffledAnswers = answers.Values.AsEnumerable().ToList();
+            _musicClient.RelaxAsync(_room.Players.Select(p => p.Id)).CatchErrors();
+            await GetMissingAnswersAsync();
+            _answers.TryAdd(_correctAnswer.Player.Id, _correctAnswer);
+            var shuffledAnswers = _answers.Values.AsEnumerable().ToList();
             shuffledAnswers.Shuffle();
-            musicClient.StartVotingAsync(shuffledAnswers).CatchErrors();
+            _musicClient.StartVotingAsync(shuffledAnswers).CatchErrors();
 
             var distinctAnswers = shuffledAnswers.Distinct(new AnswerNameComparer()).ToList();
-            UIAnswers = new List<AnswerScript>();
+            _uiAnswers = new List<AnswerScript>();
             foreach (var answer in distinctAnswers)
             {
                 IEnumerable<PlayerScript> authorScripts = null;
                 var sameAnswers = shuffledAnswers.Where(a => string.Equals(answer.Name, a.Name));
                 if (sameAnswers.Any())
-                    authorScripts = playerScripts.Where(ps =>
+                    authorScripts = _playerScripts.Where(ps =>
                         sameAnswers.Any(a => string.Equals(ps.Id, a.Player.Id)));
 
                 var answerScript = AnswerScript.Instantiate(
                     answer,
                     AnswersContainer.transform,
                     authorScripts,
-                    string.Equals(answer.Name, correctAnswer.Name));
-                UIAnswers.Add(answerScript);
+                    string.Equals(answer.Name, _correctAnswer.Name));
+                _uiAnswers.Add(answerScript);
             }
 
             InstructionsContainer.AnimateMoveTowardsAsync(
@@ -304,28 +314,28 @@ namespace Assets.Scripts.Round
             Instructions.fontSizeMax = 40;
             AnswersContainerHeader.gameObject.SetActive(true);
 
-            foreach (var player in playerScripts) player.SetActionState(ActionState.Pending);
+            foreach (var player in _playerScripts) player.SetActionState(ActionState.Pending);
 
-            timer.StartCountdown(46);
+            _timer.StartCountdown(46);
         }
 
         private void Pause()
         {
-            if (isPaused) return;
+            if (_isPaused) return;
 
-            isPaused = true;
+            _isPaused = true;
             Time.timeScale = 0;
             var pauseScript = PausePanelScript.Instantiate(onPlayerKicked: OnPlayerKicked);
-            pauseScript.ShouldRestart = audioSource.time < _endSecond;
+            pauseScript.ShouldRestart = _audioSource.time < _endSecond;
             BgMusic.Pause();
-            if (audioSource.isPlaying) audioSource.Pause();
-            if (timer.Enabled)
+            if (_audioSource.isPlaying) _audioSource.Pause();
+            if (_timer.Enabled)
             {
-                timer.Pause();
+                _timer.Pause();
                 pauseScript.OnResume = () =>
                 {
-                    timer.Resume();
-                    isPaused = false;
+                    _timer.Resume();
+                    _isPaused = false;
                     Time.timeScale = 1;
                     BgMusic.UnPause();
                 };
@@ -334,7 +344,7 @@ namespace Assets.Scripts.Round
             {
                 pauseScript.OnResume = () =>
                 {
-                    isPaused = false;
+                    _isPaused = false;
                     Time.timeScale = 1;
                     BgMusic.UnPause();
                 };
@@ -342,29 +352,29 @@ namespace Assets.Scripts.Round
 
             pauseScript.OnExitAsync = async () =>
             {
-                var quitGameResult = await musicClient.QuitGameAsync();
+                var quitGameResult = await _musicClient.QuitGameAsync();
                 if (!quitGameResult.IsSuccess) ErrorPanelScript.Instantiate(quitGameResult.ErrorMessage);
             };
         }
 
         private void ShrinkAnswersExcept(AnswerScript uiAnswer)
         {
-            foreach (var ua in UIAnswers.Except(uiAnswer)) ua.ShrinkAsync().CatchErrors();
+            foreach (var ua in _uiAnswers.Except(uiAnswer)) ua.ShrinkAsync().CatchErrors();
         }
 
         private void GrowBackAnswersExcept(AnswerScript uiAnswer)
         {
-            foreach (var ua in UIAnswers.Except(uiAnswer)) ua.GrowBackAsync().CatchErrors();
+            foreach (var ua in _uiAnswers.Except(uiAnswer)) ua.GrowBackAsync().CatchErrors();
         }
 
         private void OnPlayerKicked(string playerId)
         {
-            var foundPlayer = room.KickPlayer(playerId);
+            var foundPlayer = _room.KickPlayer(playerId);
 
             if (foundPlayer)
             {
-                var playerScript = playerScripts.Find(ps => string.Equals(playerId, ps.Id));
-                playerScripts.Remove(playerScript);
+                var playerScript = _playerScripts.Find(ps => string.Equals(playerId, ps.Id));
+                _playerScripts.Remove(playerScript);
                 Destroy(playerScript.gameObject);
                 PanelAudio.PlayOneShot(Constants.AudioClips.GetPlayerDisconnectedSound());
             }
@@ -372,7 +382,7 @@ namespace Assets.Scripts.Round
 
         private void PlayBgMusic()
         {
-            if (gameOptions.MenuMusic)
+            if (_gameOptions.MenuMusic)
             {
                 BgMusic.loop = true;
                 BgMusic.clip = Constants.AudioClips.GetRandomBgMusic();

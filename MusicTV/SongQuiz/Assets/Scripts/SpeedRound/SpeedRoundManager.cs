@@ -10,6 +10,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -214,7 +215,7 @@ namespace Assets.Scripts.SpeedRound
         {
             this.musicClient.Disconnected.AddListener(this, error => Debug.LogException(error));
             this.musicClient.Message.AddListener(this, message => ToastPanelScript.Instantiate(message));
-            this.musicClient.SpeedAnswered.AddListener(this, answer =>
+            this.musicClient.SpeedAnswered.AddListener(this, async answer =>
             {
                 this.musicClient.RelaxAsync(answer.Player.Id).CatchErrors();
 
@@ -230,6 +231,7 @@ namespace Assets.Scripts.SpeedRound
 
                 if (this.answers.Count == this.room.Players.Count)
                 {
+                    while (isPaused) await UniTask.WaitForSeconds(0.5f);
                     this.timer.SkipStep();
                 }
             });
