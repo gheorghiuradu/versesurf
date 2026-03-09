@@ -15,17 +15,16 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
 {
     private readonly string _playlistsLocation = configuration["PlaylistsDir"] ?? "Playlists";
     private readonly Random _random = new();
-    private List<Playlist> _playlists;
 
     public async Task<string> AddPlaylistAsync(Playlist playlist, CancellationToken token = default)
     {
-        await EnsurePlaylistsLoaded();
+        var playlists = await LoadPlaylists();
 
         if (string.IsNullOrEmpty(playlist.Id)) playlist.Id = Guid.NewGuid().ToString();
         playlist.AddedAt = DateTime.UtcNow;
         playlist.UpdatedAt = DateTime.UtcNow;
 
-        _playlists.Add(playlist);
+        playlists.Add(playlist);
         throw new NotImplementedException();
 
         return playlist.Id;
@@ -34,17 +33,17 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
     public async Task<Song> GetSong(string id, CancellationToken token = default)
     {
         if (token.IsCancellationRequested) return null;
-        await EnsurePlaylistsLoaded();
+        var playlists = await LoadPlaylists();
         if (token.IsCancellationRequested) return null;
 
-        return _playlists.SelectMany(p => p.Songs).FirstOrDefault(s => s.Id == id);
+        return playlists.SelectMany(p => p.Songs).FirstOrDefault(s => s.Id == id);
     }
 
     public async Task UpdatePlaylistAsync(Playlist playlist, CancellationToken token = default)
     {
-        await EnsurePlaylistsLoaded();
+        var playlists = await LoadPlaylists();
         playlist.UpdatedAt = DateTime.UtcNow;
-        var existing = _playlists.FirstOrDefault(p => p.Id == playlist.Id);
+        var existing = playlists.FirstOrDefault(p => p.Id == playlist.Id);
         // if (existing != null)
         // {
         //     existing.Name = playlist.Name;
@@ -73,10 +72,10 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
     //     }
     // }
     // await this.db.SaveChangesAsync(token);
-    public async Task<List<Playlist>> GetEnabledPlaylistsAsync(string language = null, bool includeExplicit = false, int numberOfSongs =5, CancellationToken token = default)
+    public async Task<List<Playlist>> GetEnabledPlaylistsAsync(string language = null, bool includeExplicit = false, int numberOfSongs = 5, CancellationToken token = default)
     {
-        await EnsurePlaylistsLoaded();
-        var result = _playlists
+        var playlists = await LoadPlaylists();
+        var result = playlists
             .Where(p => p.Enabled && p.Songs.Count >= numberOfSongs);
 
         if (!includeExplicit) result = result.Where(p => !p.Songs.Any(s => s.IsExplicit));
@@ -87,8 +86,8 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
 
     public async Task<List<Playlist>> GetAllPlaylistsAsync(string language = null, bool includeExplicit = false, CancellationToken token = default)
     {
-        await EnsurePlaylistsLoaded();
-        IEnumerable<Playlist> result = _playlists;
+        var playlists = await LoadPlaylists();
+        IEnumerable<Playlist> result = playlists;
         if (!includeExplicit) result = result.Where(p => !p.Songs.Any(s => s.IsExplicit));
         if (!string.IsNullOrEmpty(language)) result = result.Where(p => string.Equals(p.Language, language, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(p.Language));
 
@@ -97,10 +96,10 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
 
     public async Task<Playlist> GetRandomPlaylistAsync(string language = null, bool includeExplicit = false, bool onlyEnabled = true)
     {
-        await EnsurePlaylistsLoaded();
-        var query = _playlists.AsQueryable();
+        var playlists = await LoadPlaylists();
+        var query = playlists.AsQueryable();
         if (onlyEnabled) query = query.Where(p => p.Enabled);
-        var playlists = query.ToList();
+        playlists = query.ToList();
 
         IEnumerable<Playlist> result = playlists;
         if (!includeExplicit) result = result.Where(p => !p.Songs.Any(s => s.IsExplicit));
@@ -113,16 +112,16 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
     public async Task<Playlist> GetPlaylistByIdAsync(string id, CancellationToken token = default)
     {
         if (token.IsCancellationRequested) return null;
-        await EnsurePlaylistsLoaded();
-        return _playlists
+        var playlists = await LoadPlaylists();
+        return playlists
             .FirstOrDefault(p => p.Id == id);
     }
 
     public async Task<List<Playlist>> GetPlaylistsByIdAsync(IEnumerable<string> ids, CancellationToken token = default)
     {
         if (token.IsCancellationRequested) return null;
-        await EnsurePlaylistsLoaded();
-        return _playlists
+        var playlists = await LoadPlaylists();
+        return playlists
             .Where(p => ids.Contains(p.Id))
             .ToList();
     }
@@ -130,33 +129,33 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
     public async Task<Playlist> GetPlaylistBySpotifyIdAsync(string id, CancellationToken token = default)
     {
         if (token.IsCancellationRequested) return null;
-        await EnsurePlaylistsLoaded();
-        return _playlists
+        var playlists = await LoadPlaylists();
+        return playlists
             .FirstOrDefault(p => p.SpotifyId == id);
     }
 
     public async Task<bool> PlaylistExistsByIdAsync(string id, CancellationToken token = default)
     {
         if (token.IsCancellationRequested) return false;
-        await EnsurePlaylistsLoaded();
-        return _playlists.Any(p => p.Id == id);
+        var playlists = await LoadPlaylists();
+        return playlists.Any(p => p.Id == id);
     }
 
     public async Task<bool> PlaylistExistsBySpotifyIdAsync(string id, CancellationToken token = default)
     {
         if (token.IsCancellationRequested) return false;
-        await EnsurePlaylistsLoaded();
-        return _playlists.Any(p => p.SpotifyId == id);
+        var playlists = await LoadPlaylists();
+        return playlists.Any(p => p.SpotifyId == id);
     }
 
     public async Task DeletePlaylistAsync(string id, CancellationToken token = default)
     {
         if (token.IsCancellationRequested) return;
-        await EnsurePlaylistsLoaded();
-        var playlist = _playlists.Find(p => p.Id == id);
+        var playlists = await LoadPlaylists();
+        var playlist = playlists.Find(p => p.Id == id);
         if (playlist != null)
         {
-            _playlists.Remove(playlist);
+            playlists.Remove(playlist);
             throw new NotImplementedException();
         }
     }
@@ -169,25 +168,24 @@ public sealed class MusicDbClient(IConfiguration configuration, ILogger<MusicDbC
                 song.Id = Guid.NewGuid().ToString();
     }
 
-    private async Task EnsurePlaylistsLoaded()
+    private async Task<List<Playlist>> LoadPlaylists()
     {
-        if (_playlists == null || _playlists.Count == 0)
-        {
-            _playlists = [];
-            foreach (var file in Directory.EnumerateFiles(_playlistsLocation, "*.json"))
-                try
-                {
-                    var playlist = JsonSerializer.Deserialize<Playlist>(await File.ReadAllTextAsync(file));
-                    if (playlist == null) continue;
+        List<Playlist> playlists = [];
+        foreach (var file in Directory.EnumerateFiles(_playlistsLocation, "*.json"))
+            try
+            {
+                var playlist = JsonSerializer.Deserialize<Playlist>(await File.ReadAllTextAsync(file));
+                if (playlist == null) continue;
 
-                    if (string.IsNullOrEmpty(playlist.Id)) playlist.Id = file.Split('_').FirstOrDefault() ?? Guid.NewGuid().ToString();
-                    EnsureSongsHaveIds(playlist.Songs);
-                    _playlists.Add(playlist);
-                }
-                catch (Exception e)
-                {
-                    logger.LogWarning(e, "Could not load playlist file {File}", file);
-                }
-        }
+                if (string.IsNullOrEmpty(playlist.Id)) playlist.Id = file.Split('_').FirstOrDefault() ?? Guid.NewGuid().ToString();
+                EnsureSongsHaveIds(playlist.Songs);
+                playlists.Add(playlist);
+            }
+            catch (Exception e)
+            {
+                logger.LogWarning(e, "Could not load playlist file {File}", file);
+            }
+
+        return playlists;
     }
 }
