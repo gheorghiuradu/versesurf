@@ -4,6 +4,7 @@
 Verse Surf is a music party game running on desktop and web mobile. It was formerly [on steam](https://store.steampowered.com/app/1315390/Verse_Surf/).
 
 ## How to play
+
 Step 1. Along with up to 8 players (minimum 2), you can use your phone or tablet as a game controller and join your room.
 
 Step 2. Listen to the song sample and enter on your game controller of choise a fake lyric to fit the snippet and fool the other players.
@@ -13,15 +14,17 @@ Vote your favorite lyric - you’ll get a “thanks” if you vote a friends’ 
 Step 3. T-t-t-tie breaker! Last round is a Speed Round. Answer correctly and you get points for each second left on the clock.
 
 ## How to build
-The game is built using Unity, .NET Core, SignalR and Blazor. **It was using Steam, Playfab (Azure Game Services) and Google Cloud Platform, so they need to be removed before running locally.**
-**If you manage to do so, please create a pull request here.**
+
+The game is built using Unity, .NET Core, SignalR and Razor pages.
 The main projects are:
+
 - Unity project under MusicTV/Songquiz
-- MusicServer, MusicWebClient, MusicApiServerless, BackOffice -> Open MusicServer/MusicServer.csproj
-  
-## How to configure
-Please use the included backoffice to upload songs and create playlists. There are also tools for music licensing included, if you require them.
-The playlists were previously stored in Firezone and Google Cloud Storage, but they need to be refactored to use local storage. **Please create a PR with this change if you do this.**
+- MusicServer, a .NET Core project hosting the game server and the backoffice
+- PlayVerseSurf, a HTML and JavaScript presentation site for the game
+
+There is no database, all game data is stored in memory and lost when the server is restarted. The game uses a simple JSON file to store the list of songs and their lyrics.
+
+You can build the game by opening the MusicTV/Songquiz project in Unity and building it for your target platform. The MusicServer project can be built using Visual Studio or the .NET CLI. Also check out the GitHub Actions workflows for automated builds and deployments.
 
 ## MIT License
 
