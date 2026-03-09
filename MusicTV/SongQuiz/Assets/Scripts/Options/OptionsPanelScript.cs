@@ -59,11 +59,11 @@ namespace Assets.Scripts.Options
         {
             if (Input.GetKeyDown(KeyCode.Escape) && this.transform.IsLastChild())
             {
-                this.UpdateAndCloseAsync();
+                this.UpdateAndClose();
             }
         }
 
-        public async void UpdateAndCloseAsync()
+        private void UpdateAndClose()
         {
             this.gameOptions.NumberOfRounds = this.NumberOfRoundsControl.Value;
             this.gameOptions.AllowExplicit = this.AllowExplicitToggle.isOn;
@@ -82,7 +82,7 @@ namespace Assets.Scripts.Options
 
         public void Close()
         {
-            this.UpdateAndCloseAsync();
+            this.UpdateAndClose();
         }
 
         public void OpenGuide()

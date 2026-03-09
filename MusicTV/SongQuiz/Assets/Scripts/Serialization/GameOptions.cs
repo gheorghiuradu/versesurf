@@ -36,14 +36,14 @@ namespace Assets.Scripts.Serialization
         public bool HasClickedOnReview { get; set; }
 
         [JsonIgnore]
-        public PlaylistOptions PlaylistOptions => new PlaylistOptions
+        public PlaylistOptions PlaylistOptions => new()
         {
             AllowExplicit = this.AllowExplicit,
             Language = (LocalizationSettings.SelectedLocale?.Identifier.CultureInfo.TwoLetterISOLanguageName),
             NumberOfSongs = this.NumberOfRounds
         };
 
-        public static GameOptions Default => new GameOptions
+        public static GameOptions Default => new()
         {
             NumberOfRounds = DefaultNumberOfRounds,
             AllowExplicit = DefaultAllowExplicit,

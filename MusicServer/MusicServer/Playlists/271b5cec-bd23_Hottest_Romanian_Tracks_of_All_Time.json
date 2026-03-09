@@ -1,8 +1,8 @@
 {
     "Id": "271b5cec-bd23-49f9-8412-04a7e0287225",
     "Enabled": true,
-    "Name": "The Vled Special",
-    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b273ce80c662bcf0596f9877e3e5",
+    "Name": "Hottest Romanian Tracks of All Time",
+    "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b2736ed1042195c7228f6bd3548e",
     "Songs": [
         {
             "Id": "00a0a090-1d82-45a1-b5fd-c1de60bc3eda",
@@ -19,15 +19,15 @@
         },
         {
             "Id": "20aa0082-ba4e-4f1e-833e-4ccc0aae5007",
-            "SpotifyId": "5Q1ZpJSD1H2xtsxwlMkjUf",
-            "Title": "Fly With Me",
-            "Artist": "Body & Soul",
-            "Snippet": "See the {world} out there",
-            "StartSecond": 10.8,
-            "EndSecond": 16.6,
+            "SpotifyId": "7F1lHcpnTycnimQrCxDFI5",
+            "Title": "Hot",
+            "Artist": "INNA",
+            "Snippet": "Let me do it like a {woman}",
+            "StartSecond": 9.22,
+            "EndSecond": 15,
             "IsExplicit": false,
-            "PreviewUrl": "https://raw.githubusercontent.com/gheorghiuradu/versesurf/refs/heads/main/PyPlaylistEditor/vled.mp3",
-            "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b273ce80c662bcf0596f9877e3e5",
+            "PreviewUrl": "https://p.scdn.co/mp3-preview/86e280e6ce1581ffbe90678db85119d0d77e6067",
+            "PictureUrl": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b2733d6413c7dc24318bdbd5b366",
             "Enabled": true
         },
         {

@@ -21,21 +21,17 @@ namespace Assets.Scripts.Splash
                 ServiceProvider.Initialize();
 #if UNITY_STANDALONE
                 new GameObject(nameof(SteamManager)).AddComponent<SteamManager>();
-#endif                
+#endif
                 var musicClient = ServiceProvider.Get<MusicClient>();
                 var waiter = new Waiter(5);
 
                 var success = await waiter.WithRetryAsync(async () =>
                 {
 #if UNITY_STANDALONE
-                    while (!SteamManager.Initialized)
-                    {
-                        await new WaitForSeconds(1);
-                    }
-#endif                    
+                    while (!SteamManager.Initialized) await new WaitForSeconds(1);
+#endif
                     await LocalizationSettings.InitializationOperation;
-                    var gameOptions = new GameOptions();
-                    ServiceProvider.Add(gameOptions);
+                    var gameOptions = ServiceProvider.Get<GameOptions>();
                     await musicClient.ConnectAsync();
                     var locale = LocalizationSettings.SelectedLocale;
                     var localeId = locale?.Formatter?.ToString() ?? "en";
