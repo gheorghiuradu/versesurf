@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Extensions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Assets.Scripts.Extensions;
 using Assets.Scripts.News;
 using Assets.Scripts.Options;
 using Assets.Scripts.Panels;
@@ -8,8 +10,6 @@ using Assets.Scripts.Services;
 using SharedDomain;
 using SharedDomain.Domain;
 using SharedDomain.Messages.Commands;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,12 +19,12 @@ using Image = UnityEngine.UI.Image;
 
 public class MainMenuManager : UnityEventUser
 {
-    private Room room;
-    private MusicClient musicClient;
-    private AudioSource audioSource;
-    private AppSettings appSettings;
+    private Room _room;
+    private MusicClient _musicClient;
+    private AudioSource _audioSource;
+    private AppSettings _appSettings;
 
-    private List<PlayerScript> playerScripts = new List<PlayerScript>();
+    private readonly List<PlayerScript> _playerScripts = new();
 
     public GameObject InstructionsContainer;
     public GameObject PlayersContainer;
@@ -39,54 +39,48 @@ public class MainMenuManager : UnityEventUser
     // Start is called before the first frame update
     private void Start()
     {
-        this.audioSource = this.GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
 
-        this.StartButton.interactable = false;
-        this.OptionsButton.interactable = false;
-        this.StartButton.Select();
+        StartButton.interactable = false;
+        OptionsButton.interactable = false;
+        StartButton.Select();
 
-        this.room = ServiceProvider.Get<Room>();
-        this.appSettings = ServiceProvider.Get<AppSettings>();
-        this.musicClient = ServiceProvider.Get<MusicClient>();
-        this.InstructionsContainer.gameObject.SetActive(false);
+        _room = ServiceProvider.Get<Room>();
+        _appSettings = ServiceProvider.Get<AppSettings>();
+        _musicClient = ServiceProvider.Get<MusicClient>();
+        InstructionsContainer.gameObject.SetActive(false);
         var gameOptions = ServiceProvider.Get<GameOptions>();
         gameOptions.ApplyVolume();
         if (gameOptions.MenuMusic)
-            this.Music.PlayOneShot(Constants.AudioClips.GetRandomMenuMusic());
+            Music.PlayOneShot(Constants.AudioClips.GetRandomMenuMusic());
         //ServiceProvider.Get<CustomEventService>().TryPushRemainingEventsAsync().CatchErrors();
         NewsPanelScript.AutoCheckAsync().CatchErrors();
-        this.LoadUI();
+        LoadUI();
     }
 
     private void LoadUI()
     {
-        this.OptionsButton.interactable = true;
-        this.RoomCode.text = this.room.Code;
-        this.InstructionsWebUrl.text = this.appSettings.WebClientUri.Host;
-        this.QRCodeImage.sprite = QRUtility.GenerateQrCodeTexture($"{appSettings.WebClientUrl}/?code={this.room.Code}").ToSprite();
-        this.QRCodeImage.gameObject.SetActive(true);
-        this.QRCodeImage.preserveAspect = true;
-        this.QRCodeImage.color = Constants.Colors.Accent1;
+        OptionsButton.interactable = true;
+        RoomCode.text = _room.Code;
+        InstructionsWebUrl.text = _appSettings.WebClientUri.Host;
+        QRCodeImage.sprite = QRUtility.GenerateQrCodeTexture($"{_appSettings.WebClientUrl}/?code={_room.Code}").ToSprite();
+        QRCodeImage.gameObject.SetActive(true);
+        QRCodeImage.preserveAspect = true;
+        QRCodeImage.color = Constants.Colors.Accent3;
 
-        this.InstructionsContainer.SetActive(true);
+        InstructionsContainer.SetActive(true);
 
-        this.InstantiatePlayers();
+        InstantiatePlayers();
 
-        foreach (var player in this.room.Players)
-        {
-            this.AddOrUpdatePlayer(player);
-        }
+        foreach (var player in _room.Players) AddOrUpdatePlayer(player);
 
-        this.AddListenersForMusicClientEvents();
+        AddListenersForMusicClientEvents();
     }
 
     private void InstantiatePlayers()
     {
-        foreach (var character in this.appSettings.AvailableCharacters)
-        {
-            this.playerScripts.Add(PlayerScript.Instantiate(this.PlayersContainer.transform, character));
-        }
-        for (int i = 0; i < 8; i++)
+        foreach (var character in _appSettings.AvailableCharacters) _playerScripts.Add(PlayerScript.Instantiate(PlayersContainer.transform, character));
+        for (var i = 0; i < 8; i++)
         {
         }
     }
@@ -95,53 +89,45 @@ public class MainMenuManager : UnityEventUser
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == null &&
-            this.transform.childCount == 2)
-        {
-            this.StartButton.Select();
-        }
+            transform.childCount == 2)
+            StartButton.Select();
 
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SceneFader.Fade("SpeedRound", Color.black, 2);
-        }
+        if (Input.GetKeyDown(KeyCode.S)) SceneFader.Fade("SpeedRound", Color.black, 2);
 #endif
     }
 
     private void OnDestroy()
     {
-        this.musicClient.RemoveAllListenersFrom(this);
+        _musicClient.RemoveAllListenersFrom(this);
     }
 
     private void AddOrUpdatePlayer(Player player)
     {
-        if (!this.room.Players.Contains(player))
-        {
-            this.room.Players.Add(player);
-        }
+        if (!_room.Players.Contains(player)) _room.Players.Add(player);
 
-        if (!this.playerScripts.ContainsPlayer(player.Id))
+        if (!_playerScripts.ContainsPlayer(player.Id))
         {
-            var playerScript = this.playerScripts.First(ps => !ps.PlayerLoaded);
+            var playerScript = _playerScripts.First(ps => !ps.PlayerLoaded);
             playerScript.LoadPlayer(player);
             playerScript.AnimateJoinAsync().CatchErrors();
-            this.audioSource.Play();
+            _audioSource.Play();
         }
         else
         {
-            this.playerScripts.Find(ps => string.Equals(ps.Id, player.Id))
+            _playerScripts.Find(ps => string.Equals(ps.Id, player.Id))
                 .ReloadPlayer(player);
         }
 
-        if (this.room.Players.Count > 1 && !this.StartButton.interactable)
+        if (_room.Players.Count > 1 && !StartButton.interactable)
         {
-            this.StartButton.interactable = true;
-            this.StartButton.Select();
-            this.StartButton.OnSelect(new BaseEventData(EventSystem.current));
-            this.ArmAnimator.Play(Constants.Animations.MoveTurntableArm);
+            StartButton.interactable = true;
+            StartButton.Select();
+            StartButton.OnSelect(new BaseEventData(EventSystem.current));
+            ArmAnimator.Play(Constants.Animations.MoveTurntableArm);
         }
 
-        this.musicClient.ScheduleActionAsync(System.TimeSpan.FromMilliseconds(300), ServerMethods.Relax, new RelaxMessage
+        _musicClient.ScheduleActionAsync(System.TimeSpan.FromMilliseconds(300), ServerMethods.Relax, new RelaxMessage
         {
             PlayerOrGuestIds = new List<string> { player.Id },
             RoomCode = player.Code
@@ -153,8 +139,8 @@ public class MainMenuManager : UnityEventUser
     public void OpenOptions() =>
         OptionsPanelScript.Instantiate().MenuMusicToggle.onValueChanged.AddListener(isOn =>
         {
-            if (isOn) this.Music.PlayOneShot(Constants.AudioClips.GetRandomMenuMusic());
-            else this.Music.Stop();
+            if (isOn) Music.PlayOneShot(Constants.AudioClips.GetRandomMenuMusic());
+            else Music.Stop();
         });
 
     public async void StartNewGame()
@@ -162,17 +148,18 @@ public class MainMenuManager : UnityEventUser
         try
         {
             this.DisableAllButtons();
-            LoadingSpinner.Instantiate(this.transform);
+            LoadingSpinner.Instantiate(transform);
             var options = ServiceProvider.Get<GameOptions>();
             var room = ServiceProvider.Get<Room>();
-            var response = await this.musicClient.StartNewGameAsync(
-                    options.PlaylistOptions);
+            var response = await _musicClient.StartNewGameAsync(
+                options.PlaylistOptions);
 
             if (!response.IsSuccess)
             {
                 ErrorPanelScript.Instantiate(response.ErrorMessage);
                 return;
             }
+
             ServiceProvider.AddOrReplace(response.GetData<List<PlaylistViewModel>>());
             SceneFader.Fade("PlaylistVotingBooth", Color.black, 2);
         }
@@ -188,14 +175,14 @@ public class MainMenuManager : UnityEventUser
 
     private void AddListenersForMusicClientEvents()
     {
-        this.musicClient.PlayerRejoined.AddListener(
+        _musicClient.PlayerRejoined.AddListener(
             this,
-            player => this.AddOrUpdatePlayer(player));
+            player => AddOrUpdatePlayer(player));
 
-        this.musicClient.Message.AddListener(
+        _musicClient.Message.AddListener(
             this,
             message => ToastPanelScript.Instantiate(message));
 
-        this.musicClient.PlayerJoined.AddListener(this, newPlayer => this.AddOrUpdatePlayer(newPlayer));
+        _musicClient.PlayerJoined.AddListener(this, newPlayer => AddOrUpdatePlayer(newPlayer));
     }
 }

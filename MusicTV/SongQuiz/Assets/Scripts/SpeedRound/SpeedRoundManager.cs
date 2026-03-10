@@ -111,6 +111,7 @@ namespace Assets.Scripts.SpeedRound
             this.speedRoundLogo.gameObject.SetActive(false);
 
             this.instructionsListen.gameObject.SetActive(true);
+            this.music.time = song.StartSecond.GetValueOrDefault();
             this._endSecond = song.EndSecond.HasValue ?
                 song.EndSecond.Value : this.gameOptions.SongPlayLengthSeconds;
             _endSecond += 0.19f; // Manually fix timing to be exactly the same as in editor

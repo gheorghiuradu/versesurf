@@ -70,7 +70,7 @@ namespace Assets.Scripts.Services
                     1 => Resources.Load<AudioClip>("Audio/music_fun_funky_mushroom"),
                     2 => Resources.Load<AudioClip>("Audio/music_fun_funky_whistle_groove_loop"),
                     3 => Resources.Load<AudioClip>("Audio/theme/theme"),
-                    _ => Resources.Load<AudioClip>("Audio/music_fun_funky_gnome"),
+                    _ => Resources.Load<AudioClip>("Audio/music_fun_funky_gnome")
                 };
 
             public static AudioClip GetRandomBgMusic() =>
@@ -94,6 +94,7 @@ namespace Assets.Scripts.Services
             public static Color32 NewScoreBrick => GetHtmlColor("#8E4942");
             public static Color32 BlackText => GetHtmlColor("#2D2D2D");
             public static Color32 Accent2 => GetHtmlColor("#C77F6A");
+            public static Color32 Accent3 => GetHtmlColor("#DEAF9F");
 
             public static Color32 GetHtmlColor(string hex) =>
                 ColorUtility.TryParseHtmlString(hex, out var result) ? result : Color.white;

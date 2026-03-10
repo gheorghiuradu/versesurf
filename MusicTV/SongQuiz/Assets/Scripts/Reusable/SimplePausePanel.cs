@@ -10,23 +10,19 @@ namespace Assets.Scripts.Reusable
     {
         private const string PrefabPath = "Prefabs/SimplePausePanel";
 
-        [SerializeField]
-        private Button resumeButton;
+        [SerializeField] private Button resumeButton;
 
         private UnityEvent onResume;
         private UnityEvent onExit;
 
         private void Start()
         {
-            this.resumeButton.Select();
+            resumeButton.Select();
         }
 
         private void LateUpdate()
         {
-            if (this.transform.IsLastChild() && EventSystem.current.currentSelectedGameObject == null)
-            {
-                this.resumeButton.Select();
-            }
+            if (transform.IsLastChild() && EventSystem.current.currentSelectedGameObject == null) resumeButton.Select();
             //if (this.transform.IsLastChild() && Input.GetKeyDown(KeyCode.Escape))
             //{
             //    this.Resume();
@@ -35,17 +31,17 @@ namespace Assets.Scripts.Reusable
 
         public void Resume()
         {
-            this.onExit.RemoveAllListeners();
-            this.onResume.Invoke();
-            this.onResume.RemoveAllListeners();
-            GameObject.Destroy(this.gameObject);
+            onExit.RemoveAllListeners();
+            onResume.Invoke();
+            onResume.RemoveAllListeners();
+            Destroy(gameObject);
         }
 
         public void Exit()
         {
-            this.onResume.RemoveAllListeners();
-            this.onExit.Invoke();
-            this.onExit.RemoveAllListeners();
+            onResume.RemoveAllListeners();
+            onExit.Invoke();
+            onExit.RemoveAllListeners();
             SceneFader.Fade("MainMenu", Color.black, 2);
         }
 
@@ -56,27 +52,23 @@ namespace Assets.Scripts.Reusable
             UnityAction onExit = null)
         {
             var prefab = Resources.Load<GameObject>(PrefabPath);
-            if (parent == null)
-            {
-                parent = GameObject.FindObjectOfType<Canvas>().transform;
-            }
+            if (parent == null) parent = FindObjectOfType<Canvas>().transform;
             var script = GameObject.Instantiate(prefab, parent).GetComponent<SimplePausePanel>();
             script.onResume = new UnityEvent();
             script.onExit = new UnityEvent();
 
-            if (!(onResume is null))
-            {
-                script.onResume.AddListener(onResume);
-            }
-            if (!(onExit is null))
-            {
-                script.onExit.AddListener(onExit);
-            }
+            if (!(onResume is null)) script.onResume.AddListener(onResume);
+            if (!(onExit is null)) script.onExit.AddListener(onExit);
 
             if (pauseTime)
             {
                 Time.timeScale = 0;
-                void resumeTime() => Time.timeScale = 1;
+
+                void resumeTime()
+                {
+                    Time.timeScale = 1;
+                }
+
                 script.onResume.AddListener(resumeTime);
                 script.onExit.AddListener(resumeTime);
             }

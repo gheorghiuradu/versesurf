@@ -10,6 +10,7 @@ namespace Assets.Scripts.Mock
     {
         public Room FakeRoom { get; }
         public List<Answer> FakeAnswers { get; }
+        public List<SpeedAnswer> FakeSpeedAnswers { get; }
 
         public MockProvider(int players, int currentRound = 1)
         {
@@ -17,6 +18,23 @@ namespace Assets.Scripts.Mock
             this.FakeRoom.ScoreBoard = this.GetRandomScoreBoard(currentRound);
             this.FakeRoom.CurrentRound = new SharedDomain.Round { Number = currentRound, Score = new ScoreBoard(this.FakeRoom.Players) };
             this.FakeAnswers = this.SetupAnswers();
+            this.FakeSpeedAnswers = SetupSpeedAnswers();
+        }
+
+        private List<SpeedAnswer> SetupSpeedAnswers()
+        {
+            var speedAnswers = new List<SpeedAnswer>();
+            foreach (var player in FakeRoom.Players)
+            {
+                speedAnswers.Add(new SpeedAnswer
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = $"FakeSpeedAnswer1{FakeRoom.Players.IndexOf(player)}",
+                    Player = player,
+                    ReceivedAtUTC =  DateTime.UtcNow - TimeSpan.FromSeconds(UnityEngine.Random.Range(0, 10))
+                });
+            }
+            return speedAnswers;
         }
 
         private Room SetupGame(int players)
