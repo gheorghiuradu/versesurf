@@ -39,8 +39,8 @@ public class AudioPeer : MonoBehaviour
 
     private void GetSpectrumAudioSource()
     {
-        // this.audioSource.GetSpectrumData(samplesLeft, 0, FFTWindow.Blackman);
-        // this.audioSource.GetSpectrumData(samplesRight, 1, FFTWindow.Blackman);
+        this.audioSource.GetSpectrumData(samplesLeft, 0, FFTWindow.Blackman);
+        this.audioSource.GetSpectrumData(samplesRight, 1, FFTWindow.Blackman);
 
     }
 

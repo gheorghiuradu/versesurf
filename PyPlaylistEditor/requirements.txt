@@ -1,3 +1,0 @@
-requests
-karaoke-gen[local-whisper]
-ffmpeg
