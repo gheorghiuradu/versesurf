@@ -298,9 +298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Radu Gheorghiu - Development \u2022 Andreea-Georgiana Lupu - Marketing
-    \u2022 Silvana Oprea - Design \u2022 Ovidiu Sbangu - Infrastructure \u2022 Luiza
-    Comanescu - Testing \u2022  Claudiu Epure - Development <b>Verse Surf Team</b>"
+  m_text: Song Previews from Spotify
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09e6d979c5e7c394daffcb8771caeaa4, type: 2}
   m_sharedMaterial: {fileID: 818673249732048747, guid: 09e6d979c5e7c394daffcb8771caeaa4,
@@ -311,7 +309,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281150765
-  m_fontColor: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+  m_fontColor: {r: 0.8980392, g: 0.8352941, b: 0.827451, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -777,6 +775,7 @@ GameObject:
   - component: {fileID: 427683259}
   - component: {fileID: 427683261}
   - component: {fileID: 427683260}
+  - component: {fileID: 427683262}
   m_Layer: 5
   m_Name: ScorePanel
   m_TagString: Untagged
@@ -819,7 +818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.85098046, g: 0.58431375, b: 0.48627454, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -844,6 +843,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427683258}
   m_CullTransparentMesh: 0
+--- !u!114 &427683262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427683258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb48d82dc0e94a2b9246d17d04f8748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UIEffect::Coffee.UIEffects.UIGradient
+  m_Direction: 3
+  m_Color1: {r: 0.85490197, g: 0.6117647, b: 0.5294118, a: 1}
+  m_Color2: {r: 0.8509804, g: 0.58431375, b: 0.4862745, a: 1}
+  m_Color3: {r: 0.87058824, g: 0.6862745, b: 0.62352943, a: 1}
+  m_Color4: {r: 0.78039217, g: 0.49803922, b: 0.41568628, a: 1}
+  m_Rotation: 0
+  m_Offset1: 0
+  m_Offset2: 0
+  m_GradientStyle: 0
+  m_ColorSpace: -1
+  m_IgnoreAspectRatio: 1
 --- !u!1 &499479032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1062,7 @@ PrefabInstance:
     - target: {fileID: 8645235294389227425, guid: f64fe96798b87db48ae9b7e49db23f74,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 49.600006
+      value: 49.599976
       objectReference: {fileID: 0}
     - target: {fileID: 8645235294389227425, guid: f64fe96798b87db48ae9b7e49db23f74,
         type: 3}
@@ -1132,6 +1154,7 @@ GameObject:
   - component: {fileID: 629123576}
   - component: {fileID: 629123578}
   - component: {fileID: 629123577}
+  - component: {fileID: 629123579}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
@@ -1179,7 +1202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.85098046, g: 0.58431375, b: 0.48627454, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1204,6 +1227,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629123575}
   m_CullTransparentMesh: 0
+--- !u!114 &629123579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629123575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb48d82dc0e94a2b9246d17d04f8748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UIEffect::Coffee.UIEffects.UIGradient
+  m_Direction: 3
+  m_Color1: {r: 0.85490197, g: 0.6117647, b: 0.5294118, a: 1}
+  m_Color2: {r: 0.8509804, g: 0.58431375, b: 0.4862745, a: 1}
+  m_Color3: {r: 0.87058824, g: 0.6862745, b: 0.62352943, a: 1}
+  m_Color4: {r: 0.78039217, g: 0.49803922, b: 0.41568628, a: 1}
+  m_Rotation: 0
+  m_Offset1: 0
+  m_Offset2: 0
+  m_GradientStyle: 0
+  m_ColorSpace: -1
+  m_IgnoreAspectRatio: 1
 --- !u!1001 &710069981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1826,7 +1872,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e930b0ec2c2f1548855ea85444ffabe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff5b6be313c4e304591b86638636a70d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
