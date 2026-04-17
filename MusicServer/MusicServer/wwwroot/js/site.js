@@ -91,10 +91,9 @@ async function SendAnswer(e) {
     var response = await connection.invoke(ServerMethods.Answer, new AnswerMessage($("#answer").val()));
 
     if (response.isSuccess) {
-        $("#answer-error").addClass("d-none");
         ClearSpace();
     } else {
-        $("#answer-error").removeClass("d-none").text(response.errorMessage);
+        ShowError(response.errorMessage);
     }
     Loading(false);
 }
@@ -123,7 +122,7 @@ function ClearSpace() {
 function StartVoting(answersReceived) {
     ClearSpace();
 
-    answersReceived.map(answer => {
+    answersReceived.map(answer =>
         $("#answers").append(`
             <li id='${answer.id}' class='list-group-item'>
                 <a href='#' onclick='Vote("${answer.id}")'>
@@ -132,8 +131,7 @@ function StartVoting(answersReceived) {
                     </span>
                 </a>
             </li>
-        `);
-    });
+        `));
 
     $("#answers-container").removeClass("d-none");
 }
@@ -210,12 +208,11 @@ function BindToConnection() {
 
     connection.on("StartVoting", answers => StartVoting(answers));
 
-    connection.onreconnecting(() => {
+    connection.onreconnecting(() =>
         $("#reconnecting-modal").modal({
             backdrop: "static",
             keyboard: false
-        })
-    });
+        }));
     connection.onreconnected(TryRejoinAsync);
     connection.onclose(() => {
         ClearSpace();
@@ -290,8 +287,7 @@ function SearchPlaylist() {
             li[i].getAttribute("data-keywords").toUpperCase().indexOf(query) > -1;
         if (match) {
             $(li[i]).removeClass("d-none");
-        }
-        else {
+        } else {
             $(li[i]).addClass("d-none");
         }
     }
@@ -306,8 +302,7 @@ function Loading(bool) {
     if (bool) {
         $("input, button").prop("disabled", true);
         $("#loading").removeClass("d-none");
-    }
-    else {
+    } else {
         $("#loading").addClass("d-none");
         $("input, button").prop("disabled", false);
     }

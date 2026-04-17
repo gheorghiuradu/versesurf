@@ -68,3 +68,5 @@ msbuild.wrn
 PyPlaylistEditor/playlists
 MusicServer/packages
 *.app
+
+Steam Events/
