@@ -63,6 +63,19 @@ namespace Assets.Scripts.Services
             public static AudioClip GetMetalMoveSound() =>
                 Resources.Load<AudioClip>("Audio/metal_on_wood_rolling_ball_loop_01");
 
+            public static AudioClip GetSpellRechargePowerUpSound() =>
+                Resources.Load<AudioClip>("Audio/spell_recharge_poweup_01");
+
+            public static AudioClip GetPartyHornSound() =>
+                Resources.Load<AudioClip>("Audio/808242__designerschoice__horncele_party-blowout-and-horn_nicholas-judy_tdc");
+
+            public static AudioClip GetFailPartyHornSound() =>
+                Resources.Load<AudioClip>("Audio/825292__qubodup__fail-jingle-party-horn");
+            
+            public static AudioClip GetCorrectAnswerSound() =>
+                Resources.Load<AudioClip>("Audio/456966__funwithsound__success-fanfare-trumpets");
+
+
             public static AudioClip GetRandomMenuMusic() =>
                 Random.Range(0, 4) switch
                 {

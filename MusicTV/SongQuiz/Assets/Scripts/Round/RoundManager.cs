@@ -51,6 +51,7 @@ namespace Assets.Scripts.Round
         // Awake is called first
         private void Awake()
         {
+            // if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) ServiceProvider.Initialize();
             _correctAnswer = new Answer { Id = Guid.NewGuid().ToString(), Player = new Player { Id = "CORRECT" } };
             _timer = new Timer();
             _answers = new ConcurrentDictionary<string, Answer>();
@@ -118,42 +119,38 @@ namespace Assets.Scripts.Round
                 _timer.StartCountdown(36);
                 PlayBgMusic();
             }
-            ////Enable this for testing
-            //if (Application.platform == RuntimePlatform.WindowsEditor)
-            //{
-            //    ServiceProvider.Initialize();
-            //    var mockProvider = new MockProvider(8);
-            //    ServiceProvider.Add(mockProvider.FakeRoom);
-            //    ServiceProvider.Add(mockProvider);
 
-            //    this.room = mockProvider.FakeRoom;
-            //    this.answers = mockProvider.FakeAnswers;
-            //    this.snippet = new Snippet("Fake correct answer");
-            //    this.correctAnswer.Name = this.snippet.Answer;
-            //    this.musicClient = ServiceProvider.Get<MusicClient>();
-
-            //    this.BindToMusicClient();
-            //    this.LoadPlayers();
-            //    this.Instructions.text = "I’ll tell you once more before I get off the lorem ipsum dolor sit amet before and after god said to be or not to be _____";
-            //    this.timer.StartCountdown(5);
-
-            //    this.timer.OnStep(2, () =>
-            //    {
-            //        this.ShowAnswers();
-            //        foreach (var player in this.room.Players)
-            //        {
-            //            //this.answers.Shuffle();
-            //            this.musicClient.AnswerVotes.Enqueue(mockProvider.GetVote(this.correctAnswer));
-            //        }
-            //    });
-
-            //    this.timer.OnStep(3, () =>
-            //    {
-            //        this.ShowVotes().CatchErrors();
-            //    });
-
-            //    return;
-            //}
+            //Enable this for testing
+            // if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor)
+            // {
+            //     ServiceProvider.Initialize();
+            //     var mockProvider = new MockProvider(8);
+            //     ServiceProvider.Add(mockProvider.FakeRoom);
+            //     ServiceProvider.Add(mockProvider);
+            //
+            //     _room = mockProvider.FakeRoom;
+            //     foreach (var mockProviderFakeAnswer in mockProvider.FakeAnswers) _answers.TryAdd(mockProviderFakeAnswer.Player.Id, mockProviderFakeAnswer);
+            //     _snippet = new Snippet("Fake correct {answer}");
+            //     _correctAnswer.Name = _snippet.Answer;
+            //     _musicClient = ServiceProvider.Get<MusicClient>();
+            //
+            //     BindToMusicClient();
+            //     LoadPlayers();
+            //     Instructions.text = "I’ll tell you once more before I get off the lorem ipsum dolor sit amet before and after god said to be or not to be _____";
+            //     _timer.StartCountdown(5);
+            //
+            //     _timer.OnStep(2, () =>
+            //     {
+            //         ShowAnswers();
+            //         foreach (var player in _room.Players)
+            //         {
+            //             //this.answers.Shuffle();
+            //             // this._musicClient.VoEnqueue(mockProvider.GetVote(this._correctAnswer));
+            //         }
+            //     });
+            //
+            //     _timer.OnStep(3, () => { ShowVotes().CatchErrors(); });
+            // }
         }
 
         private void BindToMusicClient()

@@ -1,12 +1,13 @@
-﻿using Assets.Scripts.Extensions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Assets.Scripts.Extensions;
+using Assets.Scripts.Mock;
 using Assets.Scripts.Panels;
 using Assets.Scripts.Reusable;
 using Assets.Scripts.Serialization;
 using Assets.Scripts.Services;
 using SharedDomain;
 using SharedDomain.Domain;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -43,103 +44,94 @@ namespace Assets.Scripts.Score
 
         private void Start()
         {
-            this.room = ServiceProvider.Get<Room>();
-            this.gameOptions = ServiceProvider.Get<GameOptions>();
-            this.musicClient = ServiceProvider.Get<MusicClient>();
+            room = ServiceProvider.Get<Room>();
+            gameOptions = ServiceProvider.Get<GameOptions>();
+            musicClient = ServiceProvider.Get<MusicClient>();
 
-            this.musicClient.Message.AddListener(this, message => ToastPanelScript.Instantiate(message));
+            musicClient.Message.AddListener(this, message => ToastPanelScript.Instantiate(message));
 
             // Mock for testing
-            //ServiceProvider.Initialize();
-            //var mockProvider = new MockProvider(players: 8, currentRound: 10);
-            //this.room = mockProvider.FakeRoom;
-            //this.gameOptions = GameOptions.Default;
+            // ServiceProvider.Initialize();
+            // var mockProvider = new MockProvider(8, 10);
+            // room = mockProvider.FakeRoom;
+            // gameOptions = GameOptions.Default;
 
-            this.audioSource = this.GetComponent<AudioSource>();
-            this.gameOptions.ApplyVolume();
-            this.ShowScores();
+            audioSource = GetComponent<AudioSource>();
+            gameOptions.ApplyVolume();
+            ShowScores();
         }
 
         private void LateUpdate()
         {
-            if (EventSystem.current.currentSelectedGameObject == null && this.ReplayButton.isActiveAndEnabled)
-            {
-                this.ReplayButton.Select();
-            }
-            if (Input.GetKeyDown(KeyCode.Escape) && !this.isPaused)
+            if (EventSystem.current.currentSelectedGameObject == null && ReplayButton.isActiveAndEnabled) ReplayButton.Select();
+            if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
             {
                 Time.timeScale = 0;
-                this.isPaused = true;
-                this.audioSource.Pause();
-                SimplePausePanel.Instantiate(this.transform, true, () =>
+                isPaused = true;
+                audioSource.Pause();
+                SimplePausePanel.Instantiate(transform, true, () =>
                 {
-                    this.audioSource.UnPause();
-                    this.isPaused = false;
-                }, () => this.musicClient.QuitGameAsync());
+                    audioSource.UnPause();
+                    isPaused = false;
+                }, () => musicClient.QuitGameAsync());
             }
         }
 
         private void OnDestroy()
         {
-            this.musicClient.Message.RemoveAllListenersFrom(this);
+            musicClient.Message.RemoveAllListenersFrom(this);
         }
 
         private async void ShowScores()
         {
-            //TODO: kick player
-            var totalScores = this.room.ScoreBoard.Scores.Select(s => s.Value + this.room.CurrentRound.Score.Scores[s.Key]);
-            this.HighestScore = totalScores.OrderByDescending(s => s).First();
+            var totalScores = room.ScoreBoard.Scores.Select(s => s.Value + room.CurrentRound.Score.Scores[s.Key]);
+            HighestScore = totalScores.OrderByDescending(s => s).First();
 
-            foreach (var initialScore in this.room.ScoreBoard.Scores)
+            foreach (var initialScore in room.ScoreBoard.Scores)
             {
-                var addedScoreValue = this.room.CurrentRound.Score.Scores[initialScore.Key];
-                var initalScoreBricks = new KeyValuePair<int, int>(this.GetNumberOfBricks(initialScore.Value), initialScore.Value);
-                var addedScoreBricks = new KeyValuePair<int, int>(this.GetNumberOfBricks(addedScoreValue), addedScoreValue);
+                var addedScoreValue = room.CurrentRound.Score.Scores[initialScore.Key];
+                var initialScoreBricks = new KeyValuePair<int, int>(GetNumberOfBricks(initialScore.Value), initialScore.Value);
+                var addedScoreBricks = new KeyValuePair<int, int>(GetNumberOfBricks(addedScoreValue), addedScoreValue);
                 ScoreItemV2Script
-                    .InstantiateAndShowScoreAsync(initialScore.Key, initalScoreBricks, addedScoreBricks, this.GroupLayout.transform)
+                    .InstantiateAndShowScoreAsync(initialScore.Key, initialScoreBricks, addedScoreBricks, GroupLayout.transform)
                     .CatchErrors();
             }
-            this.audioSource.Play();
 
-            while (this.GroupLayout.GetComponentsInChildren<ScoreItemV2Script>().Any(si => !si.FinishedShowingScore))
+            audioSource.Play();
+
+            while (GroupLayout.GetComponentsInChildren<ScoreItemV2Script>().Any(si => !si.FinishedShowingScore))
             {
-                if (this.isPaused)
-                {
-                    this.audioSource.Pause();
-                }
+                if (isPaused) audioSource.Pause();
                 //wait
                 await new WaitForSeconds(0.2f);
             }
-            this.audioSource.Stop();
-            this.audioSource.loop = false;
-            //this.audioSource.PlayOneShot(Constants.AudioClips.GetCartoonComputerSound01());
-            this.room.ScoreBoard.AddScores(this.room.CurrentRound.Score.Scores);
+
+            audioSource.Stop();
+            audioSource.loop = false;
+            room.ScoreBoard.AddScores(room.CurrentRound.Score.Scores);
 
             //If we left the score scene, do nothing
-            if (!this)
-            {
-                return;
-            }
+            if (!this) return;
 
-            if (this.room.CurrentRound.Number < this.gameOptions.NumberOfRounds)
+            if (room.CurrentRound.Number < gameOptions.NumberOfRounds)
             {
                 await new WaitForSeconds(3);
-                this.room.NextRound();
+                room.NextRound();
                 LoadingSpinner.Instantiate();
-                var nextScene = this.room.CurrentRound.Number == this.gameOptions.NumberOfRounds ?
-                    "SpeedRound" : "Round";
+                var nextScene = room.CurrentRound.Number == gameOptions.NumberOfRounds ? "SpeedRound" : "Round";
                 SceneFader.Fade(nextScene, Color.black, 2);
             }
             else
             {
-                var endGameResult = await this.musicClient.EndGameWaitAsync();
+                var endGameResult = await musicClient.EndGameWaitAsync();
                 await new WaitForSeconds(2);
                 if (!endGameResult.IsSuccess)
                 {
                     ErrorPanelScript.Instantiate(endGameResult.ErrorMessage);
                     return;
                 }
-                this.ShowWinner();
+
+                ShowWinner();
             }
         }
 
@@ -147,54 +139,45 @@ namespace Assets.Scripts.Score
         {
             ServiceProvider.Get<CustomEventService>().TryPushRemainingEventsAsync().CatchErrors();
 
-            var scores = this.room.ScoreBoard.Scores.OrderBy(s => s.Value);
+            var scores = room.ScoreBoard.Scores.OrderBy(s => s.Value);
             var highestScore = scores.Last().Value;
             var winners = scores.Where(s => s.Value == highestScore);
 
-            this.WinnerPanel.SetActive(true);
-            this.WinnerPointsTMP.text = $"{highestScore} points";
-            this.WinnerNameTMP.text = string.Join("\n", winners.Select(w => w.Key.Nick));
-            if (winners.Count() > 1)
-            {
-                this.WinnerTextTMP.text += "s";
-            }
-            this.Spotlight.GetComponent<AudioSource>().Play();
+            WinnerPanel.SetActive(true);
+            WinnerPointsTMP.text = $"{highestScore} points";
+            WinnerNameTMP.text = string.Join("\n", winners.Select(w => w.Key.Nick));
+            if (winners.Count() > 1) WinnerTextTMP.text += "s";
+            Spotlight.GetComponent<AudioSource>().Play();
             await new WaitForSeconds(2);
 
-            this.WinnerContainer.GetComponent<AudioSource>().Play();
-            this.Spotlight.GetComponentInChildren<Spinner>().IsSpinning = true;
-            await this.WinnerContainer.GetComponent<RectTransform>().AnimateMoveTowardsAsync(this.Spotlight.transform.position, 4, 5);
-            this.WellDoneBox.SetActive(true);
+            WinnerContainer.GetComponent<AudioSource>().Play();
+            Spotlight.GetComponentInChildren<Spinner>().IsSpinning = true;
+            await WinnerContainer.GetComponent<RectTransform>().AnimateMoveTowardsAsync(Spotlight.transform.position, 4, 5);
+            WellDoneBox.SetActive(true);
             // Credits
-            this.Credits.AnimateMoveTowardsAsync(
+            Credits.AnimateMoveTowardsAsync(
                 GameObject.FindGameObjectWithTag("PositionReference").transform.position,
                 10,
                 5f).CatchErrors();
 
             // After showing winner
             await new WaitForSeconds(2);
-            foreach (var player in this.room.Players)
-            {
-                PlayerScript.Instantiate(this.PlayerContainer.transform, player);
-            }
-            this.Spotlight.GetComponentInChildren<Spinner>().IsSpinning = false;
-            this.PlayerContainer.SetActive(true);
-            this.ButtonContainer.SetActive(true);
-            this.ReplayButton.Select();
-            this.ReplayButton.OnSelect(new BaseEventData(EventSystem.current));
+            foreach (var player in room.Players) PlayerScript.Instantiate(PlayerContainer.transform, player);
+            Spotlight.GetComponentInChildren<Spinner>().IsSpinning = false;
+            PlayerContainer.SetActive(true);
+            ButtonContainer.SetActive(true);
+            ReplayButton.Select();
+            ReplayButton.OnSelect(new BaseEventData(EventSystem.current));
 
             //Review
-            if (!this.gameOptions.HasClickedOnReview)
+            if (!gameOptions.HasClickedOnReview)
             {
                 await new WaitForSeconds(12);
-                this.ReviewButton.gameObject.SetActive(true);
+                ReviewButton.gameObject.SetActive(true);
             }
         }
 
-        private int GetNumberOfBricks(int score)
-        {
-            return MaxNumberOfBricks * score / (this.HighestScore == 0 ? 1 : this.HighestScore);
-        }
+        private int GetNumberOfBricks(int score) => MaxNumberOfBricks * score / (HighestScore == 0 ? 1 : HighestScore);
 
         public void Exit()
         {
@@ -206,17 +189,18 @@ namespace Assets.Scripts.Score
             try
             {
                 this.DisableAllButtons();
-                LoadingSpinner.Instantiate(this.transform);
+                LoadingSpinner.Instantiate(transform);
                 var options = ServiceProvider.Get<GameOptions>();
                 var room = ServiceProvider.Get<Room>();
-                var response = await this.musicClient.StartNewGameAsync(
-                        options.PlaylistOptions);
+                var response = await musicClient.StartNewGameAsync(
+                    options.PlaylistOptions);
 
                 if (!response.IsSuccess)
                 {
                     ErrorPanelScript.Instantiate(response.ErrorMessage);
                     return;
                 }
+
                 ServiceProvider.AddOrReplace(response.GetData<List<PlaylistViewModel>>());
                 SceneFader.Fade("PlaylistVotingBooth", Color.black, 2);
             }
@@ -230,17 +214,17 @@ namespace Assets.Scripts.Score
 
         public async void MainMenu()
         {
-            LoadingSpinner.Instantiate(this.Spotlight.transform);
+            LoadingSpinner.Instantiate(Spotlight.transform);
             try
             {
-                var result = await this.musicClient.KickGuestsAsync(this.room.Players.Select(p => p.Id));
+                var result = await musicClient.KickGuestsAsync(room.Players.Select(p => p.Id));
                 if (!result.IsSuccess)
                 {
                     ErrorPanelScript.Instantiate(result.ErrorMessage);
                     return;
                 }
 
-                this.room.Players.Clear();
+                room.Players.Clear();
                 SceneManager.LoadScene("MainMenu");
             }
             catch (System.Exception)
@@ -252,8 +236,8 @@ namespace Assets.Scripts.Score
 
         public void OnClickReview()
         {
-            this.gameOptions.HasClickedOnReview = true;
-            this.ReviewButton.gameObject.SetActive(false);
+            gameOptions.HasClickedOnReview = true;
+            ReviewButton.gameObject.SetActive(false);
         }
     }
 }
